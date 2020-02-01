@@ -1,0 +1,117 @@
+#mainPage{
+	background-color: lightgray;
+	opacity: .9;
+
+}
+
+#masthead{
+	background-color: maroon;
+	border-bottom: 8px solid gray;
+	background-image: linear-gradient(to right, maroon , seagreen);
+
+}
+
+#masthead *{
+	display: inline;
+	font-size: 2.75rem;
+
+}
+
+#masthead img{
+	height: 200px;
+	width: 200px;
+	border-radius: 50%;
+	border: 4px solid ;
+	margin: 10px;
+    
+}
+
+main p{font-family: serif;}
+
+body{
+	background-color: lightgray;
+}
+
+
+h1{
+	font-family: "Oleo Script", Cursive, serif;
+	font-size: 3em;
+	color: white;
+  	-webkit-text-stroke-width: 1px;
+  	-webkit-text-stroke-color: black;
+}
+
+/****************************** NAVIGATION STYLES **************************************************/
+
+nav{
+	background-color: #680B19;
+	border-top: 2px solid black;
+
+}
+
+nav li:hover{
+	background-color: #529be3;
+	border-radius: 4px;
+}
+
+nav a{
+	color: white;
+
+}
+
+nav a:hover{
+	color: white;
+}
+
+/****************************** FOOTER STYLES **************************************************/
+
+footer{
+	background-color: maroon;
+	color: white;
+}
+
+/****************************** LOGIN STYLES **************************************************/
+
+form *{
+	width: 100%;
+}
+
+#loginBarTitle{
+	color: white;
+	display: block;
+}
+
+#loginForm{
+	padding: 10px;
+	box-shadow: 5px 5px 5px black;
+	background-color: seagreen;
+	color: white;
+}
+
+
+
+/****************************** Aside Styles **************************************************/
+aside a{
+	color: seagreen;
+}
+
+aside *{
+	font-family: serif;
+	
+}
+
+
+
+
+/****************************** General Form Styles **************************************************/
+
+button, input{
+	border-radius: 12px;
+	font-size: 1.25rem;
+	min-height: 50px;
+
+}
+
+
+
+
