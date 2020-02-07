@@ -30,7 +30,7 @@
 		<div>Log into Your Account.</div>
 	<div class = "row">
 		<div class = "col-4"></div>
-		<form id = "loginForm" method="POST" action = "#" class ="col-4 border border-dark">
+		<form id = "loginForm" method="POST" action = "#" class ="col-4 border border-dark bg-primary">
 		  <legend>Login</legend>
 		  <hr id = loginBarTitle>
 		  <label for="userLogin">Login ID:</label>
@@ -49,7 +49,17 @@
 	<div style="min-height: 100px;"></div>
 </div>
 
+<div style = "background-color: white">
+	<p>CODE TESTING - Production ONLY</p>
+	
+	<br>
+	<a href="/SysDev/private/userAreas/student"> LINK TO STUDENT</a><br>
+	<a href="/SysDev/private/userAreas/student"> LINK TO FACULTY</a><br>
+	<a href="/SysDev/private/userAreas/student"> LINK TO ADMIN</a><br>
+	<a href="/SysDev/private/userAreas/student"> LINK TO RESEARCH</a><br>
 
+
+</div>
 
 
 

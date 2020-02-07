@@ -1,5 +1,3 @@
-
-
 <?php
   //**SECURITY RISK** THis LINE FOR PRODUCTION ONLY.  DISABLE FOR DEPLOYMENT **SECURITY RISK**
   require_once '../private/_includes/showErrors.php';
@@ -47,7 +45,7 @@
   </div>
 
   <?php
-    require '_includes/footer.php';
+    require_once '_includes/footer.php';
     require_once '_includes/requiredScripts.php'
   ?>
 
