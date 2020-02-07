@@ -1,6 +1,6 @@
 
 <div style = "background-color: lightgreen; border: 2px solid green;">
-  <p>Testing Purposes</p>
+  <p>Testing Purposes -- Delete For Deployment</p>
 <?php
 echo "CurrentURL: ". $currentURL;
 //echo '<div><a href = "../../_includes">TestLink</a></div>'
@@ -307,7 +307,7 @@ require_once "../../_includes/private_navBar.php";
         </div>
       </div>
 
-      <div class = "tab-pane fade" id = "advisees">
+      <div class = "tab-pane fade" id = "advisees"><hr>
         <div class = "row">
             
           <div class="card text-white bg-secondary mb-3 col-4" style="max-width: 20rem; display: block">
@@ -366,7 +366,7 @@ require_once "../../_includes/private_navBar.php";
       </div>
       <br>
 
-      <div class = "tab-pane fade" id = "rosters">
+      <div class = "tab-pane fade" id = "rosters"><hr>
         <h2>Class 101</h2>
         <table class="table-striped col-12 table-bordered">
           <caption>--END--Roster</caption>
@@ -495,7 +495,7 @@ require_once "../../_includes/private_navBar.php";
       </div>
       <br>
 
-      <div class = "tab-pane fade" id = "gradeInput">
+      <div class = "tab-pane fade" id = "gradeInput"><hr>
         <h2>Post Grades</h2>
         <p>Available <span>***INSERT PHP DATE***</span></p>
         Everything to do with degree requirements

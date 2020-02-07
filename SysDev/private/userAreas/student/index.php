@@ -1,6 +1,6 @@
 
 <div style = "background-color: lightgreen; border: 2px solid green;">
-  <p>Testing Purposes</p>
+  <p>Testing Purposes -- Delete For Deployment</p>
 <?php
 echo "CurrentURL: ". $currentURL;
 //echo '<div><a href = "../../_includes">TestLink</a></div>'
@@ -60,9 +60,8 @@ require_once "../../_includes/private_navBar.php";
       <div class="tab-pane fade active show" id="profile"><hr>
         <div class = "row">
 
-          <div class = "col-1"></div>
 
-          <div class="card text-white bg-primary mb-3 col-" style="max-width: 20rem; display: block">
+          <div class="card text-white bg-primary mb-6" style="max-width: 20rem; display: block">
             <div class="card-header"><h3>Your Personal Information<h3></div>
             <div class="card-body">
               <h4 class="card-title">Last Name:</h4>
@@ -75,19 +74,32 @@ require_once "../../_includes/private_navBar.php";
               <p class="card-text">***Insert PHP***</p>
 
               <h4 class="card-title">Address:</h4>
-              <p class="card-text"><address>***Insert PHP***<br>***insert PHP***<br>***insert PHP***</address></p>
+              <p class="card-text">
+                <address>***Insert PHP***
+                <br>***insert PHP***
+                <br>***insert PHP***</address>
+              </p>
 
               <h4 class="card-title">Email:</h4>
               <p class ="card-text">Anyone@wherever.net</p>
+
+              <h4 class = "card-title">Home:</h4>
+              <p class = "card-text">*** -- Insert PHP***</p>
+
+              <h4 class = "card-title">Cell:</h4>
+              <p class = "card-text">***Insert PHP***</p>
+
+              <h4 class = "card-title">Work:</h4>
+              <p class = "card-text">*** Insert PHP***</p>
 
               <h4 class = "card-title">Current Holds:</h4>
               <p class = "card-text">***No holds -- Insert PHP***</p>
             </div>
           </div>
 
-          <div class = "col-1"></div> <!--Blank Column Used to Separate Cards-->
-
-          <div class="card text-white bg-secondary mb-3 col-5" style="max-width: 20rem; display: block">
+          <div class = "col-1"></div>
+          
+          <div class="card text-white bg-primary mb-6 " style="max-width: 20rem; display: block">
             <div class="card-header"><h3>Your Academic Information<h3></div>
             <div class="card-body">
               <h4 class="card-title">Academic Standing:</h4>
@@ -95,6 +107,9 @@ require_once "../../_includes/private_navBar.php";
 
               <h4 class="card-title">Current Total Credits:</h4>
               <p class="card-text">***Insert PHP: number***</p>
+
+              <h4 class = "card-title">Current Class Level:</h4>
+              <p class = "card-text">***Sophomore -- Insert PHP***</p>
            </div> 
           </div>
         </div><!--END .row-->
@@ -307,7 +322,7 @@ require_once "../../_includes/private_navBar.php";
         </div>
       </div>
 
-      <div class = "tab-pane fade" id = "registration">
+      <div class = "tab-pane fade" id = "registration"><hr>
         <div class = "row">
             <div class = col-6>
               <form  method = "post" action = "#">
@@ -329,7 +344,7 @@ require_once "../../_includes/private_navBar.php";
       </div>
       <br>
 
-      <div class = "tab-pane fade" id = "degreeAudit">
+      <div class = "tab-pane fade" id = "degreeAudit"><hr>
         <p>Everything to do with degree requirements</p>
         <br>
         <progress max="100" value="20"></progress><p>20% Complete</p>

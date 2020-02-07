@@ -50,7 +50,7 @@
 </div>
 
 <div style = "background-color: white">
-	<p>CODE TESTING - Production ONLY</p>
+	<p>CODE TESTING - Development ONLY -- Delete For deployment</p>
 	
 	<br>
 	<a href="/SystemDesign/SysDev/private/userAreas/student"> LINK TO STUDENT</a><br>

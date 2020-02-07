@@ -7,6 +7,7 @@
 
   //DISABLE FOR Deployment
   echo "php working.";
+  echo "<a href = 'errorLanding.php'>ERROR</a>";
   
   //These lines import masthead and navigation sections
   require_once "_includes/masthead.php";

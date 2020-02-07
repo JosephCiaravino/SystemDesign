@@ -1,6 +1,6 @@
 
 <div style = "background-color: lightgreen; border: 2px solid green;">
-  <p>Testing Purposes</p>
+  <p>Testing Purposes Delete For Deployment</p>
 <?php
 echo "CurrentURL: ". $currentURL;
 //echo '<div><a href = "../../_includes">TestLink</a></div>'
