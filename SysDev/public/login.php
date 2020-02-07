@@ -53,10 +53,10 @@
 	<p>CODE TESTING - Production ONLY</p>
 	
 	<br>
-	<a href="/SysDev/private/userAreas/student"> LINK TO STUDENT</a><br>
-	<a href="/SysDev/private/userAreas/student"> LINK TO FACULTY</a><br>
-	<a href="/SysDev/private/userAreas/student"> LINK TO ADMIN</a><br>
-	<a href="/SysDev/private/userAreas/student"> LINK TO RESEARCH</a><br>
+	<a href="/SystemDesign/SysDev/private/userAreas/student"> LINK TO STUDENT</a><br>
+	<a href="/SystemDesign/SysDev/private/userAreas/student"> LINK TO FACULTY</a><br>
+	<a href="/SystemDesign/SysDev/private/userAreas/student"> LINK TO ADMIN</a><br>
+	<a href="/SystemDesign/SysDev/private/userAreas/student"> LINK TO RESEARCH</a><br>
 
 
 </div>

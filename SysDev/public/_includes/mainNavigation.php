@@ -92,7 +92,7 @@ $currentURL = $_SERVER['REQUEST_URI'];
               if(strpos($currentURL,"login")>0){
                 echo "<a class = 'nav-link active' href = 'login.php'>Login</a>";
               }else if(strpos($currentURL,"userAreas")>0){
-                echo "<a class = 'nav-link' target = '_blank' href = '/SysDev/public/loggedOut.php'> Logout</a>";
+                echo "<a class = 'nav-link' target = '_blank' href = '/SystemDesign/SysDev/public/loggedOut.php'> Logout</a>";
               }else{
                 echo "<a class = 'nav-link' href = 'login.php'>Login</a>";
               }

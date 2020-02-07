@@ -10,4 +10,4 @@
   <script src="https://www.google-analytics.com/analytics.js" async></script>
 
 
-<script src = "/SysDev/private/_js/private_WEUcustomJS.js"></script>
+<script src = "../../_js/private_WEUcustomJS.js"></script>
