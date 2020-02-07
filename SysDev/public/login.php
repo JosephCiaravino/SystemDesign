@@ -54,9 +54,9 @@
 	
 	<br>
 	<a href="/SystemDesign/SysDev/private/userAreas/student"> LINK TO STUDENT</a><br>
-	<a href="/SystemDesign/SysDev/private/userAreas/student"> LINK TO FACULTY</a><br>
-	<a href="/SystemDesign/SysDev/private/userAreas/student"> LINK TO ADMIN</a><br>
-	<a href="/SystemDesign/SysDev/private/userAreas/student"> LINK TO RESEARCH</a><br>
+	<a href="/SystemDesign/SysDev/private/userAreas/faculty"> LINK TO FACULTY</a><br>
+	<a href="/SystemDesign/SysDev/private/userAreas/admin"> LINK TO ADMIN</a><br>
+	<a href="/SystemDesign/SysDev/private/userAreas/researcher"> LINK TO RESEARCH</a><br>
 
 
 </div>

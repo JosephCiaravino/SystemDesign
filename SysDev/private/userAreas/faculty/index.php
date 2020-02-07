@@ -32,23 +32,23 @@ require_once "../../_includes/private_navBar.php";
         <li class="nav-item text-center">
 
           <a class="nav-link" data-toggle="tab" href="#CurrentReg">
-          <i class="far fa-calendar-alt fa-3x "></i><br>View Schedules</a>
+          <i class="far fa-calendar-alt fa-3x "></i><br>Teaching Schedules</a>
         </li>
 
         <li class="nav-item text-center">
           <a class="nav-link" data-toggle="tab" href="#viewHist">
-          <i class="far fa-clock fa-3x "></i><br>Your History</a>
+          <i class="far fa-clock fa-3x "></i><br>Your Assignment History</a>
         </li>
 
          <li class="nav-item text-center">
-          <a class="nav-link" data-toggle="tab" href="#registration">
-          <i class="far fa-edit fa-3x "></i><br>Registration</a>
+          <a class="nav-link" data-toggle="tab" href="#advisees">
+          <i class="far fa-edit fa-3x "></i><br>Advisees</a>
         </li>
 
 
          <li class="nav-item text-center">
-          <a class="nav-link" data-toggle="tab" href="#degreeAudit">
-          <i class="fas fa-scroll fa-3x "></i><br>Degree Audit</a>
+          <a class="nav-link" data-toggle="tab" href="#rosters">
+          <i class="far fa-file-alt fa-3x"></i><br>View Rosters</a>
         </li>
          
     <!--
@@ -252,7 +252,7 @@ require_once "../../_includes/private_navBar.php";
               <tr>
                 <th>Course Title</th>
                 <th>Course Code</th>
-                <th>Final Grade</th>
+                <th>Average Studet Grade</th>
                 <th>Term</th>
                
               </tr>
@@ -307,29 +307,197 @@ require_once "../../_includes/private_navBar.php";
         </div>
       </div>
 
-      <div class = "tab-pane fade" id = "registration">
+      <div class = "tab-pane fade" id = "advisees">
         <div class = "row">
-            <div class = col-6>
-              <form  method = "post" action = "#">
-                  <div class = "form-group">
-                    <legend>Search For Sections</legend>
-                    <label for = "searchChoices">Search Options</label>
-                    
-                    <select class = "form-control">
-                      <option>Subject</option>
-                      <option>Department</option>
-                      <option>Instructor</option>
-                      <option>Day</option>
-                      
-                    </select>
-                  </div>
-              </form>
+            
+          <div class="card text-white bg-secondary mb-3 col-4" style="max-width: 20rem; display: block">
+            <div class="card-header"><h3>Advisee<h3></div>
+            <div class="card-body">
+              <h4 class="card-title">Student Name:</h4>
+              <p class="card-text">McCringleberry, Dingle</p>
+
+              <h4 class="card-title">Student ID:</h4>
+              <p class="card-text">***Insert PHP***</p>
+
+              <h4 class="card-title">Email:</h4>
+              <p class ="card-text">Anyone@wherever.net</p>
+
+              <h4 class = "card-title">Current Standing:</h4>
+              <p class = "card-text">***Junior -- Insert PHP***</p>
             </div>
+          </div>  
+
+          <div class="card text-white bg-secondary mb-3 col-4" style="max-width: 20rem; display: block">
+            <div class="card-header"><h3>Advisee<h3></div>
+            <div class="card-body">
+              <h4 class="card-title">Student Name:</h4>
+              <p class="card-text">Skittle, Mergatron</p>
+
+              <h4 class="card-title">Student ID:</h4>
+              <p class="card-text">***Insert PHP***</p>
+
+              <h4 class="card-title">Email:</h4>
+              <p class ="card-text">Anyone@wherever.net</p>
+
+              <h4 class = "card-title">Current Standing:</h4>
+              <p class = "card-text">***Junior -- Insert PHP***</p>
+            </div>
+          </div>  
+
+          <div class="card text-white bg-secondary mb-3 col-4" style="max-width: 20rem; display: block">
+            <div class="card-header"><h3>Advisee<h3></div>
+            <div class="card-body">
+              <h4 class="card-title">Student Name:</h4>
+              <p class="card-text">Smiff, Locknester</p>
+
+              <h4 class="card-title">Student ID:</h4>
+              <p class="card-text">***Insert PHP***</p>
+
+              <h4 class="card-title">Email:</h4>
+              <p class ="card-text">Anyone@wherever.net</p>
+
+              <h4 class = "card-title">Current Standing:</h4>
+              <p class = "card-text">***Junior -- Insert PHP***</p>
+            </div>
+          </div>  
+
+            
           </div>
       </div>
       <br>
 
-      <div class = "tab-pane fade" id = "degreeAudit">
+      <div class = "tab-pane fade" id = "rosters">
+        <h2>Class 101</h2>
+        <table class="table-striped col-12 table-bordered">
+          <caption>--END--Roster</caption>
+            <thead class = thead-dark>
+              <tr colspan = "3">
+                <th class = "table-primary">Roster</th>
+              </tr>
+              <tr class = "table-primary">
+                <th>Student ID#</th>
+                <th>Student Last</th>
+                <th>Student First</th>
+                <th>Term</th>
+               
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1544</td>
+                <td>Doe</td>
+                <td>John</td>
+                <td>Sp-2017</td>
+                
+              </tr>      
+              <tr>
+                <td>1534</td>
+                <td>Blank</td>
+                <td>Jane</td>
+                <td>Sp-2017</td>
+              </tr>
+              <tr>
+                <td>3334</td>
+                <td>Space</td>
+                <td>Samantha</td>
+                <td>Sp-2017</td>
+              </tr>
+              <tr>
+                <td>3044</td>
+                <td>Skittle</td>
+                <td>Mergatron</td>
+                <td>Sp-2017</td>
+              </tr>
+              <tr>
+                <td>6534</td>
+                <td>Flugget</td>
+                <td>Strunk</td>
+                <td>Sp-2017</td>
+              </tr>
+              <tr>
+                <td>9084</td>
+                <td>Roboclick</td>
+                <td>Strunktavian</td>
+                <td>Sp-2017</td>
+              </tr>
+              <tr>
+                <td>2364</td>
+                <td>Shazzbot</td>
+                <td>Marmadune</td>
+                <td>Sp-2017</td>
+              </tr>
+              
+            </tbody>
+          </table>
+
+        <h2>Class 102</h2>
+        <table class="table-striped col-12 table-bordered">
+          <caption>--END--Roster</caption>
+            <thead>
+              <tr colspan = "3">
+                <th class = "table-primary">Roster</th>
+              </tr>
+              <tr class = "table-primary">
+                <th>Student ID#</th>
+                <th>Student Last</th>
+                <th>Student First</th>
+                <th>Term</th>
+               
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1234</td>
+                <td>Doe</td>
+                <td>John</td>
+                <td>Sp-2017</td>
+                
+              </tr>      
+              <tr>
+                <td>1234</td>
+                <td>Blank</td>
+                <td>Jane</td>
+                <td>Sp-2017</td>
+              </tr>
+              <tr>
+                <td>1234</td>
+                <td>Space</td>
+                <td>Samantha</td>
+                <td>Sp-2017</td>
+              </tr>
+              <tr>
+                <td>3000</td>
+                <td>Skittle</td>
+                <td>Mergatron</td>
+                <td>Sp-2017</td>
+              </tr>
+              <tr>
+                <td>1234</td>
+                <td>Flugget</td>
+                <td>Strunk</td>
+                <td>Sp-2017</td>
+              </tr>
+              <tr>
+                <td>1234</td>
+                <td>Roboclick</td>
+                <td>Strunktavian</td>
+                <td>Sp-2017</td>
+              </tr>
+              <tr>
+                <td>1234</td>
+                <td>Shazzbot</td>
+                <td>Marmadune</td>
+                <td>Sp-2017</td>
+              </tr>
+              
+            </tbody>
+          </table>
+      </div>
+      <br>
+
+      <div class = "tab-pane fade" id = "gradeInput">
+        <h2>Post Grades</h2>
+        <p>Available <span>***INSERT PHP DATE***</span></p>
         Everything to do with degree requirements
       </div>
 

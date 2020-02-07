@@ -62,7 +62,7 @@ require_once "../../_includes/private_navBar.php";
 
           <div class = "col-1"></div>
 
-          <div class="card text-white bg-secondary mb-3 col-" style="max-width: 20rem; display: block">
+          <div class="card text-white bg-primary mb-3 col-" style="max-width: 20rem; display: block">
             <div class="card-header"><h3>Your Personal Information<h3></div>
             <div class="card-body">
               <h4 class="card-title">Last Name:</h4>
@@ -106,7 +106,7 @@ require_once "../../_includes/private_navBar.php";
         <div class = "row">
           <table class="table-striped col-12 table-bordered">
             <thead>
-              <tr>
+              <tr class ="table-primary">
                 <th>Course Title</th>
                 <th>Course Code</th>
                 <th>Meeting Days</th>
@@ -172,7 +172,7 @@ require_once "../../_includes/private_navBar.php";
          <div class = "row">
           <table class="table-striped col-12 table-bordered">
             <thead>
-              <tr>
+              <tr class ="table-primary">
                 <th>Course Title</th>
                 <th>Course Code</th>
                 <th>Meeting Days</th>
@@ -240,16 +240,16 @@ require_once "../../_includes/private_navBar.php";
         <div class = "row">
           <div>
             <h2>Your Degree Progress</h2>
-            <progress max="100" value="30"></progress><p>30% Complete</p>
+            <progress max="100" value="20"></progress><p>20% Complete</p>
           </div>
 
           <table class="table-striped col-12 table-bordered">
-          <caption>--END--Your Academic History</caption>
+            <caption>--END--Your Academic History</caption>
             <thead>
               <tr colspan = "3">
                 <th class = "table-primary">Academic History</th>
               </tr>
-              <tr>
+              <tr class ="table-primary">
                 <th>Course Title</th>
                 <th>Course Code</th>
                 <th>Final Grade</th>
@@ -330,7 +330,9 @@ require_once "../../_includes/private_navBar.php";
       <br>
 
       <div class = "tab-pane fade" id = "degreeAudit">
-        Everything to do with degree requirements
+        <p>Everything to do with degree requirements</p>
+        <br>
+        <progress max="100" value="20"></progress><p>20% Complete</p>
       </div>
 
       
