@@ -3,10 +3,10 @@
           </div>
 
           <table class="table-striped col-12 table-bordered">
-          <caption>--END--Your Academic History</caption>
+          <caption>--END--Your History</caption>
             <thead>
               <tr colspan = "3">
-                <th class = "table-primary">Academic History</th>
+                <th class = "table-primary">Teaching History</th>
               </tr>
               <tr>
                 <th>Course Title</th>

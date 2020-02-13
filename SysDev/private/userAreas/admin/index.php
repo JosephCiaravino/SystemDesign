@@ -67,8 +67,6 @@ require_once "../../_includes/private_navBar.php";
       <div class="tab-pane fade active show" id="profile"><hr>
         <div class = "row">
 
-          <div class = "col-1"></div>
-
           <div class="card text-white bg-secondary mb-3 col-" style="max-width: 20rem; display: block">
             <div class="card-header"><h3>Your Personal Information<h3></div>
             <div class="card-body">
@@ -78,32 +76,25 @@ require_once "../../_includes/private_navBar.php";
               <h4 class="card-title">First Name:</h4>
               <p class="card-text">***Insert PHP***</p>
 
-              <h4 class="card-title">Student ID:</h4>
+              <h4 class="card-title">Employee ID:</h4>
               <p class="card-text">***Insert PHP***</p>
 
               <h4 class="card-title">Address:</h4>
-              <p class="card-text"><address>***Insert PHP***<br>***insert PHP***<br>***insert PHP***</address></p>
+              <p class="card-text">
+                <address>
+                  ***Insert PHP***<br>
+                  ***insert PHP***<br>
+                  ***insert PHP***
+              </address></p>
 
               <h4 class="card-title">Email:</h4>
               <p class ="card-text">Anyone@wherever.net</p>
 
-              <h4 class = "card-title">Current Holds:</h4>
-              <p class = "card-text">***No holds -- Insert PHP***</p>
+              <h4 class = "card-title">Current Standing:</h4>
+              <p class = "card-text">***Insert PHP***</p>
             </div>
           </div>
-
-          <div class = "col-1"></div> <!--Blank Column Used to Separate Cards-->
-
-          <div class="card text-white bg-secondary mb-3 col-5" style="max-width: 20rem; display: block">
-            <div class="card-header"><h3>Your Academic Information<h3></div>
-            <div class="card-body">
-              <h4 class="card-title">Academic Standing:</h4>
-              <p class="card-text">***Insert PHP-Probattion/GoodStanding***</p>
-
-              <h4 class="card-title">Current Total Credits:</h4>
-              <p class="card-text">***Insert PHP: number***</p>
-           </div> 
-          </div>
+      
         </div><!--END .row-->
       </div><!--END .tab-pane-->
 

@@ -1,5 +1,5 @@
 <div><a href = "#">Request Official Transcript</a></div>
-<br>
+<br><br>
 
 <table class="table-striped col-12 table-bordered">
     <thead>
