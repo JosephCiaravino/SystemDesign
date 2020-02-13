@@ -30,13 +30,12 @@ require_once "../../_includes/private_navBar.php";
         </li>
 
         <li class="nav-item text-center">
-
           <a class="nav-link" data-toggle="tab" href="#masterSched">
           <i class="far fa-calendar-alt fa-3x "></i><br>View Schedules</a>
         </li>
 
         <li class="nav-item text-center">
-          <a class="nav-link" data-toggle="tab" href="#add">
+          <a class="nav-link" data-toggle="tab" href="#addClass">
           <i class="fas fa-plus fa-3x"></i><br>Add Course</a>
         </li>
 
@@ -47,9 +46,17 @@ require_once "../../_includes/private_navBar.php";
 
 
          <li class="nav-item text-center">
-          <a class="nav-link" data-toggle="tab" href="#remove">
+          <a class="nav-link" data-toggle="tab" href="#removeClass">
           <i class="far fa-times-circle fa-3x"></i><br>Close Class Section</a>
         </li>
+
+         <li class="nav-item text-center">
+          <a class="nav-link" data-toggle="tab" href="#addUser">
+          <i class="fas fa-user-plus fa-3x"></i><br>Add A User</a>
+        </li>
+
+
+        
          
     <!--
       TABLES IN THIS SECTION ARE CURRENTLY HARD-CODED TO SERVE A PLACE HOLDERS.  
@@ -102,37 +109,33 @@ require_once "../../_includes/private_navBar.php";
 
       <div class = "tab-pane fade" id = "placeHolds"><hr>
           <div class = "row">
-            <h2>Some Heading</h2>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-            </div>
-      </div>
-     
-
-      <!--Current Semester Table-->
-      <div class="tab-pane fade" id="masterSched"><hr>
-        <h2>Some Heading</h2>
-        <div class = "row">
-          
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-        </div>  
-      </div>
-
-      <div class = "tab-pane fade" id = "add"><hr>
-        <div class = "row">
-        <h2>Some Heading</h2>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-        </div>
-      </div>
-
-   
-
-      <div class = "tab-pane fade" id = "remove"><hr>
-        <div class = "row">
-          <h2>Some Heading</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            <?php require_once "_adminPlaceHolds.php"; ?>  
           </div>
       </div>
 
+      <div class="tab-pane fade" id="masterSched"><hr>
+        <div class = "row">
+         <?php require_once "_adminViewMasterSchedule.php";?>
+        </div>  
+      </div>
+
+      <div class = "tab-pane fade" id = "addClass"><hr>
+        <div class = "row">
+          <?php require_once "_adminAddClass.php";?>
+        </div>
+      </div>
+
+      <div class = "tab-pane fade" id = "removeClass"><hr>
+        <div class = "row">
+          <?php require_once "_adminRemoveClass.php"; ?>
+        </div>
+      </div>
+
+      <div class = "tab-pane fade" id = "addUser"><hr>
+        <div class = "row">
+          <?php require_once "_adminAddUser.php";?>
+        </div>
+      </div>
       
     </div><!--Close My Tab Content-->
 </main>
