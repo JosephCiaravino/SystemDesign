@@ -1,18 +1,11 @@
 <?php
-  //**SECURITY RISK** THis LINE FOR PRODUCTION ONLY.  DISABLE FOR DEPLOYMENT **SECURITY RISK**
-  require_once '../private/_includes/showErrors.php';
 
   //THIS LINE imports all lines in HTML <head> element.
   require_once '_includes/documentHead.php';
 
-  //DISABLE FOR Deployment
-  echo "php working.";
-
-  
   //These lines import masthead and navigation sections
   require_once "_includes/masthead.php";
   require_once "_includes/mainNavigation.php";
-
 
 
 
@@ -49,22 +42,21 @@
 	<div style="min-height: 100px;"></div>
 </div>
 
-<div style = "background-color: white">
-	<p>CODE TESTING - Development ONLY -- Delete For deployment</p>
-	
-	<br>
-	<a href="/SystemDesign/SysDev/private/userAreas/student"> LINK TO STUDENT</a><br>
-	<a href="/SystemDesign/SysDev/private/userAreas/faculty"> LINK TO FACULTY</a><br>
-	<a href="/SystemDesign/SysDev/private/userAreas/admin"> LINK TO ADMIN</a><br>
-	<a href="/SystemDesign/SysDev/private/userAreas/researcher"> LINK TO RESEARCH</a><br>
-
-
-</div>
-
-
-
 
 <?php
+
+/****************************************************************************************/
+	  if($testing == true){
+	    echo '<div style = "background-color: lightgreen;">
+		<p>CODE TESTING - Development ONLY -- Delete For deployment</p> <br>
+		<a href="/SystemDesign/SysDev/private/userAreas/student"> LINK TO STUDENT</a><br>
+		<a href="/SystemDesign/SysDev/private/userAreas/faculty"> LINK TO FACULTY</a><br>
+		<a href="/SystemDesign/SysDev/private/userAreas/admin"> LINK TO ADMIN</a><br>
+		<a href="/SystemDesign/SysDev/private/userAreas/researcher"> LINK TO RESEARCH</a><br>
+		</div>';
+	   }
+/****************************************************************************************/
+
 
    require_once '_includes/footer.php';
    require_once '_includes/requiredScripts.php'

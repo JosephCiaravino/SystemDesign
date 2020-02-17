@@ -1,21 +1,14 @@
-
-<div style = "background-color: lightgreen; border: 2px solid green;">
-  <p>Testing Purposes -- Delete For Deployment</p>
 <?php
-echo "CurrentURL: ". $currentURL;
-//echo '<div><a href = "../../_includes">TestLink</a></div>'
-?>
-<!-- ************************************************************************ -->
-</div>
-
-<?php
-require_once "../../_includes/functions.php";
-
 require_once "../../_includes/private_docHead.php";
 
-require_once "../../_includes/private_masthead.php";
+/***********************************************************************************/
+include_once "../../_includes/private_testing_div.php";
+/***********************************************************************************/
 
+require_once "../../_includes/private_masthead.php";
 require_once "../../_includes/private_navBar.php";
+
+
 
 ?>
 
@@ -31,7 +24,7 @@ require_once "../../_includes/private_navBar.php";
 
         <li class="nav-item text-center">
 
-          <a class="nav-link" data-toggle="tab" href="#CurrentReg">
+          <a class="nav-link" data-toggle="tab" href="#currentReg">
           <i class="far fa-calendar-alt fa-3x "></i><br>View Schedules</a>
         </li>
 
@@ -50,7 +43,7 @@ require_once "../../_includes/private_navBar.php";
           <a class="nav-link" data-toggle="tab" href="#degreeAudit">
           <i class="fas fa-scroll fa-3x "></i><br>Degree Audit</a>
         </li>
-
+    </ul>
         
          
     <!--

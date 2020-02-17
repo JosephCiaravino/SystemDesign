@@ -1,9 +1,22 @@
 <?php
 
-define("SHARED", "/SysDev/public/_includes");
-define("PRIVATE","/SysDev/private/");
+define("SHARED_PUBLIC", "/SystemDesign/SysDev/public/_includes");
+define("SHARED_PRIVATE","/SystemDesign/SysDev/private/_includes");
 
 $currentURL = $_SERVER['REQUEST_URI']; 
+
+function is_func_working(){
+	echo "FUNCTIONS WORKING";
+}
+
+function is_post_request(){
+	return $_SERVER['REQUEST_METHOD']=='POST';
+}
+
+function is_get_request(){
+	return $_SERVER['REQUEST_METHOD']=='GET';
+}
+
 
 
 ?>

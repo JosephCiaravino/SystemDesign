@@ -1,7 +1,9 @@
 <!doctype html>
 
 <?php
- //require_once "../../public/_includes/functions.php";
+ require_once "../../_includes/initialize.php";
+ require_once "../../_includes/functions.php";
+ 
 ?>
 
 <html class="no-js" lang="">
@@ -38,3 +40,20 @@
   <!--[if IE]>
     <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
   <![endif]-->
+
+
+
+<!--  FOR TESTING ONLY; DELETE FOR DEPLOYMENT -->
+<?php 
+//   if($testing == true){ 
+  
+//     echo '<div style = "background-color: white; min-height: 100px;"><p>CODE TESTING - DEVELOPMENT ONLY</p>';
+//     is_func_working();
+//     echo "<br>";
+//     is_init_working();
+//     echo '</div>';
+// } 
+?>
+
+
+

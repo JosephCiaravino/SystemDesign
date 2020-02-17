@@ -1,27 +1,19 @@
-
-<div style = "background-color: lightgreen; border: 2px solid green;">
-  <p>Testing Purposes (Development) - Delete On all pages for Deploymet</p>
 <?php
-echo "CurrentURL: ". $currentURL;
-//echo '<div><a href = "../../_includes">TestLink</a></div>'
-?>
-<!-- ************************************************************************ -->
-</div>
-
-<?php
-require_once "../../_includes/functions.php";
 
 require_once "../../_includes/private_docHead.php";
 
-require_once "../../_includes/private_masthead.php";
+/***********************************************************************************/
+include_once "../../_includes/private_testing_div.php";
+/***********************************************************************************/
 
+require_once "../../_includes/private_masthead.php";
 require_once "../../_includes/private_navBar.php";
+
 
 ?>
 
 <main class = "container">
     <h2>Your Details</h2>
-    <p></p>
 
     <ul class="nav nav-tabs">
         <li class="nav-item text-center">
@@ -54,7 +46,7 @@ require_once "../../_includes/private_navBar.php";
           <a class="nav-link" data-toggle="tab" href="#addUser">
           <i class="fas fa-user-plus fa-3x"></i><br>Add A User</a>
         </li>
-
+    </ul>
 
         
          

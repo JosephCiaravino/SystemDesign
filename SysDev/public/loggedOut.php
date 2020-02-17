@@ -4,9 +4,6 @@
 
   //THIS LINE imports all lines in HTML <head> element.
   require_once '_includes/documentHead.php';
-
-  //DISABLE FOR Deployment
-  echo "php working.";
   
   //These lines import masthead and navigation sections
   require_once "_includes/masthead.php";
@@ -26,8 +23,6 @@
         <h2>Logged Out</h2>
         <p>You are logged out.  Thank you.</p>
       </main> 
-
-      
 
     </div>
   </div>

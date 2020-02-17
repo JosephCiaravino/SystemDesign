@@ -1,27 +1,16 @@
-
-<div style = "background-color: lightgreen; border: 2px solid green;">
-  <p>Testing Purposes Delete For Deployment</p>
 <?php
-echo "CurrentURL: ". $currentURL;
-//echo '<div><a href = "../../_includes">TestLink</a></div>'
-?>
-<!-- ************************************************************************ -->
-</div>
-
-<?php
-require_once "../../_includes/functions.php";
-
 require_once "../../_includes/private_docHead.php";
 
+/***********************************************************************************/
+include_once "../../_includes/private_testing_div.php";
+/***********************************************************************************/
+
 require_once "../../_includes/private_masthead.php";
-
 require_once "../../_includes/private_navBar.php";
-
 ?>
 
 <main class = "container">
     <h2>Your Tools</h2>
-    <p></p>
 
     <ul class="nav nav-tabs">
         <li class="nav-item text-center">
@@ -44,8 +33,7 @@ require_once "../../_includes/private_navBar.php";
           <a class="nav-link" data-toggle="tab" href="#demographics">
           <i class="fas fa-chart-pie fa-3x"></i></i><br>Demographics</a>
         </li>
-
-     </ul>    
+    </ul>    
     <!--
       TABLES IN THIS SECTION ARE CURRENTLY HARD-CODED TO SERVE A PLACE HOLDERS.  
       WE ARE FREE TO RE-DRAW as we pease using PHP
