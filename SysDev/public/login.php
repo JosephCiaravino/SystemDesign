@@ -7,34 +7,27 @@
   require_once "_includes/masthead.php";
   require_once "_includes/mainNavigation.php";
 
-
-
-
 ?>
 
-<!--
-	I'm not sure if BootStrap styles can be changed in CSS so I'm using this until I figure 
-	out whether or not it's necessary
--->
 
 
 <div  id = "loginContainer" class = "container" >
 	
-		<div>Log into Your Account.</div>
+	<div>Log into Your Account.</div>
 	<div class = "row">
 		<div class = "col-4"></div>
-		<form id = "loginForm" method="POST" action = "#" class ="col-4 border border-dark bg-primary">
+		<form id = "loginForm" method="POST" action = "../private/process_user.php" class ="col-4 border border-dark bg-primary">
 		  <legend>Login</legend>
 		  <hr id = loginBarTitle>
 		  <label for="userLogin">Login ID:</label>
 		  <br>
 		  <input id = "userLogin" type="email" name="loginIdentity">
 		  <br><br>
-		  <label for = "passwordField">Password:</label>
+		  <label for = "password">Password:</label>
 		  <br>
-		  <input type="password" name="lastname">
+		  <input type="password" name="password">
 		  <br><br>
-		  <button name = "Submit" type = "submit">Log In</button>
+		  <input name = "submit" type = "submit">
 		</form>
 
 		<div class = "col-4"></div>
