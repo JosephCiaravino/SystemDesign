@@ -1,14 +1,8 @@
-
-
 <?php
-  //**SECURITY RISK** THis LINE FOR PRODUCTION ONLY.  DISABLE FOR DEPLOYMENT **SECURITY RISK**
-  require_once '../private/_includes/showErrors.php';
 
   //THIS LINE imports all lines in HTML <head> element.
   require_once '_includes/documentHead.php';
 
-  //DISABLE FOR Deployment
-  echo "php working.";
   
   //These lines import masthead and navigation sections
   require_once "_includes/masthead.php";

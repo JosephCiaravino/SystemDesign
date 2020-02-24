@@ -2,9 +2,9 @@
 <!doctype html>
 
 <?php
- require_once "../private/_includes/functions.php";
- require_once "../private/_includes/initialize.php";
-
+ require_once "../private/_includes/functionalityScripts/functions.php";
+ require_once "../private/_includes/functionalityScripts/initialize.php";
+  
 ?>
 
 <html class="no-js" lang="">
@@ -29,8 +29,7 @@
   <link rel="stylesheet" type = "text/css" href = "_css/bootstrapPulseTheme.css">
 
   <!--Custom Stylesheet link-->
-  <link rel="stylesheet" type = "text/css" href = "_css/witherspoonCustom.css">
-  
+  <link rel="stylesheet" type = "text/css" href = "_css/witherspoonCustom.css">  
 </head>
 
 <body style = "background-image: url(_images/campusImage.jpeg); background-attachment: fixed;" title = "https://unsplash.com/@rcjphoto">
@@ -42,16 +41,15 @@
 <!--  FOR TESTING ONLY; DELETE FOR DEPLOYMENT -->
 <?php 
 
-if($testing == true){ 
-  
-  echo '<div style = "background-color: lightgreen; min-height: 100px;"><p>CODE TESTING - DEVELOPMENT ONLY</p>';
-   
-   is_func_working();
-  echo "<br>";
-    is_init_working();
-  echo '</div>';
-} 
-
+  if($testing == true){ 
+    
+    echo '<div style = "background-color: lightgreen; min-height: 100px;"><p>CODE TESTING - DEVELOPMENT ONLY</p>';
+     
+     is_func_working();
+    echo "<br>";
+      is_init_working();
+    echo '</div>';
+  } 
 ?>
 
 

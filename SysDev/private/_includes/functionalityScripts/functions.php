@@ -6,7 +6,7 @@ define("SHARED_PRIVATE","/SystemDesign/SysDev/private/_includes");
 $currentURL = $_SERVER['REQUEST_URI']; 
 
 function is_func_working(){
-	echo "FUNCTIONS WORKING";
+	echo "<div style ='background-color: lightgreen;'>FUNCTIONS WORKING</div>";
 }
 
 function is_post_request(){

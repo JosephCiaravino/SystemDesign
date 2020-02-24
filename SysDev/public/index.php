@@ -1,12 +1,11 @@
 <?php
   
-  
   //THIS LINE imports all lines in HTML <head> element.
-  require_once '_includes/documentHead.php';
+    require_once '_includes/documentHead.php';
   
   //These lines import masthead and navigation sections
-  require_once "_includes/masthead.php";
-  require_once "_includes/mainNavigation.php";
+    require_once "_includes/masthead.php";
+    require_once "_includes/mainNavigation.php";
 ?>
 
 
@@ -41,8 +40,8 @@
   </div>
 
   <?php
-    require_once '_includes/footer.php';
-    require_once '_includes/requiredScripts.php'
+    require '_includes/footer.php';
+    require '_includes/requiredScripts.php'
   ?>
 
 </html>

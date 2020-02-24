@@ -1,15 +1,14 @@
-<?php
+<?php 
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-if( !isset( $_POST['loginIdentity'] ) ){
-	header("Location: login.php");
-}else if( !isset( $_POST['password'] )){
-	header("Location: login.php");
-}else if(false){
-
-}else{
+  if (empty($_POST["loginIdentity"]) || empty($_POST["password"])) {
+  	header("Location: ../public/login.php");
+  }else {
+   	var_dump($_POST);
+    
+  }
 
 }
-
-var_dump($_POST);
+		
 
 ?>
