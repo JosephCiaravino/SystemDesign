@@ -3,6 +3,7 @@
 function is_init_working(){
 	echo "INITIALIZE WORKING";
 }
+
 ob_start();
 session_start(); //turn on sessions
 
@@ -25,6 +26,8 @@ session_start(); //turn on sessions
 
 /********************************FOR DEVELOPMENT ONLY********************************************/
 /************************************************************************************************/
+
+require_once "database.php";
 
 
 

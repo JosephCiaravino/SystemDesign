@@ -9,7 +9,8 @@ include_once "../../_includes/private_testing_div.php";
 require_once "../../_includes/private_masthead.php";
 require_once "../../_includes/private_navBar.php";
 
-
+//this code prevents visitor from directly accessing private areas
+require_once "../../_includes/functionalityScripts/pageRestrictionScript.php";
 ?>
 
 <main class = "container">

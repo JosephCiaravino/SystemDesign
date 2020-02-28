@@ -8,13 +8,14 @@ include_once "../../_includes/private_testing_div.php";
 require_once "../../_includes/private_masthead.php";
 require_once "../../_includes/private_navBar.php";
 
-
+//this code prevents visitor from directly accessing private areas
+require_once "../../_includes/functionalityScripts/pageRestrictionScript.php";
 
 ?>
 
 <main class = "container">
     <h2>Your Tools</h2>
-    <p></p>
+    <p><?php echo "Welcome Back, ".$_SESSION['user']; ?> </p> <!--............SESSON USED HERE............-->
 
     <ul class="nav nav-tabs">
         <li class="nav-item text-center">

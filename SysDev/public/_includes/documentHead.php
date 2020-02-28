@@ -2,8 +2,8 @@
 <!doctype html>
 
 <?php
- require_once "../private/_includes/functionalityScripts/functions.php";
  require_once "../private/_includes/functionalityScripts/initialize.php";
+ require_once "../private/_includes/functionalityScripts/functions.php";
   
 ?>
 
