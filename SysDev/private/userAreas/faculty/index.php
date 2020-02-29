@@ -1,5 +1,6 @@
 <?php
-
+session_start();
+session_regenerate_id(TRUE);
 require_once "../../_includes/private_docHead.php";
 
 /***********************************************************************************/
@@ -11,7 +12,6 @@ require_once "../../_includes/private_navBar.php";
 
 //this code prevents visitor from directly accessing private areas
 require_once "../../_includes/functionalityScripts/pageRestrictionScript.php";
-
 ?>
 
 <main class = "container">
@@ -95,5 +95,5 @@ require_once "../../_includes/functionalityScripts/pageRestrictionScript.php";
 <?php
 require_once '../../_includes/private_footer.php';
 require_once '../../_includes/private_requiredScripts.php';
-    
+   session_regenerate_id(TRUE); 
 ?>

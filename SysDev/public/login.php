@@ -1,4 +1,6 @@
 <?php
+
+
 //THIS LINE imports all lines in HTML <head> element.
 require_once '_includes/documentHead.php';
 
