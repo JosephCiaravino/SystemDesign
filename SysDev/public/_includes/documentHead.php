@@ -2,6 +2,7 @@
 <!doctype html>
 
 <?php
+
  require_once "../private/_includes/functionalityScripts/initialize.php";
  require_once "../private/_includes/functionalityScripts/functions.php";
   
@@ -48,6 +49,9 @@
      is_func_working();
     echo "<br>";
       is_init_working();
+
+      echo "<br /> SESSION: ";
+      echo print_r($_SESSION);
     echo '</div>';
   } 
 ?>

@@ -1,6 +1,7 @@
 <?php
-session_start();
 session_regenerate_id(TRUE);
+echo print_r($_SESSION);
+$pageType = "faculty";
 require_once "../../_includes/private_docHead.php";
 
 /***********************************************************************************/

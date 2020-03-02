@@ -1,11 +1,15 @@
 <?php
-  unset($_SESSION);
+session_start();
+session_unset();
+session_destroy();
+   
   //THIS LINE imports all lines in HTML <head> element.
   require_once '_includes/documentHead.php';
   
   //These lines import masthead and navigation sections
   require_once "_includes/masthead.php";
   require_once "_includes/mainNavigation.php";
+
 ?>
 
 
@@ -28,6 +32,10 @@
   <?php
     require '_includes/footer.php';
     require_once '_includes/requiredScripts.php'
+
+
+  
   ?>
 
 </html>
+

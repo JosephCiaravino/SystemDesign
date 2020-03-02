@@ -1,7 +1,5 @@
-
-
-
 <?php
+//session_start();
 $currentURL = $_SERVER['REQUEST_URI']; 
 
 ?>
@@ -89,8 +87,11 @@ $currentURL = $_SERVER['REQUEST_URI'];
 <!--Here the nav "login/out" button changes depending on url.  The log out href can be changed to another page.-->
           <li class = "nav-item">
             <?php
-              if(strpos($currentURL,"login")>0){
+              if(isset($_SESSION['email'])){
+
+              }else if(false){
                 echo "<a class = 'nav-link active' href = '/SystemDesign/SysDev/public/login.php'>Login</a>";
+              
               }else if(strpos($currentURL,"userAreas")>0){
                 echo "<a class = 'nav-link' target = '_blank' href = '/SystemDesign/SysDev/public/loggedOut.php'> Logout</a>";
               }else{
@@ -98,6 +99,23 @@ $currentURL = $_SERVER['REQUEST_URI'];
               }
             ?>
           </li>
+
+          <?php  //if a user is logged in this will appear.  Based on SESSION BEING SET
+            
+            
+            if(strpos($currentURL,"loggedOut")>0){
+              echo"<li></li>";
+
+            }else if(isset($_SESSION['role'])){
+              $role = $_SESSION['role'];
+              $fname = $_SESSION['fName'];
+              echo "<li><a class = 'nav-link' href = '../private/userAreas/".$role."/index.php'> ".$_SESSION['fName']."'s Account </a></li>";
+            }
+            
+            
+
+
+          ?>
 
       </ul>
   </nav>

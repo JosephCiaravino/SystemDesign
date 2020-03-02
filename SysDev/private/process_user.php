@@ -22,22 +22,23 @@ if (empty($_POST["loginIdentity"]) || empty($_POST["password"])) {
     $result = mysqli_query($connection, $query);
     $row = $result -> fetch_assoc();
 
-                  echo "<div style = 'background-color: lightgreen'>";
-                  echo "ROW: <br />";
-                  echo var_dump($row);
-                  echo "</div>";
-
-    foreach($row as $item){
-      $_SESSION[]=$item;
-    }
+    //foreach loop didn't work, but this did, so I left it
+      $_SESSION['id']=$row['User_Id'];
+      $_SESSION['fName']=$row['First_Name'];
+      $_SESSION['lName']=$row['Last_Name'];
+      $_SESSION['email']=$row['Email'];
+      $_SESSION['street']=$row['Street_Address'];
+      $_SESSION['city']=$row['City'];
+      $_SESSION['state']=$row['State'];
+      $_SESSION['zip']=$row['Zipcode'];
+      $_SESSION['role']=$row['Role'];
+      $_SESSION['phone']=$row['Phone'];
+    
 
     
     if(!is_null($row) && $row['Password']==$password && $row['Email']==$user){
-      // echo "<div style = 'background-color: lightgreen'><br />AUTHENTICATED!<br /><br/>";
-      // echo "SESSION: <br /><br />";
-      // echo var_dump($_SESSION);
-      // echo "</div>";
-     if($row['Role']=='faculty'){
+ 
+        if($row['Role']=='faculty'){
           header("Location: ../private/userAreas/faculty/index.php");
           exit;
         }elseif($row['Role']=='student'){
@@ -54,7 +55,7 @@ if (empty($_POST["loginIdentity"]) || empty($_POST["password"])) {
       }else{
         //echo "NOT AUTHENTICATED";
         header("Location: ../public/login.php");
-        echo "NOT AUTHENTICATED.";
+        
       }
 
 

@@ -1,4 +1,9 @@
 <?php
+session_regenerate_id(TRUE);
+echo print_r($_SESSION);
+
+$pageType = "student";
+
 require_once "../../_includes/private_docHead.php";
 
 /***********************************************************************************/
@@ -15,7 +20,7 @@ require_once "../../_includes/functionalityScripts/pageRestrictionScript.php";
 
 <main class = "container">
     <h2>Your Tools</h2>
-    <p><?php echo "Welcome Back, ".$_SESSION['user']; ?> </p> <!--............SESSON USED HERE............-->
+    <p><?php echo "Welcome Back, ".$_SESSION['fName']; ?> </p> <!--............SESSON USED HERE............-->
 
     <ul class="nav nav-tabs">
         <li class="nav-item text-center">

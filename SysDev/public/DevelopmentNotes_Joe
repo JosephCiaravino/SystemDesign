@@ -12,9 +12,11 @@ https://unsplash.com/@rcjphoto?utm_source=unsplash&utm_medium=referral&utm_conte
 https://unsplash.com/
 
 ====================COLOR SCHEME =====================================================================
-#BDD9BF - seafoam
-#5E5D5C - Gray
-#680B19 - Maroon
-#FFFFFF - white
+
 
 =====================NOTES ============================================================================
+
+
+SECURITY HOLES
++ when logged in, you can use url bar to get to other private areas.
++ 

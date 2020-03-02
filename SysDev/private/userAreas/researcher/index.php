@@ -1,4 +1,8 @@
 <?php
+session_regenerate_id(TRUE);
+echo print_r($_SESSION);
+
+$pageType = "researcher";
 require_once "../../_includes/private_docHead.php";
 
 /***********************************************************************************/

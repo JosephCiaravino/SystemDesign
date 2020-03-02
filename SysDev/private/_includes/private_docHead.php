@@ -3,7 +3,7 @@
 <?php
  require_once "../../_includes/functionalityScripts/initialize.php";
  require_once "../../_includes/functionalityScripts/functions.php";
- 
+
 ?>
 
 <html class="no-js" lang="">
@@ -45,14 +45,8 @@
 
 <!--  FOR TESTING ONLY; DELETE FOR DEPLOYMENT -->
 <?php 
-//   if($testing == true){ 
-  
-//     echo '<div style = "background-color: white; min-height: 100px;"><p>CODE TESTING - DEVELOPMENT ONLY</p>';
-//     is_func_working();
-//     echo "<br>";
-//     is_init_working();
-//     echo '</div>';
-// } 
+   if($testing == true){} 
+ 
 ?>
 
 

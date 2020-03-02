@@ -1,5 +1,9 @@
 <?php
 
+session_regenerate_id(TRUE);
+print_r($_SESSION);
+$pageType = "admin";
+
 require_once "../../_includes/private_docHead.php";
 
 /***********************************************************************************/
@@ -59,36 +63,8 @@ require_once "../../_includes/functionalityScripts/pageRestrictionScript.php";
 
       <div class="tab-pane fade active show" id="profile"><hr>
         <div class = "row">
-
-          <div class="card text-white bg-secondary mb-3 col-" style="max-width: 20rem; display: block">
-            <div class="card-header"><h3>Your Personal Information<h3></div>
-            <div class="card-body">
-              <h4 class="card-title">Last Name:</h4>
-              <p class="card-text">***Insert PHP***</p>
-
-              <h4 class="card-title">First Name:</h4>
-              <p class="card-text">***Insert PHP***</p>
-
-              <h4 class="card-title">Employee ID:</h4>
-              <p class="card-text">***Insert PHP***</p>
-
-              <h4 class="card-title">Address:</h4>
-              <p class="card-text">
-                <address>
-                  ***Insert PHP***<br>
-                  ***insert PHP***<br>
-                  ***insert PHP***
-              </address></p>
-
-              <h4 class="card-title">Email:</h4>
-              <p class ="card-text">Anyone@wherever.net</p>
-
-              <h4 class = "card-title">Current Standing:</h4>
-              <p class = "card-text">***Insert PHP***</p>
-            </div>
-          </div>
-      
-        </div><!--END .row-->
+          <?php require_once "_adminInfo.php"; ?>  
+        </div>   
       </div><!--END .tab-pane-->
 
       <div class = "tab-pane fade" id = "placeHolds"><hr>
@@ -122,7 +98,7 @@ require_once "../../_includes/functionalityScripts/pageRestrictionScript.php";
       </div>
       
     </div><!--Close My Tab Content-->
-</main>
+</main><br /> <br />
 
 <?php
 require_once '../../_includes/private_footer.php';

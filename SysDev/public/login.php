@@ -1,6 +1,5 @@
 <?php
 
-
 //THIS LINE imports all lines in HTML <head> element.
 require_once '_includes/documentHead.php';
 
@@ -14,6 +13,7 @@ function test_input($data) {
   $data = htmlspecialchars($data);
   return $data;
 }
+
  
 //$_POST['missingData']= "";
 
