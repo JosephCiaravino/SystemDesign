@@ -1,5 +1,7 @@
 <!doctype html>
 
+
+
 <?php
  require_once "../../_includes/functionalityScripts/initialize.php";
  require_once "../../_includes/functionalityScripts/functions.php";

@@ -10,4 +10,4 @@
   <script src="https://www.google-analytics.com/analytics.js" async></script>
 
 
-<script src = "/SysDev/public/_js/witherspoonCustomJS.js"></script>
+<script src = "_js/witherspoonCustomJS.js"></script>

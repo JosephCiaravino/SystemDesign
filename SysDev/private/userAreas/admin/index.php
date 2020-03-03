@@ -32,24 +32,38 @@ require_once "../../_includes/functionalityScripts/pageRestrictionScript.php";
         </li>
 
         <li class="nav-item text-center">
-          <a class="nav-link" data-toggle="tab" href="#addClass">
+          <a class="nav-link" data-toggle="tab" href="#addCourse">
           <i class="fas fa-plus fa-3x"></i><br>Add Course</a>
         </li>
 
-         <li class="nav-item text-center">
-          <a class="nav-link" data-toggle="tab" href="#placeHolds">
-          <i class="far fa-edit fa-3x "></i><br>Place Holds</a>
+        <li class="nav-item text-center">
+          <a class="nav-link" data-toggle="tab" href="#addSection">
+          <i class="fas fa-stopwatch fa-3x"></i><br>Add Section</a>
         </li>
 
-
          <li class="nav-item text-center">
-          <a class="nav-link" data-toggle="tab" href="#removeClass">
-          <i class="far fa-times-circle fa-3x"></i><br>Close Class Section</a>
+          <a class="nav-link" data-toggle="tab" href="#removeCourse">
+          <i class="far fa-times-circle fa-3x"></i><br>Close Section</a>
         </li>
 
          <li class="nav-item text-center">
           <a class="nav-link" data-toggle="tab" href="#addUser">
-          <i class="fas fa-user-plus fa-3x"></i><br>Add A User</a>
+          <i class="fas fa-user-plus fa-3x"></i><br>Add User</a>  
+         </li>
+
+        <li class="nav-item text-center">
+          <a class="nav-link" data-toggle="tab" href="#editUser">
+          <i class="fas fa-user-edit fa-3x"></i><br>Edit User</a>
+        </li>
+
+        <li class="nav-item text-center">
+          <a class="nav-link" data-toggle="tab" href="#placeHolds">
+          <i class="far fa-edit fa-3x "></i><br>Holds</a>
+        </li>
+
+        <li class="nav-item text-center">
+          <a class="nav-link" data-toggle="tab" href="#addDept">
+          <i class="far fa-building fa-3x"></i><br>Add Dept</a>
         </li>
     </ul>
 
@@ -79,15 +93,15 @@ require_once "../../_includes/functionalityScripts/pageRestrictionScript.php";
         </div>  
       </div>
 
-      <div class = "tab-pane fade" id = "addClass"><hr>
+      <div class = "tab-pane fade" id = "addCourse"><hr>
         <div class = "row">
-          <?php require_once "_adminAddClass.php";?>
+          <?php require_once "_adminAddCourse.php";?>
         </div>
       </div>
 
-      <div class = "tab-pane fade" id = "removeClass"><hr>
+      <div class = "tab-pane fade" id = "removeCourse"><hr>
         <div class = "row">
-          <?php require_once "_adminRemoveClass.php"; ?>
+          <?php require_once "_adminRemoveCourse.php"; ?>
         </div>
       </div>
 
@@ -96,6 +110,26 @@ require_once "../../_includes/functionalityScripts/pageRestrictionScript.php";
           <?php require_once "_adminAddUser.php";?>
         </div>
       </div>
+
+      <div class = "tab-pane fade" id = "addSection"><hr>
+        <div class = "row">
+          <?php require_once "_adminAddSection.php";?>
+        </div>
+      </div>
+
+      <div class = "tab-pane fade" id = "addDept"><hr>
+        <div class = "row">
+          <?php require_once "_adminAddDept.php";?>
+        </div>
+      </div>
+
+      <div class = "tab-pane fade" id = "editUser"><hr>
+        <div class = "row">
+          <?php require_once "_adminEditUser.php";?>
+        </div>
+      </div>
+
+
       
     </div><!--Close My Tab Content-->
 </main><br /> <br />

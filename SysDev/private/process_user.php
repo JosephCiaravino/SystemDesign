@@ -33,6 +33,7 @@ if (empty($_POST["loginIdentity"]) || empty($_POST["password"])) {
       $_SESSION['zip']=$row['Zipcode'];
       $_SESSION['role']=$row['Role'];
       $_SESSION['phone']=$row['Phone'];
+      $_SESSION['status']="loggedin";
     
 
     

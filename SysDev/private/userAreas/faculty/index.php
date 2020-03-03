@@ -55,7 +55,7 @@ require_once "../../_includes/functionalityScripts/pageRestrictionScript.php";
         <div class = "row">
          <?php require_once "_facultyViewPersonalData.php";?>
         </div><!--END .row-->
-      </div><!--END .tab-pane-->
+      </div><!--END .tab-pane--><br /><br />
 
       <!--Current Semester Table-->
       <div class="tab-pane fade" id="CurrentAssignments"><hr>

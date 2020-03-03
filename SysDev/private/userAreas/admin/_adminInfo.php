@@ -9,7 +9,7 @@
     <p class="card-text"><?php echo $_SESSION['fName'];  ?></p>
 
     <h4 class="card-title">Employee ID:</h4>
-    <p class="card-text"><?php echo $_SESSION['id'];  ?></p>
+    <p class="card-text"><?php echo transform_userID($_SESSION['id']);  ?></p>
 
     <h4 class="card-title">Address:</h4>
     <p class="card-text">

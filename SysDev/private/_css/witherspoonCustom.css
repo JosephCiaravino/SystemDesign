@@ -83,7 +83,7 @@ aside *{
 
 /****************************** General Form Styles **************************************************/
 
-button, input{
+button, input, select{
 	border-radius: 12px;
 	font-size: 1.25rem;
 	min-height: 50px;
