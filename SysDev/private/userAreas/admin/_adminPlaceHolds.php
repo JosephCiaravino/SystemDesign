@@ -7,7 +7,6 @@
 		<label>User ID Number:</label><br /><br />
 		<input class ="form-control" type="text" name="user" type = "number"><br /><br />
 		
-		<div class = 'userSrch' style = "min-height: 170px; background-color: lavender;"> </div><br />
 
 		<div class = 'custom-control custom-checkbox'>
 			<input type="checkbox"  id = "financialPlace" class = "custom-control-input" name="financial" value="financial">
@@ -29,26 +28,22 @@
 			<label for="academicPlace" class = "custom-control-label">Academic Hold</label>
 		</div><br />
 
-		<button type = 'submit' name = "submitPlaceHold" val = "plcHold" class = "btn btn-primary">Place Hold(s)</button><br /><br />
+		<button type = 'submit' name = "submitPlaceHold" val = "plcHold" class = "btn btn-primary">Place Hold(s)</button><br />
 	</form>
 </div>
 
 <div class = "form-group col-2"></div>
 
 <div class = "form-group col-5 bg-light">
-	<form action = "<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
+	<form action = "<?php echo $_SERVER['PHP_SELF'].'#placeHolds'; ?>" method="POST">
 		<legend>Remove Hold</legend>
 		<label>User ID Number:</label><br /><br />
 		<input class ="form-control" type="text" name="user" type = "number"><br /><br />
 		<br />
-
-		<div class = 'userSrch' style = "min-height: 170px; background-color: lavender;"> </div><br />
-	</form>
-
-	<form>
+	
 		<div class = 'custom-control custom-checkbox'>
 			<input type="checkbox"  id = "financialRmv" class = "custom-control-input" name="financial" value="financial">
-			<label for="financialRmv" class = "custom-control-label"> Financial Hold</label>
+			<label for="financialRmv" class = "custom-control-label">Financial Hold</label>
 		</div>
 
 		<div class = 'custom-control custom-checkbox'>
@@ -66,12 +61,8 @@
 			<label for="academicRmv" class = "custom-control-label">Academic Hold</label>
 		</div><br />
 
-		<button type = "submit" name = "submitRmvHold" value = "rmvHold" class = "btn btn-primary">Remove Hold(s)</button><br /><br />
-	</form>
-
-
-
-	
+		<button type = "submit" name = "submitRmvHold" value = "rmvHold" class = "btn btn-primary">Remove Hold(s)</button><br />
+	</form>	
 </div>
 
 

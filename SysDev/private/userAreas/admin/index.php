@@ -18,22 +18,20 @@ require_once "../../_includes/functionalityScripts/pageRestrictionScript.php";
 
 $createUserArr = array();
 
-?>
 
-<main class = "container">
-
-<?php
     if(isset($_POST['submitNewUser']) && $_POST['submitNewUser']=='submitNewUser'){
-      echo "<div class=' col-12 alert alert-dismissible alert-success'>CONDITIONS MET FOR SUBMITTING NEW USER</div>";
+      echo "<div class='col-12 alert alert-dismissible alert-success'>CONDITIONS MET FOR SUBMITTING NEW USER</div>";
 
     }else if(isset($_POST['submitNewCourse']) && $_POST['submitNewCourse']=='submitNewCourse'){
-      echo "<div class=' col-12 alert alert-dismissible alert-success'>CONDITIONS MET FOR SUBMITTING NEW COURSE</div>";
+      echo "<div class='col-12 alert alert-dismissible alert-success'>CONDITIONS MET FOR SUBMITTING NEW COURSE</div>";
 
     }else{
-      echo "<div class=' col-12 alert alert-dismissible alert-success'>CONDITIONS NOT MET FOR NEW USER SUBMISSION</div>";
+      echo "<div class='col-12 alert alert-dismissible alert-success'>CONDITIONS NOT MET FOR NEW USER SUBMISSION</div>";
     }
 
 ?>
+
+<main class = "container">
 
     <h2>Your Details</h2>
 
@@ -93,7 +91,6 @@ $createUserArr = array();
           <a class="nav-link" data-toggle="tab" href="#addDept">
           <i class="far fa-building fa-3x"></i><br>Add Dept</a>
         </li>
-
     </ul>
 
 

@@ -1,5 +1,3 @@
-
-
 <h2 class = 'col-4'>Add Course</h2>
 
 
@@ -16,16 +14,12 @@
 		  <option value="physics">Physics</option>
 		</select>
 
-		
-		
 		  <label class="col-form-label" for="newcoursename">New Course Name</label>
 		  <input type="text" class="form-control" name = "course_title" id="newcoursename">
 		
 		  <label class="col-form-label" for="newcoursedesc">Course Description</label>
 		  <textarea type="textarea" class="form-control" name = "course_desc" id="newcoursedesc"></textarea>
 		
-		  
-
 		  <label for="creds">Credit-hours</label>
 		  <select class="form-control" id="creds">
 			  <option value="1">1 credit</option>
