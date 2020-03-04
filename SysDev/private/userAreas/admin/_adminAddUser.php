@@ -1,7 +1,7 @@
 <h2 class = 'col-4'>Add User</h2>
 
 
-<form class = 'col-6' action ="" method = "POST">
+<form class = 'col-6' action ="<?php echo $_SERVER['PHP_SELF']; ?>" method = "POST">
 	<label for="usertype">User Type</label>
     <select class="form-control" id="usertype">
 	  <option value="student">Student</option>
@@ -38,35 +38,40 @@
 	</div>
 
 	<div id = "studentSpecific">
-		<hr><legend>Select Student User Options</legend>	
-		
+		<hr>		
 		<fieldset>
 			  <legend>Student Type</legend>
 			  <div class="form-group">
 			    <div class="custom-control custom-radio">
-			      <input type="radio" id="Undergraduate" name="gradunder" class="custom-control-input" checked="">
-			      <label class="custom-control-label" for="Undergraduate">Undergraduate</label>
+			      <input type="radio" id="undergraduate" name="grad-under" value = 'undergrad' class="custom-control-input" checked="">
+			      <label class="custom-control-label" for="undergraduate">Undergraduate</label>
 			    </div>
 			    <div class="custom-control custom-radio">
-			      <input type="radio" id="graduate" name="gradunder" class="custom-control-input">
+			      <input type="radio" id="graduate" name="grad-under" value = 'grad' class="custom-control-input">
 			      <label class="custom-control-label" for="graduate">Graduate</label>
 			    </div>
+			   </div>
 		</fieldset>
 
 		<fieldset>
 		     <legend>Enrollment Type</legend>
 			  <div class="form-group">
 			    <div class="custom-control custom-radio">
-			      <input type="radio" id="fulltime" name="enrollment" class="custom-control-input" checked="">
+			      <input type="radio" id="fulltime" name="enrollment" class="custom-control-input"  value = "ft"checked="">
 			      <label class="custom-control-label" for="fulltime">Full time</label>
 			    </div>
 			    <div class="custom-control custom-radio">
-			      <input type="radio" id="parttime" name="enrollment" class="custom-control-input">
+			      <input type="radio" id="parttime" name="enrollment" class="custom-control-input" value = "pt">
 			      <label class="custom-control-label" for="parttime">Part time</label>
 			    </div>
+			  </div>
 		 </fieldset>
 	</div><br /><!--End Student SPecific-->
 
-	<button class = "" name = "submit" value = "submitNewUser">Add This User</button>
+	<button class="btn btn-primary" name = "submitNewUser" value = "submitNewUser">Add This User</button>
 
 </form>
+
+
+
+

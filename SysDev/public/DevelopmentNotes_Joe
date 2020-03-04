@@ -15,8 +15,11 @@ https://unsplash.com/
 
 
 =====================NOTES ============================================================================
-
+TODOS
++ Use local browser storage to make refresh page on submit open to the same tab
 
 SECURITY HOLES
 + when logged in, you can use url bar to get to other private areas.
 + 
+
+

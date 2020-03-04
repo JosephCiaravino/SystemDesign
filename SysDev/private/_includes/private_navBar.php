@@ -1,6 +1,4 @@
 
-
-
 <?php
 $currentURL = $_SERVER['REQUEST_URI']; 
 

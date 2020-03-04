@@ -1,49 +1,24 @@
+
 <h2 class = 'col-4'>Edit User</h2>
 
 
-<form class = 'col-6' action ="" method = "POST">
+<form class = 'row col-6' action ="" method = "POST">
 	
 	<div class="form-group">
-	  <label class="col-form-label" for="fname">First Name</label>
-	  <input type="text" class="form-control" id="fname">
+		<p>Search by</p>
+	  <label class="col-form-label col-form-label-lg" for="email-address">Email Address</label>
+	  <input class="form-control form-control-lg" type="text" placeholder=".form-control-lg" id="email-address">
 	
-	  <label class="col-form-label" for="email">Email</label>
-	  <input type="text" class="form-control" id="email">
+
+	  <br /><p>OR</p>
 	
-	  <label class="col-form-label" for="zip">User ID</label>
-	  <input type="text" class="form-control" id="userID">
-	</div>
+	  <label class="col-form-label" for="user-ID">User ID</label>
+	  <input type="text" class="form-control" placeholder="Default input" id="user-ID">
 
-	<div id = "studentSpecific">
-		<hr><legend>Select Student User Options</legend>	
-		<fieldset>
-			<legend>Full or Part</legend>
-			<div class="custom-control custom-radio">
-		      <input type="radio" id="fulltime" name="partFul" class="custom-control-input">
-		      <label class="custom-control-label" for="fulltime">Full Time</label>
-		    </div>
+	
+	</div><br />
 
-		    <div class="custom-control custom-radio">
-		      <input type="radio" id="parttime" name="partFul" class="custom-control-input">
-		      <label class="custom-control-label" for="parttime">Part Time</label>
-		    </div>
-		</fieldset>
 
-		<fieldset>
-		<legend>Level</legend>
-			<div class="custom-control custom-radio">
-		      <input type="radio" id="grad" name="gradlevel" class="custom-control-input">
-		      <label class="custom-control-label" for="grad">Graduate</label>
-		    </div>
-
-		    <div class="custom-control custom-radio">
-		      <input type="radio" id="undergrad" name="gradlevel" class="custom-control-input">
-		      <label class="custom-control-label" for="undergrad">Undergrad</label>
-		    </div>
-		</fieldset>
-
-	</div><br /><!--End Student SPecific-->
-
-	<button class = "nonRefresh" name = "submit" value = "submitEditUser">Add This User</button>
+	<button class="btn btn-primary" name = "submit" value = "submitEditUser">Search For User</button>
 
 </form>
