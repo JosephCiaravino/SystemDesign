@@ -27,8 +27,11 @@ $connection = mysqli_connect('localhost','webUser','secretPass','testdb');
   }else if(isset($_POST['submitNewCourse']) && $_POST['submitNewCourse']=='submitNewCourse'){
     echo "<div class='col-12 alert alert-dismissible alert-success'>CONDITIONS MET FOR SUBMITTING NEW COURSE</div>";
 
+  }else if(isset($_POST['submitNewDept']) && $_POST['submitNewDept']=='submitNewDept'){
+    require_once "../../_includes/functionalityScripts/databaseScripts/db_script_add_dept.php";
+
   }else{
-    echo "<div class='col-12 alert alert-dismissible alert-success'>CONDITIONS NOT MET FOR NEW USER SUBMISSION</div>";
+    echo "<div class='col-12 alert alert-dismissible alert-success'>CONDITIONS NOT MET FOR NEW SUBMISSION</div>";
   }
 
 ?>

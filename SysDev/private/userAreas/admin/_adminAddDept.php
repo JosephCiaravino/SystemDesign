@@ -1,3 +1,25 @@
 <h2>Add Departments</h2>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-          
+<form class = 'col-6' action ="<?php echo $_SERVER['PHP_SELF']; ?>" method = "POST">
+
+	
+	  <label class="col-form-label" for="newdeptname">New Deptartment Name</label>
+	  <input type="text" class="form-control" name = "newdeptname" id="newdeptname">
+	
+	  <label class="col-form-label" for="newdeptdesc">New Department Description</label>
+	  <input type="text" class="form-control" name = "newdeptdesc" id="newdeptdesc">
+	
+	  <label class="col-form-label" for="newdeptchair">New Department Chair ID</label>
+	  <input type="text" class="form-control" name = "newdeptchair" id="newdeptchair">
+	
+	  
+
+		
+	<br /><!--End Student SPecific-->
+
+	<button class="btn btn-primary" name = "submitNewDept" value = "submitNewDept">Add This Dept</button>
+
+</form>
+
+
+
+
