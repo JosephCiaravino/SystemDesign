@@ -16,23 +16,29 @@ require_once "../../_includes/private_navBar.php";
 //this code prevents visitor from directly accessing private areas
 require_once "../../_includes/functionalityScripts/pageRestrictionScript.php";
 
-$createUserArr = array();
-
 $connection = mysqli_connect('localhost','webUser','secretPass','testdb');
-    
+
 
   if(isset($_POST['submitNewUser']) && $_POST['submitNewUser']=='submitNewUser' && isset($connection)){
     require_once "../../_includes/functionalityScripts/databaseScripts/db_script_add_user.php";
 
   }else if(isset($_POST['submitNewCourse']) && $_POST['submitNewCourse']=='submitNewCourse'){
-    echo "<div class='col-12 alert alert-dismissible alert-success'>CONDITIONS MET FOR SUBMITTING NEW COURSE</div>";
+    echo "<div class='col-12 alert alert-dismissible alert-success'>NEW COURSE CREATED</div>";
+    
+
+
+  }else if(isset($_POST['submitRmvCourse']) && $_POST['submitRmvCourse']=='submitRmvCourse'){
+    
 
   }else if(isset($_POST['submitNewDept']) && $_POST['submitNewDept']=='submitNewDept'){
     require_once "../../_includes/functionalityScripts/databaseScripts/db_script_add_dept.php";
 
+
   }else{
     echo "<div class='col-12 alert alert-dismissible alert-success'>CONDITIONS NOT MET FOR NEW SUBMISSION</div>";
   }
+
+  $_POST = array();
 
 ?>
 

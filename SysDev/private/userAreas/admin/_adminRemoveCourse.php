@@ -4,8 +4,8 @@
 <form class = 'col-6' action ="<?php echo $_SERVER['PHP_SELF'] ?>" method = "POST">
 	<div class = 'form-group'>	
 		
-		  <label class="col-form-label" for="newcoursename">Course ID To Remove</label>
-		  <input type="text" class="form-control" name = "course_title" id="newcoursename">
+		  <label class="col-form-label" for="submitRmvCourse">Course ID To Remove</label>
+		  <input type="text" class="form-control" name = "courseIdRmv" id="submitRmvCourse">
 		
 		
 		<br /><!--End Student SPecific-->

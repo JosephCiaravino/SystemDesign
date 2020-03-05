@@ -1,17 +1,24 @@
 <h2 class = 'col-4'>Add Course</h2>
+<?php
+	$populateDropDownDeptQuery = "SELECT `dept_name`, `dept_id` FROM testdb.department;";
+	    $results = mysqli_query($connection, $populateDropDownDeptQuery);
+	    $deptRet ="";
+	    
 
+?>
 
 <form class = 'col-6' action ="<?php echo $_SERVER['PHP_SELF'] ?>" method = "POST">
 	<div class = 'form-group'>	
 		<label for="courseDept">User Type</label>
 	    <select class="form-control" id="courseDept">
-		  <option value="biology">Biology</option>
-		  <option value="business">Business</option>
-		  <option value="chemistry">Chemistry</option>
-		  <option value="computersci">Computer Science</option>
-		  <option value="english">English</option>
-		  <option value="mathematics">mathematics</option>
-		  <option value="physics">Physics</option>
+
+	    <?php //this code populates the dropdown from the DB
+		    while( $deptRet = mysqli_fetch_assoc($results) ){
+		      echo "<option value = '".$deptRet['dept_id']."'>".$deptRet['dept_name']."</option>";
+		    }
+	    ?>
+
+	
 		</select>
 
 		  <label class="col-form-label" for="newcoursename">New Course Name</label>
