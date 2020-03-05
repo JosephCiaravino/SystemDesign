@@ -22,31 +22,7 @@ $connection = mysqli_connect('localhost','webUser','secretPass','testdb');
     
 
   if(isset($_POST['submitNewUser']) && $_POST['submitNewUser']=='submitNewUser' && isset($connection)){
-    echo "<div class='col-12 alert alert-dismissible alert-success'>CONDITIONS MET FOR SUBMITTING NEW USER</div>";
-      //CREATE QUERY++++++++++++++++++++++++++++++++ 
-      //INSERT INTO table_name
-      //VALUES (value1, value2, value3, ...);
-      $connection = mysqli_connect('localhost','webUser','secretPass','testdb');
-
-      $queryAddUsr = "INSERT INTO ";
-      $queryAddUsr .="testdb.user ( `Email`, `Password`, `First_Name`, `Last_Name`";
-      $queryAddUsr .=", `Street_Address`, `City`, `State`, `Zipcode`, `Phone`, `Role`) ";
-      $queryAddUsr .="VALUES (";
-      $queryAddUsr .="'".$_POST['emailAdd']."', '".$_POST['pword']."', '".$_POST['firstN']."', '";
-      $queryAddUsr .=$_POST['lastN']."', '".$_POST['streetAdd']."', '";
-      $queryAddUsr .=$_POST['cityAdd']."', '".$_POST['stateAdd']."', '".$_POST['zipAdd']."', '";
-      $queryAddUsr .=$_POST['tele']."', '".$_POST['usertype']."');";
-      
-  
-        //$queryAddUsr .=", '".$_POST['enrollment']."', '".$_POST['grad-under']."');";
-   
-        //$queryAddUsr.= ");";
-     
-
-      echo $queryAddUsr;
-
-      mysqli_query($connection, $queryAddUsr);
-
+    require_once "../../_includes/functionalityScripts/databaseScripts/db_script_add_user.php";
 
   }else if(isset($_POST['submitNewCourse']) && $_POST['submitNewCourse']=='submitNewCourse'){
     echo "<div class='col-12 alert alert-dismissible alert-success'>CONDITIONS MET FOR SUBMITTING NEW COURSE</div>";
