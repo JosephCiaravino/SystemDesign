@@ -7,6 +7,6 @@ echo "<div class='col-12 alert alert-dismissible alert-success'>COURSE DELETED</
 
       mysqli_query($connection, $queryRmvCourse);
 
-      
+      unset($_POST);
 
 ?>

@@ -17,9 +17,9 @@ require_once "../../_includes/private_navBar.php";
 require_once "../../_includes/functionalityScripts/pageRestrictionScript.php";
 
 $connection = mysqli_connect('localhost','webUser','secretPass','testdb');
+  //possible solution for re-submit problem.
 
-
-  if(isset($_POST['submitNewUser']) && $_POST['submitNewUser']=='submitNewUser' && isset($connection)){
+  if(isset($_POST['submitNewUser']) && $_POST['submitNewUser']=='submitNewUser'){
     require_once "../../_includes/functionalityScripts/databaseScripts/db_script_add_user.php";
 
   }else if(isset($_POST['submitNewCourse']) && $_POST['submitNewCourse']=='submitNewCourse'){
@@ -38,7 +38,7 @@ $connection = mysqli_connect('localhost','webUser','secretPass','testdb');
     echo "<div class='col-12 alert alert-dismissible alert-success'>CONDITIONS NOT MET FOR NEW SUBMISSION</div>";
   }
 
-  $_POST = array();
+ 
 
 ?>
 

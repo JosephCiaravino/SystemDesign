@@ -7,13 +7,13 @@
 	<div class="form-group">
 		<p>Search by</p>
 	  <label class="col-form-label col-form-label-lg" for="email-address">Email Address</label>
-	  <input class="form-control form-control-lg" type="text" placeholder=".form-control-lg" id="email-address">
+	  <input class="form-control form-control-lg" type="text" placeholder="Email" id="email-address">
 	
 
 	  <br /><p>OR</p>
 	
 	  <label class="col-form-label" for="user-ID">User ID</label>
-	  <input type="text" class="form-control" placeholder="Default input" id="user-ID">
+	  <input type="text" class="form-control" placeholder="User's ID" id="user-ID">
 
 	
 	</div><br />

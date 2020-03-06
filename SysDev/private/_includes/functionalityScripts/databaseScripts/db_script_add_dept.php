@@ -10,4 +10,12 @@ echo "<div class='col-12 alert alert-dismissible alert-success'>CONDITIONS MET F
 
       mysqli_query($connection, $queryAddDept);
 
+      unset($_POST['newdeptname']);
+      unset($_POST['newdeptdesc']);
+      unset($_POST['newdeptchair']);
+
+      echo var_dump($_POST);
+
+      header("Location: ".$_SERVER['PHP_SELF']);
+
   ?>
