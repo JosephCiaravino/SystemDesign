@@ -38,9 +38,8 @@
 	  <label class="col-form-label" for="zip">Zip</label>
 	  <input type="text" class="form-control" name = "zipAdd" id="zip">
 
-
-		<hr>		
-		
+		<hr><hr>		
+		<div class = addStudentControls>
 			  <legend>Student Type</legend>
 			  <div class="form-group">
 			    <div class="custom-control custom-radio">
@@ -64,10 +63,32 @@
 			      <label class="custom-control-label" for="parttime">Part time</label>
 			    </div>
 			  </div>
-		
+		</div>
+		<hr>
+
+		<div class = "addFacultyControls">
+			<legend>Faculty</legend>
+			<?php
+				$populateSelectAddUsrPage = "SELECT `dept_name`, `dept_id` FROM testdb.department ORDER BY dept_name;";
+			    $resultsAddUsrPg = mysqli_query($connection, $populateSelectAddUsrPage);
+			    $deptRetAddUsrPg ="";    
+			?>
+
+
+			<div class = 'form-group'>	
+				<label for="courseDeptAddUsr">Department</label>
+			    <select class="form-control" id="courseDeptAddUsr">
+				    <?php //this code populates the dropdown from the DB
+					    while( $deptRetAddUsrPg = mysqli_fetch_assoc($resultsAddUsrPg) ){
+					      echo "<option value = '".$deptRetAddUsrPg['dept_id']."'>".$deptRetAddUsrPg['dept_name']."</option>";
+					    }
+				    ?>
+				</select>
+			</div>
+		</div>
 	<br /><!--End Student SPecific-->
 
-	<button class="btn btn-primary" name = "submitNewUser" value = "submitNewUser">Add This User</button>
+	<button class="btn btn-primary" name = "submitNewUser" value = "submitNewUser">Add This User</button><br />
 
 </form>
 
