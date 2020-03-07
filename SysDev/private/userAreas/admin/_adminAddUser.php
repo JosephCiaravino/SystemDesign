@@ -77,7 +77,7 @@
 
 			<div class = 'form-group'>	
 				<label for="courseDeptAddUsr">Department</label>
-			    <select class="form-control" id="courseDeptAddUsr">
+			    <select class="form-control" id="courseDeptAddUsr" name = "facultyDept_Id">
 				    <?php //this code populates the dropdown from the DB
 					    while( $deptRetAddUsrPg = mysqli_fetch_assoc($resultsAddUsrPg) ){
 					      echo "<option value = '".$deptRetAddUsrPg['dept_id']."'>".$deptRetAddUsrPg['dept_name']."</option>";
