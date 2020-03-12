@@ -102,6 +102,14 @@ $connection = mysqli_connect('localhost','webUser','secretPass','testdb');
           <a class="nav-link" data-toggle="tab" href="#addDept">
           <i class="far fa-building fa-3x"></i><br>Add Dept</a>
         </li>
+
+        <li class="nav-item text-center">
+          <a class="nav-link" data-toggle="tab" href="#editDept">
+          <i class="fas fa-briefcase fa-3x"></i><br>Edit Dept</a>
+        </li>
+
+
+
     </ul>
 
 
@@ -152,6 +160,12 @@ $connection = mysqli_connect('localhost','webUser','secretPass','testdb');
       <div class = "tab-pane fade" id = "addDept"><hr>
         <div class = "row">
           <?php require_once "_adminAddDept.php";?>
+        </div>
+      </div>
+
+      <div class = "tab-pane fade" id = "editDept"><hr>
+        <div class = "row">
+          <?php require_once "_adminEditDept.php";?>
         </div>
       </div>
 

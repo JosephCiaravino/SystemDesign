@@ -57,7 +57,7 @@ echo "<div class='col-6 alert alert-dismissible alert-success'>CONDITIONS MET FO
             $temptime = "";
             $level = "";
 
-            if(isset($_POST['Dept_Id'])){
+            if(isset($_POST['grad-under']) && isset($_POST['enrollment']) ){
                   $temptime = $_POST['enrollment'];
                   $level = $_POST['grad-under'];
                 
@@ -80,9 +80,14 @@ echo "<div class='col-6 alert alert-dismissible alert-success'>CONDITIONS MET FO
                   mysqli_query($connection, $query4);
 
                   $query5 = "INSERT INTO testdb.undergrad_part(`student_id`,`max_credits`) VALUES('".$userIdTemp."','11');";
-                  echo $query5,"<br />";
-                  echo $query4; 
+
                   mysqli_query($connection, $query5);
+
+                  $query6 = "INSERT INTO testdb.undergrad_full(`student_id`, `max_credits`, `min_credits`) VALUES('".$userIdTemp."', '20', '11');";
+                  echo $query6,"<br />";
+                  
+                  mysqli_query($connection, $query6);
+
             } 
       }
       
