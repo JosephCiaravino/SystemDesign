@@ -49,31 +49,46 @@ echo "<div class='col-6 alert alert-dismissible alert-success'>CONDITIONS MET FO
             //create and execute query to insert both values into faculty
             $query3 = "INSERT INTO testdb.faculty(`Faculty_Id`, `Dept_Id`) ";
             $query3 .= "VALUES('".$userIdTemp."', '".$_POST['facultyDept_Id']."');";
+            //echo $query3;
             mysqli_query($connection, $query3);
-
-// INSERT INTO table_name (column1, column2, column3, ...)
-// VALUES (value1, value2, value3, ...);           
+         
       }else if($userRole == 'student'){
+
+            $temptime = "";
+            $level = "";
 
             if(isset($_POST['Dept_Id'])){
                   $temptime = $_POST['enrollment'];
                   $level = $_POST['grad-under'];
-            }      
+                
 
-            //gets row of inserted user from user table
-            $query2 = "SELECT * FROM testdb.user WHERE `email` ='".$_POST['emailAdd']."';";
-            //creates array and extracts User_Id
-            $resultUID = mysqli_query($connection, $query2);
-            $rowQuery = $resultUID -> fetch_assoc();
-            $userIdTemp = $rowQuery['User_Id']; 
-            //create and execute query to insert both values into faculty
-            $query3 = "INSERT INTO testdb.student(`student_id`, `GPA`, `student_type`) ";
-            $query3 .= "VALUES('".$userIdTemp."', '0', '".$_POST['grad-under']."');";
-            echo $query3."<br />";
-            mysqli_query($connection, $query3);
+                  //gets row of inserted user from user table
+                  $query2 = "SELECT * FROM testdb.user WHERE `email` ='".$_POST['emailAdd']."';";
+                  //creates array and extracts User_Id
+                  $resultUID = mysqli_query($connection, $query2);
+                  $rowQuery = $resultUID -> fetch_assoc();
+                  
+                  $userIdTemp = $rowQuery['User_Id']; 
+                  //create and execute query to insert both values into faculty
+                  $query3 = "INSERT INTO testdb.student(`student_id`, `GPA`, `student_type`) ";
+                  $query3 .= "VALUES('".$userIdTemp."', '0', '".$_POST['grad-under']."');";
+                  //echo $query3."<br />";
+                  mysqli_query($connection, $query3);
 
+                  $query4 = "INSERT INTO testdb.undergrad_student(`student_id`, `time_type`) ";
+                  $query4 .=" VALUES('".$userIdTemp."', '".$_POST['enrollment']."');";
+                  mysqli_query($connection, $query4);
 
+                  $query5 = "INSERT INTO testdb.undergrad_part(`student_id`,`max_credits`) VALUES('".$userIdTemp."','11');";
+                  echo $query5,"<br />";
+                  echo $query4; 
+                  mysqli_query($connection, $query5);
+            } 
       }
+      
+
+
+      
 
 
       $queryAddUsr = "";
@@ -90,16 +105,10 @@ echo "<div class='col-6 alert alert-dismissible alert-success'>CONDITIONS MET FO
       unset($_POST['tele']);
       unset($_POST['usertype']);
 
-
-      if(isset($_POST['grad-under']) && isset($_POST['enrollment'])){
-            echo "STUDENT enrollment AND grad-under ARE SET IN POST";
-      }
-
-
       unset($_POST['enrollment']);
       unset($_POST['grad-under']);
 
-     // header('location: '.$_SERVER['PHP_SELF']);
+     //header('location: '.$_SERVER['PHP_SELF']);
 
 
 
