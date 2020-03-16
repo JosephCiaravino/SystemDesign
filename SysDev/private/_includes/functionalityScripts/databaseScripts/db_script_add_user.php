@@ -54,15 +54,14 @@ echo "<div class='col-6 alert alert-dismissible alert-success'>CONDITIONS MET FO
          
       }else if($userRole == 'student'){
 
-            $temptime = "";
-            $level = "";
+      $temptime = "";
+      $level = "";
 
             if(isset($_POST['grad-under']) && isset($_POST['enrollment']) ){
+                  
                   $temptime = $_POST['enrollment'];
                   $level = $_POST['grad-under'];
                 
-
-                  //gets row of inserted user from user table
                   $query2 = "SELECT * FROM testdb.user WHERE `email` ='".$_POST['emailAdd']."';";
                   //creates array and extracts User_Id
                   $resultUID = mysqli_query($connection, $query2);
@@ -75,26 +74,53 @@ echo "<div class='col-6 alert alert-dismissible alert-success'>CONDITIONS MET FO
                   //echo $query3."<br />";
                   mysqli_query($connection, $query3);
 
-                  $query4 = "INSERT INTO testdb.undergrad_student(`student_id`, `time_type`) ";
-                  $query4 .=" VALUES('".$userIdTemp."', '".$_POST['enrollment']."');";
-                  mysqli_query($connection, $query4);
+                  if($level = 'undergrad'){
+                      
+                        //sets full/part time and id in table of UG students
+                        $query4 = "INSERT INTO testdb.undergrad_student(`student_id`, `time_type`) ";
+                        $query4 .=" VALUES('".$userIdTemp."', '".$_POST['enrollment']."');";
+                        mysqli_query($connection, $query4);
 
-                  $query5 = "INSERT INTO testdb.undergrad_part(`student_id`,`max_credits`) VALUES('".$userIdTemp."','11');";
+                        if($temptime =='part'){
 
-                  mysqli_query($connection, $query5);
+                              $query5 = "INSERT INTO testdb.undergrad_part(`student_id`,`max_credits`) ";
+                              $query5 .="VALUES('".$userIdTemp."','11');";
+                              mysqli_query($connection, $query5);
 
-                  $query6 = "INSERT INTO testdb.undergrad_full(`student_id`, `max_credits`, `min_credits`) VALUES('".$userIdTemp."', '20', '11');";
-                  echo $query6,"<br />";
-                  
-                  mysqli_query($connection, $query6);
+                        }else if($temptime =='full'){
+
+                              $query6 = "INSERT INTO testdb.undergrad_full(`student_id`, `max_credits`, `min_credits`) ";
+                              $query6 .="VALUES('".$userIdTemp."', '20', '11');";
+                              mysqli_query($connection, $query6);
+                        }
+
+                  }else if($level == 'grad'){
+
+                        //sets full/part time and id in table of UG students
+                        $query4 = "INSERT INTO testdb.grad_student(`student_id`, `time_type`) ";
+                        $query4 .=" VALUES('".$userIdTemp."', '".$_POST['enrollment']."');";
+                        mysqli_query($connection, $query4);
+
+                        if($temptime == 'part'){
+
+                              $query5 = "INSERT INTO testdb.grad_part(`student_id`,`max_credits`) ";
+                              $query5 .="VALUES('".$userIdTemp."','11');";
+                              mysqli_query($connection, $query5);
+
+                        }else if($temptime == 'full'){
+
+                              $query6 = "INSERT INTO testdb.grad_full(`student_id`, `max_credits`, `min_credits`) ";
+                              $query6 .="VALUES('".$userIdTemp."', '20', '11');";
+                              mysqli_query($connection, $query6);
+                        }
+
+                        
+
+                  }
 
             } 
       }
-      
-
-
-      
-
+  
 
       $queryAddUsr = "";
 
