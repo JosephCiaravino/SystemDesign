@@ -63,6 +63,38 @@
 			      <label class="custom-control-label" for="parttime">Part time</label>
 			    </div>
 			  </div>
+
+			  <legend>Major Declaration</legend>
+			  <?php
+					$populateSelectMajorAddUsrPage = "SELECT `major_title`, `major_id` FROM testdb.major ORDER BY major_title;";
+				    $resultsAddUsrPgMajor = mysqli_query($connection, $populateSelectMajorAddUsrPage);
+				    $deptRetAddUsrPgMajor ="";    
+				?>
+			  <div class="form-group">
+			    <label for="majorDeclaration">Study Declaration</label>
+			    <select class="form-control" id="courseDeptAddUsrMajor" name = "majorDeclaration">
+				    <?php //this code populates the dropdown from the DB
+					    while( $deptRetAddUsrPgMajor = mysqli_fetch_assoc($resultsAddUsrPgMajor) ){
+					      echo "<option value = '".$deptRetAddUsrPgMajor['major_id']."'>".$deptRetAddUsrPgMajor['major_title']."</option>";
+					    }
+				    ?>
+				</select>
+
+				<?php
+					$populateSelectMinorAddUsrPage = "SELECT `minor_title`, `minor_id` FROM testdb.minor ORDER BY minor_title;";
+				    $resultsAddUsrPgMinor = mysqli_query($connection, $populateSelectMinorAddUsrPage);
+				    $deptRetAddUsrPgMinor ="";    
+				?>
+				 <label for = "minorDeclaration">Minor Declaration</label>
+				 <select class="form-control" id="courseDeptAddUsrMinor" name = "minorDeclaration">
+				    <?php //this code populates the dropdown from the DB
+					    while( $deptRetAddUsrPgMinor = mysqli_fetch_assoc($resultsAddUsrPgMinor) ){
+					      echo "<option value = '".$deptRetAddUsrPgMajor['minor_id']."'>".$deptRetAddUsrPgMinor['minor_title']."</option>";
+					    }
+				    ?>
+					</select>
+			  </div>
+
 		</div>
 		<hr>
 
