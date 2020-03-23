@@ -24,8 +24,7 @@ $connection = mysqli_connect('localhost','webUser','secretPass','testdb');
 
   }else if(isset($_POST['submitNewCourse']) && $_POST['submitNewCourse']=='submitNewCourse'){
     echo "<div class='col-12 alert alert-dismissible alert-success'>NEW COURSE CREATED</div>";
-    
-
+    //functionality missing
 
   }else if(isset($_POST['submitRmvCourse']) && $_POST['submitRmvCourse']=='submitRmvCourse'){
     
@@ -34,8 +33,8 @@ $connection = mysqli_connect('localhost','webUser','secretPass','testdb');
     require_once "../../_includes/functionalityScripts/databaseScripts/db_script_add_dept.php";
 
 
-  }else{
-    echo "<div class='col-12 alert alert-dismissible alert-success'>CONDITIONS NOT MET FOR NEW SUBMISSION</div>";
+  }else if( isset($_POST['submitPlaceHold']) && !empty($_POST['userToHold']) ){
+    require_once "../../_includes/functionalityScripts/databaseScripts/db_scripts_holds.php";
   }
 
  

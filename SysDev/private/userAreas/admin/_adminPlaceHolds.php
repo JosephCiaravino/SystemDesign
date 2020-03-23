@@ -5,7 +5,7 @@
 	<form action = "<?php echo $_SERVER['PHP_SELF'] ?>" method="POST">
 		<legend>Place Hold</legend>
 		<label>User ID Number:</label><br /><br />
-		<input class ="form-control" type="text" name="user" type = "number"><br /><br />
+		<input class ="form-control" type="text" name="userToHold" type = "number"><br /><br />
 		
 
 		<div class = 'custom-control custom-checkbox'>
@@ -28,17 +28,18 @@
 			<label for="academicPlace" class = "custom-control-label">Academic Hold</label>
 		</div><br />
 
-		<button type = 'submit' name = "submitPlaceHold" val = "plcHold" class = "btn btn-primary">Place Hold(s)</button><br />
+		<button type = 'submit' name = "submitPlaceHold" value = "plcHold" class = "btn btn-primary">Place Hold(s)</button><br />
 	</form>
 </div>
 
 <div class = "form-group col-2"></div>
 
 <div class = "form-group col-5 bg-light">
-	<form action = "<?php echo $_SERVER['PHP_SELF'].'#placeHolds'; ?>" method="POST">
+	<form action = "<?php echo $_SERVER['PHP_SELF']; ?>" method="POST"> 
+		<!--Bad security hole. Don't use php_self-->
 		<legend>Remove Hold</legend>
 		<label>User ID Number:</label><br /><br />
-		<input class ="form-control" type="text" name="user" type = "number"><br /><br />
+		<input class ="form-control" type="text" name="userToUnhold" type = "number"><br /><br />
 		<br />
 	
 		<div class = 'custom-control custom-checkbox'>

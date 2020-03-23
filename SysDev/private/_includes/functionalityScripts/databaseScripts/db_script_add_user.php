@@ -1,6 +1,6 @@
 <?php
 
-echo "<div class='col-6 alert alert-dismissible alert-success'>CONDITIONS MET FOR SUBMITTING NEW USER</div>";
+
       //CREATE QUERY++++++++++++++++++++++++++++++++ 
       $connection = mysqli_connect('localhost','webUser','secretPass','testdb');
 
@@ -39,7 +39,7 @@ echo "<div class='col-6 alert alert-dismissible alert-success'>CONDITIONS MET FO
             if(isset($_POST['Dept_Id'])){
                   $tempDept = $_POST['Dept_Id'];
             }      
-
+   
             //gets row of inserted user from user table
             $query2 = "SELECT * FROM testdb.user WHERE `email` ='".$_POST['emailAdd']."';";
             //creates array and extracts User_Id
@@ -58,7 +58,7 @@ echo "<div class='col-6 alert alert-dismissible alert-success'>CONDITIONS MET FO
       $level = "";
 
             if(isset($_POST['grad-under']) && isset($_POST['enrollment']) ){
-                  
+                  echo "<div class='col-6 alert alert-dismissible alert-success'>CONDITIONS MET FOR SUBMITTING NEW STUDENT</div>";
                   $temptime = $_POST['enrollment'];
                   $level = $_POST['grad-under'];
                 
@@ -113,14 +113,12 @@ echo "<div class='col-6 alert alert-dismissible alert-success'>CONDITIONS MET FO
                               $query6 .="VALUES('".$userIdTemp."', '20', '11');";
                               mysqli_query($connection, $query6);
                         }
-
-                        
-
                   }
 
             } 
       }
-  
+            
+                        
 
       $queryAddUsr = "";
 
@@ -139,7 +137,7 @@ echo "<div class='col-6 alert alert-dismissible alert-success'>CONDITIONS MET FO
       unset($_POST['enrollment']);
       unset($_POST['grad-under']);
 
-     //header('location: '.$_SERVER['PHP_SELF']);
+     //header('location: '.$_SERVER['PHP_SELF']); //security hole, but ok for now before deployment
 
 
 

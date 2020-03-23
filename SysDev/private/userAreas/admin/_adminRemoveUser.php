@@ -10,7 +10,7 @@
 		
 		<br /><!--End Student SPecific-->
 
-		<button class="btn btn-primary" name = "submitRmvUser" value = "submitRmvUser">Remove this section</button>
+		<button class="btn btn-primary" name = "submitRmvUser" value = "submitRmvUser">Remove this user</button>
 	</div>
 
 </form>
