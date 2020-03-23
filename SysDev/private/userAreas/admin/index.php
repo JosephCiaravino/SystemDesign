@@ -22,6 +22,10 @@ $connection = mysqli_connect('localhost','webUser','secretPass','testdb');
   if(isset($_POST['submitNewUser']) && $_POST['submitNewUser']=='submitNewUser'){
     require_once "../../_includes/functionalityScripts/databaseScripts/db_script_add_user.php";
 
+  }else if(!empty($_POST['submitRmvUser']) && !empty($_POST['userToRemove']) ){
+    
+    require_once "../../_includes/functionalityScripts/databaseScripts/db_script_remove_user.php";
+
   }else if(isset($_POST['submitNewCourse']) && $_POST['submitNewCourse']=='submitNewCourse'){
     echo "<div class='col-12 alert alert-dismissible alert-success'>NEW COURSE CREATED</div>";
     //functionality missing

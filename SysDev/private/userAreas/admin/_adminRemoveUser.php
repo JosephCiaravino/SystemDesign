@@ -5,7 +5,7 @@
 	<div class = 'form-group'>	
 		
 		  <label class="col-form-label" for="rmvUser">Enter ID of User To Remove</label>
-		  <input type="text" class="form-control" name = "course_title" id="rmvUser">
+		  <input type="text" class="form-control" name = "userToRemove" id="rmvUser">
 		
 		
 		<br /><!--End Student SPecific-->
