@@ -33,8 +33,9 @@ $connection = mysqli_connect('localhost','webUser','secretPass','testdb');
     require_once "../../_includes/functionalityScripts/databaseScripts/db_script_add_dept.php";
 
 
-  }else if( isset($_POST['submitPlaceHold']) && !empty($_POST['userToHold']) ){
+  }else if( isset($_POST['submitPlaceHold']) || isset($_POST['submitRmvHold']) ){
     require_once "../../_includes/functionalityScripts/databaseScripts/db_scripts_holds.php";
+
   }
 
  
