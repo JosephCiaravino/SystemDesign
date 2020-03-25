@@ -18,8 +18,13 @@ https://unsplash.com/
 TODOS
 + Use local browser storage to make refresh page on submit open to the same tab
 
+
 SECURITY HOLES
 + when logged in, you can use url bar to get to other private areas.
-+ 
++ using PHP_SELF is used in many forms.  Change to prevent XSS
++
 
+
+GENERAL NOTES
++though we have a holds table, holds are hard coded on html page to save a bit of time
 

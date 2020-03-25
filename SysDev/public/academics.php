@@ -7,6 +7,10 @@
   //These lines import masthead and navigation sections
   require_once "_includes/masthead.php";
   require_once "_includes/mainNavigation.php";
+
+  require_once "../private/_includes/functionalityScripts/databaseScripts/db_script_public_view_courses.php"; 
+  
+
 ?>
 
 
@@ -23,27 +27,53 @@
         
         <p><span style = "color: blue">We can use PHP or AJAX to read all this from a database. </span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
 
-        <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+         <form action='' method = "post">
+          <div class = 'form-group'>  
+          <label for="publicDeptSelector">View Courses By Department</label>
+            <select class="form-control" id="publicDeptSelector" name = "facultyDept_Id">
+              <?php //this code populates the dropdown from the DB
+                
+                $publicDeptQuery = "SELECT `dept_name`, `dept_id` FROM testdb.department ORDER BY dept_name;";
+                $publicDeptResult = mysqli_query($connection, $publicDeptQuery);
+                  
+                  while( $publicDeptQueryResults = mysqli_fetch_assoc($publicDeptResult) ){
+                    
+                    echo "<option value = '".$publicDeptQueryResults['dept_id']."'>".$publicDeptQueryResults['dept_name']."</option>";
+                  }
+              ?>
+            </select>
+        </div>
+        <button class="btn btn-primary" name = "submitCoursesByDept" value = "submitCoursesByDept">Show Courses</button>
+      </form>
 
-        <h3>Department</h3>
-        <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 
-        <h3>Majors</h3>
-        <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+      <div>
+        <p> Bootstrap has pagination we can use here.</p>
+        <?php 
 
-        <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+          echo "<table class = 'table table-hover'>"; 
+          echo "<tr><th>Code</th><th>Course Title</th><th>Description</th></tr>"; 
+          while( $publicDeptQueryResults = mysqli_fetch_assoc($publicDeptQueryResult) ){
+            echo "<tr>";
+            echo "<td>".$publicDeptQueryResults['course_id']."</td>";
+            echo "<td>".$publicDeptQueryResults['course_title']."</td>";
+            echo "<td>".$publicDeptQueryResults['course_desc']."</td>";
+            echo "</tr>";
+          }
+          echo "</table>"
+        ?>
 
-        <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+      </div>
+
       </main> 
-
-      
-
     </div>
   </div>
 
   <?php
-    require '_includes/footer.php';
-    require_once '_includes/requiredScripts.php'
+    
+    require_once '_includes/requiredScripts.php';
+    echo "<br>";
+    require_once '_includes/footer.php';
   ?>
 
 </html>

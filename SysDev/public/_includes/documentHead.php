@@ -51,7 +51,8 @@
       is_init_working();
 
       echo "<br /> SESSION: ";
-      echo print_r($_SESSION);
+      echo print_r($_SESSION)."<br />";
+      echo "<br>POST: ".var_dump($_POST);
     echo '</div>';
   } 
 ?>

@@ -10,7 +10,7 @@
 <form class = 'col-6' action ="<?php echo $_SERVER['PHP_SELF'] ?>" method = "POST">
 	<div class = 'form-group'>	
 		<label for="courseDept">Department</label>
-	    <select class="form-control" id="courseDept">
+	    <select class="form-control" id="courseDept" name = "crsDept">
 
 	    <?php //this code populates the dropdown from the DB
 		    while( $deptRet = mysqli_fetch_assoc($results) ){
@@ -31,7 +31,7 @@
 		  <textarea type="textarea" class="form-control" name = "course_desc" id="newcoursedesc"></textarea>
 		
 		  <label for="creds">Credit-hours</label>
-		  <select class="form-control" id="creds">
+		  <select class="form-control" id="creds" name="crsCreds" >
 			  <option value="1">1 credit</option>
 			  <option value="2">2 credits</option>
 			  <option value="3">3 credits</option>
