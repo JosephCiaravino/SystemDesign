@@ -8,16 +8,17 @@ require "_includes/functionalityScripts/functions.php";
 if (empty($_POST["loginIdentity"]) || empty($_POST["password"])) {
 	header("Location: ../public/login.php");
 }else{
-
-    
-    $connection = mysqli_connect('localhost','webUser','secretPass','testdb');
+// mysqli_connect('sql312.epizy.com','epiz_25399161','Pkn9tFRDUQ0Q','epiz_25399161_testdb');
+    $connection = mysqli_connect('localhost','webUser','secretPass','epiz_25399161_testdb');
     $user = $_POST['loginIdentity'];
     $password = $_POST['password'];
 
-    //CREATE QUERY++++++++++++++++++++++++++++++++
+    //CREATE QUERY+++++++   $result = $conn->query($sql) or die($conn->error);
     $query = "SELECT * FROM ";
-    $query .="testdb.user ";
+    $query .="epiz_25399161_testdb.user ";
     $query .="WHERE Email = '$user';";
+
+    echo $query;
 
     $result = mysqli_query($connection, $query);
     $row = $result -> fetch_assoc();

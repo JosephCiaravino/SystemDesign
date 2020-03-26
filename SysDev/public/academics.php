@@ -33,7 +33,7 @@
             <select class="form-control" id="publicDeptSelector" name = "facultyDept_Id">
               <?php //this code populates the dropdown from the DB
                 
-                $publicDeptQuery = "SELECT `dept_name`, `dept_id` FROM testdb.department ORDER BY dept_name;";
+                $publicDeptQuery = "SELECT `dept_name`, `dept_id` FROM epiz_25399161_testdb.department ORDER BY dept_name;";
                 $publicDeptResult = mysqli_query($connection, $publicDeptQuery);
                   
                   while( $publicDeptQueryResults = mysqli_fetch_assoc($publicDeptResult) ){
@@ -52,9 +52,9 @@
         <?php 
 
           echo "<table class = 'table table-hover'>"; 
-          echo "<tr><th>Code</th><th>Course Title</th><th>Description</th></tr>"; 
+          echo "<tr class = 'table-primary'><th>Code</th><th>Course Title</th><th>Description</th></tr>"; 
           while( $publicDeptQueryResults = mysqli_fetch_assoc($publicDeptQueryResult) ){
-            echo "<tr>";
+            echo "<tr >";
             echo "<td>".$publicDeptQueryResults['course_id']."</td>";
             echo "<td>".$publicDeptQueryResults['course_title']."</td>";
             echo "<td>".$publicDeptQueryResults['course_desc']."</td>";

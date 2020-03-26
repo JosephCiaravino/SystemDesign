@@ -1,6 +1,6 @@
 <h2 class = 'col-4'>Add Course</h2>
 <?php
-	$populateDropDownDeptQuery = "SELECT `dept_name`, `dept_id` FROM testdb.department ORDER BY dept_name;";
+	$populateDropDownDeptQuery = "SELECT `dept_name`, `dept_id` FROM epiz_25399161_testdb.department ORDER BY dept_name;";
 	    $results = mysqli_query($connection, $populateDropDownDeptQuery);
 	    $deptRet ="";
 	    

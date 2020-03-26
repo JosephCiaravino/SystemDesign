@@ -66,7 +66,7 @@
 
 			  <legend>Study Declaration</legend>
 			  <?php  //reads from major table to populate <select> list.
-					$populateSelectMajorAddUsrPage = "SELECT `major_title`, `major_id` FROM testdb.major ORDER BY major_title;";
+					$populateSelectMajorAddUsrPage = "SELECT `major_title`, `major_id` FROM epiz_25399161_testdb.major ORDER BY major_title;";
 				    $resultsAddUsrPgMajor = mysqli_query($connection, $populateSelectMajorAddUsrPage);
 				    $deptRetAddUsrPgMajor ="";    
 				?>
@@ -82,7 +82,7 @@
 				</select>
 
 				<?php  //reads from minor table to populate <select> list
-					$populateSelectMinorAddUsrPage = "SELECT `minor_title`, `minor_id` FROM testdb.minor ORDER BY minor_title;";
+					$populateSelectMinorAddUsrPage = "SELECT `minor_title`, `minor_id` FROM epiz_25399161_testdb.minor ORDER BY minor_title;";
 				    $resultsAddUsrPgMinor = mysqli_query($connection, $populateSelectMinorAddUsrPage);
 				    $deptRetAddUsrPgMinor ="";    
 				?>
@@ -103,7 +103,7 @@
 		<div class = "addFacultyControls">
 			<legend>Faculty</legend>
 			<?php
-				$populateSelectAddUsrPage = "SELECT `dept_name`, `dept_id` FROM testdb.department ORDER BY dept_name;";
+				$populateSelectAddUsrPage = "SELECT `dept_name`, `dept_id` FROM epiz_25399161_testdb.department ORDER BY dept_name;";
 			    $resultsAddUsrPg = mysqli_query($connection, $populateSelectAddUsrPage);
 			    $deptRetAddUsrPg ="";    
 			?>
