@@ -8,6 +8,7 @@
 ?>
 
 <form class = 'col-6' action ="<?php echo $_SERVER['PHP_SELF'] ?>" method = "POST">
+	<!--Security hole.  Don't use PHP_Self-->
 	<div class = 'form-group'>	
 		<label for="courseDept">Department</label>
 	    <select class="form-control" id="courseDept" name = "crsDept">

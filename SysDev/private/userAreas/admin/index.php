@@ -112,6 +112,11 @@ $connection = mysqli_connect('localhost','webUser','secretPass','epiz_25399161_t
           <i class="fas fa-briefcase fa-3x"></i><br>Edit Dept</a>
         </li>
 
+        <li class="nav-item text-center">
+          <a class="nav-link" data-toggle="tab" href="#studyPrograms">
+          <i ci class="fas fa-graduation-cap fa-3x"></i><br>Study Programs</a>
+        </li>
+
 
 
     </ul>
@@ -188,6 +193,12 @@ $connection = mysqli_connect('localhost','webUser','secretPass','epiz_25399161_t
       <div class = "tab-pane fade" id = "removeUser"><hr>
         <div class = "row">
           <?php require_once "_adminRemoveUser.php";?>
+        </div>
+      </div>
+
+      <div class = "tab-pane fade" id = "studyPrograms"><hr>
+        <div class = "row">
+          <?php require_once "_admin_programs.php";?>
         </div>
       </div>
  
