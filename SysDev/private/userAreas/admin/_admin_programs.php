@@ -2,11 +2,6 @@
 
 
 
-
-
-
-
-
 ?>
 
 <h2>Add or Remove Programs Of Study</h2>
@@ -26,38 +21,43 @@
 	<div class = 'form-group'>	
 		<label for="courseDept">Department</label>
 	    <select class="form-control" id="courseDept" name = "crsDept">
-
-	    <?php //this code populates the dropdown from the DB
-		    while( $deptRet = mysqli_fetch_assoc($results) ){
-		      echo "<option value = '".$deptRet['dept_id']."'>".$deptRet['dept_name']."</option>";
-		    }
-	    ?>
-
-	
+		    <?php //this code populates the dropdown from the DB
+			    while( $deptRet = mysqli_fetch_assoc($results) ){
+			      echo "<option value = '".$deptRet['dept_id']."'>".$deptRet['dept_name']."</option>";
+			    }
+		    ?>
 		</select>
+
 		<label for = ''>New Program Name</label>
 		<input type = 'text' name = "newPrgmName">
+		
+<!--PLACE CODE TO ADD PROGRAMS HERE-->
 
 	</div>
+	
+<button class="btn btn-primary" name = "submitInsertProgram" value = "submitInsertProgram">Add This Program</button>
 </form>
+
 <br />
 <h3>Remove A Program</h3>
 <form class = 'col-10' action ="<?php echo $_SERVER['PHP_SELF'] ?>" method = "POST">
 	<div class = 'form-group'>	
-		<label for="courseDept">Department</label>
+		<label for="courseDept">Program To Be Removed</label>
 	    <select class="form-control" id="courseDept" name = "crsDept">
 
 	    <?php //this code populates the dropdown from the DB
+
+		    echo "<option value = ''>None Selected</option>";
 		    while( $deptRet = mysqli_fetch_assoc($results) ){
+
 		      echo "<option value = '".$deptRet['dept_id']."'>".$deptRet['dept_name']."</option>";
 		    }
 	    ?>
 
 	
 		</select>
-		<label for = ''>New Program Name</label>
-		<input type = 'text' name = "newPrgmName">
-
+		
+		<button class="btn btn-primary" name = "submitRmvProgram" value = "submitRmvProgram">Remove Program</button>
 	</div>
 </form>
 

@@ -114,7 +114,7 @@ $connection = mysqli_connect('localhost','webUser','secretPass','epiz_25399161_t
 
         <li class="nav-item text-center">
           <a class="nav-link" data-toggle="tab" href="#studyPrograms">
-          <i ci class="fas fa-graduation-cap fa-3x"></i><br>Study Programs</a>
+          <i ci class="fas fa-graduation-cap fa-3x"></i><br>Programs</a>
         </li>
 
 

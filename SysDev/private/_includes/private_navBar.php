@@ -16,7 +16,7 @@ $currentURL = $_SERVER['REQUEST_URI'];
           <li class = "nav-item" >
             <?php
               if( strpos($currentURL,"index")>0 ){
-                echo "<a class = 'nav-link active' href = '/SystemDesign/SysDev/public/index.php'>Home</a>";
+                echo "<a class = 'nav-link active' href = '../../../public/index.php'>Home</a>";
               }else{
                 echo "<a class = 'nav-link' href = '/SystemDesign/SysDev/public/index.php'>Home</a>";
               }
@@ -26,9 +26,9 @@ $currentURL = $_SERVER['REQUEST_URI'];
           <li class = "nav-item">
             <?php
               if(strpos($currentURL,"academics")>0){
-                echo "<a class = 'nav-link active' href = '/SystemDesign/SysDev/public/academics.php'>Academics</a>";
+                echo "<a class = 'nav-link active' href = '../../../public/academics.php'>Academics</a>";
               }else{
-                echo "<a class = 'nav-link' href = '/SystemDesign/SysDev/public/academics.php'>Academics</a>";
+                echo "<a class = 'nav-link' href = '../../../public/academics.php'>Academics</a>";
               }
             ?>
           </li>
@@ -36,9 +36,9 @@ $currentURL = $_SERVER['REQUEST_URI'];
           <li class = "nav-item">
             <?php
               if(strpos($currentURL,"campusLife")>0){
-                echo "<a class = 'nav-link active' href = '/SystemDesign/SysDev/public/campusLife.php'>CampusLife</a>";
+                echo "<a class = 'nav-link active' href = '../../../public/campusLife.php'>CampusLife</a>";
               }else{
-                echo "<a class = 'nav-link' href = '/SystemDesign/SysDev/public/campusLife.php'>CampusLife</a>";
+                echo "<a class = 'nav-link' href = '../../../public/campusLife.php'>CampusLife</a>";
               }
             ?>
           </li>
@@ -46,9 +46,9 @@ $currentURL = $_SERVER['REQUEST_URI'];
           <li class = "nav-item">
             <?php
               if(strpos($currentURL,"admissions")>0){
-                echo "<a class = 'nav-link active' href = '/SystemDesign/SysDev/public/admissions.php'>Admissions</a>";
+                echo "<a class = 'nav-link active' href = '../../../public/admissions.php'>Admissions</a>";
               }else{
-                echo "<a class = 'nav-link' href = '/SystemDesign/SysDev/public/admissions.php'>Admissions</a>";
+                echo "<a class = 'nav-link' href = '../../../public/admissions.php'>Admissions</a>";
               }
             ?>
           </li>
@@ -56,9 +56,9 @@ $currentURL = $_SERVER['REQUEST_URI'];
           <li class = "nav-item">
             <?php
               if(strpos($currentURL,"administration")>0){
-                echo "<a class = 'nav-link active' href = '/SystemDesign/SysDev/public/administration.php'>Administration</a>";
+                echo "<a class = 'nav-link active' href = '../../../public/administration.php'>Administration</a>";
               }else{
-                echo "<a class = 'nav-link' href = '/SystemDesign/SysDev/public/administration.php'>Administration</a>";
+                echo "<a class = 'nav-link' href = '../../../public/administration.php'>Administration</a>";
               }
             ?>
           </li>
@@ -66,9 +66,9 @@ $currentURL = $_SERVER['REQUEST_URI'];
           <li class = "nav-item">
             <?php
               if(strpos($currentURL,"history")>0){
-                echo "<a class = 'nav-link active' href = '/SystemDesign/SysDev/public/history.php'>History</a>";
+                echo "<a class = 'nav-link active' href = '../../../public/history.php'>History</a>";
               }else{
-                echo "<a class = 'nav-link' href = '/SystemDesign/SysDev/public/history.php'>History</a>";
+                echo "<a class = 'nav-link' href = '../../../public/history.php'>History</a>";
               }
             ?>
           </li>
@@ -77,9 +77,9 @@ $currentURL = $_SERVER['REQUEST_URI'];
           <li class = "nav-item">
             <?php
               if(strpos($currentURL,"contact")>0){
-                echo "<a class = 'nav-link active' href = '/SystemDesign/SysDev/public/contact.php'>Contact Us</a>";
+                echo "<a class = 'nav-link active' href = '../../../public/contact.php'>Contact Us</a>";
               }else{
-                echo "<a class = 'nav-link' href = '/SystemDesign/SysDev/public/contact.php'>Contact Us</a>";
+                echo "<a class = 'nav-link' href = '../../../public/contact.php'>Contact Us</a>";
               }
             ?>
           </li>
@@ -88,11 +88,11 @@ $currentURL = $_SERVER['REQUEST_URI'];
           <li class = "nav-item">
             <?php
               if(strpos($currentURL,"login")>0){
-                echo "<a class = 'nav-link active' href = '/SystemDesign/SysDev/public/login.php'>Login</a>";
+                echo "<a class = 'nav-link active' href = '../../../public/login.php'>Login</a>";
               }else if(strpos($currentURL,"userAreas")>0){
-                echo "<a class = 'nav-link' target = '' href = '/SystemDesign/SysDev/public/loggedOut.php'> Logout</a>";
+                echo "<a class = 'nav-link' target = '' href = '../../../public/loggedOut.php'> Logout</a>";
               }else{
-                echo "<a class = 'nav-link' href = 'SystemDesign/SysDev/public/login.php'>Login</a>";
+                echo "<a class = 'nav-link' href = '../../../public/login.php'>Login</a>";
               }
             ?>
           </li>

@@ -38,7 +38,7 @@ $currentURL = $_SERVER['REQUEST_URI'];
               if(strpos($currentURL,"campusLife")>0){
                 echo "<a class = 'nav-link active' href = 'campusLife.php'>CampusLife</a>";
               }else{
-                echo "<a class = 'nav-link' href = '/campusLife.php'>CampusLife</a>";
+                echo "<a class = 'nav-link' href = 'campusLife.php'>CampusLife</a>";
               }
             ?>
           </li>
