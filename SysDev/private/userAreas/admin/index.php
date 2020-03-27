@@ -18,6 +18,7 @@ require_once "../../_includes/functionalityScripts/pageRestrictionScript.php";
 
 //mysqli_connect('sql312.epizy.com','epiz_25399161','Pkn9tFRDUQ0Q','epiz_25399161_testdb');
 $connection = mysqli_connect('localhost','webUser','secretPass','epiz_25399161_testdb');
+// 'sql312.epizy.com','epiz_25399161','Pkn9tFRDUQ0Q','epiz_25399161_testdb'
   //possible solution for re-submit problem.
 
   if(isset($_POST['submitNewUser']) && $_POST['submitNewUser']=='submitNewUser'){

@@ -3,7 +3,7 @@
 function is_init_working(){
 	echo "INITIALIZE WORKING";
 }
-
+//$connection = mysqli_connect('sql312.epizy.com','epiz_25399161','Pkn9tFRDUQ0Q','epiz_25399161_testdb');
 $connection = mysqli_connect('localhost','webUser','secretPass','epiz_25399161_testdb');
 
 ob_start();
