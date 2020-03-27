@@ -2,9 +2,9 @@
 if( !empty($_POST['submitCoursesByDept']) && !empty($_POST['facultyDept_Id']) ){
 	$deptIdSelectedPublic = $_POST['facultyDept_Id'];
 
-	$publicViewCourses = "SELECT * FROM testdb.courses WHERE dept_id =". $deptIdSelectedPublic.";";
+	$QueryPublicViewCourses = "SELECT * FROM epiz_25399161_testdb.courses WHERE dept_id =".$deptIdSelectedPublic.";";
 
-	$publicDeptQueryResult = mysqli_query($connection, $publicViewCourses);
+	$publicDeptQueryTableRes = mysqli_query($connection, $QueryPublicViewCourses);
      
   
         

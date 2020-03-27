@@ -4,7 +4,7 @@ function is_init_working(){
 	echo "INITIALIZE WORKING";
 }
 
-$connection = mysqli_connect('localhost','webUser','secretPass','testdb');
+$connection = mysqli_connect('localhost','webUser','secretPass','epiz_25399161_testdb');
 
 ob_start();
 session_start(); //turn on sessions

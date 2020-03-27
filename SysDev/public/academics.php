@@ -8,9 +8,7 @@
   require_once "_includes/masthead.php";
   require_once "_includes/mainNavigation.php";
 
-  require_once "../private/_includes/functionalityScripts/databaseScripts/db_script_public_view_courses.php"; 
   
-
 ?>
 
 
@@ -31,9 +29,9 @@
           <div class = 'form-group'>  
           <label for="publicDeptSelector">View Courses By Department</label>
             <select class="form-control" id="publicDeptSelector" name = "facultyDept_Id">
+              
               <?php //this code populates the dropdown from the DB
-                
-                $publicDeptQuery = "SELECT `dept_name`, `dept_id` FROM epiz_25399161_testdb.department ORDER BY dept_name;";
+                $publicDeptQuery = "SELECT * FROM epiz_25399161_testdb.department ORDER BY dept_name;";
                 $publicDeptResult = mysqli_query($connection, $publicDeptQuery);
                   
                   while( $publicDeptQueryResults = mysqli_fetch_assoc($publicDeptResult) ){
@@ -41,6 +39,7 @@
                     echo "<option value = '".$publicDeptQueryResults['dept_id']."'>".$publicDeptQueryResults['dept_name']."</option>";
                   }
               ?>
+
             </select>
         </div>
         <button class="btn btn-primary" name = "submitCoursesByDept" value = "submitCoursesByDept">Show Courses</button>
@@ -49,18 +48,27 @@
 
       <div>
         <p> Bootstrap has pagination we can use here.</p>
+
         <?php 
 
-          echo "<table class = 'table table-hover'>"; 
-          echo "<tr class = 'table-primary'><th>Code</th><th>Course Title</th><th>Description</th></tr>"; 
-          while( $publicDeptQueryResults = mysqli_fetch_assoc($publicDeptQueryResult) ){
-            echo "<tr >";
-            echo "<td>".$publicDeptQueryResults['course_id']."</td>";
-            echo "<td>".$publicDeptQueryResults['course_title']."</td>";
-            echo "<td>".$publicDeptQueryResults['course_desc']."</td>";
-            echo "</tr>";
-          }
-          echo "</table>"
+
+          if( !empty($_POST['submitCoursesByDept']) && !empty($_POST['facultyDept_Id']) ){
+            $deptIdSelectedPublic = $_POST['facultyDept_Id'];
+            $QueryPublicViewCourses = "SELECT * FROM epiz_25399161_testdb.courses WHERE dept_id =".$deptIdSelectedPublic.";";
+            $publicDeptQueryTableRes = mysqli_query($connection, $QueryPublicViewCourses);
+         
+            echo "<table class = 'table table-hover'>"; 
+            echo "<tr class = 'table-primary'><th>Code</th><th>Course Title</th><th>Description</th></tr>"; 
+            while( $publicDeptQueryRow = mysqli_fetch_assoc($publicDeptQueryTableRes) ){
+              echo "<tr >";
+              echo "<td>".$publicDeptQueryRow['course_id']."</td>";
+              echo "<td>".$publicDeptQueryRow['course_title']."</td>";
+              echo "<td>".$publicDeptQueryRow['course_desc']."</td>";
+              echo "</tr>";
+            }
+            echo "</table>";
+
+           } 
         ?>
 
       </div>
