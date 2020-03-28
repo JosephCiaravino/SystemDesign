@@ -40,6 +40,8 @@ $connection = mysqli_connect('localhost','webUser','secretPass','epiz_25399161_t
   }else if( isset($_POST['submitPlaceHold']) || isset($_POST['submitRmvHold']) ){
     require_once "../../_includes/functionalityScripts/databaseScripts/db_scripts_holds.php";
 
+  }else if( isset($_POST['submitAdminViewAdvisees']) || isset($_POST['submitAdminViewAdvisees'] ) ){
+
   }
 
  
@@ -59,6 +61,11 @@ $connection = mysqli_connect('localhost','webUser','secretPass','epiz_25399161_t
         <li class="nav-item text-center">
           <a class="nav-link" data-toggle="tab" href="#masterSched">
           <i class="far fa-calendar-alt fa-3x "></i><br>View Schedules</a>
+        </li>
+
+        <li class="nav-item text-center">
+          <a class="nav-link" data-toggle="tab" href="#adminViewAdvisees">
+          <i class="fas fa-user-friends fa-3x"></i><br>Faculty Advisees</a>
         </li>
 
         <li class="nav-item text-center">
@@ -129,6 +136,12 @@ $connection = mysqli_connect('localhost','webUser','secretPass','epiz_25399161_t
           <?php require_once "_adminInfo.php"; ?>  
         </div>   
       </div><!--END .tab-pane-->
+
+      <div class = "tab-pane fade" id = "adminViewAdvisees"><hr>
+          <div class = "row">
+            <?php require_once "_admin_view_advisees.php"; ?>  
+          </div>
+      </div>
 
       <div class = "tab-pane fade" id = "placeHolds"><hr>
           <div class = "row">

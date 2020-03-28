@@ -36,9 +36,10 @@
 	</div>
 	
 <button class="btn btn-primary" name = "submitInsertProgram" value = "submitInsertProgram">Add This Program</button>
+<hr>
 </form>
 
-<br />
+<br /><br />
 <h3>Remove A Program</h3>
 <form class = 'col-10' action ="<?php echo $_SERVER['PHP_SELF'] ?>" method = "POST">
 	<div class = 'form-group'>	
@@ -55,7 +56,7 @@
 	    ?>
 
 	
-		</select>
+		</select><br />
 		
 		<button class="btn btn-primary" name = "submitRmvProgram" value = "submitRmvProgram">Remove Program</button>
 	</div>
