@@ -26,6 +26,7 @@
 	      <th scope="col">Phone</th>
 	      <th scope="col">Address</th>
 	      <th scope="col">Credits</th>
+	      <th scope="col">Type</th>
 	      <th scope="col">GPA</th>
 	    </tr>
 
@@ -53,7 +54,8 @@
 		   		$queryAdvisees.= "FROM epiz_25399161_testdb.user WHERE ";
 			   	$queryAdvisees.= "user_id = '". $value."';";
 			   	
-			   	$queryAdviseesSchoolStats1 = "SELECT ";
+			   	
+
 
 			   	$adviseePersonalRows = mysqli_fetch_assoc(mysqli_query($connection, $queryAdvisees));
 
@@ -64,9 +66,16 @@
 			   	echo"<td>".$adviseePersonalRows['Email']."</td>";
 			   	echo"<td>".$adviseePersonalRows['Phone']."</td>";
 			   	echo"<td>".$adviseePersonalRows['Street_address']."; ".$adviseePersonalRows['City']."; ".$adviseePersonalRows['State']."; ".$adviseePersonalRows['Zipcode']."</td>";
-			   	// echo"<td>".."</td>";
-			   	// echo "</tr>";
-				//echo var_dump($adviseeRows['Email'])."<br />";
+			   	
+			   	$queryAdviseesSchoolStats1 = "SELECT * FROM epiz_25399161_testdb.student WHERE "; 
+			   	$queryAdviseesSchoolStats1 .= "`student_id` = '".$adviseePersonalRows['User_Id']."';";
+
+			   	$adviseeSchoolStatsRows = mysqli_fetch_assoc(mysqli_query($connection, $queryAdviseesSchoolStats1));
+			   	echo "<td>".$adviseeSchoolStatsRows['GPA']."</td>";
+			   	echo "<td>".$adviseeSchoolStatsRows['student_type'];
+			   	 echo "</tr>";
+
+				//WHERE TO FIND THE GPA? NONE IN TABLE>
 
 
 			   	
@@ -74,5 +83,5 @@
 
 		}
 		?>
-	</table>
+	</table><hr><p><em>END LIST</em></p>
 </div>
