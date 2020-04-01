@@ -46,9 +46,6 @@
     
     echo '<div style = "background-color: lightgreen; min-height: 100px;"><p>CODE TESTING - DEVELOPMENT ONLY</p>';
      
-     is_func_working();
-    echo "<br>";
-      is_init_working();
 
       echo "<br /> SESSION: ";
       echo print_r($_SESSION)."<br />";

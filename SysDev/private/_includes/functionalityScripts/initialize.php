@@ -1,8 +1,8 @@
 <?php
 
-function is_init_working(){
-	echo "INITIALIZE WORKING";
-}
+
+	echo "INITIALIZE WORKING,<br />";
+
 //$connection = mysqli_connect('sql312.epizy.com','epiz_25399161','Pkn9tFRDUQ0Q','epiz_25399161_testdb');
 $connection = mysqli_connect('localhost','webUser','secretPass','epiz_25399161_testdb');
 
@@ -16,18 +16,11 @@ session_start(); //turn on sessions
 		error_reporting(E_ALL);
 		//if this is set to false, the testing divs will not appear on the public areas.
 		$testing = true;  
-/************************************************************************************************/
-/********************************DUMMY VARIBLES ************************************************/
-		$testStu = array("john@weu.edu", "stuPass", "student", 100100, 'john', 'doe');
 
-		$testFac = array("jane@weu.edu", "facPass", "faculty", 200200, 'jane', 'plain');
-
-		$testAdmin = array("jamie@weu.edu","adminPass","admin", 300300, 'jamie', 'blank');
-
-		$testRes = array("jill@weu.edu", "resPass","researcher", 400400, 'jill', 'gray');
-
+		
 /********************************FOR DEVELOPMENT ONLY********************************************/
 /************************************************************************************************/
+
 
 
 
