@@ -7,10 +7,6 @@
 	  <label class="col-form-label" for="course_id">Course ID</label>
 	  <input type="text" class="form-control" id="course_id">
 
-	  <br /><p>OR</p>
-	
-	  <label class="col-form-label" for="course_title">Course Title</label>
-	  <input type="text" class="form-control" id="course_title">
 	</div>
 
 

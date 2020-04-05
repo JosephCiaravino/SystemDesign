@@ -41,7 +41,7 @@
 
   <?php
     require '_includes/footer.php';
-    require '_includes/requiredScripts.php'
+    require '_includes/requiredScripts.php';
   ?>
 
 </html>

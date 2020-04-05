@@ -1,5 +1,5 @@
 <?php
-echo "FUNCTIONS WORKING";
+//echo "FUNCTIONS WORKING";
 
 define("SHARED_PUBLIC", "/SystemDesign/SysDev/public/_includes");
 define("SHARED_PRIVATE","/SystemDesign/SysDev/private/_includes");

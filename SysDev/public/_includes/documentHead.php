@@ -46,11 +46,11 @@
     
     echo '<div style = "background-color: lightgreen; min-height: 100px;"><p>CODE TESTING - DEVELOPMENT ONLY</p>';
      
-
+      echo " Disable in 'private/_includes/functionalityscripts/initialize.php' ";
       echo "<br /> SESSION: ";
       echo print_r($_SESSION)."<br />";
       echo "<br>POST: ".var_dump($_POST);
-    echo '</div>';
+      echo '</div>';
   } 
 ?>
 

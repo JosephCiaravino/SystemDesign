@@ -60,12 +60,12 @@ $connection = mysqli_connect('localhost','webUser','secretPass','epiz_25399161_t
 
         <li class="nav-item text-center">
           <a class="nav-link" data-toggle="tab" href="#masterSched">
-          <i class="far fa-calendar-alt fa-3x "></i><br>View Schedules</a>
+          <i class="far fa-calendar-alt fa-3x "></i><br>*View Schedules</a>
         </li>
 
         <li class="nav-item text-center">
           <a class="nav-link" data-toggle="tab" href="#adminViewAdvisees">
-          <i class="fas fa-user-friends fa-3x"></i><br>Faculty Advisees</a>
+          <i class="fas fa-user-friends fa-3x"></i><br>*Faculty Advisees</a>
         </li>
 
         <li class="nav-item text-center">
@@ -75,17 +75,17 @@ $connection = mysqli_connect('localhost','webUser','secretPass','epiz_25399161_t
 
         <li class="nav-item text-center">
           <a class="nav-link" data-toggle="tab" href="#removeCourse">
-          <i class="fas fa-minus fa-3x"></i><br>Remove Course</a>
+          <i class="fas fa-minus fa-3x"></i><br>*Remove Course</a>
         </li>
 
         <li class="nav-item text-center">
           <a class="nav-link" data-toggle="tab" href="#addSection">
-          <i class="far fa-calendar-plus fa-3x"></i><br>Add Section</a>
+          <i class="far fa-calendar-plus fa-3x"></i><br>*Add Section</a>
         </li>
 
          <li class="nav-item text-center">
           <a class="nav-link" data-toggle="tab" href="#removeSection">
-          <i class="far fa-calendar-minus fa-3x"></i><br>Remove Section</a>
+          <i class="far fa-calendar-minus fa-3x"></i><br>*Remove Section</a>
         </li>
 
          <li class="nav-item text-center">
@@ -110,6 +110,11 @@ $connection = mysqli_connect('localhost','webUser','secretPass','epiz_25399161_t
         </li>
 
         <li class="nav-item text-center">
+          <a class="nav-link" data-toggle="tab" href="#passwords">
+          <i class="fas fa-user-shield fa-3x"></i><br>Passwords</a>
+        </li>
+
+        <li class="nav-item text-center">
           <a class="nav-link" data-toggle="tab" href="#addDept">
           <i class="far fa-building fa-3x"></i><br>Add Dept</a>
         </li>
@@ -121,10 +126,8 @@ $connection = mysqli_connect('localhost','webUser','secretPass','epiz_25399161_t
 
         <li class="nav-item text-center">
           <a class="nav-link" data-toggle="tab" href="#studyPrograms">
-          <i ci class="fas fa-graduation-cap fa-3x"></i><br>Programs</a>
+          <i ci class="fas fa-graduation-cap fa-3x"></i><br>*Programs</a>
         </li>
-
-
 
     </ul>
 
@@ -140,6 +143,12 @@ $connection = mysqli_connect('localhost','webUser','secretPass','epiz_25399161_t
       <div class = "tab-pane fade" id = "adminViewAdvisees"><hr>
           <div class = "row">
             <?php require_once "_admin_view_advisees.php"; ?>  
+          </div>
+      </div>
+
+      <div class = "tab-pane fade" id = "passwords"><hr>
+          <div class = "row">
+            <?php require_once "_admin_passwords.php"; ?>  
           </div>
       </div>
 
