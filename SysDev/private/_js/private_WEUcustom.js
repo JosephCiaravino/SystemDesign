@@ -20,15 +20,22 @@ $( document ).ready(function() {
 
 	});
 
+console.log($("#changeBtn"));
 
-
-  $(".toggleAddRmv").hide();
+  $(".toggleAddRmv2").hide();
+  $(".toggleAddRmv1").show();
  $("#addOrRemoveProgram").on("change", function(){
  	let value = $('#addOrRemoveProgram option:selected').val();
- 	if(value == 'remove')
- 		$(".toggleAddRmv").show();
- 	else if(value = 'add')
- 		$(".toggleAddRmv").hide();
+ 	if(value == 'remove'){
+ 		$(".toggleAddRmv2").show();
+ 		$(".toggleAddRmv1").hide();
+ 		document.querySelector("#changeBtn").innerHTML = "Delete This Program Or Major";
+
+ 	}else if(value = 'add'){
+ 		$(".toggleAddRmv2").hide();
+ 		$(".toggleAddRmv1").show();
+ 		document.querySelector("#changeBtn").innerHTML = "<span>Add This Program Or Major</span>";
+ 	}
  });
 
 
