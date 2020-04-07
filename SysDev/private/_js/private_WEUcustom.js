@@ -21,4 +21,18 @@ $( document ).ready(function() {
 	});
 
 
-});
+
+  $(".toggleAddRmv").hide();
+ $("#addOrRemoveProgram").on("change", function(){
+ 	let value = $('#addOrRemoveProgram option:selected').val();
+ 	if(value == 'remove')
+ 		$(".toggleAddRmv").show();
+ 	else if(value = 'add')
+ 		$(".toggleAddRmv").hide();
+ });
+
+
+
+
+
+});//end script

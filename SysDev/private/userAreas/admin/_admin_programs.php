@@ -6,8 +6,6 @@
 
 <h2>Add or Remove Programs Of Study</h2>
 
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-
 <?php
 	$populateDropDownDeptQuery = "SELECT `dept_name`, `dept_id` FROM epiz_25399161_testdb.department ORDER BY dept_name;";
 	    $results = mysqli_query($connection, $populateDropDownDeptQuery);
@@ -15,9 +13,17 @@
 
 ?>
 
-<h3>Add A Program</h3>
 <div class = "col-1"></div>
-<form class = 'col-10' action ="<?php echo $_SERVER['PHP_SELF'] ?>" method = "POST">
+
+<form class = 'col-9' action ="<?php echo $_SERVER['PHP_SELF'] ?>" method = "POST">
+	
+	<div class = 'form-group'>
+		<label for ="addOrRemoveProgram"> </label>
+		<select id = "addOrRemoveProgram" class = 'form-control' name = "addOrRemove">
+			<option value = 'add'>ADD Program Of Study</option>
+			<option value = 'remove'>REMOVE Program Of Study</option>
+		</select>
+	
 	<div class = 'form-group'>	
 		<label for="courseDept">Department</label>
 	    <select class="form-control" id="courseDept" name = "crsDept">
@@ -26,40 +32,32 @@
 			      echo "<option value = '".$deptRet['dept_id']."'>".$deptRet['dept_name']."</option>";
 			    }
 		    ?>
-		</select>
-
-		<label for = ''>New Program Name</label>
-		<input type = 'text' name = "newPrgmName">
-		
-<!--PLACE CODE TO ADD PROGRAMS HERE-->
-
-	</div>
-	
-<button class="btn btn-primary" name = "submitInsertProgram" value = "submitInsertProgram">Add This Program</button>
-<hr>
-</form>
-
-<br /><br />
-<h3>Remove A Program</h3>
-<form class = 'col-10' action ="<?php echo $_SERVER['PHP_SELF'] ?>" method = "POST">
-	<div class = 'form-group'>	
-		<label for="courseDept">Program To Be Removed</label>
-	    <select class="form-control" id="courseDept" name = "crsDept">
-
-	    <?php //this code populates the dropdown from the DB
-
-		    echo "<option value = ''>None Selected</option>";
-		    while( $deptRet = mysqli_fetch_assoc($results) ){
-
-		      echo "<option value = '".$deptRet['dept_id']."'>".$deptRet['dept_name']."</option>";
-		    }
-	    ?>
-
-	
 		</select><br />
-		
-		<button class="btn btn-primary" name = "submitRmvProgram" value = "submitRmvProgram">Remove Program</button>
+	
+		<div class="custom-control custom-radio">
+	      <input type="radio" id="radioAddRmvGradPgrm" name="radioAddRmvStudy" value = "grad_program" class="custom-control-input">
+	      <label class="custom-control-label" for="radioAddRmvGradPgrm">Graduate Program</label>
+	    </div>
+
+	    <div class="custom-control custom-radio">
+	      <input type="radio" id="radioAddRmvUndergradMajor" name="radioAddRmvStudy" value = "major" class="custom-control-input">
+	      <label class="custom-control-label" for="radioAddRmvUndergradMajor">Undergraduate Major</label>
+	    </div>
+
+	    <div class="custom-control custom-radio">
+	      <input type="radio" id="radioAddRmvUndergradMinor" name="radioAddRmvStudy" value = "minor" class="custom-control-input">
+	      <label class="custom-control-label" for="radioAddRmvUndergradMinor">Undergraduate Minor</label>
+	    </div>
 	</div>
+	<div class = 'toggleAddRmv'>
+		<label class="col-form-label" for="inputDefault">Program ID To Remove</label>
+  		<input type="text" class="form-control" placeholder="Default input" id="inputDefault">
+  	</div>
+	</div>
+	
+<button class="btn btn-primary" name = "submitInsertProgram" value = "submitAddRmvProgram">Add This Program</button><br/>
+
 </form>
+
 
 
