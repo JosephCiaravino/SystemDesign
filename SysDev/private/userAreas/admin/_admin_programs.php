@@ -1,31 +1,64 @@
 <?php
 
+$populateDropDownDeptQuery = "SELECT `dept_name`, `dept_id` FROM epiz_25399161_testdb.department ORDER BY dept_name;";
+$results = mysqli_query($connection, $populateDropDownDeptQuery);
+
+$deptRet ="";  
+$queryPgrmOrMjr = "";
+$preReqArray = array();
+$queryAddNewPrgrm = "Test";
+
+	if( $_POST['submitInsertProgram'] == "submitAddRmvProgram" && $_POST['addOrRemove']=="add" ){
+		//INSERT INTO table_name VALUES (value1, value2, value3, ...);
+		//INSERT INTO table_name (column1, column2, column3, ...)VALUES (value1, value2, value3, ...);
+
+		if($_POST['radioAddRmvStudy'] == "grad_program"){
+			$queryAddNewPrgrm = "INSERT INTO epiz_25399161_testdb.grad_program (`dept_id`, `grad_program_title`) VALUES('";
+			$queryAddNewPrgrm.= $_POST['crsDept']."', '".$_POST['prgmNameToAdd']."');";
+			
+
+
+		}else if($_POST['radioAddRmvStudy'] == "major"){
+			$queryAddNewPrgrm = "INSERT INTO epiz_25399161_testdb.major (`dept_id`, `major_title`) VALUES('";
+			$queryAddNewPrgrm.= $_POST['crsDept']."', '".$_POST['prgmNameToAdd']."');";
+			
+			
+
+
+		}else if($_POST['radioAddRmvStudy'] == "minor"){
+			$queryAddNewPrgrm = "INSERT INTO epiz_25399161_testdb.minor (`dept_id`, `minor_title`) VALUES('";
+			$queryAddNewPrgrm.= $_POST['crsDept']."', '".$_POST['prgmNameToAdd']."');";
+			
+		}
+//=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+		//breaks the string a comma to make array
+		$requirements = explode("," , $_POST['requirements'] );
+
+		foreach ($requirements as $item) {
+		  $insertRequirements = "INSERT INTO epiz_25399161_testdb.";
+
+		}
+		
+//=-=-=-=-=-=-=-=-==-=-=-=-=-=-=-=-=-=
+
+		echo $queryAddNewPrgrm;
+		echo print_r($requirements);
+
+	}else if(!empty($_POST['submitAddRmvProgram']) && $_POST['addOrRemove']=="remove"){
+		//DELETE FROM Customers WHERE CustomerName='Alfreds Futterkiste';
+		$queryPgrmOrMjr1 = "DELETE FROM";
+		$queryPgrmOrMjr2 = "DELETE FROM";
+		$queryPgrmOrMjr3 = "DELETE FROM";
+		$queryPgrmOrMjr4 = "DELETE FROM";
+
+	}
 
 
 ?>
 
 <h2>Add or Remove Programs Of Study</h2>
 
-<?php
-	$populateDropDownDeptQuery = "SELECT `dept_name`, `dept_id` FROM epiz_25399161_testdb.department ORDER BY dept_name;";
-	    $results = mysqli_query($connection, $populateDropDownDeptQuery);
-	    $deptRet ="";  
-
-	$queryPgrmOrMjr = "";
-	$preReqArray = array();
-
-	if(!empty($_POST['submitAddRmvProgram']) && $_POST['addOrRemove']=="add" ){
-
-
-	}else if(!empty($_POST['submitAddRmvProgram']) && $_POST['addOrRemove']=="remove"){
-		//DELETE FROM table_name WHERE condition;
-		$queryPgrmOrMjr = "DELETE FROM";	}
-
-
-?>
-
 <div class = "col-1"></div>
-
 <form class = 'col-9' action ="<?php echo $_SERVER['PHP_SELF'] ?>" method = "POST">
 	
 	<div class = 'form-group'>
@@ -66,8 +99,8 @@
 				<label class="col-form-label" for="toAddName">Program Name</label>
 		  		<input type="text" class="form-control" name = "prgmNameToAdd" placeholder="Example: Lunar Studies" id="toAddName">
 		  	
-				<label class="col-form-label" for="prerequisites">Program Prerequisites (**IMPROVE IF TIME ALLOWS**)</label>
-		  		<input type="text" class="form-control" name = "prerequisites" placeholder="Example: AD1234, ED3456, MA987"  id="prerequisites">
+				<label class="col-form-label" for="requirements">Program Prerequisites (**IMPROVE IF TIME ALLOWS**)</label>
+		  		<input type="text" class="form-control" name = "requirements" placeholder="Example: AD1234, ED3456, MA987"  id="requirements">
 		  	</div>
 
 			<div class = 'toggleAddRmv2'>

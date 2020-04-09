@@ -67,7 +67,9 @@
                   $resultUID = mysqli_query($connection, $query2);
                   $rowQuery = $resultUID -> fetch_assoc();
                   
-                  $userIdTemp = $rowQuery['User_Id']; 
+                  $userIdTemp = $rowQuery['User_Id']; //used to get user Id after inserting for use in 
+                                                      //other queries
+                  //echo $userIdTemp."USER ID: ";
                   //create and execute query to insert both values into faculty
                   $query3 = "INSERT INTO epiz_25399161_testdb.student(`student_id`, `GPA`, `student_type`) ";
                   $query3 .= "VALUES('".$userIdTemp."', '0', '".$_POST['grad-under']."');";
@@ -94,6 +96,20 @@
                               mysqli_query($connection, $query6);
                         }
 
+                        //insert into student_major table
+                        if(!empty($_POST['majorDeclaration']) && $_POST['majorDeclaration']!="" ){
+                              $query7 = "INSERT INTO epiz_25399161_testdb.student_major(`student_id`,`major_id`) VALUES( '".$userIdTemp."', ".$_POST['majorDeclaration'].");";
+                              mysqli_query($connection, $query7);
+                              echo $query7."<br />";
+                        }
+
+                        //insert into student_minor table
+                        if(!empty($_POST['minorDeclaration']) && $_POST['minorDeclaration']!="" ){
+                              $query8 = "INSERT INTO epiz_25399161_testdb.student_minor(`student_id`,`minor_id`) VALUES( '".$userIdTemp."', ".$_POST['minorDeclaration'].");";
+                              mysqli_query($connection, $query8);
+                              echo $query8."<br />";
+                        }
+
                   }else if($level == 'grad'){
 
                         //sets full/part time and id in table of UG students
@@ -113,6 +129,14 @@
                               $query6 .="VALUES('".$userIdTemp."', '20', '11');";
                               mysqli_query($connection, $query6);
                         }
+
+            //=-=-=-=-=-=-=-=this block of code used the undergraduate menu for selecting a program. Fix it.
+                        if(!empty($_POST['minorDeclaration']) && $_POST['minorDeclaration']!="" ){
+                              $query7 = "INSERT INTO epiz_25399161_testdb.grad_registration(`grad_program_id`,`student_id`) VALUES('".$_POST['majorDeclaration']."','".$userIdTemp."');";
+                              mysqli_query($connection, $query7);
+                              echo $query7."<br />";
+                        }
+            //=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
                   }
 
             } 
@@ -137,7 +161,7 @@
       unset($_POST['enrollment']);
       unset($_POST['grad-under']);
 
-     header('location: '.$_SERVER['PHP_SELF']); //security hole, but ok for now before deployment
+     //header('location: '.$_SERVER['PHP_SELF']); //security hole, but ok for now before deployment
 
 
 
