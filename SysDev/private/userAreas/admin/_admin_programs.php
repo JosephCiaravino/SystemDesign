@@ -8,7 +8,7 @@ $queryPgrmOrMjr = "";
 $preReqArray = array();
 $queryAddNewPrgrm = "Test";
 
-	if( $_POST['submitInsertProgram'] == "submitAddRmvProgram" && $_POST['addOrRemove']=="add" ){
+	if( !empty($_POST['submitAddRmvProgram']) && $_POST['submitAddRmvProgram'] == "submitAddRmvProgram" && $_POST['addOrRemove']=="add" ){
 		//INSERT INTO table_name VALUES (value1, value2, value3, ...);
 		//INSERT INTO table_name (column1, column2, column3, ...)VALUES (value1, value2, value3, ...);
 
@@ -112,7 +112,7 @@ $queryAddNewPrgrm = "Test";
 		
 	
 	
-	<button class="btn btn-primary" id = "changeBtn" name = "submitInsertProgram" value = "submitAddRmvProgram">
+	<button class="btn btn-primary" id = "changeBtn" name = "submitAddRmvProgram" value = "submitAddRmvProgram">
 		<span>Add This Program</span>
 	</button><br/>
 

@@ -39,11 +39,11 @@
 	  <input type="text" class="form-control" name = "zipAdd" id="zip">
 
 		<hr><hr>		
-		<div class = addStudentControls>
+		<div id = "studentLevelChoice" class = addStudentControls>
 			  <legend>Student Type</legend>
 			  <div class="form-group">
 			    <div class="custom-control custom-radio">
-			      <input type="radio" id="undergraduate" name="grad-under" value = 'undergrad' class="custom-control-input">
+			      <input type="radio" id="undergraduate" name="grad-under" value = 'undergrad' class="custom-control-input" checked>
 			      <label class="custom-control-label" for="undergraduate">Undergraduate</label>
 			    </div>
 			    <div class="custom-control custom-radio">
@@ -53,9 +53,9 @@
 			   </div>
 	
 		     <legend>Enrollment Type</legend>
-			  <div class="form-group">
+			  <div  class="form-group">
 			    <div class="custom-control custom-radio">
-			      <input type="radio" id="fulltime" name="enrollment" class="custom-control-input"  value = "full">
+			      <input type="radio" id="fulltime" name="enrollment" class="custom-control-input"  value = "full" checked>
 			      <label class="custom-control-label" for="fulltime">Full time</label>
 			    </div>
 			    <div class="custom-control custom-radio">
@@ -70,7 +70,7 @@
 				    $resultsAddUsrPgMajor = mysqli_query($connection, $populateSelectMajorAddUsrPage);
 				    $deptRetAddUsrPgMajor ="";    
 				?>
-			  <div class="form-group">
+			  <div id = "undergradStudyDetails" class="form-group">
 			    <label for="majorDeclaration">Major Declaration</label>
 			    <select class="form-control" id="courseDeptAddUsrMajor" name = "majorDeclaration">
 				    <?php //this code populates the dropdown from the DB
@@ -95,6 +95,27 @@
 				    ?>
 				    <option value = '0'>Undeclared</option>
 					</select>
+			  </div>
+
+			  <div id = 'gradProgramDec' class="form-group" >
+			    <label for="gradProgramDeclaration">Grad Program Declaration</label>
+			    <select class="form-control" id="gradProgramDeclaration" name = "gradProgramDeclaration">
+				    <?php //this code populates the dropdown from the DB
+				    
+				    	$queryGradPgrms = "SELECT * FROM epiz_25399161_testdb.grad_program ORDER BY grad_program_title;";
+
+
+
+				    	$gradPgrmResults = mysqli_query($connection, $queryGradPgrms);
+
+					    while( $gradPgrms = mysqli_fetch_assoc($gradPgrmResults) ){
+					      echo "<option value = '".$gradPgrms['grad_program_id']."'>".$gradPgrms['grad_program_title']."</option>";
+					    }
+					 
+				    ?>
+				</select>
+
+				
 			  </div>
 
 		</div>

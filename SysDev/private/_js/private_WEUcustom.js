@@ -20,7 +20,6 @@ $( document ).ready(function() {
 
 	});
 
-console.log($("#changeBtn"));
 
   $(".toggleAddRmv2").hide();
   $(".toggleAddRmv1").show();
@@ -38,6 +37,24 @@ console.log($("#changeBtn"));
  	}
  });
 
+$("#gradProgramDec").hide();
+$("#studentLevelChoice").on("change", function(){
+	if(document.querySelector("#graduate").checked){
+		console.log("CHECKING IF");
+		$("#gradProgramDec").show();
+		$("#undergradStudyDetails").hide();
+		
+	
+	}
+	else if(!document.querySelector("#graduate").checked){
+		console.log("CHECKING ELSE");
+		$("#gradProgramDec").hide();
+		$("#undergradStudyDetails").show();
+		
+		
+	}
+ 
+});
 
 
 

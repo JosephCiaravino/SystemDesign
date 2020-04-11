@@ -1,8 +1,11 @@
 <?php
-//INDEX PAGE FOR ADMINISTRATOR FUNCTIONALITY
+
+  //INDEX PAGE FOR ADMINISTRATOR FUNCTIONALITY
 session_regenerate_id(TRUE);
 print_r($_SESSION);
 $pageType = "admin";
+
+
 
 require_once "../../_includes/private_docHead.php";
 

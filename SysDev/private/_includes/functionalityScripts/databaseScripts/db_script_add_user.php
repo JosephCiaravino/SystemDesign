@@ -100,14 +100,14 @@
                         if(!empty($_POST['majorDeclaration']) && $_POST['majorDeclaration']!="" ){
                               $query7 = "INSERT INTO epiz_25399161_testdb.student_major(`student_id`,`major_id`) VALUES( '".$userIdTemp."', ".$_POST['majorDeclaration'].");";
                               mysqli_query($connection, $query7);
-                              echo $query7."<br />";
+                              
                         }
 
                         //insert into student_minor table
                         if(!empty($_POST['minorDeclaration']) && $_POST['minorDeclaration']!="" ){
                               $query8 = "INSERT INTO epiz_25399161_testdb.student_minor(`student_id`,`minor_id`) VALUES( '".$userIdTemp."', ".$_POST['minorDeclaration'].");";
                               mysqli_query($connection, $query8);
-                              echo $query8."<br />";
+                              
                         }
 
                   }else if($level == 'grad'){
@@ -134,7 +134,7 @@
                         if(!empty($_POST['minorDeclaration']) && $_POST['minorDeclaration']!="" ){
                               $query7 = "INSERT INTO epiz_25399161_testdb.grad_registration(`grad_program_id`,`student_id`) VALUES('".$_POST['majorDeclaration']."','".$userIdTemp."');";
                               mysqli_query($connection, $query7);
-                              echo $query7."<br />";
+                            
                         }
             //=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
                   }
