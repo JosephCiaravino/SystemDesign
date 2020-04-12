@@ -1,8 +1,8 @@
 <h2 class = 'col-4'>Add Course</h2>
 <?php
-	$populateDropDownDeptQuery = "SELECT `dept_name`, `dept_id` FROM epiz_25399161_testdb.department ORDER BY dept_name;";
-	    $results = mysqli_query($connection, $populateDropDownDeptQuery);
-	    $deptRet ="";
+	// $populateDropDownDeptQuery = "SELECT `dept_name`, `dept_id` FROM epiz_25399161_testdb.department ORDER BY dept_name;";
+	//     $results = mysqli_query($connection, $populateDropDownDeptQuery);
+	//     $deptRet ="";
 	    
 
 ?>
@@ -27,6 +27,9 @@
 
 		  <label class="col-form-label" for="newcoursecode">New Course Code</label>
 		  <input type="text" class="form-control" name = "course_code" id="newcoursecode">
+
+		  <label class="col-form-label" for="newCoursePrereq">New Course Prerequisites</label>
+		  <input type="text" class="form-control" name = "newCoursePrereq" id="newCoursePrereq">
 		
 		  <label class="col-form-label" for="newcoursedesc">Course Description</label>
 		  <textarea type="textarea" class="form-control" name = "course_desc" id="newcoursedesc"></textarea>

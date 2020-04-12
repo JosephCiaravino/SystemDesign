@@ -6,53 +6,9 @@ $results = mysqli_query($connection, $populateDropDownDeptQuery);
 $deptRet ="";  
 $queryPgrmOrMjr = "";
 $preReqArray = array();
-$queryAddNewPrgrm = "Test";
+$addedPgrmId = "";
 
-	if( !empty($_POST['submitAddRmvProgram']) && $_POST['submitAddRmvProgram'] == "submitAddRmvProgram" && $_POST['addOrRemove']=="add" ){
-		//INSERT INTO table_name VALUES (value1, value2, value3, ...);
-		//INSERT INTO table_name (column1, column2, column3, ...)VALUES (value1, value2, value3, ...);
-
-		if($_POST['radioAddRmvStudy'] == "grad_program"){
-			$queryAddNewPrgrm = "INSERT INTO epiz_25399161_testdb.grad_program (`dept_id`, `grad_program_title`) VALUES('";
-			$queryAddNewPrgrm.= $_POST['crsDept']."', '".$_POST['prgmNameToAdd']."');";
-			
-
-
-		}else if($_POST['radioAddRmvStudy'] == "major"){
-			$queryAddNewPrgrm = "INSERT INTO epiz_25399161_testdb.major (`dept_id`, `major_title`) VALUES('";
-			$queryAddNewPrgrm.= $_POST['crsDept']."', '".$_POST['prgmNameToAdd']."');";
-			
-			
-
-
-		}else if($_POST['radioAddRmvStudy'] == "minor"){
-			$queryAddNewPrgrm = "INSERT INTO epiz_25399161_testdb.minor (`dept_id`, `minor_title`) VALUES('";
-			$queryAddNewPrgrm.= $_POST['crsDept']."', '".$_POST['prgmNameToAdd']."');";
-			
-		}
-//=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-		//breaks the string a comma to make array
-		$requirements = explode("," , $_POST['requirements'] );
-
-		foreach ($requirements as $item) {
-		  $insertRequirements = "INSERT INTO epiz_25399161_testdb.";
-
-		}
-		
-//=-=-=-=-=-=-=-=-==-=-=-=-=-=-=-=-=-=
-
-		echo $queryAddNewPrgrm;
-		echo print_r($requirements);
-
-	}else if(!empty($_POST['submitAddRmvProgram']) && $_POST['addOrRemove']=="remove"){
-		//DELETE FROM Customers WHERE CustomerName='Alfreds Futterkiste';
-		$queryPgrmOrMjr1 = "DELETE FROM";
-		$queryPgrmOrMjr2 = "DELETE FROM";
-		$queryPgrmOrMjr3 = "DELETE FROM";
-		$queryPgrmOrMjr4 = "DELETE FROM";
-
-	}
-
+require_once "../../_includes/functionalityScripts/databaseScripts/db_add_program.php";
 
 ?>
 
@@ -72,23 +28,23 @@ $queryAddNewPrgrm = "Test";
 		<div class = 'form-group'>	
 			<legend>Type Of Program</legend>
 			<div class="custom-control custom-radio">
-		      <input type="radio" id="radioAddRmvGradPgrm" name="radioAddRmvStudy" value = "grad_program" class="custom-control-input">
+		      <input type="radio" id="radioAddRmvGradPgrm" name="radioAddRmvStudy" value = "grad_program" class="custom-control-input" required>
 		      <label class="custom-control-label" for="radioAddRmvGradPgrm">Graduate Program</label>
 		    </div>   
 
 		    <div class="custom-control custom-radio">
-		      <input type="radio" id="radioAddRmvUndergradMajor" name="radioAddRmvStudy" value = "major" class="custom-control-input">
+		      <input type="radio" id="radioAddRmvUndergradMajor" name="radioAddRmvStudy" value = "major" class="custom-control-input" required>
 		      <label class="custom-control-label" for="radioAddRmvUndergradMajor">Undergraduate Major</label>
 		    </div>
 
 		    <div class="custom-control custom-radio">
-		      <input type="radio" id="radioAddRmvUndergradMinor" name="radioAddRmvStudy" value = "minor" class="custom-control-input">
+		      <input type="radio" id="radioAddRmvUndergradMinor" name="radioAddRmvStudy" value = "minor" class="custom-control-input" required>
 		      <label class="custom-control-label" for="radioAddRmvUndergradMinor">Undergraduate Minor</label>
 		    </div>
 			<br />
 			<div class = "toggleAddRmv1">
 				<label for="courseDept">Department</label>
-			    <select class="form-control t" id="courseDept" name = "crsDept">
+			    <select class="form-control t" id="courseDept" name = "crsDept" required>
 				    <?php //this code populates the dropdown from the DB
 					    while( $deptRet = mysqli_fetch_assoc($results) ){
 					      echo "<option value = '".$deptRet['dept_id']."'>".$deptRet['dept_name']."</option>";
@@ -100,12 +56,12 @@ $queryAddNewPrgrm = "Test";
 		  		<input type="text" class="form-control" name = "prgmNameToAdd" placeholder="Example: Lunar Studies" id="toAddName">
 		  	
 				<label class="col-form-label" for="requirements">Program Prerequisites (**IMPROVE IF TIME ALLOWS**)</label>
-		  		<input type="text" class="form-control" name = "requirements" placeholder="Example: AD1234, ED3456, MA987"  id="requirements">
+		  		<input type="text" class="form-control" name = "requirements" placeholder="5 Char Max--Example: AD123, ED345, MA987"  id="requirements" required>
 		  	</div>
 
 			<div class = 'toggleAddRmv2'>
 				<label class="col-form-label" for="toRemoveID">Program ID To Remove</label>
-		  		<input type="text" class="form-control" name = "prgmIdToRemove" placeholder="Example: AD1234" id="toRemoveID">
+		  		<input type="text" class="form-control" name = "prgmIdToRemove" placeholder="Example: AD1234" id="toRemoveID" required>
 		  	</div>
 		</div>
 

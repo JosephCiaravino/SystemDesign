@@ -24,7 +24,9 @@ session_start(); //turn on sessions
 
 
 
-
+$populateDropDownDeptQuery = "SELECT `dept_name`, `dept_id` FROM epiz_25399161_testdb.department ORDER BY dept_name;";
+	    $results = mysqli_query($connection, $populateDropDownDeptQuery);
+	    $deptRet ="";
 
 
 
