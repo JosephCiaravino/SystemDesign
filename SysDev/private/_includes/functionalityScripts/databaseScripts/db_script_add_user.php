@@ -14,6 +14,7 @@
       $queryAddUsr .=$_POST['cityAdd']."', '".$_POST['stateAdd']."', '".$_POST['zipAdd']."', '";
       $queryAddUsr .=$_POST['tele']."', '".$_POST['usertype']."');";
       
+      echo "<br />".$queryAddUsr."<br />";
       $userRole = $_POST['usertype'];
       //Include code here to handle case where student is submitted and FT/PT GRAD/UG
 

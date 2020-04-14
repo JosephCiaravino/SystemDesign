@@ -7,7 +7,7 @@ echo "<div class='col-12 alert alert-dismissible alert-success'>NEW HOLD PLACED<
 
 if(!empty($_POST['submitPlaceHold']) && !empty($_POST['userToHold'])){
 
-	$queryAddHolds = "INSERT INTO testdb.student_holds ";
+	$queryAddHolds = "INSERT INTO epiz_25399161_testdb.student_holds ";
 	$queryAddHolds .="VALUES (".$_POST['userToHold'].", ";
 	if(!empty($_POST['disciplinary'])){
 		$queryAddHolds .="'".$_POST['disciplinary']."');";
@@ -16,7 +16,7 @@ if(!empty($_POST['submitPlaceHold']) && !empty($_POST['userToHold'])){
 	}
 	
 
-	$queryAddHolds = "INSERT INTO testdb.student_holds ";
+	$queryAddHolds = "INSERT INTO epiz_25399161_testdb.student_holds ";
 	$queryAddHolds .="VALUES (".$_POST['userToHold'].", ";
 	if(!empty($_POST['medical'])){
 		$queryAddHolds .="'".$_POST['medical']."');";
@@ -24,7 +24,7 @@ if(!empty($_POST['submitPlaceHold']) && !empty($_POST['userToHold'])){
 		echo $queryAddHolds."<br />";
 	}
 
-	$queryAddHolds = "INSERT INTO testdb.student_holds ";
+	$queryAddHolds = "INSERT INTO epiz_25399161_testdb.student_holds ";
 	$queryAddHolds .="VALUES (".$_POST['userToHold'].", ";
 	if(!empty($_POST['academic'])){
 		$queryAddHolds .="'".$_POST['academic']."');";
@@ -32,7 +32,7 @@ if(!empty($_POST['submitPlaceHold']) && !empty($_POST['userToHold'])){
 		echo $queryAddHolds."<br />";
 	}
 
-	$queryAddHolds = "INSERT INTO testdb.student_holds ";
+	$queryAddHolds = "INSERT INTO epiz_25399161_testdb.student_holds ";
 	$queryAddHolds .="VALUES (".$_POST['userToHold'].", ";
 	if(!empty($_POST['financial'])){
 		$queryAddHolds .="'".$_POST['financial']."');";
@@ -42,22 +42,22 @@ if(!empty($_POST['submitPlaceHold']) && !empty($_POST['userToHold'])){
 }else if(!empty($_POST['submitRmvHold'])){
 	echo "REMOVE HOLDS SELECTED";
 
-	$queryAddHolds = "DELETE FROM testdb.student_holds WHERE `student_id`='".$_POST['userToUnhold']."'";
+	$queryAddHolds = "DELETE FROM epiz_25399161_testdb.student_holds WHERE `student_id`='".$_POST['userToUnhold']."'";
 	$queryAddHolds .=" AND `hold_type` = '".$_POST['disciplinary']."'";
 	mysqli_query($connection, $queryAddHolds);
 	echo "<br />".$queryAddHolds;
 
-	$queryAddHolds = "DELETE FROM testdb.student_holds WHERE `student_id`='".$_POST['userToUnhold']."'";
+	$queryAddHolds = "DELETE FROM epiz_25399161_testdb.student_holds WHERE `student_id`='".$_POST['userToUnhold']."'";
 	$queryAddHolds .=" AND `hold_type` = '".$_POST['medical']."'";
 	mysqli_query($connection, $queryAddHolds);
 	echo "<br />".$queryAddHolds;
 
-	$queryAddHolds = "DELETE FROM testdb.student_holds WHERE `student_id`='".$_POST['userToUnhold']."'";
+	$queryAddHolds = "DELETE FROM epiz_25399161_testdb.student_holds WHERE `student_id`='".$_POST['userToUnhold']."'";
 	$queryAddHolds .=" AND `hold_type` = '".$_POST['academic']."'";
 	mysqli_query($connection, $queryAddHolds);
 	echo "<br />".$queryAddHolds;
 
-	$queryAddHolds = "DELETE FROM testdb.student_holds WHERE `student_id`='".$_POST['userToUnhold']."'";
+	$queryAddHolds = "DELETE FROM epiz_25399161_testdb.student_holds WHERE `student_id`='".$_POST['userToUnhold']."'";
 	$queryAddHolds .=" AND `hold_type` = '".$_POST['financial']."'";
 	mysqli_query($connection, $queryAddHolds);
 	echo "<br />".$queryAddHolds;

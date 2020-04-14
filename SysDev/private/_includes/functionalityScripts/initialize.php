@@ -8,6 +8,7 @@ $connection = mysqli_connect('localhost','webUser','secretPass','epiz_25399161_t
 
 ob_start();
 session_start(); //turn on sessions
+date_default_timezone_set("America/New_York");
 
 /************************************************************************************************/
 /********************************FOR DEVELOPMENT ONLY********************************************/
@@ -30,7 +31,10 @@ $populateDropDownDeptQuery = "SELECT `dept_name`, `dept_id` FROM epiz_25399161_t
 
 
 
+$populateSemester = "SELECT * FROM epiz_25399161_testdb.semester ORDER BY semester_year DESC;";
+	$semResults = mysqli_query($connection, $populateSemester);
 
+$currentSemesterID = 9;
 
 
 ?>

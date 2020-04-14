@@ -129,8 +129,16 @@ $connection = mysqli_connect('localhost','webUser','secretPass','epiz_25399161_t
 
         <li class="nav-item text-center">
           <a class="nav-link" data-toggle="tab" href="#studyPrograms">
-          <i ci class="fas fa-graduation-cap fa-3x"></i><br>*Programs</a>
+          <i ci class="fas fa-graduation-cap fa-3x"></i><br>Programs</a>
         </li>
+
+        <li class="nav-item text-center">
+          <a class="nav-link" data-toggle="tab" href="#semester">
+          <i ci class="fas fa-school fa-3x"></i><br>Semesters</a>
+        </li>
+
+
+        
 
     </ul>
 
@@ -226,6 +234,15 @@ $connection = mysqli_connect('localhost','webUser','secretPass','epiz_25399161_t
           <?php require_once "_admin_programs.php";?>
         </div>
       </div>
+
+      <div class = "tab-pane fade" id = "semester"><hr>
+        <div class = "row">
+          <?php require_once "_adminSemesters.php";?>
+        </div>
+      </div>
+
+
+
  
     </div><!--Close My Tab Content-->
 </main>
