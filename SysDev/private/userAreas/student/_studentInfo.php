@@ -1,3 +1,27 @@
+<?php
+$holdsArray = array();
+
+$queryMyHolds = "SELECT hold_type FROM epiz_25399161_testdb.student_holds ";
+$queryMyHolds.= "WHERE `student_id` = '".$_SESSION['id']."';";
+$queryMyHoldsResult = mysqli_query($connection, $queryMyHolds);
+//echo $queryMyHolds;
+
+while($queryMyHoldsToOutput = mysqli_fetch_assoc($queryMyHoldsResult)){
+  array_push($holdsArray, $queryMyHoldsToOutput['hold_type']);
+}
+
+updateGPA($_SESSION['id'], $connection);
+
+$queryMyGPA = "SELECT GPA FROM epiz_25399161_testdb.student WHERE ";
+$queryMyGPA.= "`student_id` ='".$_SESSION['id']."';";
+$queryMyGPAresult = mysqli_query($connection, $queryMyGPA);
+
+$myGPA = mysqli_fetch_row($queryMyGPAresult);
+
+ echo $myGPA[0];
+
+?>
+
 <div class="card text-white bg-primary mb-12 col-12" >
   <div class="card-header"><h3>Your Information</h3></div>
   <div class="card-body">
@@ -24,16 +48,20 @@
     <p class = "card-text"><?php echo $_SESSION['phone']; ?></p>
 
     <h4 class = "card-title">Current Holds:</h4>
-    <p class = "card-text">***No holds -- Insert PHP***</p>
+    <?php
+      foreach ($holdsArray as $value) {
+        # code...
+        echo "<p class = 'card-text'>HOLD TYPE: ".$value."<br />";
+        echo "</p>";
+      }
+      
 
-    <h4 class="card-title">Academic Standing:</h4>
-    <p class="card-text">***Insert PHP-Probattion/GoodStanding***</p>
+    ?>
 
-    <h4 class="card-title">Current Total Credits:</h4>
-    <p class="card-text">***Insert PHP: number***</p>
+    <h4 class="card-title">Your Current GPA:</h4>
+    <p class="card-text"><?php echo $myGPA[0]; ?></p>
 
-    <h4 class = "card-title">Current Class Level:</h4>
-    <p class = "card-text">***Sophomore -- Insert PHP***</p>
+    
   </div>
 </div>
 

@@ -8,6 +8,13 @@
 <form class = 'col-6' action ="" method = "POST">
 	
 	<div class="form-group">
+
+	  <label class="col-form-label" for="course_id">Course ID</label>
+	  <select>
+	  	<option> </option>
+	  	
+	  </select>
+
 	  <label class="col-form-label" for="course_id">Course ID</label>
 	  <input type="text" class="form-control" id="course_id">
 

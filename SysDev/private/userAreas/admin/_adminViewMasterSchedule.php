@@ -111,7 +111,7 @@
 <?php 
   	while($masterSchedResource = mysqli_fetch_assoc($chosenSemesterSectionResult)){
   		//echo print_r($masterSchedResource)."<br />";
-  		 if(isset($coursesLookup[$masterSchedResource["course_id"]]) ){
+  		 if(isset($coursesLookup[$masterSchedResource["course_id"]] ) ){
 
 			echo '<tr>';
 			echo "<td>".$masterSchedResource['section_id']."</td>";

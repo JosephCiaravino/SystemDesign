@@ -1,3 +1,7 @@
+<?php
+     
+?>
+
 <table class="table-striped col-12 table-bordered">
   <thead>
     <th>Name</th>

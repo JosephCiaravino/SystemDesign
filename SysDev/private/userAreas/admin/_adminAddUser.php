@@ -124,9 +124,9 @@
 		<div class = "addFacultyControls">
 			<legend>Faculty</legend>
 			<?php
-				// $populateSelectAddUsrPage = "SELECT `dept_name`, `dept_id` FROM epiz_25399161_testdb.department ORDER BY dept_name;";
-			 //    $resultsAddUsrPg = mysqli_query($connection, $populateSelectAddUsrPage);
-			 //    $deptRetAddUsrPg ="";    
+				 $populateSelectAddUsrPage = "SELECT `dept_name`, `dept_id` FROM epiz_25399161_testdb.department ORDER BY dept_name;";
+			     $resultsAddUsrPg = mysqli_query($connection, $populateSelectAddUsrPage);
+			     $deptRetAddUsrPg ="";    
 			?>
 
 
@@ -134,7 +134,7 @@
 				<label for="courseDeptAddUsr">Department</label>
 			    <select class="form-control" id="courseDeptAddUsr" name = "facultyDept_Id" >
 				    <?php //this code populates the dropdown from the DB
-					    while( $deptRet = mysqli_fetch_assoc($results) ){
+					    while( $deptRet = mysqli_fetch_assoc($resultsAddUsrPg) ){
 					      echo "<option value = '".$deptRet['dept_id']."'>".$deptRet['dept_name']."</option>";
 					    }
 				    ?>
