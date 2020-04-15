@@ -17,8 +17,9 @@ $queryMyGPA.= "`student_id` ='".$_SESSION['id']."';";
 $queryMyGPAresult = mysqli_query($connection, $queryMyGPA);
 
 $myGPA = mysqli_fetch_row($queryMyGPAresult);
+$myGPA = $myGPA[0];
 
- echo $myGPA[0];
+ 
 
 ?>
 
@@ -59,7 +60,7 @@ $myGPA = mysqli_fetch_row($queryMyGPAresult);
     ?>
 
     <h4 class="card-title">Your Current GPA:</h4>
-    <p class="card-text"><?php echo $myGPA[0]; ?></p>
+    <p class="card-text"><?php echo $myGPA; ?></p>
 
     
   </div>

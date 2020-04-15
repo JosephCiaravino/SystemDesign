@@ -25,7 +25,7 @@ require_once "../../_includes/functionalityScripts/pageRestrictionScript.php";
     <ul class="nav nav-tabs">
         <li class="nav-item text-center">
           <a class="nav-link" data-toggle="tab" href="#profile">
-          <i class="far fa-user fa-3x "></i><br>Your Profile</a>
+          <i class="far fa-address-card fa-3x "></i><br>Your Profile</a>
         </li>
 
         <li class="nav-item text-center">
@@ -44,11 +44,14 @@ require_once "../../_includes/functionalityScripts/pageRestrictionScript.php";
           <i class="far fa-edit fa-3x "></i><br>Registration</a>
         </li>
 
-
          <li class="nav-item text-center">
           <a class="nav-link" data-toggle="tab" href="#degreeAudit">
           <i class="fas fa-scroll fa-3x "></i><br>Degree Audit</a>
         </li>
+
+        
+
+
     </ul>
         
          
@@ -97,11 +100,12 @@ require_once "../../_includes/functionalityScripts/pageRestrictionScript.php";
         </div>
       </div>
 
+      
      
 
       
     </div><!--Close My Tab Content-->
-</main>
+</main><br />
 
 <?php
 require_once '../../_includes/private_footer.php';

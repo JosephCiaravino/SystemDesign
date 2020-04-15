@@ -21,7 +21,7 @@ require_once "../../_includes/functionalityScripts/pageRestrictionScript.php";
     <ul class="nav nav-tabs">
         <li class="nav-item text-center">
           <a class="nav-link" data-toggle="tab" href="#profile">
-          <i class="far fa-user fa-3x "></i><br>Your Profile</a>
+          <i class="far fa-address-card fa-3x "></i><br>Your Profile</a>
         </li>
 
         <li class="nav-item text-center">

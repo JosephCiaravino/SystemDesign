@@ -30,9 +30,30 @@ $populateDropDownDeptQuery = "SELECT `dept_name`, `dept_id` FROM epiz_25399161_t
 	    $deptRet ="";
 
 
-
 $populateSemester = "SELECT * FROM epiz_25399161_testdb.semester ORDER BY semester_year DESC;";
 	$semResults = mysqli_query($connection, $populateSemester);
+
+//creates an array of pairs of courseID/course name.========================================
+
+$globalCourseIDLookup = array();
+$queryCourseNameLookupGlobal = "SELECT `course_id`,`course_title` FROM epiz_25399161_testdb.courses;";
+	$courseLookupResult = mysqli_query($connection, $queryCourseNameLookupGlobal);
+	while($courseLookupResultRow = mysqli_fetch_assoc($courseLookupResult)){
+		$globalCourseIDLookup[$courseLookupResultRow['course_id']] = $courseLookupResultRow['course_title'];
+
+	} 
+
+//creates an array of semester ID/time/year===================================
+$globalSemesterIDLookup = array();
+$querySemesterLookupGlobal = "SELECT `semester_id`,`semester_term`,`semester_year` FROM epiz_25399161_testdb.semester;";
+	$semesterLookupResult = mysqli_query($connection, $querySemesterLookupGlobal);
+	while($semesterLookupResultRow = mysqli_fetch_assoc($semesterLookupResult)){
+		$globalSemesterIDLookup[$semesterLookupResultRow['semester_id']] = $semesterLookupResultRow['semester_term']."-".$semesterLookupResultRow['semester_year'];
+
+	} 
+
+echo print_r($globalSemesterIDLookup);
+
 
 $currentSemesterID = 9;
 

@@ -1,126 +1,50 @@
+<?php
+
+    $queryAcademicHistory = "SELECT * FROM epiz_25399161_testdb.student_history WHERE `student_id` = ";
+    $queryAcademicHistory.= $_SESSION['id']." ORDER BY `semester_id` DESC;";
+    $queryAcademicHistoryResults = mysqli_query($connection, $queryAcademicHistory);
+
+    //here we make new arrays based on semester
+    $thisStudentSemesterIDs = array();
+     
+
+
+?>
+
  <div>
   <h2>Your Course History</h2>
   <progress max="100" value="20"></progress><p>20% Complete</p>
-  <h3>Over All GPA: 3.45</h3>
-</div>
-<table class="table-striped col-12 table-bordered">
-    <caption>--END--Your Academic History</caption>
-    <thead>
-      <tr colspan = "3">
-        <th class = "table-primary"><span>Spring 2019</span> - Term GPA: <span>3.24</span></th>
-      </tr>
-      <tr class ="table-secondary">
-        <th>Course Title</th>
-        <th>Course Code</th>
-        <th>Final Grade</th>
-        <th>Term</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>Basket Weaving</td>
-        <td>1234</td>
-        <td>B</td>
-        <td>Sp-2017</td>
-        
-      </tr>      
-      <tr>
-        <td>Basket Weaving</td>
-        <td>1234</td>
-        <td>A</td>
-        <td>Sp-2017</td>
-      </tr>
-      <tr>
-        <td>Basket Weaving</td>
-        <td>1234</td>
-        <td>A</td>
-        <td>Sp-2017</td>
-      </tr>
-      <tr class = "table-danger">
-        <td>Astrophysics</td>
-        <td>3000</td>
-        <td>F</td>
-        <td>Sp-2017</td>
-      </tr>
-      <tr>
-        <td>Basket Weaving</td>
-        <td>1234</td>
-        <td>A</td>
-        <td>Sp-2017</td>
-      </tr>
-      <tr class = table-warning>
-        <td>Basket Weaving</td>
-        <td>1234</td>
-        <td>C</td>
-        <td>Sp-2017</td>
-      </tr>
-      <tr>
-        <td>Basket Weaving</td>
-        <td>1234</td>
-        <td>A</td>
-        <td>Sp-2017</td>
-      </tr>
-      
-    </tbody>
-</table><br><br>
+  <h3>Over All GPA: <?php echo $myGPA; ?></h3>
+</div><br>
 
-<table class="table-striped col-12 table-bordered">
-    <caption>--END--Your Academic History</caption>
-    <thead>
-      <tr colspan = "3">
-        <th class = "table-primary"><span>Fall 2020</span> - Term GPA: <span>3.24</span></th>
-      </tr>
-      <tr class ="table-secondary">
-        <th>Course Title</th>
-        <th>Course Code</th>
-        <th>Final Grade</th>
-        <th>Term</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>Basket Weaving</td>
-        <td>1234</td>
-        <td>B</td>
-        <td>Sp-2017</td>
-        
-      </tr>      
-      <tr>
-        <td>Basket Weaving</td>
-        <td>1234</td>
-        <td>A</td>
-        <td>Sp-2017</td>
-      </tr>
-      <tr>
-        <td>Basket Weaving</td>
-        <td>1234</td>
-        <td>A</td>
-        <td>Sp-2017</td>
-      </tr>
-      <tr class = "table-danger">
-        <td>Astrophysics</td>
-        <td>3000</td>
-        <td>F</td>
-        <td>Sp-2017</td>
-      </tr>
-      <tr>
-        <td>Basket Weaving</td>
-        <td>1234</td>
-        <td>A</td>
-        <td>Sp-2017</td>
-      </tr>
-      <tr class = table-warning>
-        <td>Basket Weaving</td>
-        <td>1234</td>
-        <td>C</td>
-        <td>Sp-2017</td>
-      </tr>
-      <tr>
-        <td>Basket Weaving</td>
-        <td>1234</td>
-        <td>A</td>
-        <td>Sp-2017</td>
-      </tr>
+<?php
+      echo "<table class = 'table table-hover'>";
+      //echo "<th class = 'table-primary'><span>Spring 2019</span> - Term GPA: <span>_PHP_</span></th>";
+      echo "</tr>";
+      echo "<tr class ='table-primary'>";
+      echo "<th>Course Title</th>";
+      echo "<th>Course Code</th>";
+      echo "<th>Final Grade</th>";
+      echo "<th>Term</th>";
+      echo "</tr>";
+      echo "</thead>";
+      echo "<tbody>";
       
-    </tbody>
-</table><br><br>
+    while( $academicHistRow = mysqli_fetch_assoc($queryAcademicHistoryResults) ){
+      if(strpos($globalSemesterIDLookup[ $academicHistRow['semester_id'] ], 'Spring') !== false)
+        echo "<tr>";
+      else
+        echo "<tr class = 'table-secondary'>";
+      echo "<td>".$globalCourseIDLookup[ $academicHistRow['course_id'] ]."</td>";
+      echo "<td>".$academicHistRow['course_id']."</td>";
+      echo "<td>".$academicHistRow['grade']."</td>";
+      echo "<td>".$globalSemesterIDLookup[ $academicHistRow['semester_id'] ]."</td>";
+      echo "</tr>";
+
+
+ 
+  }
+  
+?>
+</tbody>
+  </table><br><br>
