@@ -162,7 +162,7 @@
       unset($_POST['enrollment']);
       unset($_POST['grad-under']);
 
-     //header('location: '.$_SERVER['PHP_SELF']); //security hole, but ok for now before deployment
+     header('location: '.$_SERVER['PHP_SELF']); //security hole, but ok for now before deployment
 
 
 

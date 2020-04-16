@@ -1,5 +1,7 @@
 <?php
-
+if(empty($_SESSION['id'])){
+  header("location: ../../../public/errorLanding.php");
+}
   //INDEX PAGE FOR ADMINISTRATOR FUNCTIONALITY
 session_regenerate_id(TRUE);
 print_r($_SESSION);

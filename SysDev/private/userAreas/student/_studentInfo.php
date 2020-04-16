@@ -19,6 +19,11 @@ $queryMyGPAresult = mysqli_query($connection, $queryMyGPA);
 $myGPA = mysqli_fetch_row($queryMyGPAresult);
 $myGPA = $myGPA[0];
 
+$queryGetMyAdvisor = "SELECT `faculty_id` FROM epiz_25399161_testdb.advisor WHERE ";
+$queryGetMyAdvisor.= "`student_id` ='".$_SESSION['id']."';";
+echo $queryGetMyAdvisor;
+$myAdvisorsResult = mysqli_query($connection, $queryGetMyAdvisor);
+
  
 
 ?>
@@ -43,24 +48,37 @@ $myGPA = $myGPA[0];
     </p>
 
     <h4 class="card-title">Email:</h4>
-    <p class ="card-text"><?php $_SESSION['email'] ?></p>
+    <p class ="card-text"><?php echo $_SESSION['email'] ?></p>
 
     <h4 class = "card-title">Phone:</h4>
     <p class = "card-text"><?php echo $_SESSION['phone']; ?></p>
 
     <h4 class = "card-title">Current Holds:</h4>
     <?php
-    if(!empty($holdsArray)){
-      foreach ($holdsArray as $value) {
-        # code...
-        echo "<p class = 'card-text'>HOLD TYPE: ".$value."<br />";
-        echo "</p>";
+      if(!empty($holdsArray)){
+        foreach ($holdsArray as $value) {
+          # code...
+          echo "<p class = 'card-text'>HOLD TYPE: ".$value."<br />";
+          echo "</p>";
+        }
+      }else{
+        echo "<p class = 'card-text'>NONE</p>";
       }
-    }else{
-      echo "<p class = 'card-text'>NONE</p>";
-    }
 
     ?>
+
+    <h4 class="card-title">Advisor(s):</h4>
+<?php
+    if( !empty($myAdvisorsResult) ){
+      while($myAdvisorResultRow = mysqli_fetch_assoc($myAdvisorsResult)){
+        //echo print_r($myAdvisorResultRow['faculty_id']);
+        echo "<p class ='card-text'>".$globalAdvisorIDLookup[ $myAdvisorResultRow['faculty_id'] ]."</p>";
+      }
+    }else{
+      echo "<p class = 'card-text'>No Advisor Set</p>";
+    }
+?>
+    
 
     <h4 class="card-title">Your Current GPA:</h4>
     <p class="card-text"><?php echo $myGPA; ?></p>

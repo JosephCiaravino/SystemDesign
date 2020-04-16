@@ -23,7 +23,7 @@
       <main class ="col-9">
         <h2>Main Content</h2>
         
-        <p><span style = "color: blue">We can use PHP or AJAX to read all this from a database. </span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+        <p><span style = "color: blue">We can use PHP or AJAX to read all this from a database. </span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
 
          <form action='' method = "post">
           <div class = 'form-group'>  
@@ -45,9 +45,11 @@
         <button class="btn btn-primary" name = "submitCoursesByDept" value = "submitCoursesByDept">Show Courses</button>
       </form>
 
+      <br>
+      <p style = "font-size: 1.5em;">Download the <a href = '#'>course catalog</a> in PDF format</p>
 
       <div>
-        <p> Bootstrap has pagination we can use here.</p>
+        
 
         <?php 
 

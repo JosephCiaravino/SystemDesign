@@ -52,7 +52,20 @@ $querySemesterLookupGlobal = "SELECT `semester_id`,`semester_term`,`semester_yea
 
 	} 
 
-echo print_r($globalSemesterIDLookup);
+//creates an array of semester ID/time/year===================================
+$globalAdvisorIDLookup = array();
+$queryAdvisorLookupGlobal = "SELECT `User_Id`,`First_Name`,`Last_Name`,`Email` FROM epiz_25399161_testdb.user WHERE `Role` = 'faculty';";
+
+	$advisorLookupResult = mysqli_query($connection, $queryAdvisorLookupGlobal);
+	while($facultyLookupResultRow = mysqli_fetch_assoc($advisorLookupResult)){
+		//echo print_r($facultyLookupResultRow)."<br />";
+		$globalAdvisorIDLookup[ $facultyLookupResultRow['User_Id'] ] = $facultyLookupResultRow['Last_Name'].", ".$facultyLookupResultRow['First_Name']."<br />EMAIL: ".$facultyLookupResultRow['Email'];
+
+		
+
+	} 
+
+	//echo print_r($globalAdvisorIDLookup);
 
 
 $currentSemesterID = 9;

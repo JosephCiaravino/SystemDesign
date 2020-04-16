@@ -13,7 +13,8 @@
 
  <div>
   <h2>Your Course History</h2>
-  <h3>Over All Current GPA: <?php echo $myGPA; ?></h3>
+  <br>
+  <h3 class = 'col-12 bg-secondary'>Over All Current GPA: <?php echo $myGPA; ?></h3>
 </div><br>
 
 <?php
