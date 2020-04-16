@@ -43,19 +43,22 @@ $myGPA = $myGPA[0];
     </p>
 
     <h4 class="card-title">Email:</h4>
-    <p class ="card-text">Anyone@wherever.net</p>
+    <p class ="card-text"><?php $_SESSION['email'] ?></p>
 
     <h4 class = "card-title">Phone:</h4>
     <p class = "card-text"><?php echo $_SESSION['phone']; ?></p>
 
     <h4 class = "card-title">Current Holds:</h4>
     <?php
+    if(!empty($holdsArray)){
       foreach ($holdsArray as $value) {
         # code...
         echo "<p class = 'card-text'>HOLD TYPE: ".$value."<br />";
         echo "</p>";
       }
-      
+    }else{
+      echo "<p class = 'card-text'>NONE</p>";
+    }
 
     ?>
 

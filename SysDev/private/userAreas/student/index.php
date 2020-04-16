@@ -49,7 +49,10 @@ require_once "../../_includes/functionalityScripts/pageRestrictionScript.php";
           <i class="fas fa-scroll fa-3x "></i><br>Degree Audit</a>
         </li>
 
-        
+        <li class="nav-item text-center">
+          <a class="nav-link" data-toggle="tab" href="#editDetails">
+          <i class="fas fa-user-edit fa-3x "></i><br>Edit Details</a>
+        </li>
 
 
     </ul>
@@ -63,10 +66,7 @@ require_once "../../_includes/functionalityScripts/pageRestrictionScript.php";
 
       <div class="tab-pane fade active show" id="profile"><hr>
         <div class = 'row'>
-            <ul>
-              <li> Reset Password</li>
-              <li> Edit Info</li>
-            </ul>
+            
         </div>
 
         <div class = "row">
@@ -74,7 +74,12 @@ require_once "../../_includes/functionalityScripts/pageRestrictionScript.php";
         </div><!--END .row-->
       </div><!--END .tab-pane-->
 
-      <!--Current Semester Table-->
+      <div class = "tab-pane fade" id = "editDetails"><hr>
+        <div class = "row">  
+            <?php require_once "_studentEditDetails.php"; ?>
+        </div>
+      </div>
+
       <div class="tab-pane fade" id="currentReg"><hr>
         <div class = "row">
           <?php require_once "_studentSchedule.php"; ?>   

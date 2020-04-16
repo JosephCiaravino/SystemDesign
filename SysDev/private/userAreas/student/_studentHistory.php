@@ -13,8 +13,7 @@
 
  <div>
   <h2>Your Course History</h2>
-  <progress max="100" value="20"></progress><p>20% Complete</p>
-  <h3>Over All GPA: <?php echo $myGPA; ?></h3>
+  <h3>Over All Current GPA: <?php echo $myGPA; ?></h3>
 </div><br>
 
 <?php
