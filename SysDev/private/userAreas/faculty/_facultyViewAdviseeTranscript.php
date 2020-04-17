@@ -23,9 +23,11 @@ $studentInformationQuery = "SELECT First_Name, Last_Name FROM user WHERE user.Us
 $studentInformationReturn = mysqli_fetch_assoc(mysqli_query($connection, $studentInformationQuery));
 $studentFirstName = $studentInformationReturn['First_Name'];
 $studentLastName = $studentInformationReturn['Last_Name'];
+echo "<div class = 'container'>";
 echo "<h2>".$studentFirstName." ".$studentLastName."'s Transcript</h2>";
 
 ?>
+
   <h4>Semester 1</h4>
   <table class="table-striped col-12 table-bordered">
     <thead>
@@ -43,6 +45,7 @@ echo "<h2>".$studentFirstName." ".$studentLastName."'s Transcript</h2>";
 
       </tbody>
 </table>
+</div>
 <?php
 require_once '../../_includes/private_footer.php';
 require_once '../../_includes/private_requiredScripts.php';

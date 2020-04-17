@@ -1,5 +1,5 @@
 <?php
-	header("Location: ../public/errorLanding.php");
+	//header("Location: ../public/errorLanding.php");
 
 
 ?>

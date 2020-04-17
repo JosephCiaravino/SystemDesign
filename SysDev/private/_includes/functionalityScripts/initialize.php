@@ -45,7 +45,7 @@ $queryCourseNameLookupGlobal = "SELECT `course_id`,`course_title` FROM epiz_2539
 
 //creates an array of semester ID/time/year===================================
 $globalSemesterIDLookup = array();
-$querySemesterLookupGlobal = "SELECT `semester_id`,`semester_term`,`semester_year` FROM epiz_25399161_testdb.semester;";
+$querySemesterLookupGlobal = "SELECT `semester_id`,`semester_term`,`semester_year` FROM epiz_25399161_testdb.semester ORDER BY `semester_start` ASC;";
 	$semesterLookupResult = mysqli_query($connection, $querySemesterLookupGlobal);
 	while($semesterLookupResultRow = mysqli_fetch_assoc($semesterLookupResult)){
 		$globalSemesterIDLookup[$semesterLookupResultRow['semester_id']] = $semesterLookupResultRow['semester_term']."-".$semesterLookupResultRow['semester_year'];
@@ -65,10 +65,13 @@ $queryAdvisorLookupGlobal = "SELECT `User_Id`,`First_Name`,`Last_Name`,`Email` F
 
 	} 
 
+
+
+$nextSemesterID=$globalSemesterIDLookup[count($globalSemesterIDLookup)-1];
 	//echo print_r($globalAdvisorIDLookup);
+$currentSemesterID = $globalSemesterIDLookup[count($globalSemesterIDLookup)-2];
 
-
-$currentSemesterID = 9;
-
+echo $currentSemesterID;
+echo $nextSemesterID;
 
 ?>

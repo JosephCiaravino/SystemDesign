@@ -6,7 +6,7 @@ require "_includes/functionalityScripts/initialize.php";
 require "_includes/functionalityScripts/functions.php";
 
 if (empty($_POST["loginIdentity"]) || empty($_POST["password"])) {
-	header("Location: ../public/login.php");
+	//header("Location: ../public/login.php");
 }else{
 // mysqli_connect('sql312.epizy.com','epiz_25399161','Pkn9tFRDUQ0Q','epiz_25399161_testdb');
     $connection = mysqli_connect('localhost','webUser','secretPass','epiz_25399161_testdb');
