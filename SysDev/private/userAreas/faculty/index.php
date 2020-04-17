@@ -21,7 +21,7 @@ require_once "../../_includes/functionalityScripts/pageRestrictionScript.php";
     <ul class="nav nav-tabs">
         <li class="nav-item text-center">
           <a class="nav-link" data-toggle="tab" href="#profile">
-          <i class="far fa-address-card fa-3x "></i><br>Your Profile</a>
+          <i class="far fa-user fa-3x "></i><br>Your Profile</a>
         </li>
 
         <li class="nav-item text-center">
@@ -43,6 +43,11 @@ require_once "../../_includes/functionalityScripts/pageRestrictionScript.php";
          <li class="nav-item text-center">
           <a class="nav-link" data-toggle="tab" href="#rosters">
           <i class="far fa-file-alt fa-3x"></i><br>View Rosters</a>
+        </li>
+        
+        <li class="nav-item text-center">
+          <a class="nav-link" data-toggle="tab" href="#editDetails">
+          <i class="fas fa-user-edit fa-3x "></i><br>Edit Details</a>
         </li>
     </ul>    
     <!--
@@ -76,10 +81,16 @@ require_once "../../_includes/functionalityScripts/pageRestrictionScript.php";
         </div>
       </div>
       
+      
       <div class = "tab-pane fade" id = "rosters"><hr>
          <div class = "row">
           <?php require_once "_facultyViewRosters.php";?>
           </div>
+      </div>
+            <div class = "tab-pane fade" id = "editDetails"><hr>
+        <div class = "row">  
+            <?php require_once "_facultyEditDetails.php"; ?>
+        </div>
       </div>
      
 
