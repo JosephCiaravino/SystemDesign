@@ -137,6 +137,11 @@ $connection = mysqli_connect('localhost','webUser','secretPass','epiz_25399161_t
           <i ci class="fas fa-school fa-3x"></i><br>Semesters</a>
         </li>
 
+        <li class="nav-item text-center">
+          <a class="nav-link" data-toggle="tab" href="#attend">
+          <i ci class="fas fa-hand-paper fa-3x"></i><br>Attend</a>
+        </li>
+
 
         
 
@@ -241,7 +246,11 @@ $connection = mysqli_connect('localhost','webUser','secretPass','epiz_25399161_t
         </div>
       </div>
 
-
+      <div class = "tab-pane fade" id = "attend"><hr>
+        <div class = "row">
+          <?php require_once "_adminViewEditAttend.php";?>
+        </div>
+      </div>
 
  
     </div><!--Close My Tab Content-->

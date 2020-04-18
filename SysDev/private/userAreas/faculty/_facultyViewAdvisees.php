@@ -10,7 +10,7 @@ while ($studentIdList = mysqli_fetch_assoc($studentAdviseeIds)){
     array_push($studentIdArray, $studentIdList['student_id']);
 }     
 ?>
-<div class = 'container'>
+
 <table class="table-striped col-12 table-bordered">
   <thead>
     <th>Name</th>
@@ -67,5 +67,5 @@ foreach($studentIdArray as $studentId){
 
   </tbody>
 </table>
-</div>
+
   

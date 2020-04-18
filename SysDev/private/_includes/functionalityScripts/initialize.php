@@ -66,12 +66,9 @@ $queryAdvisorLookupGlobal = "SELECT `User_Id`,`First_Name`,`Last_Name`,`Email` F
 	} 
 
 
-
 $nextSemesterID=$globalSemesterIDLookup[count($globalSemesterIDLookup)-1];
 	//echo print_r($globalAdvisorIDLookup);
 $currentSemesterID = $globalSemesterIDLookup[count($globalSemesterIDLookup)-2];
 
-echo $currentSemesterID;
-echo $nextSemesterID;
 
 ?>

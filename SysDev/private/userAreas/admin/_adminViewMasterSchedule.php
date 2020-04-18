@@ -6,6 +6,7 @@
 	$timeLookup;
 	
 	//This block makes the course look up array
+	if(!empty($_POST['viewMasterSched']) && $_POST['viewMasterSched'] != "" ){
 		$getDeptCoursesQuery = "SELECT `course_id`, `course_title` FROM epiz_25399161_testdb.courses WHERE ";
 		$getDeptCoursesQuery.= "`dept_id`='".$_POST['viewMasterDeptOption']."';";
 		$referenceCoursesResult = mysqli_query($connection, $getDeptCoursesQuery);
@@ -43,7 +44,7 @@
 		}
 
 		//echo print_r($timeLookup);
-	if(!empty($_POST['viewMasterSched']) && $_POST['viewMasterSched'] != "" ){
+	
 
 		$getAllSemClasses = "SELECT * FROM epiz_25399161_testdb.section WHERE `semester_id`='";
 		$getAllSemClasses.= $_POST['viewMasterSemOption']."' ORDER BY `course_id` ASC;";
@@ -54,7 +55,7 @@
 		// 	echo print_r($masterSchedResource)."<br/>";
 		// }
 
-		echo $getAllSemClasses;
+		//echo $getAllSemClasses;
 	}
 
 
@@ -109,23 +110,26 @@
 
 
 <?php 
+  if(!empty($_POST['viewMasterSched']) ){	
+
+
   	while($masterSchedResource = mysqli_fetch_assoc($chosenSemesterSectionResult)){
   		//echo print_r($masterSchedResource)."<br />";
-  		 if(isset($coursesLookup[$masterSchedResource["course_id"]] ) ){
+  		 	if(isset($coursesLookup[$masterSchedResource["course_id"]] ) ){
 
-			echo '<tr>';
-			echo "<td>".$masterSchedResource['section_id']."</td>";
-			echo "<td>".$masterSchedResource['course_id']."</td>";
-			echo "<td>".$coursesLookup[ $masterSchedResource['course_id'] ]."</td>";
+				echo '<tr>';
+				echo "<td>".$masterSchedResource['section_id']."</td>";
+				echo "<td>".$masterSchedResource['course_id']."</td>";
+				echo "<td>".$coursesLookup[ $masterSchedResource['course_id'] ]."</td>";
 
-			echo "<td>".$facultyLookup[ $masterSchedResource['faculty_id'] ]."</td>";
-			echo "<td>".$roomsLookup[ $masterSchedResource['room_id'] ]."</td>";
-			echo "<td>"."*TIME & DAY*"."</td>";
-			echo "</tr>";
+				echo "<td>".$facultyLookup[ $masterSchedResource['faculty_id'] ]."</td>";
+				echo "<td>".$roomsLookup[ $masterSchedResource['room_id'] ]."</td>";
+				echo "<td>"."*TIME & DAY*"."</td>";
+				echo "</tr>";
 
+  			}	
   		}
-  	}
-
+	}
 
 ?>
 

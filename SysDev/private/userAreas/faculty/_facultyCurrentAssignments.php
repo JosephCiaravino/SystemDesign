@@ -21,7 +21,7 @@ $facultyId=$_SESSION['id'];
     
         //current semester is 1, next semester is 9
   //To Get: course_title, course_id, time_slot_day, period (from time_slot_period), credits, semester
-        $getCurrentSchedule = "SELECT course_id, room_id, time_slot_id FROM section WHERE section.faculty_id='".$facultyId."' AND section.semester_id='1';";
+        $getCurrentSchedule = "SELECT course_id, room_id, time_slot_id FROM section WHERE section.faculty_id='".$facultyId."' AND section.semester_id='".$currentSemesterId."';";
         $currentCoursesTeaching = mysqli_query($connection, $getCurrentSchedule);
         $courseArray = array();
         $roomArray = array();

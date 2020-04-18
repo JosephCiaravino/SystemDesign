@@ -33,7 +33,10 @@ foreach($sectionArray as $index => $sectionId){
                 <th>Student ID#</th>
                 <th>Student Last</th>
                 <th>Student First</th>
+                <th>Midterm Grade</th>
+                <th>Final Grade</th>
                 <th>Grades</th>
+                <th>Attendance</th>
                
               </tr>
             </thead>
@@ -44,12 +47,28 @@ foreach($sectionArray as $index => $sectionId){
         echo "<tr>";
         $individualQuery = "SELECT `First_Name`,`Last_Name` FROM user, student WHERE student.student_id=user.User_Id ";
         $individualQuery.= "AND student.student_id='".$studentId."';";
+        
+        $gradeQuery = "SELECT midterm_grade, final_grade FROM class_registration WHERE ";
+        $gradeQuery.= "section_id='".$sectionId."' AND student_id='".$studentId."';";
+        $gradesResult = mysqli_fetch_assoc(mysqli_query($connection, $gradeQuery));
+        $midtermGrades = $gradesResult['midterm_grade'];
+        $finalGrade = $gradesResult['final_grade'];
+        if(!$midtermGrades){
+            $midtermGrades = "N/A";
+        }
+        if(!$finalGrade){
+            $finalGrade="N/A";
+        }
        // echo $individualQuery;
         $studentInfoEndResults = mysqli_fetch_assoc(mysqli_query($connection, $individualQuery));
         echo "<td>".transform_userID($studentId)."</td>";
         echo "<td>".$studentInfoEndResults['Last_Name']."</td>";
         echo "<td>".$studentInfoEndResults['First_Name']."</td>";
-        echo "<td>Edit Grades Link Here </td>";
+        echo "<td>".$midtermGrades."</td>";
+        echo "<td>".$finalGrade."</td>";
+        //pass through section id too***********
+        echo "<td><a href = '_facultyEditGrades.php?stuid=".$studentId."&secid=".$sectionId."' target = '_self'>Edit Grades</a></td>";
+        echo "<td><a href = '_facultyViewEditAttendance.php?stuid=".$studentId."&secid=".$sectionId."' target = '_self'>Edit Attendance</a></td>";
         echo "</tr>";
     }
    ?>
