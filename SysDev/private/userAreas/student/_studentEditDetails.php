@@ -29,8 +29,8 @@
 
 	<div class = 'form-group'>
 	
-	  <label class="col-form-label" for="phoneEdit">Phone</label>
-	  <input type="text" class="form-control" name = "teleEdit" id="phoneEdit" >
+	  <label class="col-form-label" for="teleEdit">Phone</label>
+	  <input type="text" class="form-control" name = "teleEdit" id="teleEdit" >
 
 	  <label class="col-form-label" for="pwordEdit">Password</label>
 	  <input type="text" class="form-control" name = "pwordEdit" id="pwordEdit" >

@@ -58,5 +58,35 @@ $("#studentLevelChoice").on("change", function(){
 
 
 
+$(".hideIt-dept").hide();
+
+$("#adminUpdateUser").on("change", function(){
+	console.log("CHANGED");
+	if(document.querySelector("#adminEditOther").checked){
+		console.log("CHECKING IF");
+		$(".hideIt").hide();
+		
+		
+	}
+	else if(document.querySelector("#adminEditFaculty").checked){
+		console.log("CHECKING ELSE");
+		$(".hideIt-dept").show();
+		$(".hideIt-grade").hide();
+	
+		
+	}else if(document.querySelector("#adminEditStudent").checked){
+		console.log("CHECKING LAST");
+		$(".hideIt-grade").show();
+		$(".hideIt-dept").hide();
+	}
+ 
+});
+
+
+
+
+
+
+
 
 });//end script
