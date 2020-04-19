@@ -1,6 +1,23 @@
 <?php
+	//these are for user table
+	$tableHeadings = array("First_Name","Last_Name","Password", "Email", "Street_Address", "City", "State", "Zip", "Phone");
+	$formElements = array( "firstNameEdit","lastNameEdit","pwordEdit","emailEdit", "streetEdit", "cityEdit", "stateEdit", "zipEdit", "teleEdit");
 
+	if(!empty($_POST['submitAdminEditUser']) ){
+		for ($x = 0; $x < count($formElements); $x++) {
+		    if( !empty($_POST[ $formElements[$x] ]) && $_POST[ $formElements[$x] ] != ""){
+		    	$queryStudentSelfUpdate = "UPDATE epiz_25399161_testdb.user SET `";
+		    	$queryStudentSelfUpdate.= $tableHeadings[$x]."` = '".$_POST[ $formElements[$x] ];
+		    	$queryStudentSelfUpdate.="' WHERE `User_Id` = '".$_SESSION['id']."';";
+		    	mysqli_query($connection, $queryStudentSelfUpdate);
+		    }else{
+		    	continue;
+		    }
+		}
 
+		//if(!empty()){}
+	}
+	
 
 ?>
 <h2 class = 'row col-10'>Edit A User</h2>
@@ -30,25 +47,14 @@
   		<input type="text" class="form-control" placeholder="User's ID" id="user-ID">
 	  
 <!--
-<legend>Student Type</legend>	
-<div class="form-group">
-	<div class="custom-control custom-radio">
-      <input type="radio" id="adminEditGradStudent" name="adminEditStudentLevel" class="custom-control-input"  value = "adminEditGradStudent" checked >
-      <label class="custom-control-label" for="adminEditGradStudent">Graduate Student</label>
-    </div>
 
-    <div class="custom-control custom-radio">
-      <input type="radio" id="adminEditUnderGrad" name="adminEditStudentLevel" class="custom-control-input" value = "adminEditUnderGrad" >
-      <label class="custom-control-label" for="adminEditUnderGrad">Undergraduate Student</label>
-    </div>
-
-</div>
 -->
 <legend>Details</legend>
 <div class = 'form-group'>
 
 	<label class="col-form-label gradeChangeField text-danger hideIt hideIt-grade" for="gradeEdit">Change Grade</label>
 	  <select type="text" class="form-control gradeChangeField text-danger hideIt hideIt-grade" name = "gradeEdit" id="gradeEditAdmin" >
+	  		<option></option>
 	  		<option>A</option>
 	  		<option>A-</option>
 	  		<option>B+</option>
@@ -62,12 +68,50 @@
 	  		<option>F</option>
 	  </select>
 
+	  <label class="col-form-label ajorChangeField text-danger hideIt hideIt-grade" for="majorChangeField">Change Major</label>
+	  <select type="text" class="form-control majorChangeField text-danger hideIt hideIt-grade" name = "majorChangeField" id="majorChangeField" >
+	  		<option></option>
+	  		  <?php //this code populates the dropdown from the DB
+	  		   //reads from major table to populate <select> list.
+					$populateSelectMajorAddUsrPage = "SELECT `major_title`, `major_id` FROM epiz_25399161_testdb.major ORDER BY major_title;";
+				    $resultsAddUsrPgMajor = mysqli_query($connection, $populateSelectMajorAddUsrPage);
+				    $deptRetAddUsrPgMajor ="";    
+				
+			    while( $deptRetAddUsrPgMajor = mysqli_fetch_assoc($resultsAddUsrPgMajor) ){
+			      echo "<option value = '".$deptRetAddUsrPgMajor['major_id']."'>".$deptRetAddUsrPgMajor['major_title']."</option>";
+			    }
+		    ?>
+
+	  </select>
+
+
+
+	  <?php  //reads from minor table to populate <select> list
+			$populateSelectMinorAddUsrPage = "SELECT `minor_title`, `minor_id` FROM epiz_25399161_testdb.minor ORDER BY minor_title;";
+		    $resultsAddUsrPgMinor = mysqli_query($connection, $populateSelectMinorAddUsrPage);
+		    $deptRetAddUsrPgMinor ="";    
+		?>
+		 <label class = 'col-form-label ajorChangeField text-danger hideIt hideIt-grade"' for = "minorChange">Change Minor</label>
+		 <select class="form-control majorChangeField text-danger hideIt hideIt-grade" id="minorChange" name = "minorChange" >
+		    <?php //this code populates the dropdown from the DB
+			    echo "<option></option>";
+			    while( $deptRetAddUsrPgMinor = mysqli_fetch_assoc($resultsAddUsrPgMinor) ){
+			      echo "<option value = '".$deptRetAddUsrPgMinor['minor_id']."'>".$deptRetAddUsrPgMinor['minor_title']."</option>";
+			    }
+		    ?>
+		  </select>
+
+
+
+
+
 	  <label class="col-form-label gradeChangeField text-danger hideIt hideIt-dept" for="gradeEdit">Change Department</label>
 	  <select type="text" class="form-control gradeChangeField text-danger hideIt hideIt-dept" name = "gradeEdit" id="deptEditAdmin" >
+	   		
 	   <?php //this code populates the dropdown from the DB
                 $publicDeptQuery = "SELECT * FROM epiz_25399161_testdb.department ORDER BY dept_name;";
                 $publicDeptResult = mysqli_query($connection, $publicDeptQuery);
-                  
+                  echo "<option></option>";
                   while( $publicDeptQueryResults = mysqli_fetch_assoc($publicDeptResult) ){
                     
                     echo "<option value = '".$publicDeptQueryResults['dept_id']."'>".$publicDeptQueryResults['dept_name']."</option>";
@@ -109,6 +153,6 @@
 <br />
 
 
-<button class="btn btn-primary" name = "submit" value = "submitEditUser">Submit Changes To User</button>
+<button class="btn btn-primary" name = "submitAdminEditUser" value = "submitEditUser">Submit Changes To User</button>
 
 </form>
