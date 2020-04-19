@@ -8,24 +8,49 @@
 		    if( !empty($_POST[ $formElements[$x] ]) && $_POST[ $formElements[$x] ] != ""){
 		    	$queryStudentSelfUpdate = "UPDATE epiz_25399161_testdb.user SET `";
 		    	$queryStudentSelfUpdate.= $tableHeadings[$x]."` = '".$_POST[ $formElements[$x] ];
-		    	$queryStudentSelfUpdate.="' WHERE `User_Id` = '".$_SESSION['id']."';";
+		    	$queryStudentSelfUpdate.="' WHERE `User_Id` = ".$_POST['adminUserToEdit'].";"; //As check add AND Role
 		    	mysqli_query($connection, $queryStudentSelfUpdate);
+		    	echo $queryStudentSelfUpdate."<br />";
 		    }else{
 		    	continue;
 		    }
 		}
 
-		//if(!empty()){}
-	}
+		//UPDATE table_name SET column1 = value1, column2 = value2, ...WHERE condition;
+		if(!empty($_POST['adminDeptEdit'])  && $_POST['adminDeptEdit'] != "" && $_POST['userTypeToEdit']=="adminEditFaculty"){
+			$changeDeptQuery = "UPDATE epiz_25399161_testdb.faculty SET `Dept_Id` = ".$_POST['adminDeptEdit'];
+			$changeDeptQuery.=" WHERE `Faculty_Id` = ".$_POST['adminUserToEdit'].";";
+			mysqli_query($connection, $changeDeptQuery);
+		}
 	
+		if(!empty($_POST['gradeEdit']) && $_POST['gradeEdit'] != ""){
+			$changeGradeQuery = "UPDATE epiz_25399161_testdb.student_history SET grade = '";
+			$changeGradeQuery.= $_POST['gradeEdit']."';";
+			mysqli_query($connection, $changeGradeQuery);
+		}
+
+		if(!empty($_POST['majorChangeField']) && $_POST['majorChangeField'] != ""){
+			$changeMajorQuery = "UPDATE epiz_25399161_testdb.student_major SET major_id = ";
+			$changeMajorQuery.= $_POST['majorChangeField']." WHERE student_id = ".$_POST['adminUserToEdit'].";";
+			mysqli_query($connection, $changeMajorQuery);
+		}
+
+		if(!empty($_POST['minorChangeField']) && $_POST['minorChangeField'] != ""){
+			$changeMinorQuery = "UPDATE epiz_25399161_testdb.student_minor SET minor_id = ";
+			$changeMinorQuery.= $_POST['minorChangeField']." WHERE student_id = ".$_POST['adminUserToEdit'].";";
+			mysqli_query($connection,$changeMinorQuery);
+	 		echo $changeMinorQuery;
+		}
+	}
 
 ?>
 <h2 class = 'row col-10'>Edit A User</h2>
 <br>
 
-<form class = 'row col-10' action ="" method = "POST">
+<form class = 'row col-10' action ="<?php echo $_SERVER['PHP_SELF']?>" method = "POST">
 	
 <legend>User Type To Edit</legend>
+<div clss = 'form-group'>
 	  <div  class="form-group" id = "adminUpdateUser">
 	    <div id = 'editStuRadio' class="customEditSelector custom-radio">
 	      <input type="radio" id="adminEditStudent" name="userTypeToEdit" class="custom-control-input"  value = "adminEditStudent" checked >
@@ -44,8 +69,8 @@
 	  </div>
 
 	    <label class="col-form-label" for="user-ID">User ID</label>
-  		<input type="text" class="form-control" placeholder="User's ID" id="user-ID">
-	  
+  		<input type="text" class="form-control" placeholder="User's ID" id="user-ID" name = 'adminUserToEdit'>
+</div>	  
 <!--
 
 -->
@@ -92,7 +117,7 @@
 		    $deptRetAddUsrPgMinor ="";    
 		?>
 		 <label class = 'col-form-label majorChangeField text-danger hideIt hideIt-grade' for = "minorChange">Change Minor</label>
-		 <select class="form-control majorChangeField text-danger hideIt hideIt-grade" id="minorChange" name = "minorChange" >
+		 <select class="form-control majorChangeField text-danger hideIt hideIt-grade" id="minorChange" name = "minorChangeField" >
 		    <?php //this code populates the dropdown from the DB
 			    echo "<option></option>";
 			    while( $deptRetAddUsrPgMinor = mysqli_fetch_assoc($resultsAddUsrPgMinor) ){
@@ -106,7 +131,7 @@
 
 
 	  <label class="col-form-label gradeChangeField text-danger hideIt hideIt-dept" for="gradeEdit">Change Department</label>
-	  <select type="text" class="form-control gradeChangeField text-danger hideIt hideIt-dept" name = "gradeEdit" id="deptEditAdmin" >
+	  <select type="text" class="form-control gradeChangeField text-danger hideIt hideIt-dept" name = "adminDeptEdit" id="deptEditAdmin" >
 	   		
 	   <?php //this code populates the dropdown from the DB
                 $publicDeptQuery = "SELECT * FROM epiz_25399161_testdb.department ORDER BY dept_name;";
@@ -153,6 +178,6 @@
 <br />
 
 
-<button class="btn btn-primary" name = "submitAdminEditUser" value = "submitEditUser">Submit Changes To User</button>
+<button class="btn btn-primary" name = "submitAdminEditUser" value = "submitAdminEditUser">Submit Changes To User</button>
 
 </form>

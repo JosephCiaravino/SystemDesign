@@ -9,17 +9,17 @@ if($testing==true){
 echo "<br /><br />";
   if(isset($_POST)){
   	echo "POST: ";
-  	var_dump($_POST);
+  	print_r($_POST);
   }
 echo "<br /><br />";
   if(isset($_GET)){
   	echo "GET: ";
-  	var_dump($_GET);
+  	print_r($_GET);
   }
   echo "<br /><br />";
 if(isset($_SESSION)){
   	echo "SESSION:  ";
-  	var_dump($_SESSION);
+  	print_r($_SESSION);
   }
 
   echo "</div>";

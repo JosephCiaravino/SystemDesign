@@ -21,7 +21,7 @@ $facultyId=$_SESSION['id'];
     
         //current semester is 1, next semester is 9
   //To Get: course_title, course_id, time_slot_day, period (from time_slot_period), credits, semester
-        $getCurrentSchedule = "SELECT course_id, room_id, time_slot_id FROM section WHERE section.faculty_id='".$facultyId."' AND section.semester_id='".$currentSemesterId."';";
+        $getCurrentSchedule = "SELECT course_id, room_id, time_slot_id FROM section WHERE section.faculty_id='".$facultyId."' AND section.semester_id='".$currentSemesterID."';";
         $currentCoursesTeaching = mysqli_query($connection, $getCurrentSchedule);
         $courseArray = array();
         $roomArray = array();
@@ -54,7 +54,7 @@ $facultyId=$_SESSION['id'];
             $startTime = $timePeriods['start_time'];
             $endTime = $timePeriods['end_time'];
             
-            $semesterQuery = "SELECT semester_term, semester_year FROM semester WHERE semester.semester_id='1';";
+            $semesterQuery = "SELECT semester_term, semester_year FROM semester WHERE semester.semester_id='".$currentSemesterID."';";
             $semesterInfo = mysqli_fetch_assoc(mysqli_query($connection, $semesterQuery));
             $semesterSeason = $semesterInfo['semester_term'];
             $semesterYear = $semesterInfo['semester_year'];
@@ -107,7 +107,7 @@ $facultyId=$_SESSION['id'];
     <tbody>
      
 <?php
-        $getNextSchedule = "SELECT course_id, room_id, time_slot_id FROM section WHERE section.faculty_id='".$facultyId."' AND section.semester_id='9';";
+        $getNextSchedule = "SELECT course_id, room_id, time_slot_id FROM section WHERE section.faculty_id='".$facultyId."' AND section.semester_id='".$nextSemesterID."';";
         $nextCoursesTeaching = mysqli_query($connection, $getNextSchedule);
         $courseArray = array();
         $roomArray = array();
@@ -140,7 +140,7 @@ $facultyId=$_SESSION['id'];
             $startTime = $timePeriods['start_time'];
             $endTime = $timePeriods['end_time'];
             
-            $semesterQuery = "SELECT semester_term, semester_year FROM semester WHERE semester.semester_id='9';";
+            $semesterQuery = "SELECT semester_term, semester_year FROM semester WHERE semester.semester_id='".$nextSemesterID."';";
             $semesterInfo = mysqli_fetch_assoc(mysqli_query($connection, $semesterQuery));
             $semesterSeason = $semesterInfo['semester_term'];
             $semesterYear = $semesterInfo['semester_year'];

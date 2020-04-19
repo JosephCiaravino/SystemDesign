@@ -20,6 +20,18 @@ require_once "../../_includes/functionalityScripts/pageRestrictionScript.php";
 $sectionId = $_GET['secid'];
 $studentId = $_GET['stuid'];
 
+
+
+if(isset($_POST['attended'])&&isset($_POST['attendance'])&&isset($_POST['submit'])){
+   $dateToInput =  $_POST['attended'];
+    $attendedStatus =  $_POST['attendance'];
+    $_POST['attendance']=NULL;
+    
+        
+    $inputAttendanceQuery = "INSERT INTO `attendance`(`section_id`, `student_id`, `date`, `attended`) VALUES (".$sectionId.",".$studentId.",'".$dateToInput."','".$attendedStatus."');";
+    mysqli_query($connection, $inputAttendanceQuery);
+}
+
 $studentInformationQuery = "SELECT First_Name, Last_Name FROM user WHERE user.User_Id='".$studentId."';";
 $studentInformationReturn = mysqli_fetch_assoc(mysqli_query($connection, $studentInformationQuery));
 $studentFirstName = $studentInformationReturn['First_Name'];
@@ -33,7 +45,7 @@ $courseTitle = $courseInfo['course_title'];
 echo "<h2>".$studentFirstName." ".$studentLastName."</h2>";
 echo "<h3>".$courseId."-".$courseTitle."</h3>";
 
-$attendanceQuery = "SELECT * FROM attendance WHERE student_id='".$studentId."' AND section_id='".$sectionId."';";
+$attendanceQuery = "SELECT * FROM attendance WHERE student_id='".$studentId."' AND section_id='".$sectionId."' ORDER BY date DESC;";
 $attendanceResult = mysqli_query($connection, $attendanceQuery);
 $dateArray = array();
 $attendanceArray = array();
@@ -83,7 +95,7 @@ echo "<input type='date' id='attendance' name='attended'";
 echo     "value='".date("Y-m-d")."'";
 echo "min='".$startDate."' max='".$endDate."'>";
 ?>
-<label>Attendance</label>
+<label>Attendance:</label>
 <select required name="attendance">
         <option selected="selected"></option>
         <option value="P">Present</option>
@@ -91,7 +103,7 @@ echo "min='".$startDate."' max='".$endDate."'>";
     </select>
 
 <?php
-echo "<input type='submit' name='submit' value='Enter Date'/>";
+echo "<input type='submit' name='submit' value='Enter Attendance'/>";
 echo "</form>";
 ?>
 
