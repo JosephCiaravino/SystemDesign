@@ -70,12 +70,14 @@ $("#adminUpdateUser").on("change", function(){
 	}
 	else if(document.querySelector("#adminEditFaculty").checked){
 		console.log("CHECKING ELSE");
+		$(".hideIt").show();
 		$(".hideIt-dept").show();
 		$(".hideIt-grade").hide();
 	
 		
 	}else if(document.querySelector("#adminEditStudent").checked){
 		console.log("CHECKING LAST");
+		$(".hideIt").show();
 		$(".hideIt-grade").show();
 		$(".hideIt-dept").hide();
 	}

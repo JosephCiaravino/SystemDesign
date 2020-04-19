@@ -68,7 +68,7 @@
 	  		<option>F</option>
 	  </select>
 
-	  <label class="col-form-label ajorChangeField text-danger hideIt hideIt-grade" for="majorChangeField">Change Major</label>
+	  <label class="col-form-label majorChangeField text-danger hideIt hideIt-grade" for="majorChangeField">Change Major</label>
 	  <select type="text" class="form-control majorChangeField text-danger hideIt hideIt-grade" name = "majorChangeField" id="majorChangeField" >
 	  		<option></option>
 	  		  <?php //this code populates the dropdown from the DB
@@ -91,7 +91,7 @@
 		    $resultsAddUsrPgMinor = mysqli_query($connection, $populateSelectMinorAddUsrPage);
 		    $deptRetAddUsrPgMinor ="";    
 		?>
-		 <label class = 'col-form-label ajorChangeField text-danger hideIt hideIt-grade"' for = "minorChange">Change Minor</label>
+		 <label class = 'col-form-label majorChangeField text-danger hideIt hideIt-grade' for = "minorChange">Change Minor</label>
 		 <select class="form-control majorChangeField text-danger hideIt hideIt-grade" id="minorChange" name = "minorChange" >
 		    <?php //this code populates the dropdown from the DB
 			    echo "<option></option>";
