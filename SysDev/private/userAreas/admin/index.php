@@ -67,6 +67,11 @@ $connection = mysqli_connect('localhost','webUser','secretPass','epiz_25399161_t
         </li>
 
         <li class="nav-item text-center">
+          <a class="nav-link" data-toggle="tab" href="#facultySched">
+          <i class="fas fa-calendar-alt fa-3x "></i><br>*View Faculty Schedules</a>
+        </li>
+
+        <li class="nav-item text-center">
           <a class="nav-link" data-toggle="tab" href="#adminViewAdvisees">
           <i class="fas fa-user-friends fa-3x"></i><br>*Faculty Advisees</a>
         </li>
@@ -249,6 +254,12 @@ $connection = mysqli_connect('localhost','webUser','secretPass','epiz_25399161_t
       <div class = "tab-pane fade" id = "attend"><hr>
         <div class = "row">
           <?php require_once "_adminViewEditAttend.php";?>
+        </div>
+      </div>
+
+      <div class = "tab-pane fade" id = "facultySched"><hr>
+        <div class = "row">
+          <?php require_once "_adminViewFacultySchedule.php";?>
         </div>
       </div>
 

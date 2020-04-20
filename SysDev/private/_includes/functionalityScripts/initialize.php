@@ -66,9 +66,36 @@ $queryAdvisorLookupGlobal = "SELECT `User_Id`,`First_Name`,`Last_Name`,`Email` F
 	} 
 
 
-$nextSemesterID=$globalSemesterIDLookup[count($globalSemesterIDLookup)-1];
-	//echo print_r($globalAdvisorIDLookup);
-$currentSemesterID = $globalSemesterIDLookup[count($globalSemesterIDLookup)-2];
+$nextSemesterID=$globalSemesterIDLookup[count($globalSemesterIDLookup)];
+	
+$currentSemesterID = $globalSemesterIDLookup[count($globalSemesterIDLookup)-1];
+
+
+//Gets all time slot Id nums
+$globalAllTimeSlots = array();
+$queryGetTimeSlots = "SELECT * FROM epiz_25399161_testdb.time_slot ORDER BY `time_slot_id` ASC;";
+$timeSlotResource = mysqli_query($connection, $queryGetTimeSlots);
+	while($timeSlotRow = mysqli_fetch_assoc($timeSlotResource)){
+		array_push($globalAllTimeSlots, $timeSlotRow['time_slot_id']);
+	}
+
+echo print_r($globalAllTimeSlots);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 ?>

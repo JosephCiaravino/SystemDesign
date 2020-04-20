@@ -77,7 +77,7 @@ if(isset($_POST['midtermGrades'])){
         echo "<h2>".$studentFirstName." ".$studentLastName."</h2>";
         echo "<h3>".$courseId."-".$courseTitle."</h3>";
 ?>
-<form>
+<form >
    <br>
    <h5>Select A Midterm Grade</h5>
     <select required name="midtermGrades">

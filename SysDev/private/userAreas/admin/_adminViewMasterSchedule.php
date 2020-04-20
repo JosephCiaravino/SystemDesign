@@ -56,10 +56,39 @@
 		// }
 
 		//echo $getAllSemClasses;
+	}else if(!empty($_POST['viewUserSched']) && $_POST['viewUserSched'] != "" && isset($_POST['viewSchedByID'])){ 
+
+		///user case if field is filled in
+
+		$queryRole = "SELECT `role` FROM epiz_25399161_testdb.user WHERE `User_Id` =".$_POST['viewSchedByID'].";";
+		echo $queryRole;
+
+
+
 	}
 
 
 ?> 
+
+
+<h2>View User Schedule </h2>
+ <div class = "col-1 "></div>
+  <form class = 'col-10 bg-secondary' action ="<?php echo $_SERVER['PHP_SELF'] ?>" method = "POST">
+	<!--Security hole.  Don't use PHP_Self-->
+	<div class = 'form-group'>	
+		<label for="">View By ID</label>
+		<input name = 'viewSchedByID' type = 'number' min='1' >
+	    
+		
+		<br />
+
+		<button class="btn btn-primary" name = "viewUserSched" value = "viewUserSched">View</button>
+	</div>
+
+</form>
+
+<div class = 'col-12'></div>
+<hr >
 
  <h2>View Master Schedule</h2>
  <div class = "col-9"></div>
@@ -97,7 +126,7 @@
 
 	<table class="table table-hover">
   <thead>
-    <tr>
+    <tr class ='table-primary'>
       <th scope="col">Section ID</th>
       <th scope="col">Code</th>
       <th scope="col">Title</th>
