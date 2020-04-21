@@ -76,7 +76,7 @@ require_once "../../_includes/functionalityScripts/pageRestrictionScript.php";
     
     <br />
 </form >
-
+<!--
 <form class = 'col-6'>
 
   <label for = 'attendance'>Attendance</label>
@@ -85,22 +85,20 @@ require_once "../../_includes/functionalityScripts/pageRestrictionScript.php";
       <option value="P">Present</option>
       <option value="A">Absent</option>
   </select>
-
 </form>
-
-
+-->
 
 
 <br />
-<?php
+
+
+<div class = 'col-6'>
+  <?php
   if(isset($studentFirstName) && isset($studentLastName) && isset($courseId) && isset($courseTitle)) 
     echo '<h3>'.$studentFirstName." ".$studentLastName."'s Attendance Record For<br />".$courseId."-".$courseTitle.'</h3>';
 
 ?>
-
-<div class = 'container'>
-  
-  <table class="col-12 table table-striped table-bordered row" >
+  <table class="col-6 table table-striped table-bordered row" >
       
      
         <tr class = "table-primary">

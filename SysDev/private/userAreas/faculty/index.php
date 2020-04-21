@@ -29,10 +29,6 @@ require_once "../../_includes/functionalityScripts/pageRestrictionScript.php";
           <i class="far fa-calendar-alt fa-3x "></i><br>Teaching Schedules</a>
         </li>
 
-        <li class="nav-item text-center">
-          <a class="nav-link" data-toggle="tab" href="#viewHist">
-          <i class="far fa-clock fa-3x "></i><br>Your Assignment History</a>
-        </li>
 
          <li class="nav-item text-center">
           <a class="nav-link" data-toggle="tab" href="#advisees">
@@ -69,11 +65,6 @@ require_once "../../_includes/functionalityScripts/pageRestrictionScript.php";
         </div>
       </div>
 
-      <div class = "tab-pane fade" id = "viewHist"><hr>
-        <div class = "row">
-            <?php require_once "_facultyTeachingHistory.php";?>
-        </div>
-      </div>
 
       <div class = "tab-pane fade" id = "advisees"><hr>
         <div class = "row">    

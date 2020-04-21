@@ -1,13 +1,13 @@
 <?php
-$facultyId=$_SESSION['id'];
+$facultyId=109;
 ?>
   
-  <h2>Your Current Schedule</h2>
+  <h2>Current Schedule</h2>
   <table class="table-striped col-12 table-bordered">
     <thead>
       <tr>
         <th>Course Title</th>
-        <th>Course Code</th>        <!-- THIS IS CURRENTLY CAITS UNEDITED FACULTY CODE-->
+        <th>Course Code</th>        
         <th>Meeting Days</th>
         <th>Meeting Time</th>
         <th>Room</th>
@@ -31,6 +31,8 @@ $facultyId=$_SESSION['id'];
             array_push($roomArray, $currentlyTeachingList['room_id']);
             array_push($timeSlotArray, $currentlyTeachingList['time_slot_id']);
         }
+
+        echo print_r($courseArray);
         //foreach($sectionArray as $index => $sectionId){
         foreach($courseArray as $index => $courseId){
             //TO GET :semester
