@@ -73,14 +73,24 @@ $currentSemesterID = $globalSemesterIDLookup[count($globalSemesterIDLookup)-1];
 
 //Gets all time slot Id nums
 $globalAllTimeSlots = array();
-$queryGetTimeSlots = "SELECT * FROM epiz_25399161_testdb.time_slot ORDER BY `time_slot_id` ASC;";
+$queryGetTimeSlots = "SELECT * FROM epiz_25399161_testdb.time_period ORDER BY `time_slot_id` ASC;";
 $timeSlotResource = mysqli_query($connection, $queryGetTimeSlots);
+	array_push($globalAllTimeSlots,0);
 	while($timeSlotRow = mysqli_fetch_assoc($timeSlotResource)){
 		array_push($globalAllTimeSlots, $timeSlotRow['time_slot_id']);
 	}
-
 echo print_r($globalAllTimeSlots);
 
+
+$globalBuildingsIDLookup = array();
+$queryGetAllBldgs = "SELECT * FROM epiz_25399161_testdb.rooms;";
+$buildingsResource = mysqli_query($connection, $queryGetAllBldgs);
+	array_push($globalBuildingsIDLookup, 0);
+	while($buildingsResourceRow = mysqli_fetch_assoc($buildingsResource)){
+		array_push($globalBuildingsIDLookup, $buildingsResourceRow['room_id'] = $buildingsResourceRow['building']." Room: ".$buildingsResourceRow['room_number'] );
+	}
+
+//echo print_r($globalAdvisorIDLookup);
 
 
 

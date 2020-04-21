@@ -25,7 +25,7 @@
         
         <p><span style = "color: blue">We can use PHP or AJAX to read all this from a database. </span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
 
-         <form action='' method = "post">
+         <form action="<?php $_SERVER['PHP_SELF'] ?>" method = "GET">
           <div class = 'form-group'>  
           <label for="publicDeptSelector">View Courses By Department</label>
             <select class="form-control" id="publicDeptSelector" name = "facultyDept_Id">
@@ -54,8 +54,8 @@
         <?php 
 
 
-          if( !empty($_POST['submitCoursesByDept']) && !empty($_POST['facultyDept_Id']) ){
-            $deptIdSelectedPublic = $_POST['facultyDept_Id'];
+          if( !empty($_GET['submitCoursesByDept']) && !empty($_GET['facultyDept_Id']) ){
+            $deptIdSelectedPublic = $_GET['facultyDept_Id'];
             $QueryPublicViewCourses = "SELECT * FROM epiz_25399161_testdb.courses WHERE dept_id =".$deptIdSelectedPublic.";";
             $publicDeptQueryTableRes = mysqli_query($connection, $QueryPublicViewCourses);
          

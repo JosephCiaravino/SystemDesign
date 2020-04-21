@@ -130,7 +130,7 @@ require_once "../../_includes/functionalityScripts/pageRestrictionScript.php";
 
 
 <?php
-require_once '../../_includes/private_footer.php';
-require_once '../../_includes/private_requiredScripts.php';
+//require_once '../../_includes/private_footer.php';
+//require_once '../../_includes/private_requiredScripts.php';
    session_regenerate_id(TRUE); 
 ?>

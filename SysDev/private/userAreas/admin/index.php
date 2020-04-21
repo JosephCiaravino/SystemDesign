@@ -63,17 +63,17 @@ $connection = mysqli_connect('localhost','webUser','secretPass','epiz_25399161_t
 
         <li class="nav-item text-center">
           <a class="nav-link" data-toggle="tab" href="#masterSched">
-          <i class="far fa-calendar-alt fa-3x "></i><br>*View Schedules</a>
+          <i class="far fa-calendar-alt fa-3x "></i><br>Master Schedules</a>
         </li>
 
         <li class="nav-item text-center">
           <a class="nav-link" data-toggle="tab" href="#facultySched">
-          <i class="fas fa-calendar-alt fa-3x "></i><br>*View Faculty Schedules</a>
+          <i class="fas fa-calendar-alt fa-3x "></i><br>User Schedules</a>
         </li>
 
         <li class="nav-item text-center">
           <a class="nav-link" data-toggle="tab" href="#adminViewAdvisees">
-          <i class="fas fa-user-friends fa-3x"></i><br>*Faculty Advisees</a>
+          <i class="fas fa-user-friends fa-3x"></i><br>Faculty Advisees</a>
         </li>
 
         <li class="nav-item text-center">
@@ -83,7 +83,7 @@ $connection = mysqli_connect('localhost','webUser','secretPass','epiz_25399161_t
 
         <li class="nav-item text-center">
           <a class="nav-link" data-toggle="tab" href="#removeCourse">
-          <i class="fas fa-minus fa-3x"></i><br>*Remove Course</a>
+          <i class="fas fa-minus fa-3x"></i><br>Remove Course</a>
         </li>
 
         <li class="nav-item text-center">
@@ -93,7 +93,7 @@ $connection = mysqli_connect('localhost','webUser','secretPass','epiz_25399161_t
 
          <li class="nav-item text-center">
           <a class="nav-link" data-toggle="tab" href="#removeSection">
-          <i class="far fa-calendar-minus fa-3x"></i><br>*Remove Section</a>
+          <i class="far fa-calendar-minus fa-3x"></i><br>Remove Section</a>
         </li>
 
          <li class="nav-item text-center">
