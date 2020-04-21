@@ -72,46 +72,50 @@ if(isset($_POST['midtermGrades'])){
 
 
 ?>
-<body>
-<?php
+
+
+<div class = 'container'>
+    <?php
         echo "<h2>".$studentFirstName." ".$studentLastName."</h2>";
         echo "<h3>".$courseId."-".$courseTitle."</h3>";
-?>
-<form >
-   <br>
-   <h5>Select A Midterm Grade</h5>
-    <select required name="midtermGrades">
-        <option selected="selected"></option>
-        <?php
-        foreach($midtermGradesArray as $midtermGrades){
-        ?>
-        <option value="<?php echo $midtermGrades; ?>"><?php echo $midtermGrades; ?></option>
-        <?php
-        }
-        ?>
-    </select>
-    <input type="submit" formmethod="post" value="Submit Midterm Grade" name="submitMidtermGrade">
-</form>
-<br>
-<br>
-<form>
-   <br>
-   <h5>Select A Final Grade</h5>
-    <select required name="finalGrades">
-        <option selected="selected"></option>
-        <?php
-        foreach($finalGradesArray as $finalGrades){
-        ?>
-        <option value="<?php echo $finalGrades; ?>"><?php echo $finalGrades; ?></option>
-        <?php
-        }
-        ?>
-    </select>
-    <input type="submit" formmethod="post" value="Submit Final Grade" name="submitFinalGrade">
-</form>
+    ?>
+    <form class = 'col-8'>
+       <br>
+       <label class = col-form-label>Midterm Grade:</label>
+        <select required name="midtermGrades" class = 'form-control'>
+            <option selected="selected"></option>
+            <?php
+            foreach($midtermGradesArray as $midtermGrades){
+            ?>
+            <option value="<?php echo $midtermGrades; ?>"><?php echo $midtermGrades; ?></option>
+            <?php
+            }
+            ?>
+        </select><br>
+        
+        <button class="btn btn-primary" type="submit" formmethod="post" value="Submit Midterm Grade" name="submitMidtermGrade">Submit</button>
+    </form>
+    <br>
+    <br>
+    <form class = 'col-8'>
+       <br>
+        <label class = col-form-label>Final Grade:</label>
+        <select required name="finalGrades" class = 'form-control'>
+            <option selected="selected"></option>
+            <?php
+            foreach($finalGradesArray as $finalGrades){
+            ?>
+            <option value="<?php echo $finalGrades; ?>"><?php echo $finalGrades; ?></option>
+            <?php
+            }
+            ?>
+        </select><br>
+        <button class="btn btn-primary" type="submit" formmethod="post" value="Submit Final Grade" name="submitFinalGrade">Submit</button>
+        <br />
+    </form>
 
 
-</body>
+
 
 <?php
 require_once '../../_includes/private_footer.php';

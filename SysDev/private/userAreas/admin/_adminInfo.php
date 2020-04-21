@@ -1,5 +1,5 @@
 
-<div class="card text-white bg-primary mb-12 col-12" >
+<div class="card text-white bg-primary mb-10 col-12" >
   <div class="card-header"><h3>Your Information</h3></div>
   <div class="card-body">
     <h4 class="card-title">Last Name:</h4>

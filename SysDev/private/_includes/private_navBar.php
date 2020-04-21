@@ -97,6 +97,13 @@ $currentURL = $_SERVER['REQUEST_URI'];
             ?>
           </li>
 
+          <?php
+            if(isset($_SESSION['role']) && $_SESSION['role']=='faculty' && $currentURL != '/SystemDesign/SysDev/private/userAreas/faculty/index.php'){
+              echo "<li class = 'nav-item'><a class = 'nav-link' href = 'index.php'><strong>&check;Back To Tools</strong></a></li>";
+                //echo $currentURL;
+            }
+          ?>
+
       </ul>
   </nav>
 
