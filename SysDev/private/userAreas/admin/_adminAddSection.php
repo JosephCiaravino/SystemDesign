@@ -1,43 +1,44 @@
 <?php
 
- 
+ if( !empty($_POST['submitNewSection']) ){
 
-//gets emester ID
-$queryGetSemesterID = "SELECT `semester_id` FROM epiz_25399161_testdb.semester WHERE ";
-$queryGetSemesterID.= "semester_year = ".$_POST['yearSelector']." AND `semester_term` = '";
-$queryGetSemesterID.= $_POST['termSelector']."';";
-	  
-$desiredSemesterID =  mysqli_fetch_assoc(mysqli_query($connection,$queryGetSemesterID))['semester_id'];	
-$desiredFaculty = $_POST['instructors_id'];
-$desiredRoom = $_POST['roomId'];
-$desiredSlot = (int) substr( $_POST['time_slot_id'],-1);
-$desiredCourseId = $_POST['course_id'];
+		//gets emester ID
+		$queryGetSemesterID = "SELECT `semester_id` FROM epiz_25399161_testdb.semester WHERE ";
+		$queryGetSemesterID.= "semester_year = ".$_POST['yearSelector']." AND `semester_term` = '";
+		$queryGetSemesterID.= $_POST['termSelector']."';";
+			  
+		$desiredSemesterID =  mysqli_fetch_assoc(mysqli_query($connection,$queryGetSemesterID))['semester_id'];	
+		$desiredFaculty = $_POST['instructors_id'];
+		$desiredRoom = $_POST['roomId'];
+		$desiredSlot = (int) substr( $_POST['time_slot_id'],-1);
+		$desiredCourseId = $_POST['course_id'];
 
 
 
-$checkAvailablilityQuery = "SELECT * FROM epiz_25399161_testdb.section WHERE ";
-$checkAvailablilityQuery.= "course_id = '".$desiredCourseId."' AND ";
-$checkAvailablilityQuery.= "semester_id = ".$desiredSemesterID." AND ";
-$checkAvailablilityQuery.= "faculty_id = ".$desiredFaculty." AND ";
-$checkAvailablilityQuery.= "room_id = ".$desiredRoom." AND ";
-$checkAvailablilityQuery.= "time_slot_id = ".$desiredSlot.";";
-echo $checkAvailablilityQuery."<br />";
+		$checkAvailablilityQuery = "SELECT * FROM epiz_25399161_testdb.section WHERE ";
+		$checkAvailablilityQuery.= "course_id = '".$desiredCourseId."' AND ";
+		$checkAvailablilityQuery.= "semester_id = ".$desiredSemesterID." AND ";
+		$checkAvailablilityQuery.= "faculty_id = ".$desiredFaculty." AND ";
+		$checkAvailablilityQuery.= "room_id = ".$desiredRoom." AND ";
+		$checkAvailablilityQuery.= "time_slot_id = ".$desiredSlot.";";
+		echo $checkAvailablilityQuery."<br />";
 
-if(empty(mysqli_fetch_assoc(mysqli_query($connection, $checkAvailablilityQuery) ) ) ==1){
-	echo "NOTING RETURNED<br />";
 
-	mysqli_query($connection, 'SET FOREIGN_KEY_CHECKS=0;');
+		if(empty(mysqli_fetch_assoc(mysqli_query($connection, $checkAvailablilityQuery) ) ) ==1){
+			echo "NOTING RETURNED<br />";
 
-	$insertSectionQuery = "INSERT INTO epiz_25399161_testdb.section (`course_id`,`semester_id`,`faculty_id`,`room_id`,`time_slot_id`) VALUES('";
-	$insertSectionQuery.= $desiredCourseId."', ".$desiredSemesterID.", ".$desiredFaculty.", ".$desiredRoom.", ";
-	$insertSectionQuery.= $desiredSlot.");";
-	mysqli_query($connection, $checkAvailablilityQuery);
-	echo $insertSectionQuery."<br >";
-}else{
-	echo print_r(mysqli_fetch_assoc(mysqli_query($connection, $checkAvailablilityQuery) ));
-	echo "A Section conflict exists.";
+
+			$insertSectionQuery = "INSERT INTO epiz_25399161_testdb.section (`course_id`,`semester_id`,`faculty_id`,`room_id`,`time_slot_id`) VALUES('";
+			$insertSectionQuery.= $desiredCourseId."', ".$desiredSemesterID.", ".$desiredFaculty.", ".$desiredRoom.", ";
+			$insertSectionQuery.= $desiredSlot.");";
+			mysqli_query($connection, 'SET foreign_key_checks = 0;');
+			mysqli_query($connection, $checkAvailablilityQuery);
+			echo $insertSectionQuery."<br >";
+		}else{
+			echo print_r(mysqli_fetch_assoc(mysqli_query($connection, $checkAvailablilityQuery) ));
+			echo "A Section conflict exists.";
+		}
 }
-
 //echo print_r( mysqli_fetch_assoc() );
 
 ?>

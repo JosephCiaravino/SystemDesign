@@ -148,7 +148,10 @@ $connection = mysqli_connect('localhost','webUser','secretPass','epiz_25399161_t
         </li>
 
 
-        
+        <li class="nav-item text-center">
+          <a class="nav-link" data-toggle="tab" href="#stuReg">
+          <i ci class="fas fa-tasks fa-3x"></i><br>Register Student</a>
+        </li>
 
     </ul>
 
@@ -260,6 +263,12 @@ $connection = mysqli_connect('localhost','webUser','secretPass','epiz_25399161_t
       <div class = "tab-pane fade" id = "facultySched"><hr>
         <div class = "row">
           <?php require_once "_adminViewFacultySchedule.php";?>
+        </div>
+      </div>
+
+      <div class = "tab-pane fade" id = "stuReg"><hr>
+        <div class = "row">
+          <?php require_once "_adminStudentReg.php";?>
         </div>
       </div>
 

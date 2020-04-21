@@ -1,3 +1,15 @@
+<?php
+	
+	if(isset($_POST['course_id_del']) && !empty($_POST['submitDeleteSection']) ){
+		$removeSectionQuery = "DELETE FROM epiz_25399161_testdb.section WHERE `section_id` = ";
+		$removeSectionQuery.= $_POST['course_id_del'].";";
+		echo $removeSectionQuery;
+		mysqli_query($connection, $removeSectionQuery);
+	}
+
+?>
+
+
 <h2 class = 'col-4'>Remove Section</h2>
 
 
@@ -5,12 +17,12 @@
 	<div class = 'form-group'>	
 		
 		  <label class="col-form-label" for="newcoursename">Enter ID of Section To Remove</label>
-		  <input type="text" class="form-control" name = "course_title" id="newcoursename">
+		  <input type="text" class="form-control" name = "course_id_del" id="newcoursename">
 		
 		
 		<br /><!--End Student SPecific-->
 
-		<button class="btn btn-primary" name = "submitNewCourse" value = "submitNewCourse">Remove this section</button>
+		<button class="btn btn-primary" name = "submitDeleteSection" value = "submitDeleteSection">Remove this section</button>
 	</div>
 
 </form>
