@@ -86,7 +86,20 @@ $("#adminUpdateUser").on("change", function(){
 
 
 
+// #queryFacSched
+//#queryStuSched
 
+$("#queryFacSched").on('keyup',function(){
+	console.log("FACULTY");
+	$("#queryStuSched").val("");
+
+});
+
+$("#queryStuSched").on('keyup',function(){
+	console.log("STUDENT");
+	$("#queryFacSched").val("");
+
+});
 
 
 

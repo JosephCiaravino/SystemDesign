@@ -25,19 +25,15 @@ require_once "../../_includes/functionalityScripts/pageRestrictionScript.php";
         </li>
 
         <li class="nav-item text-center">
-          <a class="nav-link" data-toggle="tab" href="#editDetails">
-          <i class="fas fa-user-edit fa-3x "></i><br>Your Details</a>
-        </li>
-
-        <li class="nav-item text-center">
           <a class="nav-link" data-toggle="tab" href="#CurrentAssignments">
           <i class="far fa-calendar-alt fa-3x "></i><br>Teaching Schedules</a>
-        </li>      
+        </li>
 
          <li class="nav-item text-center">
           <a class="nav-link" data-toggle="tab" href="#advisees">
           <i class="far fa-edit fa-3x "></i><br>Advisees</a>
-         </li>
+        </li>
+
 
          <li class="nav-item text-center">
           <a class="nav-link" data-toggle="tab" href="#rosters">
@@ -46,7 +42,7 @@ require_once "../../_includes/functionalityScripts/pageRestrictionScript.php";
         
         <li class="nav-item text-center">
           <a class="nav-link" data-toggle="tab" href="#editDetails">
-          <i class="fas fa-user-edit fa-3x "></i><br>Your Details</a>
+          <i class="fas fa-user-edit fa-3x "></i><br>Edit Details</a>
         </li>
     </ul>    
     <!--
@@ -68,7 +64,6 @@ require_once "../../_includes/functionalityScripts/pageRestrictionScript.php";
         </div>
       </div>
 
-     
 
       <div class = "tab-pane fade" id = "advisees"><hr>
         <div class = "row">    

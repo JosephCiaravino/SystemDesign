@@ -32,7 +32,7 @@ foreach($sectionIdArray as $sectionId){
     $semesterId = $semesterId['semester_id'];
 
     
-    if($semesterId == $currentSemesterID){
+    if($semesterId == $currentSemesterIDnum){
         $sectionInfoQuery = "SELECT course_id, room_id, time_slot_id, faculty_id FROM section WHERE section_id='".$sectionId."';";
         $sectionInfoResult = mysqli_fetch_assoc(mysqli_query($connection, $sectionInfoQuery));
         //get course id

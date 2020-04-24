@@ -63,8 +63,8 @@ if($studentType == "undergrad"){
 
 ?>
 
-
-
+<div class = 'container'>
+<div class = 'row'>
 <table class="table-striped col-12 table-bordered">
   <thead>
     <tr class ="table-primary">
@@ -123,7 +123,7 @@ if($studentType == "undergrad"){
 
   </tbody>
 </table><br><br><hr>
-
+</div>
 <?php
       }
     
@@ -139,7 +139,7 @@ if($studentType == "undergrad"){
             array_push($minorReqIdArray, $minorReqList['req_course_id']);
         }   
     ?>
-      
+ <div class = 'row'>    
       <table class="table-striped col-12 table-bordered">
   <thead>
     <tr class ="table-primary">
@@ -188,6 +188,7 @@ if($studentType == "undergrad"){
 
   </tbody>
 </table><br><br><hr>
+</div>
 
 <?php
 }
@@ -225,8 +226,8 @@ elseif($studentType == "grad"){
     }
     
     ?>
-
-          <table class="table-striped col-12 table-bordered">
+<div class = 'row'>
+<table class="table-striped col-12 table-bordered">
   <thead>
     <tr class ="table-primary">
       <th>Graduate Requirements - <?php echo $gradProgramTitle; ?></th>
@@ -276,6 +277,8 @@ elseif($studentType == "grad"){
 
               </tbody>
 </table>
+</div>
+</div>
 <?php
 require_once '../../_includes/private_footer.php';
 require_once '../../_includes/private_requiredScripts.php';

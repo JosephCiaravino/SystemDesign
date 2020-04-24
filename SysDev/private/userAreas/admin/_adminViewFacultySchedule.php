@@ -2,7 +2,9 @@
 
  // $globalSemesterIDLookup
 // $globalAllTimeSlotsLookup
-// $globalCourseIDLookup
+// $globalCourseIDLookup\
+
+
 if( !empty($_POST['submitFacQuery']) && $_POST['submitFacQuery'] != "" && !empty($_POST['queryFacSched']) ){    
 
     $queryFactultySchedule = "SELECT * FROM epiz_25399161_testdb.section WHERE faculty_id = ";
@@ -11,10 +13,27 @@ if( !empty($_POST['submitFacQuery']) && $_POST['submitFacQuery'] != "" && !empty
     $facSchedResource = mysqli_query($connection, $queryFactultySchedule);
     echo $queryFactultySchedule."<br />FACULTY SELECTED <br />".print_r($facSchedResource);
 
-    
+    $facultyId=$_POST['queryFacSched'];
 
+    $facultyNameQuery = "SELECT First_Name, Last_Name FROM epiz_25399161_testdb.user WHERE User_Id = ";
+    $facultyNameQuery.= $_POST['queryFacSched'].";";
+    $facultyNameRes = mysqli_query($connection, $facultyNameQuery);
+    //echo $facultyNameQuery;
+    $facNameSet = mysqli_fetch_assoc($facultyNameRes);
+    
 }else if(!empty($_POST['submitStuQuery']) && $_POST['submitStuQuery']!="" && !empty($_POST['queryStuSched']) ){
-    echo "STUDENT SELECTED";
+    $queryStudentSchedule = "SELECT section_id, student_id FROM epiz_25399161_testdb.class_registration WHERE student_id = ";
+    $queryStudentSchedule.= $_POST['queryStuSched'].";";
+
+    $stuSchedResource = mysqli_query($connection, $queryStudentSchedule);
+    
+    $studentId=$_POST['queryStuSched'];
+
+    $studentNameQuery = "SELECT First_Name, Last_Name FROM epiz_25399161_testdb.user WHERE User_Id = ";
+    $studentNameQuery.= $_POST['queryStuSched'].";";
+    $studentNameRes = mysqli_query($connection, $studentNameQuery);
+    //echo $facultyNameQuery;
+    $stuNameSet = mysqli_fetch_assoc($studentNameRes);
 
 }
 
@@ -24,7 +43,7 @@ if( !empty($_POST['submitFacQuery']) && $_POST['submitFacQuery'] != "" && !empty
 
 <form class = 'col-6' action ="<?php echo $_SERVER['PHP_SELF'] ?>" method = "POST">
     <!--Security hole.  Don't use PHP_Self-->
-    <legend>View Faculty Schedule</legend>
+    <legend>View Current Faculty Schedule</legend>
     <div class = 'form-group'> 
           <label class="col-form-label" for="queryFacSched">Faculty ID</label>
           <input type="text" class="form-control" name = "queryFacSched" id="queryFacSched">
@@ -34,7 +53,7 @@ if( !empty($_POST['submitFacQuery']) && $_POST['submitFacQuery'] != "" && !empty
             </button>
     </div>
 
-    <legend>View Student Schedule</legend>
+    <legend>View Current Student Schedule</legend>
     <div class = 'form-group'> 
           <label class="col-form-label" for="queryStuSched">Student ID</label>
           <input type="text" class="form-control" name = "queryStuSched" id="queryStuSched">
@@ -44,7 +63,15 @@ if( !empty($_POST['submitFacQuery']) && $_POST['submitFacQuery'] != "" && !empty
             </button>
     </div>
 </form>
+<?php
+    if(!empty($facNameSet) ){
+        echo "<h3 class ='col-10'>Viewing schedule of <br />".$facNameSet['Last_Name'].", ".$facNameSet['First_Name']."</h3>";
+    }else if(!empty($stuNameSet)){
+        echo "<h3 class ='col-10'>Viewing schedule of <br />".$stuNameSet['Last_Name'].", ".$stuNameSet['First_Name']."</h3>";
+    }
 
+
+?>
 
 <table class ='table-striped col-12 table-bordered'>
     <thead>
@@ -54,26 +81,88 @@ if( !empty($_POST['submitFacQuery']) && $_POST['submitFacQuery'] != "" && !empty
         <th>Course ID</th>
         <th>Course Title</th>
         <th>Location</th>
+        <th>Days</th>
         <th>Time</th>
     </thead>
 
     <tbody>
         <?php
-        while($facSchedResourceRow = mysqli_fetch_assoc($facSchedResource)){
+
+        if(!empty($facSchedResource) ){
+            while($facSchedResourceRow = mysqli_fetch_assoc($facSchedResource)){
+                echo "<tr>";
+                echo "<td>".$facSchedResourceRow['section_id']."</td>";
+
+                $section_id = $facSchedResourceRow['section_id'];
+                $queryGetTimeSlotFromSec = "SELECT time_slot_id FROM section WHERE section_id = ".$section_id.";";
+                $theID = mysqli_fetch_assoc(mysqli_query($connection, $queryGetTimeSlotFromSec));
+
+
+                 $timeSlotId = $theID['time_slot_id'];
+
+
+                 $timePeriodQuery = "SELECT start_time, end_time FROM time_slot_period, time_period WHERE ";
+                 $timePeriodQuery.="time_slot_period.time_slot_id='".$timeSlotId."' AND ";
+                 $timePeriodQuery.="time_slot_period.time_period_id = time_period.time_period_id;";
+                 $timePeriods = mysqli_fetch_assoc(mysqli_query($connection, $timePeriodQuery));
+                
+                 $startTime = $timePeriods['start_time'];
+                 $endTime = $timePeriods['end_time'];
+
+                 echo "<td>".$globalSemesterIDLookup[ $facSchedResourceRow['semester_id'] ]."</td>";
+                 echo "<td>".transform_userID($facSchedResourceRow['faculty_id'])."</td>";
+                 echo "<td>".$facSchedResourceRow['course_id']."</td>";
+                 echo "<td>".$globalCourseIDLookup[ $facSchedResourceRow['course_id'] ]."</td>";
+                 echo "<td>".$globalBuildingsIDLookup[ $facSchedResourceRow['room_id'] ]."</td>";
+                
+                 echo "<td>".$courseDaysLookup[ $facSchedResourceRow['time_slot_id']]."</td>";
+                 echo "<td>". $startTime."-".$endTime."</td>";
+                 echo "</tr>";
+
+            }
+
+
+    }else if(!empty($stuSchedResource)){
+        while($stuSchedResourceRow = mysqli_fetch_assoc($stuSchedResource)){
+            echo print_r($stuSchedResourceRow);
+               
             echo "<tr>";
-            echo "<td>".$facSchedResourceRow['section_id']."</td>";
-            echo "<td>".$globalSemesterIDLookup[ $facSchedResourceRow['semester_id'] ]."</td>";
-            echo "<td>".transform_userID($facSchedResourceRow['faculty_id'])."</td>";
-            echo "<td>".$facSchedResourceRow['course_id']."</td>";
-            echo "<td>".$globalCourseIDLookup[ $facSchedResourceRow['course_id'] ]."</td>";
-            echo "<td>".$globalBuildingsIDLookup[ $facSchedResourceRow['room_id'] ]."</td>";
-            echo "<td>".$globalAllTimeSlots[ $facSchedResourceRow['time_slot_id'] ]."</td>";
-            echo "</tr>";
+            echo "<td>".$stuSchedResourceRow['section_id']."</td>";
+
+            $section_id = $stuSchedResourceRow['section_id'];
+            $queryGetInfoFromSec = "SELECT * FROM section WHERE section_id = ".$section_id.";";
+            $studentSectionRes = mysqli_query($connection, $queryGetInfoFromSec);
+            while($sectionResourceRow = mysqli_fetch_assoc($studentSectionRes)){
+                
+                $section_id = $sectionResourceRow['section_id'];
+                $queryGetTimeSlotFromSec = "SELECT time_slot_id FROM section WHERE section_id = ".$section_id.";";
+                $theID = mysqli_fetch_assoc(mysqli_query($connection, $queryGetTimeSlotFromSec));
+
+
+                 $timeSlotId = $theID['time_slot_id'];
+
+
+                 $timePeriodQuery = "SELECT start_time, end_time FROM time_slot_period, time_period WHERE ";
+                 $timePeriodQuery.="time_slot_period.time_slot_id='".$timeSlotId."' AND ";
+                 $timePeriodQuery.="time_slot_period.time_period_id = time_period.time_period_id;";
+                 $timePeriods = mysqli_fetch_assoc(mysqli_query($connection, $timePeriodQuery));
+                
+                 $startTime = $timePeriods['start_time'];
+                 $endTime = $timePeriods['end_time'];
+
+                echo "<td>".$globalSemesterIDLookup[ $sectionResourceRow['semester_id'] ]."</td>";
+                echo "<td>".transform_userID($sectionResourceRow['faculty_id'])."</td>";
+                echo "<td>".$sectionResourceRow['course_id']."</td>";
+                echo "<td>".$globalCourseIDLookup[ $sectionResourceRow['course_id'] ]."</td>";
+                echo "<td>".$globalBuildingsIDLookup[ $sectionResourceRow['room_id'] ]."</td>";
+                echo "<td>".$courseDaysLookup[ $sectionResourceRow['time_slot_id']]."</td>";
+                echo "<td>". $startTime."-".$endTime."</td>";
+                 echo "</tr>";
+            }
+
 
         }
-
-
-
+    }
 
         ?>
         
@@ -83,6 +172,8 @@ if( !empty($_POST['submitFacQuery']) && $_POST['submitFacQuery'] != "" && !empty
 </table>
 
 
+
+<!--========================================-->
 
 
 

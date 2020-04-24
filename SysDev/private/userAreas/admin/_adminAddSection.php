@@ -66,19 +66,27 @@
 	  	<option value = '<?php echo date('Y') ?>'><?php echo date('Y') ?></option>
 	  	<option value = '<?php echo date('Y')+1 ?>'><?php echo date('Y')+1 ?></option>
 	  </select>
-<!--
+
 	  <label class="col-form-label" for = 'bldgSelector'>Building</label>
 	  <select id = 'bldgSelector' name = 'bldgSelector' class = 'form-control' >
 	  	<option>Campus Center Building</option>
 	  	<option>Computer Science Building</option>
 	  	<option>Education Building</option>
 	  </select>
--->
-	  <label class="col-form-label" for="roomNum">Room ID</label>
+
+	  <label class="col-form-label" for="roomNum">Room Number</label>
 	  <input type="text" class="form-control" id="roomNum" name ='roomId' required>
+
+	  <label class="col-form-label" for="days_id">Days</label>
+	  <select  class="form-control" id="days_id" name = 'days_id' required>
+	  	
+	  </select>
+	  
 
 	  <label class="col-form-label" for="time_slot_id">Time Slot</label>
 	  <select type="text" class="form-control" id="time_slot_id" name = 'time_slot_id' required>
+
+	  
 	  	<?php
 	  		foreach ($globalAllTimeSlots as $slot) {
 	  			echo "<option val = '$slot'> Time Slot - ".$slot."</option>";

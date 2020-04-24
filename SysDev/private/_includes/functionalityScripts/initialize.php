@@ -29,10 +29,15 @@ $populateDropDownDeptQuery = "SELECT `dept_name`, `dept_id` FROM epiz_25399161_t
 	    $results = mysqli_query($connection, $populateDropDownDeptQuery);
 	    $deptRet ="";
 
-
-$populateSemester = "SELECT * FROM epiz_25399161_testdb.semester ORDER BY semester_year DESC;";
+$semesterIDintegers = array();
+$populateSemester = "SELECT * FROM epiz_25399161_testdb.semester ORDER BY semester_start DESC;";
 	$semResults = mysqli_query($connection, $populateSemester);
+	while($semResRow = mysqli_fetch_assoc($semResults)){
+	array_push($semesterIDintegers, $semResRow['semester_id']);
 
+	}
+		//echo print_r($semesterIDintegers)."<br>";
+	$currentSemesterIDnum = $semesterIDintegers[1];
 //creates an array of pairs of courseID/course name.========================================
 
 $globalCourseIDLookup = array();
@@ -42,6 +47,8 @@ $queryCourseNameLookupGlobal = "SELECT `course_id`,`course_title` FROM epiz_2539
 		$globalCourseIDLookup[$courseLookupResultRow['course_id']] = $courseLookupResultRow['course_title'];
 
 	} 
+
+
 
 //creates an array of semester ID/time/year===================================
 $globalSemesterIDLookup = array();
@@ -70,42 +77,44 @@ $nextSemesterID=$globalSemesterIDLookup[count($globalSemesterIDLookup)];
 	
 $currentSemesterID = $globalSemesterIDLookup[count($globalSemesterIDLookup)-1];
 
-
 //Gets all time slot Id nums
 $globalAllTimeSlots = array();
-$queryGetTimeSlots = "SELECT * FROM epiz_25399161_testdb.time_period ORDER BY `time_slot_id` ASC;";
+$queryGetTimeSlots = "SELECT * FROM epiz_25399161_testdb.time_period ORDER BY `time_period_id` ASC;";
 $timeSlotResource = mysqli_query($connection, $queryGetTimeSlots);
 	array_push($globalAllTimeSlots,0);
 	while($timeSlotRow = mysqli_fetch_assoc($timeSlotResource)){
-		array_push($globalAllTimeSlots, $timeSlotRow['time_slot_id']);
+		array_push($globalAllTimeSlots, $timeSlotRow['time_period_id'] = $timeSlotRow['start_time']."-".$timeSlotRow['end_time']);
 	}
-echo print_r($globalAllTimeSlots);
+print_r($globalAllTimeSlots);
 
 
 $globalBuildingsIDLookup = array();
 $queryGetAllBldgs = "SELECT * FROM epiz_25399161_testdb.rooms;";
 $buildingsResource = mysqli_query($connection, $queryGetAllBldgs);
-	array_push($globalBuildingsIDLookup, 0);
+	array_push($globalBuildingsIDLookup, "");
 	while($buildingsResourceRow = mysqli_fetch_assoc($buildingsResource)){
 		array_push($globalBuildingsIDLookup, $buildingsResourceRow['room_id'] = $buildingsResourceRow['building']." Room: ".$buildingsResourceRow['room_number'] );
 	}
 
 //echo print_r($globalAdvisorIDLookup);
+    $courseDaysLookup = array();
+  	$courseDaysQuery = "SELECT * FROM time_slot_days;";
+    $courseDaysResult = mysqli_query($connection, $courseDaysQuery);
+    //array_push($courseDaysArray,0);
+    array_push($courseDaysLookup,0);
+    while($courseDayRow = mysqli_fetch_assoc($courseDaysResult)){
+    	//echo $courseDayRow['day_name'];
+    	if( !array_key_exists($courseDayRow['time_slot_id'], $courseDaysLookup) ){
+    		 array_push($courseDaysLookup, substr($courseDayRow['day_name'],0,3) );
+    	}else if( array_key_exists($courseDayRow['time_slot_id'], $courseDaysLookup) ){
+    		$courseDaysLookup[ $courseDayRow['time_slot_id'] ] .= "/".substr($courseDayRow['day_name'],0,3);
+    	}
 
 
+    	
+	}
 
-
-
-
-
-
-
-
-
-
-
-
-
+//echo print_r($courseDaysLookup);
 
 
 ?>

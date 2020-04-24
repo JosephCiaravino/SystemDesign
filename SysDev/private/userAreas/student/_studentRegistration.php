@@ -22,3 +22,5 @@
 <div class = "col-12">
   <p> lorem ipsum.  Lorem ipusum.  lorem ipsum.  Lorem ipusum.  lorem ipsum.  Lorem ipusum.  lorem ipsum.  Lorem ipusum.  lorem ipsum.  Lorem ipusum.  lorem ipsum.  Lorem ipusum.  lorem ipsum.  Lorem ipusum.  lorem ipsum.  Lorem ipusum.  lorem ipsum.  Lorem ipusum.  lorem ipsum.  Lorem ipusum.  lorem ipsum.  Lorem ipusum.  lorem ipsum.  Lorem ipusum.  lorem ipsum.  Lorem ipusum.  lorem ipsum.  Lorem ipusum.  lorem ipsum.  Lorem ipusum.  lorem ipsum.  Lorem ipusum.  lorem ipsum.  Lorem ipusum.  </p>
 </div>
+
+<!--https://www.afterhoursprogramming.com/tutorial/sql/date-and-datetime/-->

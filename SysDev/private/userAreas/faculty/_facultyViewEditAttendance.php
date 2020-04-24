@@ -42,8 +42,8 @@ $courseInfo = mysqli_fetch_assoc(mysqli_query($connection, $courseInformationQue
 $courseId = $courseInfo['course_id'];
 $courseTitle = $courseInfo['course_title'];
 
-echo "<h2>".$studentFirstName." ".$studentLastName."</h2>";
-echo "<h3>".$courseId."-".$courseTitle."</h3>";
+//echo "<h2>".$studentFirstName." ".$studentLastName."</h2>";
+//echo "<h3>".$courseId."-".$courseTitle."</h3>";
 
 $attendanceQuery = "SELECT * FROM attendance WHERE student_id='".$studentId."' AND section_id='".$sectionId."' ORDER BY date DESC;";
 $attendanceResult = mysqli_query($connection, $attendanceQuery);
@@ -55,58 +55,64 @@ while( $attendanceList = mysqli_fetch_assoc($attendanceResult)){
      }
 ?>
 
-        <table class="table-striped col-12 table-bordered">
-            <thead class = thead-dark>
-              <tr colspan = "3">
-                <th class = "table-primary">Attendance</th>
-              </tr>
-              <tr class = "table-primary">
-                <th>Date</th>
-                <th>Attended</th>       
-              </tr>
-            </thead>
-            <tbody>
-<?php
-foreach($dateArray as $index => $date){
-    echo "<tr>";
-    echo "<td>".$date."</td>";
-    echo "<td>".$attendanceArray[$index]."</td>";
-    echo "</tr>";
+<div class = 'container'>
+  <div class = 'row'>
+    <h2><?php echo $studentFirstName." ".$studentLastName ?></h2>
+    <h3><?php echo $courseId."-".$courseTitle?></h3>
+            
+            <table class="table-striped col-12 table-bordered">
+                <thead class = thead-dark>
+                  <tr colspan = "3">
+                    <th class = "table-primary">Attendance</th>
+                  </tr>
+                  <tr class = "table-primary">
+                    <th>Date</th>
+                    <th>Attended</th>       
+                  </tr>
+                </thead>
+                <tbody>
+    <?php
+    foreach($dateArray as $index => $date){
+        echo "<tr>";
+        echo "<td>".$date."</td>";
+        echo "<td>".$attendanceArray[$index]."</td>";
+        echo "</tr>";
+        
+    }
+    ?>
+
+                </tbody>
+    </table>
+  </div>
+    <br>
+    <br>
+
+    <?php
+    $currentSemesterStartAndEndDateQuery = "SELECT semester_start, semester_finish FROM semester WHERE ";
+    $currentSemesterStartAndEndDateQuery.= "semester_id='".$currentSemesterID."';";
+    $dateLimitResults = mysqli_fetch_assoc(mysqli_query($connection, $currentSemesterStartAndEndDateQuery));
+    $startDate = $dateLimitResults['semester_start'];
+    $endDate = $dateLimitResults['semester_finish'];
+    ?>
+
+    <form name='Attendance' method='POST' class = 'row'>
+    <label for='attended'>Date:</label>
+
+    <input type='date' id='attendance' name='attended' value='<?php echo date("Y-m-d");?>' min='<?php echo $startDate;?>' max='<?php echo $endDate?>' >
     
-}
-?>
+    <label>Attendance:</label>
+    <select required name="attendance">
+            <option selected="selected"></option>
+            <option value="P">Present</option>
+            <option value="A">Absent</option>
+        </select>
+    <button class = 'btn btn-primary' name = 'submit' value = 'Enter Attendance'>Enter Attendance</button>
 
-            </tbody>
-</table>
-<br>
-<br>
+    <!--<input type='submit' name='submit' value='Enter Attendance'/>-->
+    </form>
+    
 
-<?php
-$currentSemesterStartAndEndDateQuery = "SELECT semester_start, semester_finish FROM semester WHERE ";
-$currentSemesterStartAndEndDateQuery.= "semester_id='".$currentSemesterID."';";
-$dateLimitResults = mysqli_fetch_assoc(mysqli_query($connection, $currentSemesterStartAndEndDateQuery));
-$startDate = $dateLimitResults['semester_start'];
-$endDate = $dateLimitResults['semester_finish'];
-
-echo "<form name='Attendance' method='POST'>";
-echo "<label for='attended'>Date:</label>";
-
-echo "<input type='date' id='attendance' name='attended'";
-echo     "value='".date("Y-m-d")."'";
-echo "min='".$startDate."' max='".$endDate."'>";
-?>
-<label>Attendance:</label>
-<select required name="attendance">
-        <option selected="selected"></option>
-        <option value="P">Present</option>
-        <option value="A">Absent</option>
-    </select>
-
-<?php
-echo "<input type='submit' name='submit' value='Enter Attendance'/>";
-echo "</form>";
-?>
-
+</div>
 
 <?php
 require_once '../../_includes/private_footer.php';

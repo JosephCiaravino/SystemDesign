@@ -56,9 +56,9 @@
 			   	
 			   	$adviseePersonalRows = mysqli_fetch_assoc(mysqli_query($connection, $queryAdvisees));
 
-
+//href="javascript:window.open('some.html', 'yourWindowName', 'width=200,height=150');">Test</a>
 			   	echo "<tr>";
-			   	echo"<td>".transform_userID($adviseePersonalRows['User_Id'])."</td>";
+			   	echo"<td><a title = 'View Degree Progress' target = '_blank' href = '_adminDegreeAudit.php?uid=111' >".transform_userID($adviseePersonalRows['User_Id'])."</a></td>";
 			   	echo"<td>".$adviseePersonalRows['Last_name'].", ".$adviseePersonalRows['First_Name']."</td>";
 			   	echo"<td>".$adviseePersonalRows['Email']."</td>";
 			   	echo"<td>".$adviseePersonalRows['Phone']."</td>";

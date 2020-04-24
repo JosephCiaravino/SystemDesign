@@ -1,3 +1,4 @@
+
 <?php
 $facultyId=$_SESSION['id'];
 ?>
@@ -21,7 +22,7 @@ $facultyId=$_SESSION['id'];
     
         //current semester is 1, next semester is 9
   //To Get: course_title, course_id, time_slot_day, period (from time_slot_period), credits, semester
-        $getCurrentSchedule = "SELECT course_id, room_id, time_slot_id FROM section WHERE section.faculty_id='".$facultyId."' AND section.semester_id='".$currentSemesterID."';";
+        $getCurrentSchedule = "SELECT course_id, room_id, time_slot_id FROM section WHERE section.faculty_id='".$facultyId."' AND section.semester_id='".$currentSemesterIDnum."';";
         $currentCoursesTeaching = mysqli_query($connection, $getCurrentSchedule);
         $courseArray = array();
         $roomArray = array();
@@ -31,6 +32,9 @@ $facultyId=$_SESSION['id'];
             array_push($roomArray, $currentlyTeachingList['room_id']);
             array_push($timeSlotArray, $currentlyTeachingList['time_slot_id']);
         }
+  
+
+
         //foreach($sectionArray as $index => $sectionId){
         foreach($courseArray as $index => $courseId){
             //TO GET :semester
@@ -45,6 +49,7 @@ $facultyId=$_SESSION['id'];
             $courseDays = array();
             while($courseDaysGrabber = mysqli_fetch_assoc($timeSlotDays)){
                 array_push($courseDays, $courseDaysGrabber['day_name']);
+             //   echo print_r($courseDaysGrabber);
             }
             
             $timePeriodQuery = "SELECT start_time, end_time FROM time_slot_period, time_period WHERE ";
@@ -53,6 +58,8 @@ $facultyId=$_SESSION['id'];
             $timePeriods = mysqli_fetch_assoc(mysqli_query($connection, $timePeriodQuery));
             $startTime = $timePeriods['start_time'];
             $endTime = $timePeriods['end_time'];
+
+
             
             $semesterQuery = "SELECT semester_term, semester_year FROM semester WHERE semester.semester_id='".$currentSemesterID."';";
             $semesterInfo = mysqli_fetch_assoc(mysqli_query($connection, $semesterQuery));
