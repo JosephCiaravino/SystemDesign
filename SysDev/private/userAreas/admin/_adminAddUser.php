@@ -1,3 +1,7 @@
+<?php
+	require_once "../../_includes/functionalityScripts/databaseScripts/db_script_add_user.php";
+
+?>
 <h2 class = 'col-4'>Add User</h2>
 
 

@@ -1,5 +1,6 @@
 <?php
 
+if(!empty($_POST['submitNewUser'])){
 
       //CREATE QUERY++++++++++++++++++++++++++++++++ 
       $connection = mysqli_connect('localhost','webUser','secretPass','epiz_25399161_testdb');
@@ -162,8 +163,8 @@
       unset($_POST['enrollment']);
       unset($_POST['grad-under']);
 
-     header('location: '.$_SERVER['PHP_SELF']); //security hole, but ok for now before deployment
-
+     //header('location: '.$_SERVER['PHP_SELF']); //security hole, but ok for now before deployment
+}
 
 
 ?>
