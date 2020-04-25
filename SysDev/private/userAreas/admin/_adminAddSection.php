@@ -33,6 +33,7 @@
 			$insertSectionQuery.= $desiredSlot.");";
 			mysqli_query($connection, 'SET foreign_key_checks = 0;');
 			mysqli_query($connection, $checkAvailablilityQuery);
+			
 			echo $insertSectionQuery."<br >";
 		}else{
 			echo print_r(mysqli_fetch_assoc(mysqli_query($connection, $checkAvailablilityQuery) ));
@@ -79,6 +80,12 @@
 
 	  <label class="col-form-label" for="days_id">Days</label>
 	  <select  class="form-control" id="days_id" name = 'days_id' required>
+	  		<?php
+	  			foreach ($courseDaysLookup as $key => $slot) {
+	  			 
+	  			 	echo "<option val = '$key'>  ".$slot."</option>";
+	  		}
+	  		?>
 	  	
 	  </select>
 	  
@@ -88,8 +95,8 @@
 
 	  
 	  	<?php
-	  		foreach ($globalAllTimeSlots as $slot) {
-	  			echo "<option val = '$slot'> Time Slot - ".$slot."</option>";
+	  		foreach ($globalAllTimeSlots as $key => $slot) {
+	  			echo "<option val = '$key'> ".$slot."</option>";
 	  		}
 	  	?>
 	  </select>

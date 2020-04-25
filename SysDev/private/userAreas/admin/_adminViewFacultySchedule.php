@@ -11,15 +11,17 @@ if( !empty($_POST['submitFacQuery']) && $_POST['submitFacQuery'] != "" && !empty
     $queryFactultySchedule.= $_POST['queryFacSched']." ORDER BY semester_id DESC;";
 
     $facSchedResource = mysqli_query($connection, $queryFactultySchedule);
-    echo $queryFactultySchedule."<br />FACULTY SELECTED <br />".print_r($facSchedResource);
+    //echo $queryFactultySchedule."<br />FACULTY SELECTED <br />".print_r($facSchedResource);
 
     $facultyId=$_POST['queryFacSched'];
 
-    $facultyNameQuery = "SELECT First_Name, Last_Name FROM epiz_25399161_testdb.user WHERE User_Id = ";
+    $facultyNameQuery = "SELECT First_Name, Last_Name, User_Id, Role FROM epiz_25399161_testdb.user WHERE User_Id = ";
     $facultyNameQuery.= $_POST['queryFacSched'].";";
     $facultyNameRes = mysqli_query($connection, $facultyNameQuery);
     //echo $facultyNameQuery;
     $facNameSet = mysqli_fetch_assoc($facultyNameRes);
+    $role = $facNameSet['Role'];
+    $uid = $facNameSet['User_Id'];
     
 }else if(!empty($_POST['submitStuQuery']) && $_POST['submitStuQuery']!="" && !empty($_POST['queryStuSched']) ){
     $queryStudentSchedule = "SELECT section_id, student_id FROM epiz_25399161_testdb.class_registration WHERE student_id = ";
@@ -29,11 +31,13 @@ if( !empty($_POST['submitFacQuery']) && $_POST['submitFacQuery'] != "" && !empty
     
     $studentId=$_POST['queryStuSched'];
 
-    $studentNameQuery = "SELECT First_Name, Last_Name FROM epiz_25399161_testdb.user WHERE User_Id = ";
+    $studentNameQuery = "SELECT First_Name, Last_Name,User_Id, Role FROM epiz_25399161_testdb.user WHERE User_Id = ";
     $studentNameQuery.= $_POST['queryStuSched'].";";
     $studentNameRes = mysqli_query($connection, $studentNameQuery);
     //echo $facultyNameQuery;
     $stuNameSet = mysqli_fetch_assoc($studentNameRes);
+    $role = $stuNameSet['Role'];
+    $uid = $stuNameSet['User_Id'];
 
 }
 
@@ -46,7 +50,7 @@ if( !empty($_POST['submitFacQuery']) && $_POST['submitFacQuery'] != "" && !empty
     <legend>View Current Faculty Schedule</legend>
     <div class = 'form-group'> 
           <label class="col-form-label" for="queryFacSched">Faculty ID</label>
-          <input type="text" class="form-control" name = "queryFacSched" id="queryFacSched">
+          <input type="number" class="form-control" name = "queryFacSched" id="queryFacSched">
 
           <button class="btn btn-primary" name = "submitFacQuery" value = "submitFacQuery">
             Query Faculty Schedule
@@ -56,7 +60,7 @@ if( !empty($_POST['submitFacQuery']) && $_POST['submitFacQuery'] != "" && !empty
     <legend>View Current Student Schedule</legend>
     <div class = 'form-group'> 
           <label class="col-form-label" for="queryStuSched">Student ID</label>
-          <input type="text" class="form-control" name = "queryStuSched" id="queryStuSched">
+          <input type="number" class="form-control" name = "queryStuSched" id="queryStuSched">
 
           <button class="btn btn-primary" name = "submitStuQuery" value = "submitStuQuery">
             Query Faculty Schedule
@@ -65,9 +69,11 @@ if( !empty($_POST['submitFacQuery']) && $_POST['submitFacQuery'] != "" && !empty
 </form>
 <?php
     if(!empty($facNameSet) ){
-        echo "<h3 class ='col-10'>Viewing schedule of <br />".$facNameSet['Last_Name'].", ".$facNameSet['First_Name']."</h3>";
-    }else if(!empty($stuNameSet)){
-        echo "<h3 class ='col-10'>Viewing schedule of <br />".$stuNameSet['Last_Name'].", ".$stuNameSet['First_Name']."</h3>";
+        echo "<h3 class ='col-10'>Viewing schedule of ".$role."<br />".$facNameSet['Last_Name'].", ".$facNameSet['First_Name']." - User ID#: ".$uid."</h3>";
+    }else if(!empty($stuNameSet) ){
+        echo "<h3 class ='col-10'>";
+        echo "<a href = '_adminDegreeAudit.php?uid =".$uid."'"."target = '_blank'>Viewing schedule of ".$role."<br />".$stuNameSet['Last_Name'].", ".$stuNameSet['First_Name']." - User ID:".$uid;
+        echo "</a></h3>";
     }
 
 
@@ -124,7 +130,7 @@ if( !empty($_POST['submitFacQuery']) && $_POST['submitFacQuery'] != "" && !empty
 
     }else if(!empty($stuSchedResource)){
         while($stuSchedResourceRow = mysqli_fetch_assoc($stuSchedResource)){
-            echo print_r($stuSchedResourceRow);
+            //echo print_r($stuSchedResourceRow);
                
             echo "<tr>";
             echo "<td>".$stuSchedResourceRow['section_id']."</td>";

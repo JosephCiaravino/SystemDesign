@@ -62,8 +62,8 @@ foreach($studentIdArray as $studentId){
     echo "<td>".$totalCredits."</td>";
     echo "<td>".$major."</td>";
     echo "<td>".$thisStudentType."</td>";
-    echo "<td><a href = '_facultyViewAdviseeTranscript.php?stuid=".$studentId."' target = '_self'>View Transcript</a></td>";
-    echo "<td><a href = _facultyViewDegreeAudit.php?stuid=".$studentId." target = '_self'>View Degree Audit</a></td>";
+    echo "<td><a href = '_facultyViewAdviseeTranscript.php?stuid=".$studentId."' target = '_blank'>View Transcript</a></td>";
+    echo "<td><a href = _facultyViewDegreeAudit.php?stuid=".$studentId." target = '_blank'>View Degree Audit</a></td>";
     echo "</tr>";
     
 }

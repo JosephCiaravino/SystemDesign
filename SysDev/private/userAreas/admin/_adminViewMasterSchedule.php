@@ -4,6 +4,7 @@
 	$roomsLookup;
 	$facultyLookup;
 	$timeLookup;
+	$dayLookup;
 	
 	//This block makes the course look up array
 	if(!empty($_POST['viewMasterSched']) && $_POST['viewMasterSched'] != "" ){
@@ -42,30 +43,22 @@
 			$timeLookup[$referenceHoursArray['time_period_id']] = $referenceHoursArray['start_time']." - ".$referenceHoursArray['end_time'];
 		}
 
-		echo print_r($timeLookup);
+		//echo print_r($timeLookup);
 	
 
 		$getAllSemClasses = "SELECT * FROM epiz_25399161_testdb.section WHERE `semester_id`='";
 		$getAllSemClasses.= $_POST['viewMasterSemOption']."' ORDER BY `course_id` ASC;";
 
 		$chosenSemesterSectionResult = mysqli_query($connection, $getAllSemClasses);
+		
 
-		 $timePeriodQuery = "SELECT start_time, end_time FROM time_slot_period, time_period WHERE ";
-	     $timePeriodQuery.="time_slot_period.time_slot_id='".$timeLookup."' AND ";
-	     $timePeriodQuery.="time_slot_period.time_period_id = time_period.time_period_id;";
-	     $timePeriods = mysqli_fetch_assoc(mysqli_query($connection, $timePeriodQuery));
-	    
-	     $startTime = $timePeriods['start_time'];
-	     $endTime = $timePeriods['end_time'];
-
-		//echo $getAllSemClasses;
 	}else if(!empty($_POST['viewUserSched']) && $_POST['viewUserSched'] != "" && isset($_POST['viewSchedByID'])){ 
 
 		///user case if field is filled in
 		$queryRole = "SELECT `role` FROM epiz_25399161_testdb.user WHERE `User_Id` =".$_POST['viewSchedByID'].";";
 
 	}
-
+//echo print_r($timeLookup)."TIME LOOKUP<br />";
 
 ?> 
 
@@ -79,7 +72,7 @@
 	<!--Security hole.  Don't use PHP_Self-->
 	<div class = 'form-group'>	
 		<label for="viewMasterDeptOption">View By Department</label>
-	    <select class="form-control" id="viewMasterDeptOption" name = "viewMasterDeptOption">
+	    <select class="form-control" id="viewMasterDeptOption" name = "viewMasterDeptOption" required>
 		    <?php //this code populates the dropdown from the DB
 			    while( $deptRet = mysqli_fetch_assoc($results) ){
 			      echo "<option value = '".$deptRet['dept_id']."'>".$deptRet['dept_name']."</option>";
@@ -90,11 +83,15 @@
 		<br/>
 
 		<label for ='viewMasterSemOption'>Semester</label>
-		<select class="form-control" id="viewMasterSemOption" name = "viewMasterSemOption">
+		<select class="form-control" id="viewMasterSemOption" name = "viewMasterSemOption" required>
+		    <option>Select</option>
 		    <?php 
-		    	$globalSemesterIDLookupRev = array_reverse($globalSemesterIDLookup);
-		    	foreach ($globalSemesterIDLookupRev as $key => $value) {
-		    		echo "<option value = '".$key."'>".$value."</option>";
+		    	//$globalSemesterIDLookupRev = array_reverse($globalSemesterIDLookup);
+		    	//array_unshift($globalSemesterIDLookupRev,0);
+		    	foreach ($globalSemesterIDLookup as $key => $value) {
+		    		if($key!=0){
+		    			echo "<option value = '".$key."'>".$value."</option>";
+		    		}
 		    	
 		    	}
 		    ?>
@@ -106,7 +103,7 @@
 	</div>
 
 <?php
-
+	
 	
 
 ?>
@@ -123,7 +120,8 @@
       <th scope="col">Title</th>
       <th scope="col">Instructor</th>
       <th scope="col">Room</th>
-      <th scope="col">Meeting Time</th>
+      <th scope="col">Meeting Days</th>
+      <th scope='col'>Meeting Time</th>
     </tr>
   </thead>
   <tbody>
@@ -137,6 +135,8 @@
   		//echo print_r($masterSchedResource)."<br />";
   		 	if(isset($coursesLookup[$masterSchedResource["course_id"]] ) ){
 
+
+
 				echo '<tr>';
 				echo "<td>".$masterSchedResource['section_id']."</td>";
 				echo "<td>".$masterSchedResource['course_id']."</td>";
@@ -144,7 +144,11 @@
 
 				echo "<td>".$facultyLookup[ $masterSchedResource['faculty_id'] ]."</td>";
 				echo "<td>".$roomsLookup[ $masterSchedResource['room_id'] ]."</td>";
-				echo "<td>"."*TIME & DAY*"."</td>";
+				echo "<td>".$courseDaysLookup[$masterSchedResource['time_slot_id']]."</td>";
+
+				echo "<td>".$globalAllTimeSlots[$globalTimeRelationLookup[$masterSchedResource['time_slot_id']]]."</td>";
+				
+
 				echo "</tr>";
 
   			}	
