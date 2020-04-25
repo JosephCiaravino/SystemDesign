@@ -31,6 +31,7 @@
             <select class="form-control" id="publicDeptSelector" name = "facultyDept_Id">
               
               <?php //this code populates the dropdown from the DB
+
                 $publicDeptQuery = "SELECT * FROM epiz_25399161_testdb.department ORDER BY dept_name;";
                 $publicDeptResult = mysqli_query($connection, $publicDeptQuery);
                   
@@ -59,6 +60,7 @@
             $QueryPublicViewCourses = "SELECT * FROM epiz_25399161_testdb.courses WHERE dept_id =".$deptIdSelectedPublic.";";
             $publicDeptQueryTableRes = mysqli_query($connection, $QueryPublicViewCourses);
          
+            //echo "<h3>Viewing All ".$globalCourseIDLookup[$_GET['facultyDept_Id']]."Department Courses</h3>";
             echo "<table class = 'table table-hover'>"; 
             echo "<tr class = 'table-primary'><th>Code</th><th>Course Title</th><th>Description</th></tr>"; 
             while( $publicDeptQueryRow = mysqli_fetch_assoc($publicDeptQueryTableRes) ){

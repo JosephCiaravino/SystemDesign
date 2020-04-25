@@ -25,6 +25,7 @@ date_default_timezone_set("America/New_York");
 
 
 
+
 $populateDropDownDeptQuery = "SELECT `dept_name`, `dept_id` FROM epiz_25399161_testdb.department ORDER BY dept_name;";
 	    $results = mysqli_query($connection, $populateDropDownDeptQuery);
 	    $deptRet ="";
@@ -125,6 +126,7 @@ $buildingsResource = mysqli_query($connection, $queryGetAllBldgs);
 	}
 
 //echo print_r($courseDaysLookup);
+
 
 
 ?>

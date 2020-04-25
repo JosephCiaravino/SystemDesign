@@ -1,5 +1,39 @@
 <?php
 
+//get values to populate option group menu
+$facultyNumsArray = array();
+$queryFacultyOptions = "SELECT * FROM epiz_25399161_testdb.faculty ORDER BY Dept_Id;";
+$facultyNumsResource = mysqli_query($connection, $queryFacultyOptions);
+while($facultyNumsResourceRow = mysqli_fetch_assoc($facultyNumsResource)){
+	$facultyNumsArray[$facultyNumsResourceRow['Faculty_Id']] = $facultyNumsResourceRow['Dept_Id'];
+}
+
+$departmentArray = array();
+$queryDepartments = "SELECT `dept_id`, `dept_name` FROM epiz_25399161_testdb.department ORDER BY dept_name;";
+$departmentNumsResource = mysqli_query($connection, $queryDepartments);
+//$departmentArray[0]=0;
+while($departmentResourceRow = mysqli_fetch_assoc($departmentNumsResource)){
+	$departmentArray[$departmentResourceRow['dept_id']]=$departmentResourceRow['dept_name'];
+
+}
+
+$facultyNamesArray = array();
+$queryFacultyNames = "SELECT `Last_Name`,`First_Name`,`User_Id` FROM epiz_25399161_testdb.user ORDER BY Last_name;";
+ $facNamesResource = mysqli_query($connection, $queryFacultyNames);
+	//echo print_r($facNamesResource);
+
+ while($facultyNamesResourceRow = mysqli_fetch_assoc($facNamesResource)){
+ 	  
+	$facultyNamesArray[$facultyNamesResourceRow['User_Id']] = $facultyNamesResourceRow['Last_Name']." ,".$facultyNamesResourceRow['First_Name'];
+ 	  
+ }	
+
+// echo print_r($facultyNamesArray)."<br /><br />";
+// echo print_r($departmentArray)."<br /><br />";
+// echo print_r($facultyNumsArray)."<br /><br />";
+
+
+
  if( !empty($_POST['submitNewSection']) ){
 
 		//gets emester ID
@@ -29,10 +63,10 @@
 
 
 			$insertSectionQuery = "INSERT INTO epiz_25399161_testdb.section (`course_id`,`semester_id`,`faculty_id`,`room_id`,`time_slot_id`) VALUES('";
-			$insertSectionQuery.= $desiredCourseId."', ".$desiredSemesterID.", ".$desiredFaculty.", ".$desiredRoom.", ";
-			$insertSectionQuery.= $desiredSlot.");";
-			mysqli_query($connection, 'SET foreign_key_checks = 0;');
-			mysqli_query($connection, $checkAvailablilityQuery);
+			$insertSectionQuery.= $desiredCourseId."', ".$desiredSemesterID.", ".$desiredFaculty.", ".$desiredRoom.", ".$desiredSlot.");";
+		
+
+			mysqli_query($connection, $insertSectionQuery);
 			
 			echo $insertSectionQuery."<br >";
 		}else{
@@ -54,7 +88,25 @@
 	  <input type="text" class="form-control" id="course_id" name = 'course_id' required>
 
 	  <label class="col-form-label" for="course_id">Instructor's ID</label>
-	  <input type="text" class="form-control" id="instructor_id" name = 'instructors_id' required>
+	  <select type="text" class="form-control" id="instructor_id" name = 'instructors_id' required>
+	  		<?php
+	  			foreach ($departmentArray as $depid => $depname) {
+	  				
+	  				echo "<optgroup label = '".$depname."'>";
+	  				
+	  				foreach ($facultyNumsArray as $id => $deptid) {
+	  					if($deptid == $depid)
+	  					echo "<option value='".$id."'>".$facultyNamesArray[$id]." -- (User ID#: ".$id.")</option>";
+	  					
+	  				}
+	  				echo "</optgroup>";
+	  			}
+
+	  		?>
+
+	  </select>
+
+	  
 
 	  <label for = 'termSelector' class="col-form-label" >Term</label>
 	  <select id = 'termSelector' name = 'termSelector' class = 'form-control'required>
@@ -62,7 +114,7 @@
 	  	<option value = 'fall'>Fall</option>
 	  </select>
 
-	  <label class="col-form-label" for = 'yearSelector'>Term</label>
+	  <label class="col-form-label" for = 'yearSelector'>Term Year</label>
 	  <select id = 'yearSelector' name = 'yearSelector' class = 'form-control' required>
 	  	<option value = '<?php echo date('Y') ?>'><?php echo date('Y') ?></option>
 	  	<option value = '<?php echo date('Y')+1 ?>'><?php echo date('Y')+1 ?></option>
@@ -70,9 +122,9 @@
 
 	  <label class="col-form-label" for = 'bldgSelector'>Building</label>
 	  <select id = 'bldgSelector' name = 'bldgSelector' class = 'form-control' >
-	  	<option>Campus Center Building</option>
-	  	<option>Computer Science Building</option>
-	  	<option>Education Building</option>
+	  	<option value = 'Campus Center Building'>Campus Center Building</option>
+	  	<option value = 'Computer Science Building'>Computer Science Building</option>
+	  	<option value = 'Education Building'>Education Building</option>
 	  </select>
 
 	  <label class="col-form-label" for="roomNum">Room Number</label>
@@ -80,23 +132,19 @@
 
 	  <label class="col-form-label" for="days_id">Days</label>
 	  <select  class="form-control" id="days_id" name = 'days_id' required>
-	  		<?php
-	  			foreach ($courseDaysLookup as $key => $slot) {
-	  			 
-	  			 	echo "<option val = '$key'>  ".$slot."</option>";
-	  		}
-	  		?>
+	  		<option value = '1'>Monday/Wednessday</option>
+	  		<option value = '8'>Tuesday/Thursday</option>
 	  	
 	  </select>
 	  
 
 	  <label class="col-form-label" for="time_slot_id">Time Slot</label>
 	  <select type="text" class="form-control" id="time_slot_id" name = 'time_slot_id' required>
-
 	  
 	  	<?php
 	  		foreach ($globalAllTimeSlots as $key => $slot) {
-	  			echo "<option val = '$key'> ".$slot."</option>";
+	  			if($key>0)
+	  				echo "<option value = '".$key."'> ".$slot."</option>";
 	  		}
 	  	?>
 	  </select>
