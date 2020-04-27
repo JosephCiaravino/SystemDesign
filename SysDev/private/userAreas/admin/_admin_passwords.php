@@ -11,7 +11,7 @@ if( !empty($_POST['submitUpdatePwd']) && $_POST['userIdPwdEdit']!="" ){
 }
 
 
-
+<?php $_POST = array(); ?>
 ?>
 
 <h2>Reset User Password</h2>
@@ -32,3 +32,5 @@ if( !empty($_POST['submitUpdatePwd']) && $_POST['userIdPwdEdit']!="" ){
 	</div>
 
 </form>
+
+ 

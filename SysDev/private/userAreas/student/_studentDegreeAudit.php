@@ -1,5 +1,5 @@
 <?php
-echo $_GET['uid']
+//echo $_SESSION['id'];
 
 $studentId = $_SESSION['id'];
 
@@ -250,3 +250,6 @@ elseif($studentType == "grad"){
     
 
 ?>
+
+</tbody>
+</table>

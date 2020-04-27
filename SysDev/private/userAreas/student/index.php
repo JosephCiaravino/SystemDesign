@@ -100,13 +100,13 @@ require_once "../../_includes/functionalityScripts/pageRestrictionScript.php";
       
 
       <div class = "tab-pane fade" id = "degreeAudit"><hr>
-        <div class = "row">  
+        <div class = "row"> 
             <?php require_once "_studentDegreeAudit.php";?>
         </div>
       </div>
 
       
-     
+   
 
       
     </div><!--Close My Tab Content-->

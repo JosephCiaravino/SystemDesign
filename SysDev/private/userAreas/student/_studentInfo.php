@@ -44,11 +44,11 @@ $myAdvisorsResult = mysqli_query($connection, $queryGetMyAdvisor);
     <p class="card-text">
       <address>
       <?php echo $_SESSION['street']; ?>
-      <br><?php echo $_SESSION['city'].", "; echo $_SESSION['state']." "; echo $_SESSION['zip'] ?></address>
+      <br><?php echo $_SESSION['city'].", "; echo $_SESSION['state']." "; echo $_SESSION['zip']; ?></address>
     </p>
 
     <h4 class="card-title">Email:</h4>
-    <p class ="card-text"><?php echo $_SESSION['email'] ?></p>
+    <p class ="card-text"><?php echo $_SESSION['email']; ?></p>
 
     <h4 class = "card-title">Phone:</h4>
     <p class = "card-text"><?php echo $_SESSION['phone']; ?></p>

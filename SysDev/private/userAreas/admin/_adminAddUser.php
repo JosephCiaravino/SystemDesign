@@ -152,5 +152,17 @@
 </form>
 
 
+ <?
+ php $_POST = array(); 
+ header('location:'.$_SERVER['PHP_SELF']);
+ ?>
+
+
+
+
+
+
+
+
 
 

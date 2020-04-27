@@ -2,8 +2,8 @@
 $studentId = $_SESSION['id'];
 
 ?>
-    <div>
-  <h2 class = "alert">This Semester's Schedule</h2>
+    <div class = 'contailer'>
+  <h2 class = "alert"><?php echo $currentSemesterID;?> Schedule</h2>
   <table class="table-striped col-12 table-bordered">
     <thead>
       <tr class ="table-primary">
@@ -96,7 +96,7 @@ foreach($sectionIdArray as $sectionId){
         
         echo "</td>";
         echo "<td>".$startTime."-".$endTime."</td>";
-        echo "<td>".$buildingName." ".$roomNumber."</td>";
+        echo "<td>".$buildingName."<br />Room: ".$roomNumber."</td>";
         echo "<td>".$facultyFirstName." ".$facultyLastName."</td>";
         echo "<td>".$courseCredits."</td>";
         echo "<td>";
@@ -127,8 +127,8 @@ foreach($sectionIdArray as $sectionId){
 <!--NEXT SEMESTER SCHEDULE TABLE-->
 </div>
   
-  <div>
-    <h2 class = "alert">Next Semester's Schedule</h2>
+  <div class = 'container'>
+    <h2 class = "alert"><?php echo $nextSemesterID?> Schedule</h2>
     <table class="table-striped col-12 table-bordered">
       <thead>
         <tr class ="table-primary">
@@ -202,7 +202,7 @@ foreach($sectionIdArray as $sectionId){
         
         echo "</td>";
         echo "<td>".$startTime."-".$endTime."</td>";
-        echo "<td>".$buildingName." ".$roomNumber."</td>";
+        echo "<td>".$buildingName."<br /> Room: ".$roomNumber."</td>";
         echo "<td>".$facultyFirstName." ".$facultyLastName."</td>";
         echo "<td>".$courseCredits."</td>";
 
