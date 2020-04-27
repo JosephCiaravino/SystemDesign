@@ -37,7 +37,7 @@ $populateSemester = "SELECT * FROM epiz_25399161_testdb.semester ORDER BY semest
 		array_push($semesterIDintegers, $semResRow['semester_id']);
 
 	}
-	echo "semesterIDintegers: <br />";
+	echo 'semesterIDintegers<br />';
 	echo print_r($semesterIDintegers)."<br>";
 	
 //creates an array of pairs of courseID/course name.========================================
@@ -61,7 +61,9 @@ $querySemesterLookupGlobal = "SELECT `semester_id`,`semester_term`,`semester_yea
 		$globalSemesterIDLookup[$semesterLookupResultRow['semester_id']] = $semesterLookupResultRow['semester_term']."-".$semesterLookupResultRow['semester_year'];
 
 	} 
-//echo print_r($globalSemesterIDLookup);
+	$globalSemesterIDLookup = array_reverse($globalSemesterIDLookup);
+echo "globalSemesterIDLookup<br />";
+echo print_r($globalSemesterIDLookup);
 
 //creates an array of semester ID/time/year===================================
 $globalAdvisorIDLookup = array();
@@ -77,15 +79,7 @@ $queryAdvisorLookupGlobal = "SELECT `User_Id`,`First_Name`,`Last_Name`,`Email` F
 	} 
 
 
-$nextSemesterID=$globalSemesterIDLookup[count($globalSemesterIDLookup)];
-	
-$currentSemesterID = $globalSemesterIDLookup[count($globalSemesterIDLookup)-1];
- echo "<br >";
- echo "CURRENT ID: ".$currentSemesterID;
- echo "<br >";
- echo "NEXT ID: ".$nextSemesterID; 
- echo "<br>";
- echo print_r($globalSemesterIDLookup);
+
 
 //Gets all time slot Id nums
 $globalAllTimeSlots = array();
@@ -133,6 +127,9 @@ $buildingsResource = mysqli_query($connection, $queryGetAllBldgs);
 	}
 
 //echo print_r($courseDaysLookup);
+
+$currentSemesterID = $semesterIDintegers[1];
+$nextSemesterID=$semesterIDintegers[0];
 
 
 

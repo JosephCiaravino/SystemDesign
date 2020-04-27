@@ -3,7 +3,7 @@ $studentId = $_SESSION['id'];
 
 ?>
     <div class = 'contailer'>
-  <h2 class = "alert"><?php echo $currentSemesterID;?> Schedule</h2>
+  <h2 class = "alert"><?php echo $globalSemesterIDLookup[1];?> Schedule</h2>
   <table class="table-striped col-12 table-bordered">
     <thead>
       <tr class ="table-primary">
@@ -32,7 +32,7 @@ foreach($sectionIdArray as $sectionId){
     $semesterId = $semesterId['semester_id'];
 
     
-    if($semesterId == $currentSemesterIDnum){
+    if($semesterId == $currentSemesterID){
         $sectionInfoQuery = "SELECT course_id, room_id, time_slot_id, faculty_id FROM section WHERE section_id='".$sectionId."';";
         $sectionInfoResult = mysqli_fetch_assoc(mysqli_query($connection, $sectionInfoQuery));
         //get course id
@@ -128,7 +128,7 @@ foreach($sectionIdArray as $sectionId){
 </div>
   
   <div class = 'container'>
-    <h2 class = "alert"><?php echo $nextSemesterID?> Schedule</h2>
+    <h2 class = "alert"><?php echo $globalSemesterIDLookup[0];?> Schedule</h2>
     <table class="table-striped col-12 table-bordered">
       <thead>
         <tr class ="table-primary">
