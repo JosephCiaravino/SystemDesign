@@ -211,9 +211,9 @@ $studentId = $_SESSION['id'];
 
 
 <div class = 'container'>
-    <h2 class = 'row'>Search Classes To Add</h2>
 
     <form class = 'row  bg-secondary' action ="<?php echo $_SERVER['PHP_SELF'] ?>" method = "POST">
+    <legend>Search Classes To Add</legend>
     <br>
     <div class = 'form-group col-12'>  
       
@@ -237,13 +237,13 @@ $studentId = $_SESSION['id'];
     </div>
     
 
-    <div class = 'bg-light' style =  'overflow-y: scroll; max-height: 225px; border: 2px solid black'>
+    <div class = 'bg-light' style =  'overflow-y: scroll; max-height: 400px; border: 2px solid black'>
       <table class = "table table-hover table-bordered ">
       <thead>
           <tr class = 'table-primary'>
             <th>Class Name</th>
             <th>Sec ID</th>
-            <th>Course Code</th>
+            <!-- <th>Course Code</th> -->
             <th>Semester</th>
             <th>Instructor</th>
             <th>Days</th>
@@ -257,7 +257,7 @@ $studentId = $_SESSION['id'];
       <?php
         $allCourses = array();
         $allSections = array();
-      if(!empty($_POST['submitSearch']))
+      if(!empty($_POST['submitSearch']) && !empty($_POST['crsDept']) ){
         $queryCourses = "SELECT course_id, credits FROM epiz_25399161_testdb.courses WHERE dept_id =".$_POST['crsDept'].";";
         
         $coursesRes = mysqli_query($connection, $queryCourses); 
@@ -280,19 +280,34 @@ $studentId = $_SESSION['id'];
             $tally = mysqli_fetch_assoc($rowResource);
             $tally = $tally['COUNT(section_id)'];
             
+            if($tally>=27)
+              echo "<tr table-danger>";
+            else
+              echo "<tr>";
 
-            echo "<tr>";
-            echo "<td>".$globalCourseIDLookup[$value['course_id']]."</td>";
+            echo "<td>".$value['course_id']."-".$globalCourseIDLookup[$value['course_id']]."</td>";
             echo "<td>".$value['section_id']."</td>";
-            echo "<td>".$value['course_id']."</td>";
+            //echo "<td>".$value['course_id']."</td>";
             echo "<td>".$globalSemesterIDLookupRef[$value['semester_id']]."</td>";
             echo "<td>".$globalAdvisorIDLookup[$value['faculty_id']]."</td>";
             echo "<td>".$courseDaysLookup[$value['time_slot_id']]."</td>";
             echo "<td>".$globalAllTimeSlots[$globalTimeRelationLookup[$value['time_slot_id']]]."</td>";
-            echo "<td>".$tally."</td>";
-            echo "<td><input type = 'checkbox' value = '".$value['course_id']."'></td>";
+            echo "<td >".$tally."</td>";
+            
+            if($tally<=27)
+              echo "<td><input type = 'radio' name= 'secID' value = '".$value['section_id']."'></td>";
+            else
+              echo "<td>-C-</td>";
             echo "</tr>";
           }  
+      }elseif(!empty($_POST['submitReg']) && !empty($_POST['secID'])){
+        $registerStuQuery = "INSERT INTO epiz_25399161_testdb.class_registration VALUES('".$_POST['secID']."',".$studentId.",NULL,NULL);"; 
+        echo $registerStuQuery;
+          mysqli_query($connection, $registerStuQuery);
+
+
+
+      }
 
       ?>
 
@@ -301,7 +316,7 @@ $studentId = $_SESSION['id'];
     </div> <br />
 
     <button class="btn btn-primary" id = "changeBtn" name = "submitReg" value = "submitReg">
-        Add Selected Classes
+        Add Selected Class
       </button><br/>
   </form>
 </div>
