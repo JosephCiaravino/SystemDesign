@@ -1,18 +1,46 @@
+<?php
+//[crsDrop] => 467 [submitDropCrs] => submitDropCrs )
+//DELETE FROM table_name WHERE condition;
+if(!empty($_POST['submitDropCrs']) && !empty($_POST['crsDrop'])){
 
+//get the semester ID in order to find the midterm date to limit droping.
+  $queryCourseID = "SELECT semester_id FROM epiz_25399161_testdb.section WHERE section_id = ";
+  $queryCourseID.= $_POST['crsDrop'].";";
+  $semID = mysqli_fetch_assoc(mysqli_query($connection, $queryCourseID));
+  $semID = $semID['semester_id'];
+   
+ //get midterm date for this course ID
+ $queryCrsMidterm = "SELECT `semester_midterm` FROM epiz_25399161_testdb.semester WHERE ";
+ $queryCrsMidterm.= "`semester_id` = ".$semID.";";
+ $semMidterm = mysqli_fetch_assoc(mysqli_query($connection, $queryCrsMidterm));
+ $semMidterm = $semMidterm['semester_midterm'];
 
-<div class = 'row'>
+ echo print_r($semMidterm);  
+
+  if(true){ //-=-=-=-=-=-=-=-=-=-=-=-=   date("Y-m-d") < $semMidterm
+    $queryCrsDrop = "DELETE FROM epiz_25399161_testdb.class_registration WHERE `section_id`=";
+    $queryCrsDrop.= $_POST['crsDrop']." AND `student_id`=".$_SESSION['id'].";";
+    echo $queryCrsDrop; 
+    mysqli_query($connection, $queryCrsDrop);
+  }
+}
+
+?>
+
+<!--CURRENT SCHEDULE DISPLAY-->
+<form class = 'row' action = '<?php echo $_SERVER['PHP_SELF']?>' method = 'POST'>
   <h2 class = col-12> Select Classes to drop:</h2>
   <h3 class = "alert"><?php echo $globalSemesterIDLookup[1];?> Schedule</h3>
     <table class="table-striped col-12 table-bordered">
       <thead>
         <tr class ="table-primary">
-          <th>Course Title</th>
-          <th>Meeting Days</th>
-          <th>Meeting Time</th>
-          <th>Location</th>
-          <th>Instructor</th>
-          <th>Credits</th>
-          <th>Drop</th>
+          <th class = 'col-4'>Course Title</th>
+          <th class = 'col-1'>Meeting Days</th>
+          <th class = 'col-1'>Meeting Time</th>
+          <th class = 'col-2'>Location</th>
+          <th class = 'col-2'>Instructor</th>
+          <th class = 'col-1'>Credits</th>
+          <th class = 'col-1'>Drop</th>
         </tr>
       </thead>
   <?php
@@ -54,7 +82,7 @@
 
           }
           
-          //course meeting time
+//course meeting time
           $courseTimeQuery = "SELECT start_time, end_time FROM time_period, time_slot_period WHERE ";
           $courseTimeQuery.= "time_slot_id='".$timeSlotId."' AND time_period.time_period_id = time_slot_period.time_period_id;";
           $courseTimeResult = mysqli_fetch_assoc(mysqli_query($connection, $courseTimeQuery));
@@ -85,7 +113,7 @@
        <?php
           
       echo "<tr>";
-         echo "<td>".$courseId."-".$courseTitle."</td>";
+         echo "<td><strong>".$courseId."</strong>-".$courseTitle."</td>";
           echo "<td>";
           
           foreach($courseDaysArray as $days){
@@ -97,7 +125,7 @@
           echo "<td>".$buildingName."<br />Room: ".$roomNumber."</td>";
           echo "<td>".$facultyFirstName." ".$facultyLastName."</td>";
           echo "<td>".$courseCredits."</td>";
-          echo "<td> <input type='checkbox' value = '".$sectionId."'></td>";
+          echo "<td> <input type='radio' name = 'crsDrop' value = '".$sectionId."'></td>";
           
           echo "</tr>";          
           ?> 
@@ -110,21 +138,19 @@
               </tbody>
     </table><br><br><hr>
   </div >
-  <!--NEXT SEMESTER SCHEDULE TABLE-->
 
-    
-    <div class = 'row'>
+  <!--NEXT SEMESTER SCHEDULE TABLE DISPLAY-->  
+    <div class = 'row form-group'>
       <h3 class = "alert"><?php echo $globalSemesterIDLookup[0];?> Schedule</h3>
       <table class="table-striped col-12 table-bordered">
         <thead>
           <tr class ="table-primary">
-            <th>Course Title</th>
-            <th>Course Code</th>
-            <th>Meeting Days</th>
-            <th>Meeting Time</th>
-            <th>Instructor</th>
-            <th>Credits</th>
-            <th>Drop</th>
+            <th class = 'col-3'>Course Title</th>
+            <th class = 'col-2'>Meeting Days</th>
+            <th class = 'col-2'>Meeting Time</th>
+            <th class = 'col-2'>Instructor</th>
+            <th class = 'col-1'>Credits</th>
+            <th class = 'col-1'>Drop</th>
           </tr>
         </thead>
         <tbody>
@@ -180,7 +206,7 @@
           $facultyLastName = $facultyResult['Last_Name'];
   //        
           echo "<tr>";
-         echo "<td>".$courseId."-".$courseTitle."</td>";
+         echo "<td><strong>".$courseId."</strong>-".$courseTitle."</td>";
           echo "<td>";
           
           foreach($courseDaysArray as $days){
@@ -192,7 +218,7 @@
           echo "<td>".$buildingName."<br /> Room: ".$roomNumber."</td>";
           echo "<td>".$facultyFirstName." ".$facultyLastName."</td>";
           echo "<td>".$courseCredits."</td>";
-          echo "<td> <input type='checkbox' value = '".$sectionId."'></td>";
+          echo "<td> <input type='radio' name = 'crsDrop' value = '".$sectionId."'></td>";
 
         echo "</tr>";     
     }
@@ -201,5 +227,7 @@
       
           
         </tbody>
-      </table><br>
-  </div>
+      </table><br><br><hr>
+
+      <button type = 'submit' class="btn btn-primary col-12" name = "submitDropCrs" value = "submitDropCrs" style = 'margin-top: 50px;'>Drop Selected Class</button>
+  </form>

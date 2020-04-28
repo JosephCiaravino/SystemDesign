@@ -37,8 +37,7 @@ $populateSemester = "SELECT * FROM epiz_25399161_testdb.semester ORDER BY semest
 		array_push($semesterIDintegers, $semResRow['semester_id']);
 
 	}
-	echo 'semesterIDintegers<br />';
-	echo print_r($semesterIDintegers)."<br>";
+	
 	
 //creates an array of pairs of courseID/course name.========================================
 
@@ -64,10 +63,7 @@ $querySemesterLookupGlobal = "SELECT `semester_id`,`semester_term`,`semester_yea
 	$globalSemesterIDLookupRef;
 	$globalSemesterIDLookupRef = $globalSemesterIDLookup;
 	$globalSemesterIDLookup = array_reverse($globalSemesterIDLookup);
-echo "globalSemesterIDLookup<br />";
-echo print_r($globalSemesterIDLookup);
-echo "globalSemesterIDLookupRef<br />";
-echo print_r($globalSemesterIDLookupRef);
+
 
 //creates an array of semester ID/time/year===================================
 $globalAdvisorIDLookup = array();

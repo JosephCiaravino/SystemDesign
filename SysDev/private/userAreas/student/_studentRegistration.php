@@ -300,7 +300,7 @@ $studentId = $_SESSION['id'];
               echo "<td>-C-</td>";
             echo "</tr>";
           }  
-      }elseif(!empty($_POST['submitReg']) && !empty($_POST['secID'])){
+      }elseif(!empty($_POST['submitReg']) && !empty($_POST['secID'])){  //insert registration nto table
         $registerStuQuery = "INSERT INTO epiz_25399161_testdb.class_registration VALUES('".$_POST['secID']."',".$studentId.",NULL,NULL);"; 
         echo $registerStuQuery;
           mysqli_query($connection, $registerStuQuery);
