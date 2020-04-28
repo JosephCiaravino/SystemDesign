@@ -44,6 +44,11 @@ require_once "../../_includes/functionalityScripts/pageRestrictionScript.php";
           <i class="far fa-edit fa-3x "></i><br>Registration</a>
         </li>
 
+        <li class="nav-item text-center">
+          <a class="nav-link" data-toggle="tab" href="#dropClass">
+          <i class="far fa-edit fa-3x "></i><br>Drop Classes</a>
+        </li>
+
          <li class="nav-item text-center">
           <a class="nav-link" data-toggle="tab" href="#degreeAudit">
           <i class="fas fa-scroll fa-3x "></i><br>Degree Audit</a>
@@ -66,38 +71,43 @@ require_once "../../_includes/functionalityScripts/pageRestrictionScript.php";
 
       <div class="tab-pane fade active show" id="profile"><hr>
         <div class = 'row'>
-            
+            <?php require_once "_studentInfo.php"; ?>
         </div>
 
-        <div class = "row">
+        <div class = "tab-pane fade container">
           <?php require_once "_studentInfo.php";  ?>  
         </div><!--END .row-->
       </div><!--END .tab-pane-->
 
-      <div class = "tab-pane fade" id = "editDetails"><hr>
+      <div class = "tab-pane fade container" id = "editDetails"><hr>
         <div class = "row">  
             <?php require_once "_studentEditDetails.php"; ?>
         </div>
       </div>
 
-      <div class="tab-pane fade" id="currentReg"><hr>
+      <div class="tab-pane fade container" id="currentReg"><hr>
         <div class = "row">
           <?php require_once "_studentSchedule.php"; ?>   
         </div>
       </div>
 
-      <div class = "tab-pane fade" id = "viewHist"><hr>
+      <div class = "tab-pane fade container" id = "viewHist"><hr>
         <div class = "row">  
           <?php require_once "_studentHistory.php"; ?>
         </div>
       </div>
 
-      <div class = "tab-pane fade" id = "registration"><hr>
+      <div class = "tab-pane fade container" id = "registration"><hr>
         <div class = "row">  
             <?php require_once "_studentRegistration.php"; ?>
         </div>
       </div>
-      
+
+      <div class = "tab-pane fade container" id = "dropClass"><hr>
+        <div class = "row">  
+            <?php require_once "_studentDropClass.php"; ?>
+        </div>
+      </div>      
 
       <div class = "tab-pane fade" id = "degreeAudit"><hr>
         <div class = "row"> 

@@ -61,9 +61,13 @@ $querySemesterLookupGlobal = "SELECT `semester_id`,`semester_term`,`semester_yea
 		$globalSemesterIDLookup[$semesterLookupResultRow['semester_id']] = $semesterLookupResultRow['semester_term']."-".$semesterLookupResultRow['semester_year'];
 
 	} 
+	$globalSemesterIDLookupRef;
+	$globalSemesterIDLookupRef = $globalSemesterIDLookup;
 	$globalSemesterIDLookup = array_reverse($globalSemesterIDLookup);
 echo "globalSemesterIDLookup<br />";
 echo print_r($globalSemesterIDLookup);
+echo "globalSemesterIDLookupRef<br />";
+echo print_r($globalSemesterIDLookupRef);
 
 //creates an array of semester ID/time/year===================================
 $globalAdvisorIDLookup = array();

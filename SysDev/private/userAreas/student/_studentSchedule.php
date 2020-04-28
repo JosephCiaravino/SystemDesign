@@ -2,7 +2,7 @@
 $studentId = $_SESSION['id'];
 
 ?>
-    <div class = 'contailer'>
+<div class = 'row'>
   <h2 class = "alert"><?php echo $globalSemesterIDLookup[1];?> Schedule</h2>
   <table class="table-striped col-12 table-bordered">
     <thead>
@@ -127,7 +127,7 @@ foreach($sectionIdArray as $sectionId){
 <!--NEXT SEMESTER SCHEDULE TABLE-->
 </div>
   
-  <div class = 'container'>
+  <div class = 'row'>
     <h2 class = "alert"><?php echo $globalSemesterIDLookup[0];?> Schedule</h2>
     <table class="table-striped col-12 table-bordered">
       <thead>

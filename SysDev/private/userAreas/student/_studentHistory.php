@@ -11,11 +11,11 @@
 
 ?>
 
- <div>
+ <div class = 'row'>
   <h2>Your Course History</h2>
   <br>
   <h3 class = 'col-12 bg-secondary'>Over All Current GPA: <?php echo $myGPA; ?></h3>
-</div><br>
+<br>
 
 <?php
       echo "<table class = 'table table-hover'>";
@@ -31,14 +31,14 @@
       echo "<tbody>";
       
     while( $academicHistRow = mysqli_fetch_assoc($queryAcademicHistoryResults) ){
-      if(strpos($globalSemesterIDLookup[ $academicHistRow['semester_id'] ], 'Spring') !== false)
+      if(strpos($globalSemesterIDLookupRef[ $academicHistRow['semester_id'] ], 'Spring') !== false)
         echo "<tr>";
       else
         echo "<tr class = 'table-secondary'>";
       echo "<td>".$globalCourseIDLookup[ $academicHistRow['course_id'] ]."</td>";
       echo "<td>".$academicHistRow['course_id']."</td>";
       echo "<td>".$academicHistRow['grade']."</td>";
-      echo "<td>".$globalSemesterIDLookup[ $academicHistRow['semester_id'] ]."</td>";
+      echo "<td>".$globalSemesterIDLookupRef[ $academicHistRow['semester_id'] ]."</td>";
       echo "</tr>";
 
 
@@ -48,3 +48,4 @@
 ?>
 </tbody>
   </table><br><br>
+</div>

@@ -1,11 +1,7 @@
-<?php
-$studentId = $_SESSION['id'];
-
-?>
 
 
 <div class = 'row'>
-  <h2 class = col-12> Current Schedules:</h2>
+  <h2 class = col-12> Select Classes to drop:</h2>
   <h3 class = "alert"><?php echo $globalSemesterIDLookup[1];?> Schedule</h3>
     <table class="table-striped col-12 table-bordered">
       <thead>
@@ -16,7 +12,7 @@ $studentId = $_SESSION['id'];
           <th>Location</th>
           <th>Instructor</th>
           <th>Credits</th>
-       
+          <th>Drop</th>
         </tr>
       </thead>
   <?php
@@ -101,7 +97,7 @@ $studentId = $_SESSION['id'];
           echo "<td>".$buildingName."<br />Room: ".$roomNumber."</td>";
           echo "<td>".$facultyFirstName." ".$facultyLastName."</td>";
           echo "<td>".$courseCredits."</td>";
-          
+          echo "<td> <input type='checkbox' value = '".$sectionId."'></td>";
           
           echo "</tr>";          
           ?> 
@@ -128,7 +124,7 @@ $studentId = $_SESSION['id'];
             <th>Meeting Time</th>
             <th>Instructor</th>
             <th>Credits</th>
-            
+            <th>Drop</th>
           </tr>
         </thead>
         <tbody>
@@ -196,7 +192,7 @@ $studentId = $_SESSION['id'];
           echo "<td>".$buildingName."<br /> Room: ".$roomNumber."</td>";
           echo "<td>".$facultyFirstName." ".$facultyLastName."</td>";
           echo "<td>".$courseCredits."</td>";
-         
+          echo "<td> <input type='checkbox' value = '".$sectionId."'></td>";
 
         echo "</tr>";     
     }
@@ -207,105 +203,3 @@ $studentId = $_SESSION['id'];
         </tbody>
       </table><br>
   </div>
-
-
-
-<div class = 'container'>
-    <h2 class = 'row'>Search Classes To Add</h2>
-
-    <form class = 'row  bg-secondary' action ="<?php echo $_SERVER['PHP_SELF'] ?>" method = "POST">
-    <br>
-    <div class = 'form-group col-12'>  
-      
-      <br />
-      <div class = "toggleAddRmv1">
-        <label for="courseDept">Department</label>
-          <select class="form-control t" id="courseDept" name = "crsDept" required>
-            <?php //this code populates the dropdown from the DB
-              while( $deptRet = mysqli_fetch_assoc($results) ){
-                echo "<option value = '".$deptRet['dept_id']."'>".$deptRet['dept_name']."</option>";
-              }
-            ?>
-        </select><br />
-      </div>
-  
-    <button class="btn btn-primary" id = "searchReg" name = "submitSearch" value = "submitSearch">
-      Search Courses
-    </button>
-  
-      
-    </div>
-    
-
-    <div class = 'bg-light' style =  'overflow-y: scroll; max-height: 225px; border: 2px solid black'>
-      <table class = "table table-hover table-bordered ">
-      <thead>
-          <tr class = 'table-primary'>
-            <th>Class Name</th>
-            <th>Sec ID</th>
-            <th>Course Code</th>
-            <th>Semester</th>
-            <th>Instructor</th>
-            <th>Days</th>
-            <th>Times</th>
-            <th>Tally</th>
-            <th>Reg</th>
-          </tr>
-      </thead>
-        <tbody >
-      
-      <?php
-        $allCourses = array();
-        $allSections = array();
-      if(!empty($_POST['submitSearch']))
-        $queryCourses = "SELECT course_id, credits FROM epiz_25399161_testdb.courses WHERE dept_id =".$_POST['crsDept'].";";
-        
-        $coursesRes = mysqli_query($connection, $queryCourses); 
-        while($coursesResRow = mysqli_fetch_assoc($coursesRes)){
-          array_push($allCourses, $coursesResRow['course_id']);
-        }    
-           
-        foreach ($allCourses as $key => $value) {
-          $querySection="SELECT * FROM epiz_25399161_testdb.section WHERE course_id = '".$value."';";
-          $querySectionResource = mysqli_query($connection,$querySection);
-          while($querySectionRow = mysqli_fetch_assoc($querySectionResource)){
-            array_push($allSections, $querySectionRow);
-          }
-        }
-
-//echo print_r($allSections[0]);
-        foreach ($allSections as $value) {
-            $tallyQuery = "SELECT COUNT(section_id) FROM class_registration WHERE section_id ='".$value['section_id']."';";
-            $rowResource = mysqli_query($connection, $tallyQuery);
-            $tally = mysqli_fetch_assoc($rowResource);
-            $tally = $tally['COUNT(section_id)'];
-            
-
-            echo "<tr>";
-            echo "<td>".$globalCourseIDLookup[$value['course_id']]."</td>";
-            echo "<td>".$value['section_id']."</td>";
-            echo "<td>".$value['course_id']."</td>";
-            echo "<td>".$globalSemesterIDLookupRef[$value['semester_id']]."</td>";
-            echo "<td>".$globalAdvisorIDLookup[$value['faculty_id']]."</td>";
-            echo "<td>".$courseDaysLookup[$value['time_slot_id']]."</td>";
-            echo "<td>".$globalAllTimeSlots[$globalTimeRelationLookup[$value['time_slot_id']]]."</td>";
-            echo "<td>".$tally."</td>";
-            echo "<td><input type = 'checkbox' value = '".$value['course_id']."'></td>";
-            echo "</tr>";
-          }  
-
-      ?>
-
-      </tbody>
-    </table>
-    </div> <br />
-
-    <button class="btn btn-primary" id = "changeBtn" name = "submitReg" value = "submitReg">
-        Add Selected Classes
-      </button><br/>
-  </form>
-</div>
-
-
-
-<!--https://www.afterhoursprogramming.com/tutorial/sql/date-and-datetime/-->
