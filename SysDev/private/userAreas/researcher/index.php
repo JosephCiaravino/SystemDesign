@@ -26,7 +26,6 @@ require_once "../../_includes/functionalityScripts/pageRestrictionScript.php";
         </li>
 
         <li class="nav-item text-center">
-
           <a class="nav-link" data-toggle="tab" href="#gradStats">
           <i class="fas fa-graduation-cap fa-3x "></i><br>Graduation Stats</a>
         </li>
@@ -49,8 +48,8 @@ require_once "../../_includes/functionalityScripts/pageRestrictionScript.php";
 
       <div class="tab-pane fade active show" id="institution"><hr>
         <div class = "row">
-        <h2>Institution-Wide Stats</h2>
-          
+        <h2 class = 'col-12 bg-secondary'>Institution-Wide Stats</h2>
+            <?php require_once '_researcherInstitutional.php'; ?>
         </div><!--END .row-->
       </div><!--END .tab-pane-->
 

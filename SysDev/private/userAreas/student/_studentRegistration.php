@@ -10,12 +10,12 @@ $studentId = $_SESSION['id'];
     <table class="table-striped col-12 table-bordered">
       <thead>
         <tr class ="table-primary">
-          <th>Course Title</th>
-          <th>Meeting Days</th>
-          <th>Meeting Time</th>
-          <th>Location</th>
-          <th>Instructor</th>
-          <th>Credits</th>
+          <td>Course Title</td>
+          <td>Meeting Days</td>
+          <td>Meeting Time</td>
+          <td>Location</td>
+          <td>Instructor</td>
+          <td>Credits</td>
        
         </tr>
       </thead>
@@ -89,7 +89,7 @@ $studentId = $_SESSION['id'];
        <?php
           
       echo "<tr>";
-         echo "<td>".$courseId."-".$courseTitle."</td>";
+         echo "<td><strong>".$courseId."</strong>-".$courseTitle."</td>";
           echo "<td>";
           
           foreach($courseDaysArray as $days){
@@ -184,7 +184,7 @@ $studentId = $_SESSION['id'];
           $facultyLastName = $facultyResult['Last_Name'];
   //        
           echo "<tr>";
-         echo "<td>".$courseId."-".$courseTitle."</td>";
+         echo "<td><strong>".$courseId."</strong>-".$courseTitle."</td>";
           echo "<td>";
           
           foreach($courseDaysArray as $days){
@@ -285,7 +285,7 @@ $studentId = $_SESSION['id'];
             else
               echo "<tr>";
 
-            echo "<td>".$value['course_id']."-".$globalCourseIDLookup[$value['course_id']]."</td>";
+            echo "<td><strong>".$value['course_id']."</strong>-".$globalCourseIDLookup[$value['course_id']]."</td>";
             echo "<td>".$value['section_id']."</td>";
             //echo "<td>".$value['course_id']."</td>";
             echo "<td>".$globalSemesterIDLookupRef[$value['semester_id']]."</td>";
