@@ -1,6 +1,9 @@
 <?php
+require_once "../../_includes/functionalityScripts/databaseScripts/db_add_program.php";
 
 $populateDropDownDeptQuery = "SELECT `dept_name`, `dept_id` FROM epiz_25399161_testdb.department ORDER BY dept_name;";
+
+//echo $populateDropDownDeptQuery;
 $results = mysqli_query($connection, $populateDropDownDeptQuery);
 
 $deptRet ="";  
@@ -8,14 +11,13 @@ $queryPgrmOrMjr = "";
 $preReqArray = array();
 $addedPgrmId = "";
 
-require_once "../../_includes/functionalityScripts/databaseScripts/db_add_program.php";
 
 ?>
 
 <h2>Add or Remove Programs Of Study</h2>
 
 <div class = "col-1"></div>
-<form class = 'col-9' action ="<?php echo $_SERVER['PHP_SELF'] ?>" method = "POST">
+<form class = 'col-9' action ="<?php echo $_SERVER['PHP_SELF']; ?>" method = "POST">
 	
 	<div class = 'form-group'>
 		<label for ="addOrRemoveProgram"> </label>
@@ -56,12 +58,12 @@ require_once "../../_includes/functionalityScripts/databaseScripts/db_add_progra
 		  		<input type="text" class="form-control" name = "prgmNameToAdd" placeholder="Example: Lunar Studies" id="toAddName">
 		  	
 				<label class="col-form-label" for="requirements">Program Prerequisites (**IMPROVE IF TIME ALLOWS**)</label>
-		  		<input type="text" class="form-control" name = "requirements" placeholder="5 Char Max--Example: AD123, ED345, MA987"  id="requirements" required>
+		  		<input type="text" class="form-control" name = "requirements" placeholder="5 Char Max--Example: AD123, ED345, MA987"  id="requirements" >
 		  	</div>
 
 			<div class = 'toggleAddRmv2'>
 				<label class="col-form-label" for="toRemoveID">Program ID To Remove</label>
-		  		<input type="text" class="form-control" name = "prgmIdToRemove" placeholder="Example: AD1234" id="toRemoveID" required>
+		  		<input type="text" class="form-control" name = "prgmIdToRemove" placeholder="Example: AD1234" id="toRemoveID" >
 		  	</div>
 		</div>
 

@@ -17,7 +17,7 @@ if(!empty($_POST['submitDropCrs']) && !empty($_POST['crsDrop'])){
 
  echo print_r($semMidterm);  
 
-  if(true){ //-=-=-=-=-=-=-=-=-=-=-=-=   date("Y-m-d") < $semMidterm
+  if(date("Y-m-d") < $semMidterm){ //-=-=-=-=-=-=-=-=-=-=-=-=   date("Y-m-d") < $semMidterm
     $queryCrsDrop = "DELETE FROM epiz_25399161_testdb.class_registration WHERE `section_id`=";
     $queryCrsDrop.= $_POST['crsDrop']." AND `student_id`=".$_SESSION['id'].";";
     echo $queryCrsDrop; 
@@ -148,6 +148,7 @@ if(!empty($_POST['submitDropCrs']) && !empty($_POST['crsDrop'])){
             <th class = 'col-3'>Course Title</th>
             <th class = 'col-2'>Meeting Days</th>
             <th class = 'col-2'>Meeting Time</th>
+            <th class = 'col-2'>Location</th>
             <th class = 'col-2'>Instructor</th>
             <th class = 'col-1'>Credits</th>
             <th class = 'col-1'>Drop</th>

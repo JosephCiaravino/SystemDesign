@@ -23,7 +23,7 @@ require_once "../../_includes/functionalityScripts/pageRestrictionScript.php";
 ?>
 
 <?php
-$studentId = $_GET['uid_'];
+$studentId = $_GET['uid'];
 
 
 $getStudentTypeQuery = "SELECT student_type FROM student WHERE student_id='".$studentId."';";

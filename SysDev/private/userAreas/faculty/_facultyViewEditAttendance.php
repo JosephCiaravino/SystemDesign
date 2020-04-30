@@ -66,7 +66,7 @@ while( $attendanceList = mysqli_fetch_assoc($attendanceResult)){
                     <th class = "table-primary">Attendance</th>
                   </tr>
                   <tr class = "table-primary">
-                    <th>Date</th>
+                    <th>Meeting</th>
                     <th>Attended</th>       
                   </tr>
                 </thead>

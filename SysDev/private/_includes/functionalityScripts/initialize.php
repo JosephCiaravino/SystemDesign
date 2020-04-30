@@ -126,8 +126,8 @@ $buildingsResource = mysqli_query($connection, $queryGetAllBldgs);
 
 //echo print_r($courseDaysLookup);
 
-$currentSemesterID = $semesterIDintegers[1];
-$nextSemesterID=$semesterIDintegers[0];
+$currentSemesterID = 1;//$semesterIDintegers[1];
+$nextSemesterID=9;//$semesterIDintegers[0];
 
 
 

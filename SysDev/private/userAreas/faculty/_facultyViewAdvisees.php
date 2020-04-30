@@ -17,7 +17,6 @@ while ($studentIdList = mysqli_fetch_assoc($studentAdviseeIds)){
     <th>SID</th>
     <th>Credits</th>
     <th>Major</th>
-    <th>Minor</th>
     <th>Student Type</th>
     <th>Transcript</th>
     <th>Degree Audit</th>
@@ -39,14 +38,6 @@ foreach($studentIdArray as $studentId){
         $majorQuery.= " AND major.major_id = student_major.major_id;";
         $major = mysqli_fetch_assoc(mysqli_query($connection, $majorQuery));
         $major = $major['major_title'];
-        
-        $minorQuery = "SELECT minor_title FROM minor, student_minor WHERE student_minor.student_id='".$studentId."'";
-        $minorQuery.=" AND minor.minor_id = student_minor.minor_id;";
-        $minor = mysqli_fetch_assoc(mysqli_query($connection, $minorQuery));
-        $minor = $minor['minor_title'];
-        if(!$minor){
-            $minor = "N/A";
-        }
         
     }else{
         $thisStudentType="Graduate";
@@ -70,10 +61,9 @@ foreach($studentIdArray as $studentId){
     echo "<td>".transform_userId($studentId)."</td>";
     echo "<td>".$totalCredits."</td>";
     echo "<td>".$major."</td>";
-    echo "<td>".$minor."</td>";
     echo "<td>".$thisStudentType."</td>";
-    echo "<td><a href = '_facultyViewAdviseeTranscript.php?stuid=".$studentId."' target = '_self'>View Transcript</a></td>";
-    echo "<td><a href = _facultyViewDegreeAudit.php?stuid=".$studentId." target = '_self'>View Degree Audit</a></td>";
+    echo "<td><a href = '_facultyViewAdviseeTranscript.php?stuid=".$studentId."' target = '_blank'>View Transcript</a></td>";
+    echo "<td><a href = _facultyViewDegreeAudit.php?stuid=".$studentId." target = '_blank'>View Degree Audit</a></td>";
     echo "</tr>";
     
 }

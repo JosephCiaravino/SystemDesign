@@ -18,7 +18,7 @@
 		}else if($_POST['radioAddRmvStudy'] == "major"){
 			$queryAddNewPrgrm = "INSERT INTO epiz_25399161_testdb.major (`dept_id`, `major_title`) VALUES('";
 			$queryAddNewPrgrm.= $_POST['crsDept']."', '".$_POST['prgmNameToAdd']."');";
-				
+				echo "<br />".$queryAddNewPrgrm;
 			//run queries here
 			mysqli_query($connection, $queryAddNewPrgrm);
 			//SELECT MAX(Price) AS LargestPriceFROM Products;
