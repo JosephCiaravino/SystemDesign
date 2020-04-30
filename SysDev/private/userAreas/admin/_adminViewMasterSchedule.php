@@ -9,7 +9,7 @@
 	//This block makes the course look up array
 	if(!empty($_POST['viewMasterSched']) && $_POST['viewMasterSched'] != "" ){
 		$getDeptCoursesQuery = "SELECT `course_id`, `course_title` FROM epiz_25399161_testdb.courses WHERE ";
-		$getDeptCoursesQuery.= "`dept_id`='".$_POST['viewMasterDeptOption']."';";
+		$getDeptCoursesQuery.= "`dept_id`=".$_POST['viewMasterDeptOption'].";";
 		$referenceCoursesResult = mysqli_query($connection, $getDeptCoursesQuery);
 
 		while($courseReferenceArray = mysqli_fetch_assoc($referenceCoursesResult)){
@@ -46,8 +46,8 @@
 		//echo print_r($timeLookup);
 	
 
-		$getAllSemClasses = "SELECT * FROM epiz_25399161_testdb.section WHERE `semester_id`='";
-		$getAllSemClasses.= $_POST['viewMasterSemOption']."' ORDER BY `course_id` ASC;";
+		$getAllSemClasses = "SELECT * FROM epiz_25399161_testdb.section WHERE `semester_id`=";
+		$getAllSemClasses.= $_POST['viewMasterSemOption']." ORDER BY `course_id` ASC;";
 
 		$chosenSemesterSectionResult = mysqli_query($connection, $getAllSemClasses);
 		
@@ -68,7 +68,7 @@
 
  <h2>View Master Schedule</h2>
  <div class = "col-9"></div>
-  <form class = 'col-6' action ="<?php echo $_SERVER['PHP_SELF'] ?>" method = "POST">
+  <form class = 'col-6' action ="<?php echo $_SERVER['PHP_SELF']; ?>" method = "POST">
 	<!--Security hole.  Don't use PHP_Self-->
 	<div class = 'form-group'>	
 		<label for="viewMasterDeptOption">View By Department</label>
@@ -128,7 +128,7 @@
 
 
 <?php 
-  if(!empty($_POST['viewMasterSched']) ){	
+  if(/*!empty($_POST['viewMasterSched'])*/true ){	
 
 
   	while($masterSchedResource = mysqli_fetch_assoc($chosenSemesterSectionResult)){

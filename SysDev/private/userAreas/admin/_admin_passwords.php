@@ -1,7 +1,5 @@
 <?php
-//UPDATE table_name
-//SET column1 = value1, column2 = value2, ...
-//WHERE condition;
+
 
 if( !empty($_POST['submitUpdatePwd']) && $_POST['userIdPwdEdit']!="" ){
 	$updatePwdQuery = "UPDATE epiz_25399161_testdb.user SET `Password` = '".$_POST['newPass']."' ";
@@ -11,7 +9,7 @@ if( !empty($_POST['submitUpdatePwd']) && $_POST['userIdPwdEdit']!="" ){
 }
 
 
-<?php $_POST = array(); ?>
+
 ?>
 
 <h2>Reset User Password</h2>

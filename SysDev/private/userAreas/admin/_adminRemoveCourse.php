@@ -1,7 +1,8 @@
 <?php
-if(!empty($_POST['submitRmvCourse']) && $_POST['submitRmvCourse'] != ""){
-
+if(!empty($_POST['submitRmvCourse'])){
+	echo print_r($_POST);
 	$rmvCourseQuery = "DELETE FROM epiz_25399161_testdb.courses WHERE `course_id` = '".$_POST['courseIdRmv']."';";
+
 
 	mysqli_query($connection, $rmvCourseQuery);
 

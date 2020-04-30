@@ -11,8 +11,8 @@ echo "<div class='col-12 alert alert-dismissible alert-success'>COURSE DELETED</
       //schedules.  Notifications should be clear
       
 
-      unset($_POST['courseIdRmv']);
+      //unset($_POST['courseIdRmv']);
 
-      header('Location: '.$_SERVER['PHP_SELF']);
+      //header('Location: '.$_SERVER['PHP_SELF']);
 
 ?>

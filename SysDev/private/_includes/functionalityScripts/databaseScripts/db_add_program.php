@@ -66,7 +66,7 @@
 		$queryRemoveProgram .= "WHERE ".$_POST['radioAddRmvStudy']."_id = ".$_POST['prgmIdToRemove'].";";
 		mysqli_query($connection, $queryRemoveProgram);
 
-		echo $queryRemoveProgram."<br />";
+		//echo $queryRemoveProgram."<br />";
 	}
 
 

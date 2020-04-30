@@ -28,9 +28,7 @@ $queryFacultyNames = "SELECT `Last_Name`,`First_Name`,`User_Id` FROM epiz_253991
  	  
  }	
 
-// echo print_r($facultyNamesArray)."<br /><br />";
-// echo print_r($departmentArray)."<br /><br />";
-// echo print_r($facultyNumsArray)."<br /><br />";
+
 
 
 

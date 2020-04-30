@@ -115,7 +115,7 @@ if( !empty($_POST['submitFacQuery']) && $_POST['submitFacQuery'] != "" && !empty
                  $startTime = $timePeriods['start_time'];
                  $endTime = $timePeriods['end_time'];
 
-                 echo "<td>".$globalSemesterIDLookup[ $facSchedResourceRow['semester_id'] ]."</td>";
+                 echo "<td>".$globalSemesterIDLookupRef[ $facSchedResourceRow['semester_id'] ]."</td>";
                  echo "<td>".transform_userID($facSchedResourceRow['faculty_id'])."</td>";
                  echo "<td>".$facSchedResourceRow['course_id']."</td>";
                  echo "<td>".$globalCourseIDLookup[ $facSchedResourceRow['course_id'] ]."</td>";

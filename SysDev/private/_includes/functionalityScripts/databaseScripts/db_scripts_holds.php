@@ -65,9 +65,9 @@ if(!empty($_POST['submitPlaceHold']) && !empty($_POST['userToHold'])){
 }
 
 $queryAddHolds = "";
-unset($_POST);
+//unset($_POST);
 //reactivate this line below for deployment
-header("location: ".$_SERVER['PHP_SELF']);
+//header("location: ".$_SERVER['PHP_SELF']);
 
 
 

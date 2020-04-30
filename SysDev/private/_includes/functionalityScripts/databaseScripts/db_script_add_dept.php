@@ -16,6 +16,6 @@ echo "<div class='col-12 alert alert-dismissible alert-success'>CONDITIONS MET F
 
       echo var_dump($_POST);
 
-      header("Location: ".$_SERVER['PHP_SELF']);
+      //header("Location: ".$_SERVER['PHP_SELF']);
 
   ?>

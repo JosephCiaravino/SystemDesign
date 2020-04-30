@@ -76,12 +76,7 @@ $queryAdvisorLookupGlobal = "SELECT `User_Id`,`First_Name`,`Last_Name`,`Email` F
 	while($facultyLookupResultRow = mysqli_fetch_assoc($advisorLookupResult)){
 		//echo print_r($facultyLookupResultRow)."<br />";
 		$globalAdvisorIDLookup[ $facultyLookupResultRow['User_Id'] ] = $facultyLookupResultRow['Last_Name'].", ".$facultyLookupResultRow['First_Name']."<br />EMAIL: ".$facultyLookupResultRow['Email'];
-
-		
-
 	} 
-
-
 
 
 //Gets all time slot Id nums

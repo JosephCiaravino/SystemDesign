@@ -48,7 +48,7 @@ if(!empty($_POST['userToRemove'])){
 	echo $queryDeleteUsr."<br>";
 	mysqli_query($connection, $queryDeleteUsr);
 
-	$queryDeleteUsr = "DELETE FROM epiz_25399161_testdb.grad_part WHERE student_id = ".$_POST['userToRemove']."';";
+	$queryDeleteUsr = "DELETE FROM epiz_25399161_testdb.grad_part WHERE student_id = ".$_POST['userToRemove'].";";
 	echo $queryDeleteUsr."<br>";
 	mysqli_query($connection, $queryDeleteUsr);
 

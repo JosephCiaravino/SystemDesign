@@ -27,6 +27,6 @@ if( !empty($_POST['submitNewCourse']) && !empty($_POST['course_title'])
 }
 
 
-header("location: ".$_SERVER[PHP_SELF]);
+//header("location: ".$_SERVER[PHP_SELF]);
 
 ?>
