@@ -3,8 +3,10 @@
 $studentId = $_SESSION['id'];
 
 $checkHolds;
-$PrereqsArray;
-$checkEnrollmentTime;
+$prereqsArray = array();
+$maxCred;
+$minCred;
+$actualCred;
 
 $holdsQuery = "SELECT COUNT(hold_type) AS holdCount FROM epiz_25399161_testdb.student_holds WHERE ";
 $holdsQuery.= "student_id = ".$studentId.";";
@@ -14,9 +16,36 @@ $queryCoursesTaken = "SELECT `course_id` FROM epiz_25399161_testdb.student_histo
 $queryCoursesTaken.= "student_id =".$studentId.";";
 
 $coursesTakenResource = mysqli_query($connection,$queryCoursesTaken);
-
+//echo print_r($coursesTakenResource);
 while( $theRow = mysqli_fetch_assoc($coursesTakenResource) ){
-  array_push($PrereqsArray, $theRow['course_id'];
+  array_push($prereqsArray, $theRow['course_id']);
+}
+
+$queryTimeType="SELECT * FROM epiz_25399161_testdb.undergrad_full WHERE student_id =".$studentId.";";
+ $q1resource = mysqli_query($connection,$queryTimeType);
+$queryTimeType2="SELECT * FROM epiz_25399161_testdb.undergrad_part WHERE student_id =".$studentId.";";
+ $q2resource = mysqli_query($connection,$queryTimeType2);
+$queryTimeType3="SELECT * FROM epiz_25399161_testdb.grad_full WHERE student_id =".$studentId.";";
+ $q3resource =mysqli_query($connection,$queryTimeType3);
+$queryTimeType4="SELECT * FROM epiz_25399161_testdb.grad_part WHERE student_id =".$studentId.";";
+ $q4resource =mysqli_query($connection,$queryTimeType4);
+
+if($q1resource->num_rows > 0){
+    $credAssoc = mysqli_fetch_assoc($q1resource);
+    $maxCred = $credAssoc['max_credits'];
+    $minCred = $credAssoc['min_credits'];
+}else if($q2resource->num_rows > 0){
+    $credAssoc = mysqli_fetch_assoc($q2resource);
+    $maxCred = $credAssoc['max_credits'];
+    $minCred = $credAssoc['min_credits'];
+}else if($q3resource->num_rows > 0){
+    $credAssoc = mysqli_fetch_assoc($q3resource);
+    $maxCred = $credAssoc['max_credits'];
+    $minCred = $credAssoc['min_credits'];
+}else if($q4resource->num_rows > 0){
+    $credAssoc = mysqli_fetch_assoc($q4resource);
+    $maxCred = $credAssoc['max_credits'];
+    $minCred = 0;
 }
 
 
@@ -38,7 +67,7 @@ while( $theRow = mysqli_fetch_assoc($coursesTakenResource) ){
        
         </tr>
       </thead>
-      
+
   <?php
 
   $registrationQuery = "SELECT section_id FROM class_registration WHERE student_id='".$studentId."' ;";

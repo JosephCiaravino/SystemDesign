@@ -142,28 +142,7 @@ if(!empty($_POST['submitNewUser'])){
 
             } 
       }
-            
- /*           
 
-      $queryAddUsr = "";
-
-      unset( $_POST['submitNewUser'] );
-      unset($_POST['emailAdd']);
-      unset($_POST['pword']);
-      unset($_POST['firstN']);
-      unset($_POST['lastN']);
-      unset($_POST['streetAdd']);
-      unset($_POST['cityAdd']);
-      unset($_POST['stateAdd']);
-      unset($_POST['zipAdd']);
-      unset($_POST['tele']);
-      unset($_POST['usertype']);
-
-      unset($_POST['enrollment']);
-      unset($_POST['grad-under']);
-
-     header('location: '.$_SERVER['PHP_SELF']); //security hole, but ok for now before deployment
-     */
 }
 
 
