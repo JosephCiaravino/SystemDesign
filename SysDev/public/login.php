@@ -7,6 +7,8 @@ require_once '_includes/documentHead.php';
 require_once "_includes/masthead.php";
 require_once "_includes/mainNavigation.php";
 
+
+
 function test_input($data) {
   $data = trim($data);
   $data = stripslashes($data);
@@ -15,13 +17,8 @@ function test_input($data) {
 }
 
  
-//$_POST['missingData']= "";
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-  if (empty($_POST["name"]) || empty($_POST["password"])) {
-    $_POST['missingData']= "Both name and password are required.";
-  }
-}
+
 
 ?>
 
@@ -32,23 +29,74 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 		<form id = 'loginForm' class ='col-4 border border-dark bg-primary' method='post' action = "../private/process_user.php" >
 		  <legend>Login</legend>
-			<span class="error"><?php echo '<div style = "color: pink;">'."".'</div>'; ?></span>
+			
+		  <?php
+
+		  	if(!empty($_SESSION['loginCount']) && $_SESSION['loginCount']==3 ){
+		  		$now = (int) strtotime("now");
+		  		$loginPermitted = (int)strtotime("now +2 minutes");
+		  		$_SESSION['loginPermit'] = $loginPermitted;
+		  		$displayedTimeLimit =  ($loginPermitted-$now)/60;
+		  		echo "<p class = 'text-warning' >Maximum login attempts reached.<br/> Try again in ".$displayedTimeLimit." minutes.</p>";
+			
+			}else if(!empty($_SESSION['loginCount']) && $_SESSION['loginCount']>3 && !empty($_SESSION['loginPermit']) && $_SESSION['loginPermit']>=0){
+				$displayedTimeLimit = round(($_SESSION['loginPermit']-strtotime('now'))/60);
+
+				if($displayedTimeLimit>0 && $_SESSION['loginCount']>3){
+					echo "<p class ='text-warning'>You may attempt to login in ".$displayedTimeLimit." minutes.</p>";
+				}else{
+					$_SESSION['loginPermit']=0;
+					$_SESSION['loginCount']=0;
+				}
+
+				
+			}
+
+			if(!isset($_SESSION['loginPermit'])){
+				$_SESSION['loginPermit']=0;
+			}
+
+				
+
+		  ?>
+
 
 		  <hr id = loginBarTitle>
 		  <label for="userLogin">Login ID:</label>
 		  <br />
 
-		  <input id = "userLogin" type="email" name="loginIdentity" value = "" > 
+		  <?php
+		  	if($_SESSION['loginPermit']-strtotime('now')<0){
+		  		echo "<input id = 'userLogin' type='email' name='loginIdentity' value = ''>";
+		  	}elseif($_SESSION['loginPermit']-strtotime('now')>=0){
+		  		echo "<input id = 'userLogin' type='email' name='loginIdentity' value = '' disabled>";
+		  	}
+		  ?>
+		  
+			
+				
+
 		  <br />
 		  <br />
 
 		  <label for = "password">Password:</label>
 		  <br />
-		  <input type="password" name="password" value = "" > 
+
+		  <?php
+		  	if($_SESSION['loginPermit']-strtotime('now')<0){
+		  		echo "<input type='password' name='password' value = '' > ";
+		  	}elseif($_SESSION['loginPermit']-strtotime('now')>=0){
+		  		echo "<input type='password' name='password' value = '' disabled>";
+		  	}
+		  ?>
+
+
+		  
 		  <br />
 		  <br />
 
-		  <input type = "submit" name = "Submit">
+
+		  <button type = "submit" name = "Submit">Submit</button>
 		</form>
 
 		<div class = "col-4"></div>

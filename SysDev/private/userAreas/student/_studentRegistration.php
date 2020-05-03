@@ -1,5 +1,24 @@
 <?php
+
 $studentId = $_SESSION['id'];
+
+$checkHolds;
+$PrereqsArray;
+$checkEnrollmentTime;
+
+$holdsQuery = "SELECT COUNT(hold_type) AS holdCount FROM epiz_25399161_testdb.student_holds WHERE ";
+$holdsQuery.= "student_id = ".$studentId.";";
+$checkHolds = mysqli_fetch_assoc( mysqli_query($connection,$holdsQuery) )['holdCount'] ;
+
+$queryCoursesTaken = "SELECT `course_id` FROM epiz_25399161_testdb.student_history WHERE ";
+$queryCoursesTaken.= "student_id =".$studentId.";";
+
+$coursesTakenResource = mysqli_query($connection,$queryCoursesTaken);
+
+while( $theRow = mysqli_fetch_assoc($coursesTakenResource) ){
+  array_push($PrereqsArray, $theRow['course_id'];
+}
+
 
 ?>
 
@@ -19,6 +38,7 @@ $studentId = $_SESSION['id'];
        
         </tr>
       </thead>
+      
   <?php
 
   $registrationQuery = "SELECT section_id FROM class_registration WHERE student_id='".$studentId."' ;";
@@ -254,7 +274,7 @@ $studentId = $_SESSION['id'];
       </thead>
         <tbody >
       
-      <?php
+<?php
         $allCourses = array();
         $allSections = array();
       if(!empty($_POST['submitSearch']) && !empty($_POST['crsDept']) ){
@@ -309,7 +329,7 @@ $studentId = $_SESSION['id'];
 
       }
 
-      ?>
+?>
 
       </tbody>
     </table>

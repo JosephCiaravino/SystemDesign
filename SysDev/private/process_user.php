@@ -5,8 +5,10 @@ session_start();
 require "_includes/functionalityScripts/initialize.php";
 require "_includes/functionalityScripts/functions.php";
 
+
 if (empty($_POST["loginIdentity"]) || empty($_POST["password"])) {
-	//header("Location: ../public/login.php");
+	header("Location: ../public/login.php");
+  $_SESSION['loginCount']++;
 }else{
 // mysqli_connect('sql312.epizy.com','epiz_25399161','Pkn9tFRDUQ0Q','epiz_25399161_testdb');
     $connection = mysqli_connect('localhost','webUser','secretPass','epiz_25399161_testdb');
@@ -23,6 +25,7 @@ if (empty($_POST["loginIdentity"]) || empty($_POST["password"])) {
     $result = mysqli_query($connection, $query);
     $row = $result -> fetch_assoc();
 
+    if(!is_null($row) && $row['Password']==$password && $row['Email']==$user){
     //foreach loop didn't work, but this did, so I left it
       $_SESSION['id']=$row['User_Id'];
       $_SESSION['fName']=$row['First_Name'];
@@ -38,7 +41,6 @@ if (empty($_POST["loginIdentity"]) || empty($_POST["password"])) {
     
 
     
-    if(!is_null($row) && $row['Password']==$password && $row['Email']==$user){
  
         if($row['Role']=='faculty'){
           header("Location: ../private/userAreas/faculty/index.php");
@@ -56,6 +58,7 @@ if (empty($_POST["loginIdentity"]) || empty($_POST["password"])) {
        
       }else{
         //echo "NOT AUTHENTICATED";
+        $_SESSION['loginCount']++;
         header("Location: ../public/login.php");
         
       }

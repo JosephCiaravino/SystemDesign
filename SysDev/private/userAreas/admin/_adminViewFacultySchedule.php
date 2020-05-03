@@ -49,8 +49,24 @@ if( !empty($_POST['submitFacQuery']) && $_POST['submitFacQuery'] != "" && !empty
     <!--Security hole.  Don't use PHP_Self-->
     <legend>View Current Faculty Schedule</legend>
     <div class = 'form-group'> 
+
           <label class="col-form-label" for="queryFacSched">Faculty ID</label>
-          <input type="number" class="form-control" name = "queryFacSched" id="queryFacSched">
+         <select  class="form-control" id="queryFacSched" name = 'queryFacSched'> 
+          <?php
+                foreach ($departmentArray as $depid => $depname) {
+                    
+                    echo "<optgroup label = '".$depname."'>";
+                    
+                    foreach ($facultyNumsArray as $id => $deptid) {
+                        if($deptid == $depid)
+                        echo "<option value='".$id."'>".$facultyNamesArray[$id]." -- (User ID#: ".$id.")</option>";
+                        
+                    }
+                    echo "</optgroup>";
+                }
+
+            ?>
+         </select >
 
           <button class="btn btn-primary" name = "submitFacQuery" value = "submitFacQuery">
             Query Faculty Schedule

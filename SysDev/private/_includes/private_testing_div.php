@@ -22,6 +22,12 @@ if(isset($_SESSION)){
   	print_r($_SESSION);
   }
 
+  echo "<br /><br />";
+if(isset($_COOKIE)){
+    echo "COOKIE:  ";
+    print_r($_COOKIE);
+  }
+
   echo "</div>";
 }
 

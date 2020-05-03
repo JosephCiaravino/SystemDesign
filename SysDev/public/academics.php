@@ -16,7 +16,7 @@
     
 
     <div class = "row">
-      <aside class = "col-3">
+      <aside class = "col-2">
           <?php include "_includes/quickLinksAside.php";?>
       </aside>
 
@@ -60,13 +60,31 @@
             $QueryPublicViewCourses = "SELECT * FROM epiz_25399161_testdb.courses WHERE dept_id =".$deptIdSelectedPublic.";";
             $publicDeptQueryTableRes = mysqli_query($connection, $QueryPublicViewCourses);
          
-            //echo "<h3>Viewing All ".$globalCourseIDLookup[$_GET['facultyDept_Id']]."Department Courses</h3>";
+            
+
             echo "<table class = 'table table-hover'>"; 
-            echo "<tr class = 'table-primary'><th>Code</th><th>Course Title</th><th>Description</th></tr>"; 
+            echo "<tr class = 'table-primary'><th>Code</th><th>Course Title</th><th>Prerequisites</th><th>Description</th></tr>"; 
+              
+              $prereqString = "";
             while( $publicDeptQueryRow = mysqli_fetch_assoc($publicDeptQueryTableRes) ){
               echo "<tr >";
               echo "<td>".$publicDeptQueryRow['course_id']."</td>";
               echo "<td>".$publicDeptQueryRow['course_title']."</td>";
+              
+              $prereQuery = "SELECT prereq_course_id FROM epiz_25399161_testdb.prereq WHERE course_id = '".$publicDeptQueryRow['course_id']."';";
+              //echo $prereQuery;
+              $prereqs = mysqli_query($connection,$prereQuery);
+              while($prereqsRow = mysqli_fetch_assoc($prereqs)){
+
+                  $prereqString.=$prereqsRow['prereq_course_id'].'<br>';
+                
+              }
+
+              
+              
+
+              echo "<td>".$prereqString."</td>";
+                $prereqString = '';
               echo "<td>".$publicDeptQueryRow['course_desc']."</td>";
               echo "</tr>";
             }
@@ -86,6 +104,8 @@
     require_once '_includes/requiredScripts.php';
     echo "<br>";
     require_once '_includes/footer.php';
+
+
   ?>
 
 </html>

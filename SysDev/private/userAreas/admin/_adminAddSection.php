@@ -55,9 +55,14 @@ $queryFacultyNames = "SELECT `Last_Name`,`First_Name`,`User_Id` FROM epiz_253991
 		$checkAvailablilityQuery.= "time_slot_id = ".$desiredSlot.";";
 		echo $checkAvailablilityQuery."<br />";
 
-
-		if(empty(mysqli_fetch_assoc(mysqli_query($connection, $checkAvailablilityQuery) ) ) ==1){
-			echo "NOTING RETURNED<br />";
+//checks for how many classes faculty is teaching
+		$teachingCount;
+		$queryTeachingCount = "SELECT COUNT(faculty_id) AS coursesCount FROM epiz_25399161_testdb.section WHERE ";
+		$queryTeachingCount.= "faculty_id=".$desiredFaculty.";";
+		$teachingCount = mysqli_fetch_assoc( mysqli_query($connection, $queryTeachingCount) )['coursesCount'] ;
+		
+		if($teachingCount<=3 && empty(mysqli_fetch_assoc(mysqli_query($connection, $checkAvailablilityQuery) ) )==1){
+			echo "NOTING RETURNED<br />".$teachingCount;
 
 
 			$insertSectionQuery = "INSERT INTO epiz_25399161_testdb.section (`course_id`,`semester_id`,`faculty_id`,`room_id`,`time_slot_id`) VALUES('";
@@ -66,7 +71,7 @@ $queryFacultyNames = "SELECT `Last_Name`,`First_Name`,`User_Id` FROM epiz_253991
 
 			mysqli_query($connection, $insertSectionQuery);
 			
-			echo $insertSectionQuery."<br >";
+			//echo $insertSectionQuery."<br >";
 		}else{
 			echo print_r(mysqli_fetch_assoc(mysqli_query($connection, $checkAvailablilityQuery) ));
 			echo "A Section conflict exists.";

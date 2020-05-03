@@ -1,7 +1,9 @@
 <?php
 session_start();
-session_unset();
-session_destroy();
+//session_unset();
+//session_destroy();
+$_SESSION  = array();
+
    
   //THIS LINE imports all lines in HTML <head> element.
   require_once '_includes/documentHead.php';
@@ -9,6 +11,7 @@ session_destroy();
   //These lines import masthead and navigation sections
   require_once "_includes/masthead.php";
   require_once "_includes/mainNavigation.php";
+
 
 ?>
 
