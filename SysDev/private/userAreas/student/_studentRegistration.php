@@ -6,7 +6,12 @@ $checkHolds;
 $prereqsArray = array();
 $maxCred;
 $minCred;
-$actualCred;
+$nextSemCred=0;
+$currentCredSemTotal=0;
+$hasPre;
+
+$credDif;
+
 
 $holdsQuery = "SELECT COUNT(hold_type) AS holdCount FROM epiz_25399161_testdb.student_holds WHERE ";
 $holdsQuery.= "student_id = ".$studentId.";";
@@ -30,26 +35,73 @@ $queryTimeType3="SELECT * FROM epiz_25399161_testdb.grad_full WHERE student_id =
 $queryTimeType4="SELECT * FROM epiz_25399161_testdb.grad_part WHERE student_id =".$studentId.";";
  $q4resource =mysqli_query($connection,$queryTimeType4);
 
-if($q1resource->num_rows > 0){
+//get max and min credits for the student type
+if($q1resource->num_rows > 0){                      //ug-full
     $credAssoc = mysqli_fetch_assoc($q1resource);
     $maxCred = $credAssoc['max_credits'];
     $minCred = $credAssoc['min_credits'];
-}else if($q2resource->num_rows > 0){
+}else if($q2resource->num_rows > 0){                //ug-part
     $credAssoc = mysqli_fetch_assoc($q2resource);
     $maxCred = $credAssoc['max_credits'];
-    $minCred = $credAssoc['min_credits'];
-}else if($q3resource->num_rows > 0){
+    $minCred = 0;
+}else if($q3resource->num_rows > 0){                //grad-full
     $credAssoc = mysqli_fetch_assoc($q3resource);
     $maxCred = $credAssoc['max_credits'];
     $minCred = $credAssoc['min_credits'];
-}else if($q4resource->num_rows > 0){
+}else if($q4resource->num_rows > 0){                //grad-part
     $credAssoc = mysqli_fetch_assoc($q4resource);
     $maxCred = $credAssoc['max_credits'];
     $minCred = 0;
 }
 
+//echo "Max CREDITS: ".$maxCred;
+// to get actual credits taken
+$allCurrentSections = array();
+$querySectionsEnrolled = "SELECT `section_id` FROM epiz_25399161_testdb.class_registration WHERE ";
+$querySectionsEnrolled.= "student_id = ".$studentId.";";
+$enrolledResource = mysqli_query($connection, $querySectionsEnrolled);
+
+while($secRows = mysqli_fetch_assoc($enrolledResource)){
+    array_push($allCurrentSections, $secRows['section_id']);
+    
+}
+
+$nowSections = array();
+$nextSections = array();
+
+
+//echo print_r($currentSections);
+//populates for next semester
+$allCurrentCourses = array();
+foreach($allCurrentSections as $item){
+    $queryCourses ="SELECT * FROM epiz_25399161_testdb.section WHERE ";
+    $queryCourses.="`section_id`=".$item." AND semester_id = 9;";
+    $crns = mysqli_query($connection, $queryCourses);
+    array_push($allCurrentCourses, mysqli_fetch_assoc($crns)['course_id']);
+    
+}
+
+$nextSemCourses = array();
+    
+foreach($allCurrentCourses as $crs){
+    $queryCredits = "SELECT `credits` FROM epiz_25399161_testdb.courses WHERE ";
+    $queryCredits.= "course_id='".$crs."';";
+    $credResource = mysqli_query($connection, $queryCredits);
+    
+    $currentCredSemTotal += (int)mysqli_fetch_assoc($credResource)['credits'] ;
+}
+//echo $currentCredSemTotal;
+    
+$credDif = $maxCred-$currentCredSemTotal;
+//echo $credDif;
 
 ?>
+
+        <?php 
+            if($checkHolds>0){
+                echo "<div class = 'col-12 bg-primary'><p class = 'text-light'>ALERT:<br />You currently have holds on your account. Contact an administrator. To View holds please view your personal data page.</p></div>";
+            }
+        ?>
 
 
 <div class = 'row'>
@@ -69,7 +121,6 @@ if($q1resource->num_rows > 0){
       </thead>
 
   <?php
-
   $registrationQuery = "SELECT section_id FROM class_registration WHERE student_id='".$studentId."' ;";
   $registrationQueryResult = mysqli_query($connection, $registrationQuery);
   $sectionIdArray = array();
@@ -259,11 +310,12 @@ if($q1resource->num_rows > 0){
 
 
 
-<div class = 'container'>
+<div class = ''>
 
     <form class = 'row  bg-secondary' action ="<?php echo $_SERVER['PHP_SELF'] ?>" method = "POST">
     <legend>Search Classes To Add</legend>
     <br>
+        
     <div class = 'form-group col-12'>  
       
       <br />
@@ -291,13 +343,14 @@ if($q1resource->num_rows > 0){
       <thead>
           <tr class = 'table-primary'>
             <th>Class Name</th>
-            <th>Sec ID</th>
-            <!-- <th>Course Code</th> -->
+            <th>Sec. ID</th>
+            <th>CR</th>
             <th>Semester</th>
             <th>Instructor</th>
             <th>Days</th>
             <th>Times</th>
             <th>Tally</th>
+            <th>Max.</th>
             <th>Reg</th>
           </tr>
       </thead>
@@ -322,32 +375,58 @@ if($q1resource->num_rows > 0){
           }
         }
 
-//echo print_r($allSections[0]);
-        foreach ($allSections as $value) {
-            $tallyQuery = "SELECT COUNT(section_id) FROM class_registration WHERE section_id ='".$value['section_id']."';";
-            $rowResource = mysqli_query($connection, $tallyQuery);
-            $tally = mysqli_fetch_assoc($rowResource);
-            $tally = $tally['COUNT(section_id)'];
-            
-            if($tally>=27)
-              echo "<tr table-danger>";
-            else
-              echo "<tr>";
+//echo "ALL SECTIONS: ".print_r($allSections[0]);
+        foreach ($allSections as $key => $value) {
+            if($value['semester_id']==9){
+                $tallyQuery = "SELECT COUNT(section_id) FROM class_registration WHERE section_id ='".$value['section_id']."';";
+                $rowResource = mysqli_query($connection, $tallyQuery);
+                $tally = mysqli_fetch_assoc($rowResource);
+                $tally = $tally['COUNT(section_id)'];
 
-            echo "<td><strong>".$value['course_id']."</strong>-".$globalCourseIDLookup[$value['course_id']]."</td>";
-            echo "<td>".$value['section_id']."</td>";
-            //echo "<td>".$value['course_id']."</td>";
-            echo "<td>".$globalSemesterIDLookupRef[$value['semester_id']]."</td>";
-            echo "<td>".$globalAdvisorIDLookup[$value['faculty_id']]."</td>";
-            echo "<td>".$courseDaysLookup[$value['time_slot_id']]."</td>";
-            echo "<td>".$globalAllTimeSlots[$globalTimeRelationLookup[$value['time_slot_id']]]."</td>";
-            echo "<td >".$tally."</td>";
-            
-            if($tally<=27)
-              echo "<td><input type = 'radio' name= 'secID' value = '".$value['section_id']."'></td>";
-            else
-              echo "<td>-C-</td>";
-            echo "</tr>";
+                //get credits for each to display
+                $queryCreds = "SELECT `credits` FROM epiz_25399161_testdb.courses WHERE ";
+                $queryCreds.= "course_id='".$value['course_id']."';";
+                $dispCreds =  mysqli_fetch_assoc(mysqli_query($connection,$queryCreds))['credits'] ;
+
+
+                if($tally>=$value['capacity'] || $dispCreds>$credDif)
+                  echo "<tr class = 'table-warning'>";
+                else
+                  echo "<tr>";
+
+                echo "<td><strong>".$value['course_id']."</strong>-".$globalCourseIDLookup[$value['course_id']]."</td>";
+                echo "<td>".$value['section_id']."</td>";
+                echo "<td>".$dispCreds."</td>";
+                echo "<td>".$globalSemesterIDLookupRef[$value['semester_id']]."</td>";
+                //echo "<td>".$globalSemesterIDLookupRef[$value['semester_id']]."</td>";
+                echo "<td>".$globalAdvisorIDLookup[$value['faculty_id']]."</td>";
+                echo "<td>".$courseDaysLookup[$value['time_slot_id']]."</td>";
+                echo "<td>".$globalAllTimeSlots[$globalTimeRelationLookup[$value['time_slot_id']]]."</td>";
+                echo "<td >".$tally."</td>";
+                echo "<td>".$value['capacity']."</td>";
+
+                
+                if($checkHolds>0 && $tally>=$value['capacity'] && $dispCreds>$credDif){
+                    echo "<td>CNH</td>";
+                }
+                else if( $checkHolds>0){
+                  echo "<td>H</td>";
+                }
+                else if($tally>=$value['capacity']){
+                  echo "<td>C</td>";
+                }
+                else if($dispCreds>$credDif){
+                    echo "<td>N</td>";
+                }
+                
+                else if(false){
+                    echo "<td>CNHP</td>";
+                }
+                else{
+                    echo "<td><input type = 'radio' name= 'secID' value = '".$value['section_id']."'></td>";
+                }
+                    echo "</tr>";
+            }
           }  
       }elseif(!empty($_POST['submitReg']) && !empty($_POST['secID'])){  //insert registration nto table
         $registerStuQuery = "INSERT INTO epiz_25399161_testdb.class_registration VALUES('".$_POST['secID']."',".$studentId.",NULL,NULL);"; 
