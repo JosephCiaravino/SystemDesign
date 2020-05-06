@@ -3,13 +3,13 @@
 $studentId = $_SESSION['id'];
 
 $checkHolds;
-$prereqsArray = array();
+$prereqsArray = array(); 
 $maxCred;
 $minCred;
 $nextSemCred=0;
 $currentCredSemTotal=0;
-$hasPre;
-
+$stuPrereqs = array();
+$hasPre=True;
 $credDif;
 
 
@@ -90,17 +90,24 @@ foreach($allCurrentCourses as $crs){
     
     $currentCredSemTotal += (int)mysqli_fetch_assoc($credResource)['credits'] ;
 }
-//echo $currentCredSemTotal;
     
 $credDif = $maxCred-$currentCredSemTotal;
-//echo $credDif;
 
-?>
 
-        <?php 
-            if($checkHolds>0){
-                echo "<div class = 'col-12 bg-primary'><p class = 'text-light'>ALERT:<br />You currently have holds on your account. Contact an administrator. To View holds please view your personal data page.</p></div>";
-            }
+//get student's history of courses with passing grades
+    $queryPreHist = "SELECT `course_id` FROM epiz_25399161_testdb.student_history ";
+    $queryPreHist.= "WHERE student_id = ".$studentId." AND `grade`!='F' AND `grade`!='D' AND `grade`!='D+' AND `grade`!='D-' AND `grade`!='C-';";
+    $stuHistResource = mysqli_query($connection, $queryPreHist);
+    while($stuHistRow = mysqli_fetch_assoc($stuHistResource)){   
+        array_push($stuPrereqs, $stuHistRow['course_id']); 
+        echo print_r($stuPrereqs)."<br />";
+    }
+    
+
+
+    if($checkHolds>0){
+        echo "<div class = 'col-12 bg-primary'><p class = 'text-light'>ALERT:<br />You currently have holds on your account. Contact an administrator. To View holds please view your personal data page.</p></div>";
+    }
         ?>
 
 
@@ -345,6 +352,7 @@ $credDif = $maxCred-$currentCredSemTotal;
             <th>Class Name</th>
             <th>Sec. ID</th>
             <th>CR</th>
+            <th>Pre</th>
             <th>Semester</th>
             <th>Instructor</th>
             <th>Days</th>
@@ -375,6 +383,7 @@ $credDif = $maxCred-$currentCredSemTotal;
           }
         }
 
+          
 //echo "ALL SECTIONS: ".print_r($allSections[0]);
         foreach ($allSections as $key => $value) {
             if($value['semester_id']==9){
@@ -388,7 +397,33 @@ $credDif = $maxCred-$currentCredSemTotal;
                 $queryCreds.= "course_id='".$value['course_id']."';";
                 $dispCreds =  mysqli_fetch_assoc(mysqli_query($connection,$queryCreds))['credits'] ;
 
-
+                //get prereqs for the course
+                $course = $value['course_id'];
+                $queryPrerequisites = "SELECT `prereq_course_id` FROM epiz_25399161_testdb.prereq WHERE ";
+                $queryPrerequisites.= "course_id ='".$course."';";
+                $dispPre = "";  
+                $prereqResource = mysqli_query($connection, $queryPrerequisites);
+                $prereqsArray = array();
+                $hasPre = true;
+                while($myrow = mysqli_fetch_assoc($prereqResource)){ 
+                    $dispPre.=$myrow['prereq_course_id']."<br />";   
+                    array_push($prereqsArray,$myrow['prereq_course_id']);
+                }
+                
+                foreach($prereqsArray as $item){
+                    
+                    if(in_array($item,$stuPrereqs)){
+                        $hasPre = true;
+                    }else{
+                        $hasPre = false;
+                        break;
+                    }
+                    
+                }
+                
+                
+                
+                
                 if($tally>=$value['capacity'] || $dispCreds>$credDif)
                   echo "<tr class = 'table-warning'>";
                 else
@@ -397,6 +432,13 @@ $credDif = $maxCred-$currentCredSemTotal;
                 echo "<td><strong>".$value['course_id']."</strong>-".$globalCourseIDLookup[$value['course_id']]."</td>";
                 echo "<td>".$value['section_id']."</td>";
                 echo "<td>".$dispCreds."</td>";
+                
+                if($hasPre){
+                    echo "<td>".$dispPre."</td>";
+                }else{
+                    echo "<td class = 'text-danger'>".$dispPre."</td>";
+                }
+                
                 echo "<td>".$globalSemesterIDLookupRef[$value['semester_id']]."</td>";
                 //echo "<td>".$globalSemesterIDLookupRef[$value['semester_id']]."</td>";
                 echo "<td>".$globalAdvisorIDLookup[$value['faculty_id']]."</td>";
@@ -406,21 +448,19 @@ $credDif = $maxCred-$currentCredSemTotal;
                 echo "<td>".$value['capacity']."</td>";
 
                 
-                if($checkHolds>0 && $tally>=$value['capacity'] && $dispCreds>$credDif){
-                    echo "<td>CNH</td>";
-                }
-                else if( $checkHolds>0){
-                  echo "<td>H</td>";
+            
+                if( $checkHolds>0){
+                  echo "<td>H!</td>";
                 }
                 else if($tally>=$value['capacity']){
-                  echo "<td>C</td>";
+                  echo "<td>C!</td>";
                 }
                 else if($dispCreds>$credDif){
-                    echo "<td>N</td>";
+                    echo "<td>N!</td>";
                 }
                 
-                else if(false){
-                    echo "<td>CNHP</td>";
+                else if($hasPre==false){
+                    echo "<td>P!</td>";
                 }
                 else{
                     echo "<td><input type = 'radio' name= 'secID' value = '".$value['section_id']."'></td>";

@@ -6,9 +6,57 @@
 <form class = 'col-10' action ="<?php echo $_SERVER['PHP_SELF'] ?>" method = "POST">
 	<div class = 'form-group'>	
 		
-		  <label class="col-form-label" for="facultyAdvisees">Enter Faculty ID:</label>
-		  <input type="text" class="form-control" name = "facultyAdvisees" id="facultyAdvisees">
-		
+		<?php
+    //get values to populate option group menu
+$facultyNumsArray = array();
+$queryFacultyOptions = "SELECT * FROM epiz_25399161_testdb.faculty ORDER BY Dept_Id;";
+$facultyNumsResource = mysqli_query($connection, $queryFacultyOptions);
+while($facultyNumsResourceRow = mysqli_fetch_assoc($facultyNumsResource)){
+	$facultyNumsArray[$facultyNumsResourceRow['Faculty_Id']] = $facultyNumsResourceRow['Dept_Id'];
+}
+
+$departmentArray = array();
+$queryDepartments = "SELECT `dept_id`, `dept_name` FROM epiz_25399161_testdb.department ORDER BY dept_name;";
+$departmentNumsResource = mysqli_query($connection, $queryDepartments);
+//$departmentArray[0]=0;
+while($departmentResourceRow = mysqli_fetch_assoc($departmentNumsResource)){
+	$departmentArray[$departmentResourceRow['dept_id']]=$departmentResourceRow['dept_name'];
+
+}
+
+$facultyNamesArray = array();
+$queryFacultyNames = "SELECT `Last_Name`,`First_Name`,`User_Id` FROM epiz_25399161_testdb.user ORDER BY Last_name;";
+ $facNamesResource = mysqli_query($connection, $queryFacultyNames);
+	//echo print_r($facNamesResource);
+
+ while($facultyNamesResourceRow = mysqli_fetch_assoc($facNamesResource)){
+ 	  
+	$facultyNamesArray[$facultyNamesResourceRow['User_Id']] = $facultyNamesResourceRow['Last_Name']." ,".$facultyNamesResourceRow['First_Name'];
+ 	  
+ }	
+
+    
+        ?>
+        
+        
+        <label class="col-form-label" for="facultyAdvisees">Faculty ID</label>
+         <select  class="form-control" id="facultyAdvisees" name = 'facultyAdvisees'> 
+          <?php
+                foreach ($departmentArray as $depid => $depname) {
+                    
+                    echo "<optgroup label = '".$depname."'>";
+                    
+                    foreach ($facultyNumsArray as $id => $deptid) {
+                        if($deptid == $depid)
+                        echo "<option value='".$id."'>".$facultyNamesArray[$id]." -- (User ID#: ".$id.")</option>";
+                        
+                    }
+                    echo "</optgroup>";
+                }
+
+            ?>
+         </select >
+        
 		
 		<br /><!--End Student SPecific-->
 
