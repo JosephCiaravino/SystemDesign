@@ -65,10 +65,10 @@ $queryFacultyNames = "SELECT `Last_Name`,`First_Name`,`User_Id` FROM epiz_253991
 			echo "NOTING RETURNED<br />".$teachingCount;
 
 
-			$insertSectionQuery = "INSERT INTO epiz_25399161_testdb.section (`course_id`,`semester_id`,`faculty_id`,`room_id`,`time_slot_id`) VALUES('";
-			$insertSectionQuery.= $desiredCourseId."', ".$desiredSemesterID.", ".$desiredFaculty.", ".$desiredRoom.", ".$desiredSlot.");";
+			$insertSectionQuery = "INSERT INTO epiz_25399161_testdb.section (`course_id`,`semester_id`,`faculty_id`,`room_id`,`time_slot_id`,`capacity`) VALUES('";
+			$insertSectionQuery.= $desiredCourseId."', ".$desiredSemesterID.", ".$desiredFaculty.", ".$desiredRoom.", ".$desiredSlot.", ".$maxSeats.");";
 		
-
+            echo $insertSectionQuery;
 			mysqli_query($connection, $insertSectionQuery);
 			
 			//echo $insertSectionQuery."<br >";
@@ -132,6 +132,10 @@ $queryFacultyNames = "SELECT `Last_Name`,`First_Name`,`User_Id` FROM epiz_253991
 
 	  <label class="col-form-label" for="roomNum">Room Number</label>
 	  <input type="text" class="form-control" id="roomNum" name ='roomId' required>
+    
+      <label class="col-form-label" for="maxSeats">Maximum Seats</label>
+	  <input type="number" class="form-control" id="maxSeats" name ='maxSeats' min = 1 required>
+
 
 	  <label class="col-form-label" for="days_id">Days</label>
 	  <select  class="form-control" id="days_id" name = 'days_id' required>
