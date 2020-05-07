@@ -473,7 +473,7 @@ $credDif = $maxCred-$currentCredSemTotal;
         echo $registerStuQuery;
           mysqli_query($connection, $registerStuQuery);
 
-
+          echo "<div class = 'bg-success'>You are registered for selected class.</div>";
 
       }
 

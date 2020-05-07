@@ -113,7 +113,7 @@ if( !empty($_POST['submitFacQuery']) && $_POST['submitFacQuery'] != "" && !empty
         if(!empty($facSchedResource) ){
             while($facSchedResourceRow = mysqli_fetch_assoc($facSchedResource)){
                 echo "<tr>";
-                echo "<td><a href = '_adminGetRosters.php?id=1' target = '_blank'>".$facSchedResourceRow['section_id']."</a></td>";
+                echo "<td><a href = '_adminGetRosters.php?id=".$uid."' target = '_blank'>".$facSchedResourceRow['section_id']."</a></td>";
 
                 $section_id = $facSchedResourceRow['section_id'];
                 $queryGetTimeSlotFromSec = "SELECT time_slot_id FROM section WHERE section_id = ".$section_id.";";

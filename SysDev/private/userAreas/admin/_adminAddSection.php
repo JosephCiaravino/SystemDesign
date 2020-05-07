@@ -53,7 +53,7 @@ $queryFacultyNames = "SELECT `Last_Name`,`First_Name`,`User_Id` FROM epiz_253991
 		$checkAvailablilityQuery.= "faculty_id = ".$desiredFaculty." AND ";
 		$checkAvailablilityQuery.= "room_id = ".$desiredRoom." AND ";
 		$checkAvailablilityQuery.= "time_slot_id = ".$desiredSlot.";";
-		echo $checkAvailablilityQuery."<br />";
+		
 
 //checks for how many classes faculty is teaching
 		$teachingCount;
@@ -62,19 +62,26 @@ $queryFacultyNames = "SELECT `Last_Name`,`First_Name`,`User_Id` FROM epiz_253991
 		$teachingCount = mysqli_fetch_assoc( mysqli_query($connection, $queryTeachingCount) )['coursesCount'] ;
 		
 		if($teachingCount<=3 && empty(mysqli_fetch_assoc(mysqli_query($connection, $checkAvailablilityQuery) ) )==1){
-			echo "NOTING RETURNED<br />".$teachingCount;
+			echo "<div class ='bg-success col-12'>Class Inserted.</div><br />".$teachingCount;
 
 
 			$insertSectionQuery = "INSERT INTO epiz_25399161_testdb.section (`course_id`,`semester_id`,`faculty_id`,`room_id`,`time_slot_id`,`capacity`) VALUES('";
-			$insertSectionQuery.= $desiredCourseId."', ".$desiredSemesterID.", ".$desiredFaculty.", ".$desiredRoom.", ".$desiredSlot.", ".$maxSeats.");";
+			$insertSectionQuery.= $desiredCourseId."', ".$desiredSemesterID.", ".$desiredFaculty.", ".$desiredRoom.", ".$desiredSlot.", ".$_POST['maxSeats'].");";
 		
             echo $insertSectionQuery;
 			mysqli_query($connection, $insertSectionQuery);
 			
 			//echo $insertSectionQuery."<br >";
 		}else{
-			echo print_r(mysqli_fetch_assoc(mysqli_query($connection, $checkAvailablilityQuery) ));
-			echo "A Section conflict exists.";
+			//echo print_r(mysqli_fetch_assoc(mysqli_query($connection, $checkAvailablilityQuery) ));
+            if($_POST['yearSelector']<2020 || $_POST['termSelector']!='fall') //HARD CODED!!!!!!!
+                echo "<div class = 'col-12 bg-warning'>Semester already in progress</div>";
+            else if($teachingCount>=3)
+			     echo "<div class = 'col-12 bg-warning'>Instructor teaching too many classes</div>";
+            else if(empty(mysqli_fetch_assoc(mysqli_query($connection, $checkAvailablilityQuery) ) )==1){
+                echo "<div class = 'col-12 bg-warning'>Time or location conflict exists.</div>";
+                
+            }
 		}
 }
 //echo print_r( mysqli_fetch_assoc() );

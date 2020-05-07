@@ -14,7 +14,7 @@ if(!empty($_POST['submitNewUser'])){
       $queryAddUsr .=$_POST['cityAdd']."', '".$_POST['stateAdd']."', '".$_POST['zipAdd']."', '";
       $queryAddUsr .=$_POST['tele']."', '".$_POST['usertype']."');";
       
-      echo "<br />".$queryAddUsr."<br />";
+      //echo "<br />".$queryAddUsr."<br />";
       $userRole = $_POST['usertype'];
       //Include code here to handle case where student is submitted and FT/PT GRAD/UG
 
@@ -59,7 +59,7 @@ if(!empty($_POST['submitNewUser'])){
       $level = "";
 
             if(isset($_POST['grad-under']) && isset($_POST['enrollment']) ){
-                  echo "<div class='col-6 alert alert-dismissible alert-success'>CONDITIONS MET FOR SUBMITTING NEW STUDENT</div>";
+                  echo "<div class='row col-12 alert-success'>New User Inserted.</div>";
                   $temptime = $_POST['enrollment'];
                   $level = $_POST['grad-under'];
                 
