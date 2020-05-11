@@ -3,10 +3,22 @@
 	if(isset($_POST['course_id_del']) && !empty($_POST['submitDeleteSection']) ){
 		$removeSectionQuery = "DELETE FROM epiz_25399161_testdb.section WHERE `section_id` = ";
 		$removeSectionQuery.= $_POST['course_id_del'].";";
-		echo $removeSectionQuery;
+		//echo $removeSectionQuery;
 		mysqli_query($connection, $removeSectionQuery);
-	}
+        
+}
 
+
+
+
+// the message
+$msg = "Your schedule has been affected.\nPlease login to your account to view changes.";
+
+// use wordwrap() if lines are longer than 70 characters
+$msg = wordwrap($msg,70);
+
+// send email
+mail("joseph.ciaravino@gmail.com","My subject",$msg);
 ?>
 
 

@@ -29,16 +29,16 @@ $connection = mysqli_connect('localhost','webUser','secretPass','epiz_25399161_t
 
   }else if(!empty($_POST['submitRmvUser']) && !empty($_POST['userToRemove']) ){
     require_once "../../_includes/functionalityScripts/databaseScripts/db_script_remove_user.php";
-
+      echo "<div class = 'alert-success'>User removed.</div>";
   }else if(isset($_POST['submitNewCourse']) && $_POST['submitNewCourse']=='submitNewCourse'){
     require_once "../../_includes/functionalityScripts/databaseScripts/db_script_add_course.php";
-
+      echo "<div class = 'alert-success'>New course created.</div>";
   }else if(isset($_POST['submitRmvCourse']) && $_POST['submitRmvCourse']=='submitRmvCourse'){
-    
+    echo "<div class = 'alert-success'>Course removed.</div>";
 
   }else if(isset($_POST['submitNewDept']) && $_POST['submitNewDept']=='submitNewDept'){
     require_once "../../_includes/functionalityScripts/databaseScripts/db_script_add_dept.php";
-
+      echo "<div class = 'alert-success'>New department created.</div>";
 
   }else if( isset($_POST['submitPlaceHold']) || isset($_POST['submitRmvHold']) ){
     require_once "../../_includes/functionalityScripts/databaseScripts/db_scripts_holds.php";

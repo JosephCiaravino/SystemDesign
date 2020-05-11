@@ -11,6 +11,7 @@ $currentCredSemTotal=0;
 $stuPrereqs = array();
 $hasPre=True;
 $credDif;
+$registered = array();
 
 
 $holdsQuery = "SELECT COUNT(hold_type) AS holdCount FROM epiz_25399161_testdb.student_holds WHERE ";
@@ -61,10 +62,11 @@ $querySectionsEnrolled = "SELECT `section_id` FROM epiz_25399161_testdb.class_re
 $querySectionsEnrolled.= "student_id = ".$studentId.";";
 $enrolledResource = mysqli_query($connection, $querySectionsEnrolled);
 
+
 while($secRows = mysqli_fetch_assoc($enrolledResource)){
-    array_push($allCurrentSections, $secRows['section_id']);
-    
+    array_push($allCurrentSections, $secRows['section_id']);  
 }
+
 
 $nowSections = array();
 $nextSections = array();
@@ -81,6 +83,7 @@ foreach($allCurrentSections as $item){
     
 }
 
+
 $nextSemCourses = array();
     
 foreach($allCurrentCourses as $crs){
@@ -93,20 +96,19 @@ foreach($allCurrentCourses as $crs){
     
 $credDif = $maxCred-$currentCredSemTotal;
 
-
 //get student's history of courses with passing grades
     $queryPreHist = "SELECT `course_id` FROM epiz_25399161_testdb.student_history ";
     $queryPreHist.= "WHERE student_id = ".$studentId." AND `grade`!='F' AND `grade`!='D' AND `grade`!='D+' AND `grade`!='D-' AND `grade`!='C-';";
     $stuHistResource = mysqli_query($connection, $queryPreHist);
     while($stuHistRow = mysqli_fetch_assoc($stuHistResource)){   
         array_push($stuPrereqs, $stuHistRow['course_id']); 
-        echo print_r($stuPrereqs)."<br />";
+        //echo print_r($stuPrereqs)."<br />";
     }
     
 
 
     if($checkHolds>0){
-        echo "<div class = 'col-12 bg-primary'><p class = 'text-light'>ALERT:<br />You currently have holds on your account. Contact an administrator. To View holds please view your personal data page.</p></div>";
+        echo "<div class = 'col-12 bg-warning text-danger'><p class = 'text-light'>ALERT:<br />You currently have holds on your account. Contact an administrator. To View holds please view your personal data page.</p></div>";
     }
         ?>
 
@@ -189,6 +191,8 @@ $credDif = $maxCred-$currentCredSemTotal;
           $gradeResult = mysqli_fetch_assoc(mysqli_query($connection, $gradeQuery));
           $midtermGrade = $gradeResult['midterm_grade'];
           $finalGrade = $gradeResult['final_grade'];
+          
+      
 
   ?>
 
@@ -241,21 +245,26 @@ $credDif = $maxCred-$currentCredSemTotal;
         <tbody>
          
          <?php
+    $roomTime = array();
   foreach($sectionIdArray as $sectionId){
-          $semesterIdQuery = "SELECT semester_id FROM section WHERE section_id='".$sectionId."';";
+          $semesterIdQuery = "SELECT * FROM section WHERE section_id='".$sectionId."';";
       $semesterId = mysqli_fetch_assoc(mysqli_query($connection, $semesterIdQuery));
+        
       $semesterId = $semesterId['semester_id'];
 
-     
       if($semesterId == $nextSemesterID){
-          $sectionInfoQuery = "SELECT course_id, room_id, time_slot_id, faculty_id FROM section WHERE section_id='".$sectionId."';";
+          $sectionInfoQuery = "SELECT * FROM section WHERE section_id='".$sectionId."';";
           $sectionInfoResult = mysqli_fetch_assoc(mysqli_query($connection, $sectionInfoQuery));
-          //get course id
+         
+          
           $courseId = $sectionInfoResult['course_id'];
           $roomId = $sectionInfoResult['room_id'];
           $timeSlotId = $sectionInfoResult['time_slot_id'];
           $facultyId = $sectionInfoResult['faculty_id'];
+          
+          array_push($roomTime,$timeSlotId);
   //        
+
   ////        //get course title
           $courseTitleQuery = "SELECT course_title, credits FROM courses WHERE course_id='".$courseId."';";
           $courseTitle = mysqli_fetch_assoc(mysqli_query($connection, $courseTitleQuery));
@@ -304,7 +313,7 @@ $credDif = $maxCred-$currentCredSemTotal;
           echo "<td>".$facultyFirstName." ".$facultyLastName."</td>";
           echo "<td>".$courseCredits."</td>";
          
-
+          
         echo "</tr>";     
     }
   }
@@ -317,7 +326,7 @@ $credDif = $maxCred-$currentCredSemTotal;
 
 
 
-<div class = ''>
+<div class = ''><!--    VIEW OF CLASSES TO REGISTER FOR    -->
 
     <form class = 'row  bg-secondary' action ="<?php echo $_SERVER['PHP_SELF'] ?>" method = "POST">
     <legend>Search Classes To Add</legend>
@@ -345,7 +354,7 @@ $credDif = $maxCred-$currentCredSemTotal;
     </div>
     
 
-    <div class = 'bg-light' style =  'overflow-y: scroll; max-height: 400px; border: 2px solid black'>
+    <div class = 'bg-light' style =  'overflow-y: scroll; max-height: 475px; border: 2px solid black'>
       <table class = "table table-hover table-bordered ">
       <thead>
           <tr class = 'table-primary'>
@@ -358,13 +367,14 @@ $credDif = $maxCred-$currentCredSemTotal;
             <th>Days</th>
             <th>Times</th>
             <th>Tally</th>
-            <th>Max.</th>
+            <th>Max</th>
             <th>Reg</th>
           </tr>
       </thead>
         <tbody >
       
 <?php
+            echo print_r($roomTime);
         $allCourses = array();
         $allSections = array();
       if(!empty($_POST['submitSearch']) && !empty($_POST['crsDept']) ){
@@ -387,6 +397,8 @@ $credDif = $maxCred-$currentCredSemTotal;
 //echo "ALL SECTIONS: ".print_r($allSections[0]);
         foreach ($allSections as $key => $value) {
             if($value['semester_id']==9){
+                
+                
                 $tallyQuery = "SELECT COUNT(section_id) FROM class_registration WHERE section_id ='".$value['section_id']."';";
                 $rowResource = mysqli_query($connection, $tallyQuery);
                 $tally = mysqli_fetch_assoc($rowResource);
@@ -421,10 +433,7 @@ $credDif = $maxCred-$currentCredSemTotal;
                     
                 }
                 
-                
-                
-                
-                if($tally>=$value['capacity'] || $dispCreds>$credDif)
+                if($tally>=$value['capacity'] || $dispCreds > $credDif)
                   echo "<tr class = 'table-warning'>";
                 else
                   echo "<tr>";
@@ -447,7 +456,6 @@ $credDif = $maxCred-$currentCredSemTotal;
                 echo "<td >".$tally."</td>";
                 echo "<td>".$value['capacity']."</td>";
 
-                
             
                 if( $checkHolds>0){
                   echo "<td>H!</td>";
@@ -458,9 +466,11 @@ $credDif = $maxCred-$currentCredSemTotal;
                 else if($dispCreds>$credDif){
                     echo "<td>N!</td>";
                 }
-                
                 else if($hasPre==false){
                     echo "<td>P!</td>";
+                }
+                else if(in_array($value['time_slot_id'],$roomTime)){
+                    echo "<td>DT</td>";
                 }
                 else{
                     echo "<td><input type = 'radio' name= 'secID' value = '".$value['section_id']."'></td>";
@@ -470,7 +480,7 @@ $credDif = $maxCred-$currentCredSemTotal;
           }  
       }elseif(!empty($_POST['submitReg']) && !empty($_POST['secID'])){  //insert registration nto table
         $registerStuQuery = "INSERT INTO epiz_25399161_testdb.class_registration VALUES('".$_POST['secID']."',".$studentId.",NULL,NULL);"; 
-        echo $registerStuQuery;
+        //echo $registerStuQuery;
           mysqli_query($connection, $registerStuQuery);
 
           echo "<div class = 'bg-success'>You are registered for selected class.</div>";

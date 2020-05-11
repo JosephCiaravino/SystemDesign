@@ -16,7 +16,7 @@ if(!empty($_POST['newSem']) && $_POST['newSem'] != ""){
 	$querySemesterAdd.= "VALUES('".$year."', '".$season."', '".$_POST['semStart']."', '".$_POST['semEnd']."', '".$_POST['midtermDate'];
 	$querySemesterAdd.= "', '".$_POST['finalDate']."');";
 
-	echo $querySemesterAdd;
+	echo "<div class ='bg-success col-12'> New semester created.</div>";
 	mysqli_query($connection, $querySemesterAdd);
 	
 }

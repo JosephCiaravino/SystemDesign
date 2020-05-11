@@ -23,6 +23,16 @@ function transform_userID($rawID){
 
 }
 
+
+
+$test1 = array('one'=>'a', 'two'=>'B', 'three'=>'c', 'four'=>'D', 'five'=>3);
+$test2 = array('five'=>3, 'one'=>'a', 'two'=>'B', 'three'=>'c', 'four'=>'D');
+
+if($test1==$test2)
+    echo 'TRUE';
+else
+    echo 'FALSE';
+
 //populates a GPAs for student table.
 /*
 	UPDATE table_name

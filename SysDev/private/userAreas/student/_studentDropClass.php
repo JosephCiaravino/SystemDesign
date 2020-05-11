@@ -3,26 +3,28 @@
 //DELETE FROM table_name WHERE condition;
 if(!empty($_POST['submitDropCrs']) && !empty($_POST['crsDrop'])){
 
-//get the semester ID in order to find the midterm date to limit droping.
-  $queryCourseID = "SELECT semester_id FROM epiz_25399161_testdb.section WHERE section_id = ";
-  $queryCourseID.= $_POST['crsDrop'].";";
-  $semID = mysqli_fetch_assoc(mysqli_query($connection, $queryCourseID));
-  $semID = $semID['semester_id'];
-   
- //get midterm date for this course ID
- $queryCrsMidterm = "SELECT `semester_midterm` FROM epiz_25399161_testdb.semester WHERE ";
- $queryCrsMidterm.= "`semester_id` = ".$semID.";";
- $semMidterm = mysqli_fetch_assoc(mysqli_query($connection, $queryCrsMidterm));
- $semMidterm = $semMidterm['semester_midterm'];
+    
+        //get the semester ID in order to find the midterm date to limit droping.
+          $queryCourseID = "SELECT semester_id FROM epiz_25399161_testdb.section WHERE section_id = ";
+          $queryCourseID.= $_POST['crsDrop'].";";
+          $semID = mysqli_fetch_assoc(mysqli_query($connection, $queryCourseID));
+          $semID = $semID['semester_id'];
 
- echo print_r($semMidterm);  
+         //get midterm date for this course ID
+         $queryCrsMidterm = "SELECT `semester_midterm` FROM epiz_25399161_testdb.semester WHERE ";
+         $queryCrsMidterm.= "`semester_id` = ".$semID.";";
+         $semMidterm = mysqli_fetch_assoc(mysqli_query($connection, $queryCrsMidterm));
+         $semMidterm = $semMidterm['semester_midterm'];
 
-  if(date("Y-m-d") < $semMidterm){ //-=-=-=-=-=-=-=-=-=-=-=-=   date("Y-m-d") < $semMidterm
-    $queryCrsDrop = "DELETE FROM epiz_25399161_testdb.class_registration WHERE `section_id`=";
-    $queryCrsDrop.= $_POST['crsDrop']." AND `student_id`=".$_SESSION['id'].";";
-    echo $queryCrsDrop; 
-    mysqli_query($connection, $queryCrsDrop);
-  }
+         echo print_r($semMidterm);  
+
+          if(date("Y-m-d") < $semMidterm){ //-=-=-=-=-=-=-=-=-=-=-=-=   date("Y-m-d") < $semMidterm
+            $queryCrsDrop = "DELETE FROM epiz_25399161_testdb.class_registration WHERE `section_id`=";
+            $queryCrsDrop.= $_POST['crsDrop']." AND `student_id`=".$_SESSION['id'].";";
+            echo $queryCrsDrop; 
+            mysqli_query($connection, $queryCrsDrop);
+          }
+  
 }
 
 ?>

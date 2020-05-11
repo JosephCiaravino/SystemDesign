@@ -21,7 +21,7 @@ $myGPA = $myGPA[0];
 
 $queryGetMyAdvisor = "SELECT `faculty_id` FROM epiz_25399161_testdb.advisor WHERE ";
 $queryGetMyAdvisor.= "`student_id` ='".$_SESSION['id']."';";
-echo $queryGetMyAdvisor;
+//echo $queryGetMyAdvisor;
 $myAdvisorsResult = mysqli_query($connection, $queryGetMyAdvisor);
 
  
