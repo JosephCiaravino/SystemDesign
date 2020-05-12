@@ -75,7 +75,7 @@ $queryFacultyNames = "SELECT `Last_Name`,`First_Name`,`User_Id` FROM epiz_253991
 	      <th scope="col">Address</th>
 	      <th scope="col">GPA</th>
 	      <th scope="col">Type</th>
-	      <th scope="col">Credits</th>
+	      
 	    </tr>
 
 	  </thead>
@@ -106,7 +106,7 @@ $queryFacultyNames = "SELECT `Last_Name`,`First_Name`,`User_Id` FROM epiz_253991
 
 //href="javascript:window.open('some.html', 'yourWindowName', 'width=200,height=150');">Test</a>
 			   	echo "<tr>";
-			   	echo"<td><a title = 'View Degree Progress' target = '_blank' href = '_adminDegreeAudit.php?uid=111' >".transform_userID($adviseePersonalRows['User_Id'])."</a></td>";
+			   	echo"<td><a title = 'View Degree Progress' target = '_blank' href = '_adminDegreeAudit.php?uid=".$adviseePersonalRows['User_Id']."' >".transform_userID($adviseePersonalRows['User_Id'])."</a></td>";
 			   	echo"<td>".$adviseePersonalRows['Last_name'].", ".$adviseePersonalRows['First_Name']."</td>";
 			   	echo"<td>".$adviseePersonalRows['Email']."</td>";
 			   	echo"<td>".$adviseePersonalRows['Phone']."</td>";
@@ -120,7 +120,7 @@ $queryFacultyNames = "SELECT `Last_Name`,`First_Name`,`User_Id` FROM epiz_253991
 			   	$adviseeSchoolStatsRows = mysqli_fetch_assoc(mysqli_query($connection, $queryAdviseesSchoolStats1));
 			   	echo "<td>".$adviseeSchoolStatsRows['GPA']."</td>";
 			   	echo "<td>".$adviseeSchoolStatsRows['student_type'];
-			   	echo "<td>Temp</td>";
+			   
 			   	 echo "</tr>";
 
 				

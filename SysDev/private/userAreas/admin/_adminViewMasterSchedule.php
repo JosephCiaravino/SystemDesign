@@ -84,16 +84,17 @@
 
 		<label for ='viewMasterSemOption'>Semester</label>
 		<select class="form-control" id="viewMasterSemOption" name = "viewMasterSemOption" required>
-		    <option>Select</option>
+		    <option value = '1'>Spring-2020</option>
+		    <option value = '9'>Fall-2020</option>
 		    <?php 
 		    	//$globalSemesterIDLookupRev = array_reverse($globalSemesterIDLookup);
 		    	//array_unshift($globalSemesterIDLookupRev,0);
-		    	foreach ($globalSemesterIDLookup as $key => $value) {
-		    		if($key!=0){
-		    			echo "<option value = '".$key."'>".$value."</option>";
-		    		}
-		    	
-		    	}
+//		    	foreach ($globalSemesterIDLookup as $key => $value) {
+//		    		if($key!=0){
+//		    			echo "<option value = '".$key."'>".$value."</option>";
+//		    		}
+//		    	
+//		    	}
 		    ?>
 		</select>
 
@@ -128,7 +129,7 @@
 
 
 <?php 
-  if(/*!empty($_POST['viewMasterSched'])*/true ){	
+  if(!empty($chosenSemesterSectionResult) ){	
 
 
   	while($masterSchedResource = mysqli_fetch_assoc($chosenSemesterSectionResult)){

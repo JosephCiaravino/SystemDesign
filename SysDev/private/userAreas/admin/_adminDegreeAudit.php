@@ -1,11 +1,5 @@
 <?php
 
-/*TO DO:
-MINOR COURSES/MINORS
-CHECK FOR GRAD REGISTRATION
-DO GRAD REGISTRATION CHECK*/
-
-
 session_regenerate_id(TRUE);
 echo print_r($_SESSION);
 $pageType = "faculty";
@@ -63,9 +57,9 @@ if($studentType == "undergrad"){
 ?>
 
 
-<div class = 'container'>
-	<div class = 'row'>
-		<table class="table-striped col-12 table-bordered">
+
+	<div class = 'container'>
+		<table class="table-striped table-bordered col-12">
 		  <thead>
 		    <tr class ="table-primary">
 		<?php
@@ -123,7 +117,7 @@ if($studentType == "undergrad"){
 
 		  </tbody>
 		</table><br><br><hr>
-	</div>
+	
 
 		<?php
 		      }
@@ -141,7 +135,7 @@ if($studentType == "undergrad"){
 		        }   
 		    ?>
 	<div class = 'row'> 
-		      <table class="table-striped col-12 table-bordered">
+		      <table class="table-striped col-10 table-bordered">
 		  <thead>
 		    <tr class ="table-primary">
 		      <th>Minor Requirements - <?php echo $minorTitle; ?></th>
